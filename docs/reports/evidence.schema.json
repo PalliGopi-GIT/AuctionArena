@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["task", "command", "exitCode", "at", "runner"],
+  "properties": {
+    "task": {"type": "string"}, "commit": {"type": ["string", "null"]},
+    "command": {"type": "string"}, "exitCode": {"type": "integer"},
+    "at": {"type": "string", "format": "date-time"}, "runner": {"type": "string"},
+    "durationMs": {"type": "number", "minimum": 0},
+    "tests": {"type": "object", "required": ["passed", "failed", "skipped"], "properties": {"passed": {"type": "integer", "minimum": 0}, "failed": {"type": "integer", "minimum": 0}, "skipped": {"type": "integer", "minimum": 0}}},
+    "rooms": {"type": "integer", "minimum": 0}, "sockets": {"type": "integer", "minimum": 0},
+    "consistencyHash": {"type": "string"}, "notes": {"type": "string"}
+  }
+}

@@ -1,0 +1,19 @@
+node_modules/
+dist/
+.env*
+!.env.example
+.data/
+cdk.out/
+.npm-cache/
+test-results/
+
+# Local tool configuration, credentials and private repair backups
+.aws/
+.codex/
+.agents/
+.claude/
+.claude.json
+*.auctionarena-*.bak
+*.auctionarena-*.tmp
+*.pem
+*.key

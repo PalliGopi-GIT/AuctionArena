@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-11T21:03:42.641Z",
+  "command": "powershell.exe -ExecutionPolicy Bypass -File .\\scripts\\setup-aws.ps1 -Toolkit -VerifyToolkit",
+  "exitCode": 1,
+  "signal": null,
+  "spawnError": null,
+  "durationMs": 34999,
+  "wizardExitCode": 255,
+  "catalogVerified": true,
+  "catalogCount": 122,
+  "safeErrors": [
+    "aws: [ERROR]: [WinError 2] The system cannot find the file specified"
+  ],
+  "codexConfigUnchangedByWizard": true,
+  "otherAgentConfigCount": 2,
+  "unrelatedOtherAgentConfigPreserved": true,
+  "codexRestarted": false,
+  "awsResourcesCreated": 0,
+  "limit": "Vendor wizard failed after reporting Claude Code already configured; exact missing executable is not established. Existing config is preserved; no broad wizard repair was attempted."
+}

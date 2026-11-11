@@ -1,0 +1,15 @@
+
+ RUN  v5.1.0 C:/Users/palli/OneDrive/Desktop/IPL-AUCTION
+
+ ✓ tests/core/dependency-contracts.test.ts > validation contracts across dependency upgrades > keeps creation defaults, trimmed names and explicit false/zero values 8ms
+ ✓ tests/core/dependency-contracts.test.ts > validation contracts across dependency upgrades > rejects unknown settings, coercion, fractions, nulls and out-of-range values 2ms
+ ✓ tests/core/dependency-contracts.test.ts > validation contracts across dependency upgrades > still runs both squad and pool refinements after applying defaults 1ms
+ ✓ tests/core/dependency-contracts.test.ts > validation contracts across dependency upgrades > requires complete settings for updates and rejects extra action fields 4ms
+ ✓ tests/core/dependency-contracts.test.ts > validation contracts across dependency upgrades > keeps action dispatch strict and accepts only positive safe integer bids 2ms
+ ✓ tests/core/dependency-contracts.test.ts > real Node HTTP adapter compatibility > preserves auth, JSON errors, body limits and state when validation fails 152ms
+
+ Test Files  1 passed (1)
+      Tests  6 passed (6)
+   Start at  21:37:29
+   Duration  1.08s (import 55%, tests 22%, transform 22%, worker 1%)
+

@@ -1,0 +1,709 @@
+{
+  "axeVersion": "4.14.0",
+  "scans": [
+    {
+      "screen": "home",
+      "passedRules": 36,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "targets": [
+            [
+              ".avatar-stack > span:nth-child(1)"
+            ],
+            [
+              ".avatar-stack > span:nth-child(3)"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Element has insufficient color contrast of 4.46 (foreground color: #d5d9ce, background color: #745a41, font size: 6.0pt (8px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "Fix any of the following:\n  Element has insufficient color contrast of 4.08 (foreground color: #d5d9ce, background color: #636841, font size: 6.0pt (8px), font weight: normal). Expected contrast ratio of 4.5:1"
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "help": "Elements must have their visible text as part of their accessible name",
+          "targets": [
+            [
+              "header > .brand[aria-label=\"AuctionArena home\"]"
+            ],
+            [
+              "footer > .brand[aria-label=\"AuctionArena home\"]"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Text inside the element is not included in the accessible name",
+            "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "targets": [
+            [
+              "header > .brand[aria-label=\"AuctionArena home\"] > .brand-mark"
+            ],
+            [
+              ".sample-tag"
+            ],
+            [
+              ".vertical-text"
+            ],
+            [
+              ".player-number"
+            ],
+            [
+              ".tag"
+            ],
+            [
+              ".preview-player > h2"
+            ],
+            [
+              ".preview-player > p"
+            ],
+            [
+              ".preview-stats > span:nth-child(1)"
+            ],
+            [
+              "span:nth-child(1) > b"
+            ],
+            [
+              ".preview-stats > span:nth-child(2)"
+            ],
+            [
+              "span:nth-child(2) > b"
+            ],
+            [
+              ".preview-stats > span:nth-child(3)"
+            ],
+            [
+              "span:nth-child(3) > b"
+            ],
+            [
+              ".label"
+            ],
+            [
+              ".preview-bottom > span:nth-child(2)"
+            ],
+            [
+              ".card-decoration"
+            ],
+            [
+              ".bottom-cta > .eyebrow"
+            ],
+            [
+              ".bottom-cta > h2"
+            ],
+            [
+              "footer > .brand[aria-label=\"AuctionArena home\"] > .brand-mark"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background",
+            "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+            "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+            "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+            "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+            "Fix any of the following:\n  Element content is too short to determine if it is actual text content",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background"
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "local-sign-in",
+      "passedRules": 33,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "targets": [
+            [
+              ".modal > p"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "create-settings",
+      "passedRules": 33,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "targets": [
+            [
+              ".fine-print"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "create-review",
+      "passedRules": 30,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "targets": [
+            [
+              ".fine-print"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "lobby",
+      "passedRules": 37,
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "help": "Elements must have their visible text as part of their accessible name",
+          "targets": [
+            [
+              "header > .brand[aria-label=\"AuctionArena home\"]"
+            ],
+            [
+              "footer > .brand[aria-label=\"AuctionArena home\"]"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Text inside the element is not included in the accessible name",
+            "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "targets": [
+            [
+              "header > .brand[aria-label=\"AuctionArena home\"] > .brand-mark"
+            ],
+            [
+              "footer > .brand[aria-label=\"AuctionArena home\"] > .brand-mark"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background",
+            "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background"
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "squads",
+      "passedRules": 37,
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "help": "Elements must have their visible text as part of their accessible name",
+          "targets": [
+            [
+              "header > .brand[aria-label=\"AuctionArena home\"]"
+            ],
+            [
+              "footer > .brand[aria-label=\"AuctionArena home\"]"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Text inside the element is not included in the accessible name",
+            "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "targets": [
+            [
+              "header > .brand[aria-label=\"AuctionArena home\"] > .brand-mark"
+            ],
+            [
+              "footer > .brand[aria-label=\"AuctionArena home\"] > .brand-mark"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background",
+            "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background"
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "players",
+      "passedRules": 41,
+      "violations": [
+        {
+          "id": "heading-order",
+          "impact": "moderate",
+          "help": "Heading levels should only increase by one",
+          "targets": [
+            [
+              ".panel.player-tile:nth-child(1) > h3"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Heading order invalid"
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "help": "Elements must have their visible text as part of their accessible name",
+          "targets": [
+            [
+              "header > .brand[aria-label=\"AuctionArena home\"]"
+            ],
+            [
+              "footer > .brand[aria-label=\"AuctionArena home\"]"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Text inside the element is not included in the accessible name",
+            "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "targets": [
+            [
+              "header > .brand[aria-label=\"AuctionArena home\"] > .brand-mark"
+            ],
+            [
+              "footer > .brand[aria-label=\"AuctionArena home\"] > .brand-mark"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background",
+            "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background"
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "members",
+      "passedRules": 41,
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "help": "Elements must have their visible text as part of their accessible name",
+          "targets": [
+            [
+              "header > .brand[aria-label=\"AuctionArena home\"]"
+            ],
+            [
+              "footer > .brand[aria-label=\"AuctionArena home\"]"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Text inside the element is not included in the accessible name",
+            "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "targets": [
+            [
+              "header > .brand[aria-label=\"AuctionArena home\"] > .brand-mark"
+            ],
+            [
+              "footer > .brand[aria-label=\"AuctionArena home\"] > .brand-mark"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background",
+            "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background"
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "history",
+      "passedRules": 37,
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "help": "Elements must have their visible text as part of their accessible name",
+          "targets": [
+            [
+              "header > .brand[aria-label=\"AuctionArena home\"]"
+            ],
+            [
+              "footer > .brand[aria-label=\"AuctionArena home\"]"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Text inside the element is not included in the accessible name",
+            "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "targets": [
+            [
+              "header > .brand[aria-label=\"AuctionArena home\"] > .brand-mark"
+            ],
+            [
+              "footer > .brand[aria-label=\"AuctionArena home\"] > .brand-mark"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background",
+            "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background"
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "edit-rules",
+      "passedRules": 33,
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "screen": "live-leading-bid",
+      "passedRules": 39,
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "help": "Elements must have their visible text as part of their accessible name",
+          "targets": [
+            [
+              "header > .brand[aria-label=\"AuctionArena home\"]"
+            ],
+            [
+              "footer > .brand[aria-label=\"AuctionArena home\"]"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Text inside the element is not included in the accessible name",
+            "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "targets": [
+            [
+              "header > .brand[aria-label=\"AuctionArena home\"] > .brand-mark"
+            ],
+            [
+              ".player-number"
+            ],
+            [
+              ".live-stats > span:nth-child(1) > b"
+            ],
+            [
+              ".live-stats > span:nth-child(2) > b"
+            ],
+            [
+              "footer > .brand[aria-label=\"AuctionArena home\"] > .brand-mark"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background",
+            "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+            "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+            "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+            "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background"
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "paused",
+      "passedRules": 39,
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "help": "Elements must have their visible text as part of their accessible name",
+          "targets": [
+            [
+              "header > .brand[aria-label=\"AuctionArena home\"]"
+            ],
+            [
+              "footer > .brand[aria-label=\"AuctionArena home\"]"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Text inside the element is not included in the accessible name",
+            "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "targets": [
+            [
+              "header > .brand[aria-label=\"AuctionArena home\"] > .brand-mark"
+            ],
+            [
+              ".player-number"
+            ],
+            [
+              "footer > .brand[aria-label=\"AuctionArena home\"] > .brand-mark"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background",
+            "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+            "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background"
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "end-confirmation",
+      "passedRules": 30,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "targets": [
+            [
+              ".modal > p"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "results",
+      "passedRules": 44,
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "help": "Elements must have their visible text as part of their accessible name",
+          "targets": [
+            [
+              "header > .brand[aria-label=\"AuctionArena home\"]"
+            ],
+            [
+              "footer > .brand[aria-label=\"AuctionArena home\"]"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Text inside the element is not included in the accessible name",
+            "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "aria-prohibited-attr",
+          "impact": "serious",
+          "help": "Elements must only use permitted ARIA attributes",
+          "targets": [
+            [
+              ".results-completion"
+            ],
+            [
+              ".results-receipt"
+            ]
+          ],
+          "summaries": [
+            "Fix all of the following:\n  aria-label attribute is not well supported on \"p\" elements with no valid role attribute.",
+            "Fix all of the following:\n  aria-label attribute is not well supported on \"div\" elements with no valid role attribute."
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "targets": [
+            [
+              "header > .brand[aria-label=\"AuctionArena home\"] > .brand-mark"
+            ],
+            [
+              ".results-receipt-title"
+            ],
+            [
+              ".results-total-label"
+            ],
+            [
+              ".results-total"
+            ],
+            [
+              ".results-totals > div:nth-child(1) > dt"
+            ],
+            [
+              ".results-totals > div:nth-child(1) > dd"
+            ],
+            [
+              ".results-totals > div:nth-child(2) > dt"
+            ],
+            [
+              ".results-totals > div:nth-child(2) > dd"
+            ],
+            [
+              ".results-totals > div:nth-child(3) > dt"
+            ],
+            [
+              ".results-totals > div:nth-child(3) > dd"
+            ],
+            [
+              "div:nth-child(4) > dt"
+            ],
+            [
+              "div:nth-child(4) > dd"
+            ],
+            [
+              ".results-receipt-foot"
+            ],
+            [
+              "footer > .brand[aria-label=\"AuctionArena home\"] > .brand-mark"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element content is too short to determine if it is actual text content",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element content is too short to determine if it is actual text content",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background"
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "manual-results-copy",
+      "passedRules": 33,
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "screen": "my-auctions",
+      "passedRules": 36,
+      "violations": [
+        {
+          "id": "heading-order",
+          "impact": "moderate",
+          "help": "Heading levels should only increase by one",
+          "targets": [
+            [
+              "h3"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Heading order invalid"
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "help": "Elements must have their visible text as part of their accessible name",
+          "targets": [
+            [
+              "header > .brand[aria-label=\"AuctionArena home\"]"
+            ],
+            [
+              "footer > .brand[aria-label=\"AuctionArena home\"]"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Text inside the element is not included in the accessible name",
+            "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "targets": [
+            [
+              "header > .brand[aria-label=\"AuctionArena home\"] > .brand-mark"
+            ],
+            [
+              "footer > .brand[aria-label=\"AuctionArena home\"] > .brand-mark"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background",
+            "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background"
+          ]
+        }
+      ]
+    }
+  ]
+}

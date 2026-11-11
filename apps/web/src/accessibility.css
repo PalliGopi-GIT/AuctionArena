@@ -1,0 +1,20 @@
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.skip-link{position:fixed;top:-100px;left:10px;z-index:200;padding:14px 18px;background:var(--lime);color:#15210d;border-radius:5px;font-weight:700}
+.skip-link:focus{top:10px;outline:3px solid #fff;outline-offset:3px}
+.app-surface{display:contents}
+button,select,summary{min-height:44px;min-width:44px}
+.text-button{padding-inline:8px}
+.checkbox{min-height:44px}
+.modal-close{min-width:44px;min-height:44px;display:grid;place-items:center}
+.modal .fine-print{margin-top:18px}
+.tabs button{padding-inline:6px;scroll-margin-inline:12px}
+main:focus{outline:3px solid var(--lime);outline-offset:-3px}
+.user-pill{max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.header-actions{min-width:0}
+.avatar-stack{color:#fff}
+h1,h2,h3,h4{overflow-wrap:anywhere}
+.form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.form-grid label,input,select{min-width:0}
+.mobile-nav{align-items:center;flex-wrap:wrap}
+.mobile-nav button{min-height:44px!important;min-width:44px}
+@media(max-width:760px){.user-pill{max-width:110px}.arena-toolbar{flex-wrap:wrap}.tabs{max-width:100%;min-width:0}.room-toolbar-actions{margin-left:auto}.bid-panel .button:disabled{position:static}.modal-close{top:8px;right:8px}}

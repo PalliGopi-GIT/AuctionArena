@@ -1,0 +1,200 @@
+TAP version 13
+# (node:2736) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: snapshot guard rejects other rooms, older versions, and older equal-version responses
+ok 1 - snapshot guard rejects other rooms, older versions, and older equal-version responses
+  ---
+  duration_ms: 3.9228
+  type: 'test'
+  ...
+# Subtest: dropped socket gets a fresh ticket and resumes delivery
+ok 2 - dropped socket gets a fresh ticket and resumes delivery
+  ---
+  duration_ms: 22.1758
+  type: 'test'
+  ...
+# Subtest: dispose ignores an in-flight old-room poll and ticket
+ok 3 - dispose ignores an in-flight old-room poll and ticket
+  ---
+  duration_ms: 14.7011
+  type: 'test'
+  ...
+# Subtest: poll fallback remains live and does not overlap slow requests
+ok 4 - poll fallback remains live and does not overlap slow requests
+  ---
+  duration_ms: 46.5866
+  type: 'test'
+  ...
+# Subtest: wrong-room socket message is ignored and retry stops on disposal
+ok 5 - wrong-room socket message is ignored and retry stops on disposal
+  ---
+  duration_ms: 78.208
+  type: 'test'
+  ...
+# (node:13656) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: invited friends share state; code alone and outsider reads are rejected
+ok 6 - invited friends share state; code alone and outsider reads are rejected
+  ---
+  duration_ms: 14.9998
+  type: 'test'
+  ...
+# Subtest: two competing claims accept exactly one owner
+ok 7 - two competing claims accept exactly one owner
+  ---
+  duration_ms: 6.6262
+  type: 'test'
+  ...
+# Subtest: same-price competing bids accept one position
+ok 8 - same-price competing bids accept one position
+  ---
+  duration_ms: 11.8104
+  type: 'test'
+  ...
+# Subtest: deadline rejects a bid even before the timer sweep
+ok 9 - deadline rejects a bid even before the timer sweep
+  ---
+  duration_ms: 5.7106
+  type: 'test'
+  ...
+# Subtest: minimum squad reserve prevents overspending
+ok 10 - minimum squad reserve prevents overspending
+  ---
+  duration_ms: 6.3201
+  type: 'test'
+  ...
+# Subtest: spectators cannot bid and guests cannot pause
+ok 11 - spectators cannot bid and guests cannot pause
+  ---
+  duration_ms: 4.7879
+  type: 'test'
+  ...
+# Subtest: leading team cannot outbid itself or use a stale player
+ok 12 - leading team cannot outbid itself or use a stale player
+  ---
+  duration_ms: 9.6821
+  type: 'test'
+  ...
+# Subtest: squad and overseas limits reject ineligible bids
+ok 13 - squad and overseas limits reject ineligible bids
+  ---
+  duration_ms: 5.4131
+  type: 'test'
+  ...
+# Subtest: late bid updates one shared deadline
+ok 14 - late bid updates one shared deadline
+  ---
+  duration_ms: 3.929
+  type: 'test'
+  ...
+# Subtest: settlement updates squad, sale and budget exactly once
+ok 15 - settlement updates squad, sale and budget exactly once
+  ---
+  duration_ms: 5.8308
+  type: 'test'
+  ...
+# Subtest: no bids produce an unsold result without a charge
+ok 16 - no bids produce an unsold result without a charge
+  ---
+  duration_ms: 5.9346
+  type: 'test'
+  ...
+# Subtest: duplicate action is harmless and changed ID content is rejected
+ok 17 - duplicate action is harmless and changed ID content is rejected
+  ---
+  duration_ms: 8.4988
+  type: 'test'
+  ...
+# Subtest: delayed sweep pauses at host grace expiry before a later deadline
+ok 18 - delayed sweep pauses at host grace expiry before a later deadline
+  ---
+  duration_ms: 7.8363
+  type: 'test'
+  ...
+# Subtest: reconnecting host cannot erase elapsed disconnection before sweep
+ok 19 - reconnecting host cannot erase elapsed disconnection before sweep
+  ---
+  duration_ms: 4.1222
+  type: 'test'
+  ...
+# Subtest: participant bid cannot bypass overdue host pause
+ok 20 - participant bid cannot bypass overdue host pause
+  ---
+  duration_ms: 3.9005
+  type: 'test'
+  ...
+# Subtest: offline host cannot resume and inflate paused time
+ok 21 - offline host cannot resume and inflate paused time
+  ---
+  duration_ms: 7.1286
+  type: 'test'
+  ...
+# Subtest: offline host cannot manually advance to a new lot
+ok 22 - offline host cannot manually advance to a new lot
+  ---
+  duration_ms: 4.5966
+  type: 'test'
+  ...
+# Subtest: a deadline at host grace expiry still settles the earlier lot
+ok 23 - a deadline at host grace expiry still settles the earlier lot
+  ---
+  duration_ms: 4.5908
+  type: 'test'
+  ...
+# Subtest: auto-advance with absent host pauses new lot with full time
+ok 24 - auto-advance with absent host pauses new lot with full time
+  ---
+  duration_ms: 5.8653
+  type: 'test'
+  ...
+# Subtest: refresh and reconnect preserve ownership and accepted bid
+ok 25 - refresh and reconnect preserve ownership and accepted bid
+  ---
+  duration_ms: 4.4536
+  type: 'test'
+  ...
+# Subtest: restart recovers bid, host-end settles once, completed results reopen
+ok 26 - restart recovers bid, host-end settles once, completed results reopen
+  ---
+  duration_ms: 31.9797
+  type: 'test'
+  ...
+# Subtest: recovery rejects a sold player missing from its squad
+ok 27 - recovery rejects a sold player missing from its squad
+  ---
+  duration_ms: 18.8856
+  type: 'test'
+  ...
+# Subtest: recovery rejects an unaffordable saved leading bid before settlement
+ok 28 - recovery rejects an unaffordable saved leading bid before settlement
+  ---
+  duration_ms: 28.0305
+  type: 'test'
+  ...
+# Subtest: recovery rejects a mismatched open-player index
+ok 29 - recovery rejects a mismatched open-player index
+  ---
+  duration_ms: 22.5464
+  type: 'test'
+  ...
+# Subtest: recovery rejects a budget which does not reconcile
+ok 30 - recovery rejects a budget which does not reconcile
+  ---
+  duration_ms: 18.2334
+  type: 'test'
+  ...
+# Subtest: 10 rooms / 200 simulated members isolate 2,000 competing intents
+ok 31 - 10 rooms / 200 simulated members isolate 2,000 competing intents
+  ---
+  duration_ms: 8883.417
+  type: 'test'
+  ...
+1..31
+# tests 31
+# suites 0
+# pass 31
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 9593.5289

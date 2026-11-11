@@ -1,0 +1,47 @@
+
+> test:e2e
+> playwright test
+
+
+Running 28 tests using 1 worker
+
+npm.cmd : (node:12392) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+At line:2 char:102
++ ... ults.json'; npm.cmd run test:e2e *> docs/reports/evidence/WP1-ACCOUNT ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:12392) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [desktop] › tests\e2e\accessibility.spec.ts:9:1 › accessibility scans cover auction screens and dialogs (47.9s)
+  ok  2 [desktop] › tests\e2e\accessibility.spec.ts:72:1 › keyboard navigation, modal isolation, target sizes and narrow reflow work (11.0s)
+  ok  3 [desktop] › tests\e2e\accounts.spec.ts:8:1 › profile names stay unique and deletion revokes access while retaining shared records (18.1s)
+  ok  4 [desktop] › tests\e2e\accounts.spec.ts:38:1 › a pending profile response cannot restore names or rooms after sign-out (8.0s)
+  ok  5 [desktop] › tests\e2e\auction.spec.ts:4:1 › two browsers complete a sale, recover, remove/block and reopen results (22.4s)
+  ok  6 [desktop] › tests\e2e\auction.spec.ts:66:1 › invitation renewal, invalid invite, leave and close before start (6.9s)
+  ok  7 [desktop] › tests\e2e\auction.spec.ts:101:1 › switching local profiles clears the prior private room and invitation (3.4s)
+  ok  8 [desktop] › tests\e2e\auction.spec.ts:119:1 › a signed-out full reload clears the old identity invitation and room route (3.9s)
+  ok  9 [desktop] › tests\e2e\auction.spec.ts:131:1 › real clipboard invitations join and results links work without invitation credentials (6.9s)
+  ok 10 [desktop] › tests\e2e\auction.spec.ts:162:1 › clipboard denial provides selectable links with keyboard focus and clears pending copies on sign-out (4.5s)
+  ok 11 [desktop] › tests\e2e\auction.spec.ts:208:1 › host heartbeat expiry pauses an accepted bid until the host reconnects and resumes (1.0m)
+  ok 12 [desktop] › tests\e2e\auction.spec.ts:251:38 › late invited spectator is read-only and receives results (5.6s)
+  ok 13 [desktop] › tests\e2e\auction.spec.ts:251:38 › late invited spectator is denied when spectators are disabled (4.3s)
+  ok 14 [desktop] › tests\e2e\auction.spec.ts:298:1 › depleted purses disable bids and finish with an affordability reason (1.1m)
+(node:16896) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 15 [mobile] › tests\e2e\accessibility.spec.ts:9:1 › accessibility scans cover auction screens and dialogs (28.6s)
+  ok 16 [mobile] › tests\e2e\accessibility.spec.ts:72:1 › keyboard navigation, modal isolation, target sizes and narrow reflow work (8.0s)
+  ok 17 [mobile] › tests\e2e\accounts.spec.ts:8:1 › profile names stay unique and deletion revokes access while retaining shared records (14.3s)
+  ok 18 [mobile] › tests\e2e\accounts.spec.ts:38:1 › a pending profile response cannot restore names or rooms after sign-out (6.2s)
+  ok 19 [mobile] › tests\e2e\auction.spec.ts:4:1 › two browsers complete a sale, recover, remove/block and reopen results (22.4s)
+  ok 20 [mobile] › tests\e2e\auction.spec.ts:66:1 › invitation renewal, invalid invite, leave and close before start (3.9s)
+  ok 21 [mobile] › tests\e2e\auction.spec.ts:101:1 › switching local profiles clears the prior private room and invitation (2.0s)
+  ok 22 [mobile] › tests\e2e\auction.spec.ts:119:1 › a signed-out full reload clears the old identity invitation and room route (2.0s)
+  ok 23 [mobile] › tests\e2e\auction.spec.ts:131:1 › real clipboard invitations join and results links work without invitation credentials (4.0s)
+  ok 24 [mobile] › tests\e2e\auction.spec.ts:162:1 › clipboard denial provides selectable links with keyboard focus and clears pending copies on sign-out (2.7s)
+  ok 25 [mobile] › tests\e2e\auction.spec.ts:208:1 › host heartbeat expiry pauses an accepted bid until the host reconnects and resumes (57.5s)
+  ok 26 [mobile] › tests\e2e\auction.spec.ts:251:38 › late invited spectator is read-only and receives results (5.2s)
+  ok 27 [mobile] › tests\e2e\auction.spec.ts:251:38 › late invited spectator is denied when spectators are disabled (4.1s)
+  ok 28 [mobile] › tests\e2e\auction.spec.ts:298:1 › depleted purses disable bids and finish with an affordability reason (1.1m)
+
+  28 passed (8.8m)

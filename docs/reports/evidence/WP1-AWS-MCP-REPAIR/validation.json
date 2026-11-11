@@ -1,0 +1,54 @@
+{
+  "task": "WP1-AWS-MCP-REPAIR",
+  "at": "2026-11-11T21:08:25.133Z",
+  "configRepair": {
+    "exitCode": 0,
+    "backupVerified": true,
+    "unrelatedConfigPreserved": true,
+    "proxyArgumentsPreserved": true
+  },
+  "powerShellSyntax": "passed for both source files",
+  "typecheck": {
+    "command": "node node_modules/typescript/bin/tsc --noEmit",
+    "exitCode": 0
+  },
+  "core": {
+    "command": "node node_modules/vitest/vitest.mjs run tests/core --configLoader runner --reporter=json --outputFile=.data/aws-setup/phase0-core-tests.json",
+    "passed": 136,
+    "failed": 0,
+    "skipped": 0
+  },
+  "focusedHelpers": {
+    "passed": 14,
+    "failed": 0,
+    "skipped": 0
+  },
+  "beforeImplementation": {
+    "passed": 11,
+    "failed": 3,
+    "skipped": 0
+  },
+  "toolkit": {
+    "command": "powershell.exe -ExecutionPolicy Bypass -File .\\scripts\\setup-aws.ps1 -Toolkit -VerifyToolkit",
+    "exitCode": 1,
+    "wizardExitCode": 255,
+    "error": "[WinError 2] The system cannot find the file specified",
+    "catalogVerified": true,
+    "catalogSkillCount": 122,
+    "configPreserved": true
+  },
+  "restartPerformed": false,
+  "currentAgentAwsMcpToolsExposed": 0,
+  "currentAgentMcpIdentityVerified": false,
+  "resourceDeployments": 0,
+  "clerkChanges": 0,
+  "buildBrowserLocalSuitesRerun": false,
+  "phase1Started": false,
+  "checkpoint": "Saved launcher repair; vendor wizard failure remains; waiting for user restart approval and subsequent MCP verification.",
+  "gitBaseline": {
+    "branch": "main",
+    "snapshot": "initial baseline commit contains this checkpoint",
+    "secretCheck": "staged-secret-check.json",
+    "runtimeExclusionsVerified": true
+  }
+}

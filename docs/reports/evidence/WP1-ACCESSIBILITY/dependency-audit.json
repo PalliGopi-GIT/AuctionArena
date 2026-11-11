@@ -1,0 +1,158 @@
+{
+  "at": "2026-11-11T15:06:10.637Z",
+  "status": "open",
+  "source": "Host npm audit --json",
+  "counts": {
+    "info": 0,
+    "low": 0,
+    "moderate": 4,
+    "high": 1,
+    "critical": 2,
+    "total": 7
+  },
+  "packages": [
+    {
+      "name": "@hono/node-server",
+      "severity": "moderate",
+      "direct": true,
+      "installedVersions": [
+        "1.19.18"
+      ],
+      "fixAvailable": true,
+      "advisories": [
+        {
+          "title": "@hono/node-server: `serveStatic` decodes the request path a second time, leading to bypass of middleware on static paths",
+          "url": "https://github.com/advisories/GHSA-rmxm-3fg6-px4f",
+          "range": ">=1.19.10 <2.1.3"
+        }
+      ]
+    },
+    {
+      "name": "@vitest/mocker",
+      "severity": "moderate",
+      "direct": false,
+      "installedVersions": [
+        "3.2.7"
+      ],
+      "fixAvailable": {
+        "name": "vitest",
+        "version": "5.1.0",
+        "isSemVerMajor": true
+      },
+      "advisories": [
+        {
+          "title": "Vitest: Path Traversal / Arbitrary File Read via @vitest/mocker Redirect Mock",
+          "url": "https://github.com/advisories/GHSA-82fw-gwwq-j7x9",
+          "range": ">=2.1.0 <4.1.11"
+        },
+        {
+          "title": "Vitest: Code injection via unauthenticated manual mock registration",
+          "url": "https://github.com/advisories/GHSA-qxg6-89mg-rqv8",
+          "range": ">=2.1.0-beta.7 <4.1.12"
+        }
+      ]
+    },
+    {
+      "name": "aws-cdk-lib",
+      "severity": "moderate",
+      "direct": true,
+      "installedVersions": [
+        "2.276.0"
+      ],
+      "fixAvailable": true,
+      "advisories": [
+        {
+          "dependency": "minimatch"
+        }
+      ]
+    },
+    {
+      "name": "minimatch",
+      "severity": "moderate",
+      "direct": false,
+      "installedVersions": [
+        "10.2.6"
+      ],
+      "fixAvailable": true,
+      "advisories": [
+        {
+          "title": "minimatch has potential denial of service via globparts amplification",
+          "url": "https://github.com/advisories/GHSA-g3hv-75wg-m249",
+          "range": ">=7.0.0 <11.0.1"
+        }
+      ]
+    },
+    {
+      "name": "tinypool",
+      "severity": "critical",
+      "direct": false,
+      "installedVersions": [
+        "1.1.1"
+      ],
+      "fixAvailable": {
+        "name": "vitest",
+        "version": "5.1.0",
+        "isSemVerMajor": true
+      },
+      "advisories": [
+        {
+          "title": "Tinypool: Prototype Pollution gadget in worker options leads to Remote Code Execution",
+          "url": "https://github.com/advisories/GHSA-5gmw-xhrv-c9v3",
+          "range": "<=2.1.0"
+        },
+        {
+          "title": "Tinypool: Prototype Pollution Gadget to RCE in run() options",
+          "url": "https://github.com/advisories/GHSA-85c8-ppgw-ccpr",
+          "range": "<2.1.2"
+        }
+      ]
+    },
+    {
+      "name": "vitest",
+      "severity": "critical",
+      "direct": true,
+      "installedVersions": [
+        "3.2.7"
+      ],
+      "fixAvailable": {
+        "name": "vitest",
+        "version": "5.1.0",
+        "isSemVerMajor": true
+      },
+      "advisories": [
+        {
+          "dependency": "@vitest/mocker"
+        },
+        {
+          "title": "Vitest: Path Traversal / Arbitrary File Read via @vitest/mocker Redirect Mock",
+          "url": "https://github.com/advisories/GHSA-82fw-gwwq-j7x9",
+          "range": ">=2.1.0 <4.1.11"
+        },
+        {
+          "dependency": "tinypool"
+        }
+      ]
+    },
+    {
+      "name": "zod",
+      "severity": "high",
+      "direct": true,
+      "installedVersions": [
+        "3.25.76"
+      ],
+      "fixAvailable": {
+        "name": "zod",
+        "version": "4.6.7",
+        "isSemVerMajor": true
+      },
+      "advisories": [
+        {
+          "title": "Zod can exhaust memory while validating oversized constrained collections",
+          "url": "https://github.com/advisories/GHSA-mrhx-c7xc-m3w5",
+          "range": "<4.6.6"
+        }
+      ]
+    }
+  ],
+  "note": "Compatibility-tested dependency remediation is pending. No force upgrade was performed. These are npm advisory matches, not a verified exploit assessment or deployment status."
+}

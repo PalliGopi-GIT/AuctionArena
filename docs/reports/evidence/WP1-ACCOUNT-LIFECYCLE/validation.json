@@ -1,0 +1,61 @@
+{
+  "at": "2026-11-11T19:55:24.518Z",
+  "status": "local_implementation_verified_live_checks_pending",
+  "typecheck": "passed",
+  "productionBuild": "passed inside full E2E setup",
+  "core": {
+    "passed": 110,
+    "failed": 0,
+    "newAccountTests": 18,
+    "newWindowsBootstrapTests": 8
+  },
+  "local": {
+    "passed": 76,
+    "failed": 0
+  },
+  "browser": {
+    "passed": 28,
+    "failed": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "durationMs": 530052.706,
+    "singleFullRun": true
+  },
+  "accessibility": {
+    "scans": 34,
+    "violations": 0,
+    "humanScreenReaderOrRealDevice": false
+  },
+  "serversStopped": {
+    "3101": true,
+    "3401": true,
+    "5273": true,
+    "5573": true
+  },
+  "liveClerk": {
+    "readiness": "inspected",
+    "newFixturesCreated": false,
+    "settingsModified": false,
+    "realChallengeCompletion": "pending explicit fixture approval",
+    "realWebhookDelivery": "pending endpoint configuration",
+    "challengePreflight": "passed with no users/rooms created; owned ports stopped"
+  },
+  "aws": {
+    "profile": "AuctionArena",
+    "region": "ap-south-1",
+    "identityVerifiedOnHost": true,
+    "planType": "FREE",
+    "planStatus": "ACTIVE",
+    "remainingCredits": {
+      "amount": 100,
+      "unit": "USD"
+    },
+    "toolkitConnection": "Codex proxy/profile saved and host catalog retrieval passed; reconnect and actual MCP tool/identity verification pending",
+    "resourceDeployments": 0,
+    "spendingPolicy": "No billable deployments without explicit user approval",
+    "catalogVerifiedOnHost": true,
+    "billingRestrictions": "Still require review in AWS Settings > Billing"
+  },
+  "dependencyAudit": "Two moderate CDK/bundled-minimatch entries remain; isolated resolution probe prepared but not executed.",
+  "limitations": "Local single-process account implementation only. No distributed AWS runtime, deployment, live challenge, live webhook, human screen-reader/device or Safari pass is claimed."
+}

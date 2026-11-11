@@ -1,0 +1,27 @@
+{
+  "at": "2026-11-11T15:26:47.834Z",
+  "status": "passed",
+  "task": "WP1-ACCESSIBILITY",
+  "typecheck": "passed",
+  "corePassed": 78,
+  "announcementTests": 8,
+  "verifiedBrowserCases": 24,
+  "auctionBrowserCasesPassed": 20,
+  "browserEvidence": {
+    "fullRunPassed": 22,
+    "fullRunFailed": 2,
+    "correctedKeyboardCasesPassed": 2,
+    "note": "Two new keyboard assertions incorrectly required AuctionArena without the browser-normalized space. Corrected to accept Auction Arena and reran both viewports; added skip visibility, home axe and exit-announcement checks. No remaining failed case in the composed matrix. Raw initial full-run errors are preserved."
+  },
+  "axeVersion": "4.14.0",
+  "axeMatrixScans": 32,
+  "axeViolations": 0,
+  "manualReviewStates": 27,
+  "additionalHomeScansInKeyboardChecks": 2,
+  "ownedServersStopped": {
+    "3101": true,
+    "5273": true
+  },
+  "limitations": "Automated findings, keyboard/reflow and deterministic speech scheduling only. Axe incomplete contrast/obscuration checks remain; human screen-reader, OS zoom, real devices/Safari and third-party Clerk challenges are not verified. No WCAG certification or production-security claim.",
+  "dependencyAudit": "7 affected package entries remain: 2 critical, 1 high, 4 moderate; WP1-DEPENDENCY-HARDENING is planned."
+}

@@ -1,0 +1,15 @@
+{
+  "task": "WP1-E2E",
+  "commit": null,
+  "command": "npm.cmd run test:e2e",
+  "exitCode": 0,
+  "at": "2026-11-11T09:11:11.145Z",
+  "tests": {
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "durationMs": 269385.154,
+  "limitations": "Single-process local adapter, local test identities and Chromium desktop/mobile viewport. No Clerk, real-device, distributed runtime, AWS or capacity verification."
+}

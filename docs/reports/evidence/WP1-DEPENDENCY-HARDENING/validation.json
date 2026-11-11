@@ -1,0 +1,91 @@
+{
+  "task": "WP1-DEPENDENCY-HARDENING",
+  "at": "2026-11-11T16:19:34.875Z",
+  "status": "verified_with_open_advisories",
+  "node": "v22.23.2",
+  "lockfileSha256": "ccc4396ce9be137704dc59c0bdf66e7f03de8da5425da918565c367baa18ed44",
+  "typecheck": {
+    "command": "npm.cmd run typecheck",
+    "exitCode": 0
+  },
+  "build": {
+    "command": "Vite production build --configLoader runner inside npm.cmd run test:e2e",
+    "exitCode": 0
+  },
+  "core": {
+    "command": "npx.cmd vitest run tests/core --configLoader runner --reporter=verbose",
+    "passed": 84,
+    "failed": 0,
+    "addedCompatibilityTests": 6
+  },
+  "local": {
+    "command": "npm.cmd run test:local",
+    "passed": 76,
+    "failed": 0
+  },
+  "browser": {
+    "command": "npm.cmd run test:e2e",
+    "passed": 24,
+    "failed": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "durationMs": 562218.92,
+    "singleFullRun": true,
+    "realDevicesOrSafari": false
+  },
+  "accessibility": {
+    "matrixScans": 32,
+    "violations": 0,
+    "incompleteStates": 27,
+    "humanScreenReaderTesting": false
+  },
+  "dependencyTree": {
+    "command": "npm.cmd ls --all --json",
+    "exitCode": 0
+  },
+  "audit": {
+    "source": "Fresh host npm audit --json after installation",
+    "before": {
+      "critical": 2,
+      "high": 1,
+      "moderate": 4,
+      "total": 7
+    },
+    "after": {
+      "info": 0,
+      "low": 0,
+      "moderate": 2,
+      "high": 0,
+      "critical": 0,
+      "total": 2
+    },
+    "resolvedBaselineEntries": [
+      "@hono/node-server",
+      "@vitest/mocker",
+      "tinypool",
+      "vitest",
+      "zod"
+    ],
+    "remaining": [
+      {
+        "name": "aws-cdk-lib",
+        "severity": "moderate",
+        "developmentOnly": true
+      },
+      {
+        "name": "minimatch",
+        "severity": "moderate",
+        "developmentOnly": true
+      }
+    ],
+    "cleanAudit": false
+  },
+  "ownedServersStopped": {
+    "3101": true,
+    "5273": true
+  },
+  "clerkSdkVersionsUnchanged": true,
+  "liveFixturesReplayed": false,
+  "awsServiceOperations": false,
+  "limitations": "Two moderate CDK/bundled-minimatch advisory entries remain open; no full security or WCAG conformance claim. Single-process local runtime only; distributed runtime/deployment/capacity remain unimplemented."
+}

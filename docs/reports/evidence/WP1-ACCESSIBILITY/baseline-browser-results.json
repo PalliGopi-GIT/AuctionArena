@@ -1,0 +1,409 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--grep",
+      "accessibility scans|keyboard navigation"
+    ],
+    "configFile": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\playwright.config.ts",
+    "rootDir": "C:/Users/palli/OneDrive/Desktop/IPL-AUCTION/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\tests\\e2e\\setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/palli/OneDrive/Desktop/IPL-AUCTION/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "C:/Users/palli/OneDrive/Desktop/IPL-AUCTION/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/palli/OneDrive/Desktop/IPL-AUCTION/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "C:/Users/palli/OneDrive/Desktop/IPL-AUCTION/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop",
+        "testDir": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5273",
+          "channel": "chrome",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mobile",
+        "testDir": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5273",
+          "channel": "chrome",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "isMobile": true,
+          "hasTouch": true
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mobile"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "docs/reports/evidence/WP1-E2E/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "accessibility.spec.ts",
+      "file": "accessibility.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "accessibility scans cover auction screens and dialogs",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 50541,
+                  "error": {
+                    "message": "Error: See docs/reports/evidence/WP1-ACCESSIBILITY/desktop-axe.json\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m13\u001b[39m",
+                    "stack": "Error: See docs/reports/evidence/WP1-ACCESSIBILITY/desktop-axe.json\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m13\u001b[39m\n    at C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\tests\\e2e\\accessibility.spec.ts:69:76",
+                    "location": {
+                      "file": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\tests\\e2e\\accessibility.spec.ts",
+                      "column": 76,
+                      "line": 69
+                    },
+                    "snippet": " \u001b[90m 67 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'My auctions'\u001b[39m\u001b[33m,\u001b[39m exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m \u001b[36mawait\u001b[39m scan(\u001b[32m'my-auctions'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 68 |\u001b[39m   } \u001b[36mfinally\u001b[39m { \u001b[36mawait\u001b[39m guestContext\u001b[33m.\u001b[39mclose()\u001b[33m;\u001b[39m }\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 69 |\u001b[39m   expect(violations\u001b[33m,\u001b[39m \u001b[32m`See ${directory}/${testInfo.project.name}-axe.json`\u001b[39m)\u001b[33m.\u001b[39mtoBe(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 70 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 71 |\u001b[39m\n \u001b[90m 72 |\u001b[39m test(\u001b[32m'keyboard navigation, modal isolation, target sizes and narrow reflow work'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\tests\\e2e\\accessibility.spec.ts",
+                        "column": 76,
+                        "line": 69
+                      },
+                      "message": "Error: See docs/reports/evidence/WP1-ACCESSIBILITY/desktop-axe.json\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m13\u001b[39m\n\n  67 |     await page.getByRole('button', { name: 'My auctions', exact: true }).click(); await scan('my-auctions');\n  68 |   } finally { await guestContext.close(); }\n> 69 |   expect(violations, `See ${directory}/${testInfo.project.name}-axe.json`).toBe(0);\n     |                                                                            ^\n  70 | });\n  71 |\n  72 | test('keyboard navigation, modal isolation, target sizes and narrow reflow work', async ({ page }, testInfo) => {\n    at C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\tests\\e2e\\accessibility.spec.ts:69:76"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-11T14:56:17.535Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\test-results\\accessibility-accessibilit-e7b90-auction-screens-and-dialogs-desktop\\test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\test-results\\accessibility-accessibilit-e7b90-auction-screens-and-dialogs-desktop\\test-failed-2.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\test-results\\accessibility-accessibilit-e7b90-auction-screens-and-dialogs-desktop\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\test-results\\accessibility-accessibilit-e7b90-auction-screens-and-dialogs-desktop\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\tests\\e2e\\accessibility.spec.ts",
+                    "column": 76,
+                    "line": 69
+                  }
+                }
+              ],
+              "status": "unexpected"
+            },
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 52478,
+                  "error": {
+                    "message": "Error: See docs/reports/evidence/WP1-ACCESSIBILITY/mobile-axe.json\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m12\u001b[39m",
+                    "stack": "Error: See docs/reports/evidence/WP1-ACCESSIBILITY/mobile-axe.json\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m12\u001b[39m\n    at C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\tests\\e2e\\accessibility.spec.ts:69:76",
+                    "location": {
+                      "file": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\tests\\e2e\\accessibility.spec.ts",
+                      "column": 76,
+                      "line": 69
+                    },
+                    "snippet": " \u001b[90m 67 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'My auctions'\u001b[39m\u001b[33m,\u001b[39m exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m \u001b[36mawait\u001b[39m scan(\u001b[32m'my-auctions'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 68 |\u001b[39m   } \u001b[36mfinally\u001b[39m { \u001b[36mawait\u001b[39m guestContext\u001b[33m.\u001b[39mclose()\u001b[33m;\u001b[39m }\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 69 |\u001b[39m   expect(violations\u001b[33m,\u001b[39m \u001b[32m`See ${directory}/${testInfo.project.name}-axe.json`\u001b[39m)\u001b[33m.\u001b[39mtoBe(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 70 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 71 |\u001b[39m\n \u001b[90m 72 |\u001b[39m test(\u001b[32m'keyboard navigation, modal isolation, target sizes and narrow reflow work'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\tests\\e2e\\accessibility.spec.ts",
+                        "column": 76,
+                        "line": 69
+                      },
+                      "message": "Error: See docs/reports/evidence/WP1-ACCESSIBILITY/mobile-axe.json\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m12\u001b[39m\n\n  67 |     await page.getByRole('button', { name: 'My auctions', exact: true }).click(); await scan('my-auctions');\n  68 |   } finally { await guestContext.close(); }\n> 69 |   expect(violations, `See ${directory}/${testInfo.project.name}-axe.json`).toBe(0);\n     |                                                                            ^\n  70 | });\n  71 |\n  72 | test('keyboard navigation, modal isolation, target sizes and narrow reflow work', async ({ page }, testInfo) => {\n    at C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\tests\\e2e\\accessibility.spec.ts:69:76"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-11T14:57:30.710Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\test-results\\accessibility-accessibilit-e7b90-auction-screens-and-dialogs-mobile\\test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\test-results\\accessibility-accessibilit-e7b90-auction-screens-and-dialogs-mobile\\test-failed-2.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\test-results\\accessibility-accessibilit-e7b90-auction-screens-and-dialogs-mobile\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\test-results\\accessibility-accessibilit-e7b90-auction-screens-and-dialogs-mobile\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\tests\\e2e\\accessibility.spec.ts",
+                    "column": 76,
+                    "line": 69
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ddd864604af8a6a0198f-9a8d48db46fb4f19dc27",
+          "file": "accessibility.spec.ts",
+          "line": 9,
+          "column": 1
+        },
+        {
+          "title": "keyboard navigation, modal isolation, target sizes and narrow reflow work",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7757,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\tests\\e2e\\accessibility.spec.ts:98:93",
+                    "location": {
+                      "file": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\tests\\e2e\\accessibility.spec.ts",
+                      "column": 93,
+                      "line": 98
+                    },
+                    "snippet": " \u001b[90m  96 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Create private auction'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m  97 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'A'\u001b[39m\u001b[33m.\u001b[39mrepeat(\u001b[35m60\u001b[39m) }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  98 |\u001b[39m   expect(\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m document\u001b[33m.\u001b[39mdocumentElement\u001b[33m.\u001b[39mscrollWidth \u001b[33m<=\u001b[39m innerWidth \u001b[33m+\u001b[39m \u001b[35m1\u001b[39m))\u001b[33m.\u001b[39mtoBe(\u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  99 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'players'\u001b[39m\u001b[33m,\u001b[39m exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 100 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'players'\u001b[39m\u001b[33m,\u001b[39m exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m }))\u001b[33m.\u001b[39mtoHaveAttribute(\u001b[32m'aria-pressed'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'true'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 101 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'searchbox'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Search player or country'\u001b[39m })\u001b[33m.\u001b[39mcount()\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\tests\\e2e\\accessibility.spec.ts",
+                        "column": 93,
+                        "line": 98
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   96 |   await page.getByRole('button', { name: 'Create private auction' }).click();\n   97 |   await expect(page.getByRole('heading', { name: 'A'.repeat(60) })).toBeVisible();\n>  98 |   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);\n      |                                                                                             ^\n   99 |   await page.getByRole('button', { name: 'players', exact: true }).click();\n  100 |   await expect(page.getByRole('button', { name: 'players', exact: true })).toHaveAttribute('aria-pressed', 'true');\n  101 |   await page.getByRole('searchbox', { name: 'Search player or country' }).count();\n    at C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\tests\\e2e\\accessibility.spec.ts:98:93"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-11T14:57:18.420Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\test-results\\accessibility-keyboard-nav-1d2b0-izes-and-narrow-reflow-work-desktop\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\test-results\\accessibility-keyboard-nav-1d2b0-izes-and-narrow-reflow-work-desktop\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\test-results\\accessibility-keyboard-nav-1d2b0-izes-and-narrow-reflow-work-desktop\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\tests\\e2e\\accessibility.spec.ts",
+                    "column": 93,
+                    "line": 98
+                  }
+                }
+              ],
+              "status": "unexpected"
+            },
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6853,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-11T14:58:35.038Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ddd864604af8a6a0198f-088d776a68b23d180f61",
+          "file": "accessibility.spec.ts",
+          "line": 72,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-11T14:55:52.605Z",
+    "duration": 173176.022,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

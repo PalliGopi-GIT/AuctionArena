@@ -1,0 +1,175 @@
+{
+  "at": "2026-11-11T16:09:59.369Z",
+  "packages": [
+    {
+      "path": "node_modules/@hono/node-server",
+      "before": "1.19.18",
+      "after": "2.1.3"
+    },
+    {
+      "path": "node_modules/@vitest/expect",
+      "before": "3.2.7",
+      "after": null
+    },
+    {
+      "path": "node_modules/@vitest/mocker",
+      "before": "3.2.7",
+      "after": "5.1.0"
+    },
+    {
+      "path": "node_modules/@vitest/mocker/node_modules/magic-string",
+      "before": "0.30.21",
+      "after": null
+    },
+    {
+      "path": "node_modules/@vitest/pretty-format",
+      "before": "3.2.7",
+      "after": null
+    },
+    {
+      "path": "node_modules/@vitest/runner",
+      "before": "3.2.7",
+      "after": null
+    },
+    {
+      "path": "node_modules/@vitest/snapshot",
+      "before": "3.2.7",
+      "after": null
+    },
+    {
+      "path": "node_modules/@vitest/snapshot/node_modules/magic-string",
+      "before": "0.30.21",
+      "after": null
+    },
+    {
+      "path": "node_modules/@vitest/spy",
+      "before": "3.2.7",
+      "after": "5.1.0"
+    },
+    {
+      "path": "node_modules/@vitest/utils",
+      "before": "3.2.7",
+      "after": null
+    },
+    {
+      "path": "node_modules/cac",
+      "before": "6.7.14",
+      "after": null
+    },
+    {
+      "path": "node_modules/chai",
+      "before": "5.3.3",
+      "after": "6.3.0"
+    },
+    {
+      "path": "node_modules/check-error",
+      "before": "2.1.3",
+      "after": null
+    },
+    {
+      "path": "node_modules/deep-eql",
+      "before": "5.0.2",
+      "after": null
+    },
+    {
+      "path": "node_modules/es-module-lexer",
+      "before": "1.7.0",
+      "after": "2.3.2"
+    },
+    {
+      "path": "node_modules/loupe",
+      "before": "3.2.1",
+      "after": null
+    },
+    {
+      "path": "node_modules/pathe",
+      "before": "2.0.3",
+      "after": null
+    },
+    {
+      "path": "node_modules/pathval",
+      "before": "2.0.1",
+      "after": null
+    },
+    {
+      "path": "node_modules/siginfo",
+      "before": "2.0.0",
+      "after": null
+    },
+    {
+      "path": "node_modules/stackback",
+      "before": "0.0.2",
+      "after": null
+    },
+    {
+      "path": "node_modules/std-env",
+      "before": "3.10.0",
+      "after": "4.3.0"
+    },
+    {
+      "path": "node_modules/strip-literal",
+      "before": "3.1.0",
+      "after": null
+    },
+    {
+      "path": "node_modules/strip-literal/node_modules/js-tokens",
+      "before": "9.0.1",
+      "after": null
+    },
+    {
+      "path": "node_modules/tinybench",
+      "before": "2.9.0",
+      "after": "6.2.3"
+    },
+    {
+      "path": "node_modules/tinyexec",
+      "before": "0.3.2",
+      "after": "1.3.1"
+    },
+    {
+      "path": "node_modules/tinypool",
+      "before": "1.1.1",
+      "after": null
+    },
+    {
+      "path": "node_modules/tinyrainbow",
+      "before": "2.0.0",
+      "after": null
+    },
+    {
+      "path": "node_modules/tinyspy",
+      "before": "4.0.6",
+      "after": null
+    },
+    {
+      "path": "node_modules/vite-node",
+      "before": "3.2.4",
+      "after": null
+    },
+    {
+      "path": "node_modules/vitest",
+      "before": "3.2.7",
+      "after": "5.1.0"
+    },
+    {
+      "path": "node_modules/vitest/node_modules/magic-string",
+      "before": "0.30.21",
+      "after": null
+    },
+    {
+      "path": "node_modules/why-is-node-running",
+      "before": "2.3.0",
+      "after": "3.2.1"
+    },
+    {
+      "path": "node_modules/zod",
+      "before": "3.25.76",
+      "after": "4.6.7"
+    },
+    {
+      "path": "node_modules/obug",
+      "before": null,
+      "after": "3.0.0"
+    }
+  ]
+}

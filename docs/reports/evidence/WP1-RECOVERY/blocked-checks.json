@@ -1,0 +1,23 @@
+{
+  "task": "WP1-RECOVERY",
+  "at": "2026-11-11T03:39:02.698Z",
+  "checks": [
+    {
+      "command": "npm.cmd run build",
+      "chunk_id": "60923c",
+      "wall_time_seconds": 2.3776667,
+      "exit_code": 1,
+      "original_token_count": 34,
+      "output": "\n> build\n> tsc --noEmit && vite build\n\n'tsc' is not recognized as an internal or external command,\r\noperable program or batch file.\r\n"
+    },
+    {
+      "command": "npm.cmd run test:report",
+      "chunk_id": "b65761",
+      "wall_time_seconds": 2.3804062999999998,
+      "exit_code": 1,
+      "original_token_count": 50,
+      "output": "\n> test:report\n> vitest run tests/core --reporter=json --outputFile=docs/reports/vitest-results.json\n\n'vitest' is not recognized as an internal or external command,\r\noperable program or batch file.\r\n"
+    }
+  ],
+  "limitation": "Dependencies could not be installed: npm registry fetch returned EACCES. These are blocked checks, not application test failures."
+}

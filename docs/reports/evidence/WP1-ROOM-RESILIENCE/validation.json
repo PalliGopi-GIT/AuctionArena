@@ -1,0 +1,26 @@
+{
+  "at": "2026-11-11T14:36:04.602Z",
+  "status": "passed",
+  "task": "WP1-ROOM-RESILIENCE",
+  "typecheck": "passed",
+  "corePassed": 70,
+  "targetedBrowserPassed": 10,
+  "fullBrowserPassed": 20,
+  "browserFailures": 0,
+  "browserFlaky": 0,
+  "durationMs": 442110.049,
+  "screenshots": [
+    "desktop-manual-copy.png",
+    "desktop-host-away.png",
+    "desktop-spectator-results.png",
+    "mobile-manual-copy.png",
+    "mobile-host-away.png",
+    "mobile-spectator-results.png"
+  ],
+  "ownedServersStopped": {
+    "3101": true,
+    "5273": true
+  },
+  "scope": "Real Chromium desktop/mobile-viewport clipboard success and denial, member-only result URLs, dialog keyboard focus and identity-safe async copying; real-clock host heartbeat expiry/pause/reconnect/resume/single settlement; allowed/denied late spectators with HTTP authorization and WebSocket results/reload; existing lifecycle, invitation, identity and affordability regressions.",
+  "limits": "Local test profiles, real HTTP/WebSocket transport and temporary isolated data. No live Clerk rerun, AWS, production/distributed reliability, real devices/Safari or full accessibility audit."
+}

@@ -1,0 +1,10 @@
+{
+  "at": "2026-11-11T11:22:32.335Z",
+  "typecheck": "passed (npm.cmd run typecheck, including scripts)",
+  "corePassed": 70,
+  "localPassed": 76,
+  "browserPassed": 6,
+  "preview": "preflight-passed",
+  "liveProfileCheck": "passed (six host-run checks, both result screenshots, independent persisted-name/auction reconciliation)",
+  "scope": "Local persistent Clerk profile-name projection verified through real SDK/API, two browsers, WebSocket snapshots, results/reload and sign-out. No AWS or production-runtime claim."
+}

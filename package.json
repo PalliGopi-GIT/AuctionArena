@@ -1,0 +1,60 @@
+{
+  "name": "auctionarena",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.15.0"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "dev:api": "tsx apps/api/src/index.ts",
+    "build": "tsc --noEmit && vite build",
+    "test": "vitest run tests/core",
+    "test:local": "node scripts/test-local.mjs",
+    "test:e2e": "playwright test",
+    "test:a11y": "playwright test tests/e2e/accessibility.spec.ts",
+    "test:auth": "vitest run tests/core/auth.test.ts --configLoader runner",
+    "test:clerk:live": "node scripts/test-clerk-live.mjs",
+    "test:clerk:two": "node scripts/test-clerk-live.mjs --two-users",
+    "test:clerk:profiles": "node scripts/test-clerk-live.mjs --profiles",
+    "test:clerk:readiness": "node scripts/clerk-auth-readiness.mjs",
+    "test:clerk:challenges": "node scripts/test-clerk-challenges.mjs",
+    "test:cdk:bundle": "node scripts/test-cdk-bundle.mjs",
+    "setup:aws:mcp": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./scripts/setup-aws.ps1 -ImportGeneratedMcp -VerifyToolkit",
+    "setup:aws:check": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./scripts/setup-aws.ps1 -ConfigureMcpProfile -VerifyToolkit",
+    "typecheck": "tsc --noEmit",
+    "dev:local": "node scripts/dev.mjs",
+    "dev:clerk": "node scripts/dev-clerk.mjs",
+    "test:report": "vitest run tests/core --reporter=json --outputFile=docs/reports/vitest-results.json"
+  },
+  "dependencies": {
+    "@clerk/backend": "latest",
+    "@clerk/react": "latest",
+    "@hono/node-server": "2.1.3",
+    "hono": "^4.7.0",
+    "lucide-react": "^0.468.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "ws": "^8.18.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "^1.65.0",
+    "@tailwindcss/vite": "^4.1.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/ws": "^8.5.0",
+    "@vitejs/plugin-react": "^4.4.0",
+    "aws-cdk-lib": "^2.190.0",
+    "constructs": "^10.4.0",
+    "tailwindcss": "^4.1.0",
+    "tsx": "^4.19.0",
+    "turbo": "^2.5.0",
+    "typescript": "^5.8.0",
+    "vite": "^6.4.6",
+    "vitest": "5.1.0"
+  },
+  "packageManager": "pnpm@10.11.0"
+}

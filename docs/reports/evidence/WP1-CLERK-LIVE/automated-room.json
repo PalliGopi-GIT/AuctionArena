@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-11T10:16:20.437Z",
+  "source": "Read-only local database verification against host-run live pass report",
+  "roomCode": "139DCB",
+  "status": "WAITING",
+  "hostMatchesTestUser": true,
+  "clerkHost": true,
+  "members": 1,
+  "claimedTeams": [
+    {
+      "id": "t1",
+      "name": "Mumbai Meteors",
+      "ownerIsHost": true,
+      "budget": 8000,
+      "purchases": 0
+    }
+  ],
+  "localProfileSessions": 0
+}

@@ -1,0 +1,7 @@
+﻿import {readdirSync,readFileSync,mkdirSync,writeFileSync} from 'node:fs';
+import {join} from 'node:path';
+import {stripTypeScriptTypes} from 'node:module';
+const files=[];function walk(dir){for(const f of readdirSync(dir,{withFileTypes:true})){const p=join(dir,f.name);if(f.isDirectory())walk(p);else if(p.endsWith('.ts')&&!p.endsWith('.d.ts'))files.push(p)}}
+for(const dir of ['packages','apps/api','apps/realtime','apps/web/src','tests','infra'])walk(dir);files.push('vite.config.ts');
+const started=Date.now();const results=files.map(path=>{try{stripTypeScriptTypes(readFileSync(path,'utf8'),{mode:'transform'});return {path,pass:true}}catch(e){return {path,pass:false,error:e.message}}});
+const report={task:'LOCAL-SOURCE-SYNTAX',commit:null,command:'node scripts/check-source.mjs',exitCode:results.some(r=>!r.pass)?1:0,tests:{passed:results.filter(r=>r.pass).length,failed:results.filter(r=>!r.pass).length,skipped:0},durationMs:Date.now()-started,runner:'local Node TypeScript parser (not typecheck or runtime test)',at:new Date().toISOString(),results,limitations:'Excludes TSX. Does not resolve modules, typecheck, execute tests, or prove behavior.'};mkdirSync('docs/reports/evidence/LOCAL-SOURCE-SYNTAX',{recursive:true});writeFileSync('docs/reports/evidence/LOCAL-SOURCE-SYNTAX/result.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));process.exitCode=report.exitCode;

@@ -1,0 +1,93 @@
+
+ RUN  v5.1.0 C:/Users/palli/OneDrive/Desktop/IPL-AUCTION
+
+ ✓ tests/core/clerk-preflight.test.ts > live Clerk preview diagnostics over real HTTP > identifies a stopped preview as safe to start 68ms
+ ✓ tests/core/clerk-preflight.test.ts > live Clerk preview diagnostics over real HTTP > accepts an available Clerk-only preview 44ms
+ ✓ tests/core/clerk-preflight.test.ts > live Clerk preview diagnostics over real HTTP > does not start over an existing preview using local profiles 17ms
+ ✓ tests/core/clerk-preflight.test.ts > live Clerk preview diagnostics over real HTTP > reports HTTP errors instead of trying to start a competing server 10ms
+ ✓ tests/core/clerk-preflight.test.ts > live Clerk preview diagnostics over real HTTP > distinguishes HTML from a valid configuration response 11ms
+ ✓ tests/core/clerk-preflight.test.ts > live Clerk preview diagnostics over real HTTP > does not start over an unresponsive server 45ms
+ ✓ tests/core/identity-session.test.ts > private room state across identity changes > hides cached room content from a different or signed-out identity 18ms
+ ✓ tests/core/identity-session.test.ts > private room state across identity changes > keeps a shared room accessible to an invited member but not a blocked member 1ms
+ ✓ tests/core/identity-session.test.ts > private room state across identity changes > removes all old invitation credentials without deleting unrelated tab state 2ms
+ ✓ tests/core/identity-session.test.ts > private room state across identity changes > remembers identity across a reload and clears invitations on signed-out remount 1ms
+ ✓ tests/core/clerk-two-user-fixture.test.ts > retained real Clerk test fixture > reads identifiers from a failed attempt without carrying any other fields 9ms
+ ✓ tests/core/clerk-two-user-fixture.test.ts > retained real Clerk test fixture > refuses an incomplete or successful attempt: null 2ms
+ ✓ tests/core/clerk-two-user-fixture.test.ts > retained real Clerk test fixture > refuses an incomplete or successful attempt: {} 1ms
+ ✓ tests/core/clerk-two-user-fixture.test.ts > retained real Clerk test fixture > refuses an incomplete or successful attempt: {"status":"passed","testUsers":{"host":"user_host1","guest":"user_guest1"},"roomCode":"ABC123"} 1ms
+ ✓ tests/core/clerk-two-user-fixture.test.ts > retained real Clerk test fixture > refuses an incomplete or successful attempt: {"status":"failed","testUsers":{"host":"user_host1","guest":"user_guest1"},"roomCode":"../bad"} 1ms
+ ✓ tests/core/clerk-two-user-fixture.test.ts > retained real Clerk test fixture > refuses an incomplete or successful attempt: {"status":"failed","testUsers":{"host":"user_same","guest":"user_same"},"roomCode":"ABC123"} 1ms
+ ✓ tests/core/clerk-two-user-fixture.test.ts > retained real Clerk test fixture > refuses an incomplete or successful attempt: {"status":"failed","testUsers":{"host":"user_host1"},"roomCode":"ABC123"} 1ms
+ ✓ tests/core/clerk-two-user-fixture.test.ts > retained real Clerk test fixture > accepts the original claimed, unstarted host lobby 8ms
+ ✓ tests/core/clerk-two-user-fixture.test.ts > retained real Clerk test fixture > refuses to replay a changed identity fixture 2ms
+ ✓ tests/core/clerk-two-user-fixture.test.ts > retained real Clerk test fixture > refuses to replay a changed joined fixture 1ms
+ ✓ tests/core/clerk-two-user-fixture.test.ts > retained real Clerk test fixture > refuses to replay a changed started fixture 1ms
+ ✓ tests/core/clerk-two-user-fixture.test.ts > retained real Clerk test fixture > refuses to replay a changed purchase fixture 1ms
+ ✓ tests/core/clerk-two-user-fixture.test.ts > retained real Clerk test fixture > refuses to replay a changed settings fixture 0ms
+ ✓ tests/core/auction-announcements.test.ts > auction assistive announcements > coalesces competing bid updates into the final shared state of a one-second window 21ms
+ ✓ tests/core/auction-announcements.test.ts > auction assistive announcements > announces countdown thresholds once, without narrating the clock each second 6ms
+ ✓ tests/core/auction-announcements.test.ts > auction assistive announcements > spaces critical pause/result announcements and drops obsolete transient connection warnings 5ms
+ ✓ tests/core/auction-announcements.test.ts > auction assistive announcements > cancels private queued messages on room exit and cancels timers on disposal 2ms
+ ✓ tests/core/auction-announcements.test.ts > auction assistive announcements > does not announce an obsolete queued bid after the host pauses 2ms
+ ✓ tests/core/auction-announcements.test.ts > auction assistive announcements > announces the current paused state when reconnecting to a paused room 1ms
+ ✓ tests/core/auction-announcements.test.ts > auction assistive announcements > clears a spoken connection warning when the room reconnects 2ms
+ ✓ tests/core/auction-announcements.test.ts > auction assistive announcements > preserves the critical-message rate limit across a brief dialog or room exit 2ms
+ ✓ tests/core/dependency-contracts.test.ts > validation contracts across dependency upgrades > keeps creation defaults, trimmed names and explicit false/zero values 9ms
+ ✓ tests/core/dependency-contracts.test.ts > validation contracts across dependency upgrades > rejects unknown settings, coercion, fractions, nulls and out-of-range values 3ms
+ ✓ tests/core/dependency-contracts.test.ts > validation contracts across dependency upgrades > still runs both squad and pool refinements after applying defaults 1ms
+ ✓ tests/core/dependency-contracts.test.ts > validation contracts across dependency upgrades > requires complete settings for updates and rejects extra action fields 5ms
+ ✓ tests/core/dependency-contracts.test.ts > validation contracts across dependency upgrades > keeps action dispatch strict and accepts only positive safe integer bids 1ms
+ ✓ tests/core/auction.test.ts > Phase 1 server-authoritative rules > two invited friends see the same room and unauthorized users cannot read it 17ms
+ ✓ tests/core/auction.test.ts > Phase 1 server-authoritative rules > a room code alone does not authorize joining and invite hashes stay private 4ms
+ ✓ tests/core/auction.test.ts > Phase 1 server-authoritative rules > simultaneous team claims have exactly one winner 7ms
+ ✓ tests/core/auction.test.ts > Phase 1 server-authoritative rules > simultaneous same-price bids accept one position only 13ms
+ ✓ tests/core/auction.test.ts > Phase 1 server-authoritative rules > rejects bids above budget while reserving money for the minimum squad 7ms
+ ✓ tests/core/auction.test.ts > Phase 1 server-authoritative rules > rejects a bid at the exact deadline even before the settlement sweep 5ms
+ ✓ tests/core/auction.test.ts > Phase 1 server-authoritative rules > cannot bid on another team, bid as spectator or use host controls 5ms
+ ✓ tests/core/auction.test.ts > Phase 1 server-authoritative rules > refresh reads the same confirmed bid and deadline 5ms
+ ✓ tests/core/auction.test.ts > Phase 1 server-authoritative rules > participant reconnect keeps claimed team and squad 4ms
+ ✓ tests/core/auction.test.ts > Phase 1 server-authoritative rules > host disconnection pauses and resume retains remaining time 5ms
+ ✓ tests/core/auction.test.ts > Phase 1 server-authoritative rules > host already disconnected during a result cannot leave the next lot running 4ms
+ ✓ tests/core/auction.test.ts > Phase 1 server-authoritative rules > no bids yields an unsold result 3ms
+ ✓ tests/core/auction.test.ts > Phase 1 server-authoritative rules > sale settles squad and budget atomically and repeated settlement is a no-op 5ms
+ ✓ tests/core/auction.test.ts > Phase 1 server-authoritative rules > idempotent repeated clicks never add a second bid 5ms
+ ✓ tests/core/auction.test.ts > Phase 1 server-authoritative rules > separate rooms never share state 9ms
+ ✓ tests/core/dependency-contracts.test.ts > real Node HTTP adapter compatibility > preserves auth, JSON errors, body limits and state when validation fails 166ms
+ ✓ tests/core/auth.test.ts > Clerk SDK session verification with ephemeral signing keys > accepts a valid signed session and derives identity only from verified claims 44ms
+ ✓ tests/core/auth.test.ts > Clerk SDK session verification with ephemeral signing keys > rejects expired without exposing verification details 7ms
+ ✓ tests/core/auth.test.ts > Clerk SDK session verification with ephemeral signing keys > rejects not active yet without exposing verification details 5ms
+ ✓ tests/core/auth.test.ts > Clerk SDK session verification with ephemeral signing keys > rejects issued in the future without exposing verification details 5ms
+ ✓ tests/core/auth.test.ts > Clerk SDK session verification with ephemeral signing keys > rejects foreign authorized party without exposing verification details 5ms
+ ✓ tests/core/auth.test.ts > Clerk SDK session verification with ephemeral signing keys > rejects missing authorized party without exposing verification details 4ms
+ ✓ tests/core/auth.test.ts > Clerk SDK session verification with ephemeral signing keys > rejects foreign issuer without exposing verification details 4ms
+ ✓ tests/core/auth.test.ts > Clerk SDK session verification with ephemeral signing keys > rejects missing session without exposing verification details 4ms
+ ✓ tests/core/auth.test.ts > Clerk SDK session verification with ephemeral signing keys > rejects empty subject without exposing verification details 8ms
+ ✓ tests/core/auth.test.ts > Clerk SDK session verification with ephemeral signing keys > rejects pending session without exposing verification details 5ms
+ ✓ tests/core/auth.test.ts > Clerk SDK session verification with ephemeral signing keys > rejects a foreign signing key and a tampered subject 7ms
+ ✓ tests/core/clerk-profiles.test.ts > server-derived participant names > uses full name, partial name, username or a private fallback, with bounded Unicode-safe display text 5ms
+ ✓ tests/core/clerk-profiles.test.ts > server-derived participant names > loads only after real token verification, persists only public name data, and caches repeated reads 43ms
+ ✓ tests/core/clerk-profiles.test.ts > server-derived participant names > keeps identical display names separate for ownership and host permissions 49ms
+ ✓ tests/core/auth.test.ts > Clerk SDK session verification with ephemeral signing keys > keeps private rooms separate when the browser switches verified identities 14ms
+ ✓ tests/core/auth.test.ts > Clerk SDK session verification with ephemeral signing keys > disables local identities and keeps verification configuration out of public responses 2ms
+ ✓ tests/core/auth.test.ts > Clerk SDK session verification with ephemeral signing keys > refuses an empty origin allowlist which would disable SDK origin checks 1ms
+ ✓ tests/core/auth.test.ts > Clerk development launcher configuration > derives the issuer, isolates local data and overrides local profile auth 1ms
+ ✓ tests/core/auth.test.ts > Clerk development launcher configuration > uses explicit nondefault ports for the API proxy and authorized party 0ms
+ ✓ tests/core/auth.test.ts > Clerk development launcher configuration > rejects absent/live keys, mismatched issuers and invalid ports without printing keys 1ms
+ ✓ tests/core/clerk-profiles.test.ts > server-derived participant names > coalesces concurrent lookups, refreshes expired data and never fetches for an intent or socket ticket 8ms
+ ✓ tests/core/clerk-profiles.test.ts > server-derived participant names > backs off provider failures and keeps a known name through outages and subject mismatches 1ms
+ ✓ tests/core/clerk-profiles.test.ts > server-derived participant names > limits lookup latency, ignores a late response and allows first use during a provider outage 15ms
+ ✓ tests/core/clerk-profiles.test.ts > server-derived participant names > projects renamed completed-room owners durably and broadcasts without changing auction state 50ms
+ ✓ tests/core/auction.test.ts > Phase 1 server-authoritative rules > 20 participants submitting 200 competing bid intents preserve one accepted opening position 254ms
+ ✓ tests/core/auction.test.ts > Phase 1 server-authoritative rules > ten active rooms with 200 simulated users isolate 2000 competing requests 18050ms
+ ✓ tests/core/auction.test.ts > Phase 1 server-authoritative rules > late bids extend a shared deadline and leading teams cannot bid against themselves 12ms
+ ✓ tests/core/auction.test.ts > Phase 1 server-authoritative rules > full squads and overseas limits are enforced 11ms
+ ✓ tests/core/auction.test.ts > Phase 1 server-authoritative rules > restart recovers accepted bids and completed private results from durable storage 105ms
+ ✓ tests/core/auction.test.ts > HTTP authorization and contract > fails closed if recovered budgets do not reconcile 32ms
+ ✓ tests/core/auction.test.ts > HTTP authorization and contract > local dev accounts are disabled unless explicitly enabled 43ms
+ ✓ tests/core/auction.test.ts > HTTP authorization and contract > requires authentication, rejects foreign team payload and private read 33ms
+
+ Test Files  8 passed (8)
+      Tests  84 passed (84)
+   Start at  21:38:15
+   Duration  20.01s (tests 79%, import 16%, transform 5%, worker 1%)
+

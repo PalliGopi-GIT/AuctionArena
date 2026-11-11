@@ -1,0 +1,25 @@
+{
+  "at": "2026-11-11T20:16:17.203Z",
+  "status": "failed",
+  "awsOperations": false,
+  "mainDependenciesChanged": false,
+  "mainDependencyHashesBefore": {
+    "package.json": "21459c8ccde2955a4f9c08b50264743dba01e513e1f9b12b4b2768bce5e87925",
+    "package-lock.json": "ccc4396ce9be137704dc59c0bdf66e7f03de8da5425da918565c367baa18ed44"
+  },
+  "install": {
+    "exitCode": 1,
+    "signal": null,
+    "errorCode": null,
+    "durationMs": 2588,
+    "npmErrorCodes": [
+      "EACCES"
+    ],
+    "failureSyscalls": []
+  },
+  "failureCode": "PROBE_INSTALL_FAILED",
+  "mainDependencyHashesAfter": {
+    "package.json": "21459c8ccde2955a4f9c08b50264743dba01e513e1f9b12b4b2768bce5e87925",
+    "package-lock.json": "ccc4396ce9be137704dc59c0bdf66e7f03de8da5425da918565c367baa18ed44"
+  }
+}

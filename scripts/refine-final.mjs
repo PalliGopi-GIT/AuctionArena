@@ -1,0 +1,11 @@
+﻿import {readFileSync,writeFileSync} from 'node:fs';
+const p='apps/web/src/main.tsx';let s=readFileSync(p,'utf8');
+s=s.replace('})=><button disabled={disabled||useContext(BusyContext)}','})=>{const isBusy=useContext(BusyContext);return <button disabled={disabled||isBusy}').replace('onClick={onClick}>{children}</button>;','onClick={onClick}>{children}</button>};');
+s=s.replace('ChevronRight,','').replace('Play,Home,Layers,LogOut,Menu,Zap,Flag','Play,LogOut,Zap');
+s=s.replace("${invite||sessionStorage.getItem('invite-'+room.code)||''}","${sessionStorage.getItem('invite-'+room.code)||''}");
+s=s.replace("snapshot(d);setScreen('room');history.replaceState(null,'',`?room=${c}`);setTab('auction');", "snapshot(d);setInvite(i);sessionStorage.setItem('invite-'+c,i);setScreen('room');history.replaceState(null,'',`?room=${c}`);setTab('auction');");
+s=s.replace("const r=await fetch('/api'+path,{method:","const r=await fetch('/api'+path,{signal:AbortSignal.timeout(8000),method:");
+s=s.replace('socket.onmessage=e=>{const d=JSON.parse(e.data);if(d.room)snapshot(d)}','socket.onmessage=e=>{if(stopped)return;try{const d=JSON.parse(e.data);if(d.room)snapshot(d)}catch{setConnected(false)}}');
+s=s.replace('<main className="workspace arena">','<main className="workspace arena"><div className="local-banner">LOCAL DEVELOPMENT BUILD · Up to 20 members per room · Single-server capacity has not been measured</div>');
+s=s.replace('<span className="tag">{room.status}</span></div></div>', '<span className="tag" role="status">{room.status}</span></div></div>');
+writeFileSync(p,s);
