@@ -29,7 +29,7 @@ export function createApp(store:LocalRoomStore,options:AppOptions) {
     onError:c=>c.json({code:'PAYLOAD_TOO_LARGE',message:'Request body exceeds the allowed size.',requestId:randomBytes(8).toString('hex')},413)})(c,next));
   app.onError((error,c)=>{
     const requestId=randomBytes(8).toString('hex');
-    if(error instanceof RuleError)return c.json({code:error.code,message:error.message,requestId},['FORBIDDEN','ROOM_BLOCKED','HOST_ONLY'].includes(error.code)?403:400);
+    if(error instanceof RuleError)return c.json({code:error.code,message:error.message,requestId},error.code==='ROOM_NOT_FOUND'?404:['FORBIDDEN','ROOM_BLOCKED','HOST_ONLY'].includes(error.code)?403:400);
     if(error instanceof z.ZodError)return c.json({code:'INVALID_INPUT',message:error.issues.map(i=>i.message).join('; '),requestId},400);
     console.error('Request failed',requestId,error.message);
     return c.json({code:'SERVICE_ERROR',message:'The service could not confirm this action. Please reconnect.',requestId},500);

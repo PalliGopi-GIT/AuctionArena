@@ -9,7 +9,7 @@ export default defineConfig({
   timeout: 60_000,
   expect: { timeout: 10_000 },
   outputDir: 'test-results',
-  reporter: [['list'], ['json', { outputFile: 'docs/reports/evidence/WP1-E2E/results.json' }]],
+  reporter: [['list'], ['json', { outputFile: `${process.env.AA_EVIDENCE_DIR ?? 'docs/reports/evidence/WP1-E2E'}/results.json` }]],
   use: {
     baseURL: 'http://127.0.0.1:5273',
     channel: 'chrome',

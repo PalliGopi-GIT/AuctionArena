@@ -14,9 +14,26 @@ export const completionMessages: Record<CompletionReason, string> = {
   HOST_ENDED: 'The host ended the auction. All accepted bids were settled.',
   HOST_CLOSED: 'The host closed the room before bidding started.',
 };
-export interface Room { code:string; name:string; hostId:string; status:'WAITING'|'LIVE'|'PAUSED'|'RESULT'|'COMPLETED'|'CLOSED'; settings:Settings; members:Member[]; teams:Team[]; players:Player[]; currentPlayerIndex:number; currentBid:number; leadingTeamId:string|null; deadline:number|null; pausedRemaining:number; resultAt:number|null; extensions:number; version:number; history:AuctionEvent[]; createdAt:number; pauseReason?:string; blockedUserIds?:string[]; completion_reason?:CompletionReason }
+export interface Room { code:string; name:string; hostId:string; status:'WAITING'|'LIVE'|'PAUSED'|'RESULT'|'COMPLETED'|'CLOSED'; settings:Settings; bidRule?:'tiered-v1'; members:Member[]; teams:Team[]; players:Player[]; currentPlayerIndex:number; currentBid:number; leadingTeamId:string|null; deadline:number|null; pausedRemaining:number; resultAt:number|null; extensions:number; version:number; history:AuctionEvent[]; createdAt:number; pauseReason?:string; blockedUserIds?:string[]; completion_reason?:CompletionReason }
 export const money = (lakhs:number) => lakhs >= 100 ? `₹${(lakhs/100).toFixed(2)} Cr` : `₹${lakhs} L`;
-export function nextBid(room: Room) { return room.currentBid ? room.currentBid + room.settings.bidIncrement : room.players[room.currentPlayerIndex]?.basePrice ?? 0; }
+/** Unversioned persisted rooms retain the flat increment they were created with. */
+export function bidIncrement(room: Room, amount: number) {
+  return room.bidRule === 'tiered-v1' ? amount < 200 ? 10 : amount <= 500 ? 20 : 25 : room.settings.bidIncrement;
+}
+export function nextBid(room: Room) { return room.currentBid ? room.currentBid + bidIncrement(room, room.currentBid) : room.players[room.currentPlayerIndex]?.basePrice ?? 0; }
+/** Validate a saved bid against its room's original ladder without iterating over every rung. */
+export function validBidOnLadder(room: Room, base: number, amount: number) {
+  if (!Number.isSafeInteger(base) || base <= 0 || !Number.isSafeInteger(amount) || amount < base) return false;
+  if (room.bidRule !== 'tiered-v1') return (amount - base) % room.settings.bidIncrement === 0;
+  let current = base;
+  while (current < amount) {
+    const step = bidIncrement(room, current);
+    const nextTier = current < 200 ? 200 : current <= 500 ? 501 : Infinity;
+    const count = Math.min(Math.ceil((amount - current) / step), Math.ceil((nextTier - current) / step));
+    current += count * step;
+  }
+  return current === amount;
+}
 export const teamNames = ['Mumbai Meteors','Chennai Cyclones','Bengaluru Blaze','Delhi Dragons','Kolkata Comets','Punjab Phoenix','Jaipur Jaguars','Hyderabad Hawks'];
 export const teamColors = ['#45b7ff','#f5c451','#b594ff','#fb7185','#6ed8bc','#ff9257','#e5a0dc','#a3d35e'];
 export function samplePlayers():Player[] { const names=['Arjun Rathore','Kabir Mehta','Liam Fletcher','Dev Malhotra','Ishaan Sethi','Noah Brooks','Rohan Desai','Vihaan Kapoor','Ethan Walsh','Aditya Nair','Zayn Siddiqui','Oliver Hayes','Aarav Menon','Dhruv Shah','Theo Bennett','Reyansh Rao','Samar Khanna','Finn Clarke','Yash Bhatia','Neel Joshi','Oscar Reed','Kunal Verma','Rishi Anand','Leo Morgan']; return names.map((name,i)=>({id:`p${i+1}`,name,country:i%3===2?'Australia':'India',role:(['Batter','Bowler','All-rounder','Wicketkeeper'] as const)[i%4]!,basePrice:[100,50,75,25][i%4]!,overseas:i%3===2,isSample:true,battingStyle:i%2?'Left-hand bat':'Right-hand bat',bowlingStyle:i%2?'Right-arm pace':'Off spin',stats:{matches:30+i*3,runs:240+i*93,wickets:8+i*2,strikeRate:125+i},status:'upcoming'})); }

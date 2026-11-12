@@ -56,7 +56,7 @@ test('two browsers complete a sale, recover, remove/block and reopen results', a
     await expect(page.getByLabel('Auction totals')).toContainText('₹1.00 Cr');
     await expect(page.locator('.results-team').filter({ hasText: 'Chennai' })).toContainText('₹19.00 Cr');
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-    await page.screenshot({ path: `docs/reports/evidence/WP1-E2E/${testInfo.project.name}-results.png`, fullPage: true });
+    await page.screenshot({ path: `${process.env.AA_EVIDENCE_DIR ?? 'docs/reports/evidence/WP1-E2E'}/${testInfo.project.name}-results.png`, fullPage: true });
     expect(errors).toEqual([]);
   } finally {
     await guestContext.close();
@@ -112,8 +112,8 @@ test('switching local profiles clears the prior private room and invitation', as
   await expect(page.locator('.room-list-card')).toHaveCount(0);
   await expect(page.locator('.arena')).toHaveCount(0);
   const denied = await readRoom(page, code);
-  expect(denied.status).toBe(403);
-  expect(denied.body.code).toBe('FORBIDDEN');
+  expect(denied.status).toBe(404);
+  expect(denied.body.code).toBe('ROOM_NOT_FOUND');
 });
 
 test('a signed-out full reload clears the old identity invitation and room route', async ({ page }) => {
@@ -179,7 +179,7 @@ test('clipboard denial provides selectable links with keyboard focus and clears 
   await expect(dialog.getByRole('button', { name: 'Close dialog' })).toBeFocused();
   await page.keyboard.press('Shift+Tab');
   await expect(dialog.getByRole('button', { name: 'Done', exact: true })).toBeFocused();
-  await page.screenshot({ path: `docs/reports/evidence/WP1-ROOM-RESILIENCE/${testInfo.project.name}-manual-copy.png`, fullPage: true, mask: [link] });
+  await page.screenshot({ path: `${process.env.AA_EVIDENCE_DIR ?? 'docs/reports/evidence/WP1-ROOM-RESILIENCE'}/${testInfo.project.name}-manual-copy.png`, fullPage: true, mask: [link] });
   await page.keyboard.press('Escape');
   await expect(dialog).toHaveCount(0);
   await expect(trigger).toBeFocused();
@@ -230,7 +230,7 @@ test('host heartbeat expiry pauses an accepted bid until the host reconnects and
     const held = (await readRoom(guest, code)).body.room;
     expect(held.status).toBe('PAUSED'); expect(held.pausedRemaining).toBe(paused.pausedRemaining);
     expect(held.teams).toEqual(accepted.teams);
-    await guest.screenshot({ path: `docs/reports/evidence/WP1-ROOM-RESILIENCE/${testInfo.project.name}-host-away.png`, fullPage: true });
+    await guest.screenshot({ path: `${process.env.AA_EVIDENCE_DIR ?? 'docs/reports/evidence/WP1-ROOM-RESILIENCE'}/${testInfo.project.name}-host-away.png`, fullPage: true });
     await page.context().setOffline(false);
     await expect(page.locator('.room-status')).toContainText('Connected');
     await expect(page.locator('.room-status')).toContainText('PAUSED');
@@ -264,8 +264,8 @@ for (const allowed of [true, false]) test(`late invited spectator is ${allowed ?
     await expect(participant.locator('.room-status')).toContainText('LIVE');
     await join(spectator, code, invite, 'Late spectator', allowed);
     if (!allowed) {
-      await expect(spectator.getByRole('alert')).toContainText('does not allow late spectators');
-      expect((await readRoom(spectator, code)).status).toBe(403);
+      await expect(spectator.getByRole('alert')).toContainText('Room unavailable');
+      expect((await readRoom(spectator, code)).status).toBe(404);
       expect((await readRoom(page, code)).body.room.members).toHaveLength(2);
       return;
     }
@@ -291,7 +291,7 @@ for (const allowed of [true, false]) test(`late invited spectator is ${allowed ?
     expect(final.teams[1].budget).toBe(1900);
     await spectator.reload();
     await expect(spectator.getByLabel('Auction totals')).toContainText('₹1.00 Cr');
-    await spectator.screenshot({ path: `docs/reports/evidence/WP1-ROOM-RESILIENCE/${testInfo.project.name}-spectator-results.png`, fullPage: true });
+    await spectator.screenshot({ path: `${process.env.AA_EVIDENCE_DIR ?? 'docs/reports/evidence/WP1-ROOM-RESILIENCE'}/${testInfo.project.name}-spectator-results.png`, fullPage: true });
   } finally { await participantContext.close(); await spectatorContext.close(); }
 });
 
@@ -334,6 +334,6 @@ test('depleted purses disable bids and finish with an affordability reason', asy
     await expect(page.getByLabel('Auction totals')).toContainText('₹4.00 Cr');
     await page.reload();
     await expect(page.getByLabel('Auction end reason')).toContainText('No participating team with squad space can afford');
-    await page.screenshot({ path: `docs/reports/evidence/WP1-E2E/${testInfo.project.name}-affordability.png`, fullPage: true });
+    await page.screenshot({ path: `${process.env.AA_EVIDENCE_DIR ?? 'docs/reports/evidence/WP1-E2E'}/${testInfo.project.name}-affordability.png`, fullPage: true });
   } finally { await guestContext.close(); }
 });

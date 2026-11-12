@@ -186,10 +186,10 @@ export async function runClerkTwoUserAuction({ client, browser, baseURL, issuer,
     const list = await request(host.page, '/me');
     expect(list.body.rooms.some((room: Room) => room.code === code)).toBe(false);
     const denied = await request(host.page, `/rooms/${code}`);
-    expect(denied.status).toBe(403); expect(denied.body.code).toBe('FORBIDDEN');
+    expect(denied.status).toBe(404); expect(denied.body.code).toBe('ROOM_NOT_FOUND');
     expect(denied.body.room).toBeUndefined();
     const deniedTicket = await request(host.page, `/rooms/${code}/ws-ticket`, {});
-    expect(deniedTicket.status).toBe(403); expect(deniedTicket.body.ticket).toBeUndefined();
+    expect(deniedTicket.status).toBe(404); expect(deniedTicket.body.ticket).toBeUndefined();
     passed('Switching identities cleared the room, room list, route and invitations; uninvited guest HTTP and socket-ticket access were denied');
 
     stage('restore the host and explicitly issue a new invitation');
@@ -204,8 +204,8 @@ export async function runClerkTwoUserAuction({ client, browser, baseURL, issuer,
     const guest = await pageForUser();
     await signIn(guest.page, guestUser.id);
     const invalid = await request(guest.page, `/rooms/${code}/join`, { inviteToken: 'invalid-test-invitation' });
-    expect(invalid.status).toBe(400); expect(invalid.body.code).toBe('INVALID_INVITE');
-    expect((await request(guest.page, `/rooms/${code}`)).status).toBe(403);
+    expect(invalid.status).toBe(404); expect(invalid.body.code).toBe('ROOM_NOT_FOUND');
+    expect((await request(guest.page, `/rooms/${code}`)).status).toBe(404);
     passed('An invalid invitation did not grant membership');
 
     stage('guest joins by invitation and claims Chennai');

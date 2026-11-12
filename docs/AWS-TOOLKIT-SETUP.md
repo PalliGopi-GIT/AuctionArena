@@ -2,7 +2,7 @@
 
 Saved: 12 November 2026. Profile: **AuctionArena**. Selected resource Region: **ap-south-1 (Mumbai)**. Toolkit endpoint: `https://aws-mcp.us-east-1.api.aws/mcp`. The endpoint Region does not change the resource Region.
 
-No AWS resource creation/deployment, CDK bootstrap or Codex restart is authorized. The owner will decide whether to approve a restart after reviewing this saved checkpoint. The $0 out-of-pocket and $10/month staging-from-credits limits remain in force.
+The owner approved restart and an explicit debug wizard rerun. No agent-controlled restart was performed; a later host-server restart was observed. No AWS resource creation/deployment or CDK bootstrap is authorized. The $0 out-of-pocket and $10/month staging-from-credits limits remain in force.
 
 ## Current repair
 
@@ -40,7 +40,7 @@ Actual result: **wrapper exit 1; toolkit wizard exit 255**:
 aws: [ERROR]: [WinError 2] The system cannot find the file specified
 ```
 
-The wizard had reported Claude Code already configured. The exact missing vendor child executable is not established. The Codex file remained unchanged during the wizard; unrelated config in both other detected agent files was preserved. The helper backs up detected MCP config before the requested wizard and stops on an unexpected Codex-file change.
+The wizard had reported Claude Code already configured. The approved debug rerun identified bare `codex` as the failing registration subprocess: Windows finds the npm `codex.cmd` shim, but the vendor passes the unresolved bare name to `subprocess.run`. The absolute CMD shim and native EXE both run. In the wizard child, aws/uv/uvx resolve and run; npx has a similar shim issue but is not this failing call. The Codex file remained unchanged during the wizard; unrelated config in both other detected agent files was preserved. The helper backs up detected MCP config before the requested wizard and stops on an unexpected Codex-file change.
 
 Independent catalog verification **passed: 122 skills**. The repaired launcher remains saved. Fourteen focused Windows bootstrap tests, all 136 core tests, TypeScript and PowerShell syntax pass. No application/UI change or fresh browser/local/build run is claimed. See [machine validation](reports/evidence/WP1-AWS-MCP-REPAIR/validation.json), [toolkit result](reports/evidence/WP1-AWS-MCP-REPAIR/toolkit.json), [repair verification](reports/evidence/WP1-AWS-MCP-REPAIR/repair.json) and [project checkpoint](../PROJECT_STATUS.md).
 
@@ -48,12 +48,16 @@ Do not repeat login, installation, generated-entry import or the vendor wizard w
 
 ## Next connection gate
 
-The current Codex session still exposes **zero AWS MCP tools**. The owner must approve any host restart. No restart has been performed. After an approved reconnect, check actual AWS tools, call documentation search with topic `agent_skills`, retrieve the matching skill, then verify STS identity/profile AuctionArena and selected Region ap-south-1. Configuration/catalog access alone does not establish MCP connectivity.
+The current Codex session still exposes **zero AWS MCP tools**. Restart approval was received. After the observed host-server restart, tool discovery still returns zero AWS tools. No interactive `/mcp` command can be executed through the agent tools available here. When the host exposes the connection, check actual AWS tools, call documentation search with topic `agent_skills`, retrieve the matching skill, then verify STS identity/profile AuctionArena and selected Region ap-south-1. Configuration/catalog access alone does not establish MCP connectivity.
 
 The [official Codex MCP instructions](https://learn.chatgpt.com/docs/extend/mcp?surface=cli) distinguish configured servers from active connections. The [AWS toolkit reference](https://docs.aws.amazon.com/cli/latest/reference/configure/agent-toolkit.html) documents the vendor wizard and its `--yes` behavior. No service-specific backend implementation is claimed before the required AWS guidance is available.
 
 Confirm the selected Region in AWS Settings > View all projects > Overview > Additional Info > Region. Review current plan/spending restrictions in AWS Settings > Billing before a deployment proposal. A budget/cap is not certified by the CLI identity or catalog checks.
 
+The debug rerun exited **255** and preserved all three detected MCP configuration files byte-for-byte. Raw debug logs remain private. Do not rerun vendor registration just by fixing its Codex PATH: `codex mcp add` could replace the already repaired AWS entry. See [reconnect diagnosis](reports/evidence/WP1-AWS-SETUP/reconnect-diagnosis.md) and [launcher reproduction](reports/evidence/WP1-AWS-SETUP/launcher-checks.json).
+
 ## Infrastructure boundary
 
 `infra/` remains an undeployed foundation; the SQL migration remains unexecuted. The application still refuses production mode and has no real distributed datastore/timer/archive adapters. The ownership coordinator is a separate model-tested core, not a cloud runtime. The current infrastructure has no approved estimate establishing compliance with the staging budget. Phase 3 requires a costed design and the owner's approval before selecting a cheaper architecture. No resource deployment is authorized.
+
+Owner clarification (12 November): this session predates the launcher repair. `codex mcp list` reports aws-mcp enabled with the absolute uvx.exe path, and uvx.exe 0.13.7 runs (owner-reported). The owner will restart Codex and run /mcp after the Phase 1 commit. An internal host-server recovery is not proof of a fresh Codex MCP session. No further MCP question, config edit or wizard retry is needed before that restart.

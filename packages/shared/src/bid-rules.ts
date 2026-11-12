@@ -1,6 +1,20 @@
 import { money, nextBid, type Player, type Room, type Team } from './domain';
 
 export interface BidRestriction { code: string; message: string }
+export const BID_SAFETY_MARGIN_MS = 150;
+/** Latch the deadline cutoff until a later deadline or a different lot is observed. */
+export function createBidDeadlineGuard() {
+  let code: string | undefined, playerIndex: number | undefined, deadline: number | null = null, locked = false;
+  return (room: Room, now: number) => {
+    if (code !== room.code || playerIndex !== room.currentPlayerIndex) {
+      code = room.code; playerIndex = room.currentPlayerIndex; deadline = room.deadline; locked = false;
+    } else if (room.deadline !== null && deadline !== null && room.deadline > deadline) {
+      deadline = room.deadline; locked = false;
+    } else if (deadline === null && room.deadline !== null) deadline = room.deadline;
+    if (room.status === 'LIVE' && room.deadline !== null && now >= room.deadline - BID_SAFETY_MARGIN_MS) locked = true;
+    return locked;
+  };
+}
 
 /** Architecture section 5.8: reserve uses the minimum base price in the whole pool. */
 export function bidReserve(room: Room, team: Team): number {
@@ -29,7 +43,7 @@ export function bidRestriction(room: Room, userId: string | undefined, now: numb
   if (room.status === 'PAUSED') return { code: 'NOT_LIVE', message: 'Bidding is paused. Wait for the host to resume.' };
   if (room.status === 'RESULT') return { code: 'NOT_LIVE', message: 'This player has a confirmed result. Bidding will reopen for the next player.' };
   if (room.status !== 'LIVE') return { code: 'NOT_LIVE', message: 'Bidding is not live.' };
-  if (room.deadline === null || now >= room.deadline) return { code: 'TOO_LATE', message: 'The deadline has passed. Wait for the confirmed result.' };
+  if (room.deadline === null || now >= room.deadline - BID_SAFETY_MARGIN_MS) return { code: 'TOO_LATE', message: 'Bidding is closing. Wait for the confirmed result.' };
   const player = room.players[room.currentPlayerIndex];
   if (!player || player.status !== 'open') return { code: 'STALE_PLAYER', message: 'Wait for the next player to open for bidding.' };
   const team = room.teams.find(item => item.ownerId === userId);

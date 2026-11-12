@@ -7,7 +7,7 @@ interface RoomSocket {
   bufferedAmount: number;
   send: (data: string) => unknown;
   close: (code?: number, reason?: string) => unknown;
-  on: (event: string, listener: () => void) => unknown;
+  on: (event: string, listener: (...args: any[]) => void) => unknown;
 }
 
 /** Re-authorize each delivery, including sockets admitted before a removal. */
@@ -28,7 +28,17 @@ export function attachRoomSocket(store: LocalRoomStore, code: string, user: User
   store.on('room', send);
   const accessEnded=(subject:string)=>{if(subject===user.id)socket.close(1008,'Account access ended');};
   store.on('access-ended',accessEnded);
-  socket.on('message', () => { try { store.get(code, user, true); } catch (error) { fail(error); } });
+  socket.on('message', (raw: unknown) => {
+    try {
+      store.get(code, user, true);
+      let message: { type?: unknown; clientSentAt?: unknown };
+      try { message = JSON.parse(String(raw)); } catch { return; }
+      if (message && message.type === 'ping' && typeof message.clientSentAt === 'number' && Number.isSafeInteger(message.clientSentAt) && message.clientSentAt >= 0 && socket.readyState === 1) {
+        if (socket.bufferedAmount > 256 * 1024) { socket.close(1013, 'Slow connection; reconnect'); return; }
+        socket.send(JSON.stringify({ type: 'pong', clientSentAt: message.clientSentAt, serverNow: clock() }));
+      }
+    } catch (error) { fail(error); }
+  });
   socket.on('error', () => socket.close());
   socket.on('close', () => {store.off('room', send);store.off('access-ended',accessEnded);});
 }

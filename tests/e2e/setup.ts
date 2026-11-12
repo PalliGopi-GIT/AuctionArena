@@ -4,8 +4,9 @@ import { setTimeout as delay } from 'node:timers/promises';
 
 export default async function setup() {
   const children: ChildProcess[] = [];
-  const log = 'docs/reports/evidence/WP1-E2E/servers.log';
-  mkdirSync('docs/reports/evidence/WP1-E2E', { recursive: true });
+  const directory = process.env.AA_EVIDENCE_DIR ?? 'docs/reports/evidence/WP1-E2E';
+  const log = `${directory}/servers.log`;
+  mkdirSync(directory, { recursive: true });
   writeFileSync(log, '');
   async function stop() {
     await Promise.all(children.map(async child => {

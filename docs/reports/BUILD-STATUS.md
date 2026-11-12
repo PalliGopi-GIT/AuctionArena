@@ -1,8 +1,14 @@
 # AuctionArena verification - 12 November 2026
 
-The local application now includes application-name editing, signed Clerk webhook projection and durable account deletion. Engine/store/API and Chromium desktop/mobile-viewport checks pass. Prior host single-user, two-user and profile Clerk checks remain valid for their ticket-sign-in scopes. Phase 1 remains incomplete: live account/challenge/webhook checks, human accessibility, two moderate dependencies and the distributed runtime remain open.
+The local application now includes application-name editing, signed Clerk webhook projection and durable account deletion. Engine/store/API and Chromium desktop/mobile-viewport checks pass. Prior host single-user, two-user and profile Clerk checks remain valid for their ticket-sign-in scopes. Full project delivery remains incomplete: live account/challenge/webhook checks, human accessibility, two moderate dependencies and the distributed runtime remain open.
 
-## Current evidence
+## Current Phase 1 result
+
+Phase 1 rule fixes are complete for their local scope: TypeScript and production build pass; 164 core tests, 76 local tests and all 32 Chromium desktop/mobile-viewport browser cases pass with zero failures/skips/flaky cases. All 34 axe scans report zero violations; human accessibility remains unverified. The owner confirmed +10 below 200, +20 from 200 through 500 inclusive, +25 above 500 for new rooms only. Existing rooms retain flat rules and accepted prices. Evidence: WP1-RULE-FIXES/validation.json. The owner says this Codex session predates the config repair and will restart Codex after the Phase 1 commit; defer interactive /mcp verification to that fresh session. The current tool list remains empty, which does not prove the saved launcher is broken. The debug wizard failure is identified as bare codex (Windows CMD-shim subprocess resolution), exit 255; all three MCP config files stayed unchanged. Do not blindly rerun registration or edit config. No AWS resources, Clerk users/settings or SQL migrations were created or changed. Phase 2 has not started.
+
+The table below retains prior verification context; latest run details are in [WP1-RULE-FIXES](evidence/WP1-RULE-FIXES/) and [PROJECT_STATUS.md](../../PROJECT_STATUS.md).
+
+## Prior evidence and remaining limits
 
 | Check | Result | Scope |
 | --- | --- | --- |
@@ -44,7 +50,9 @@ The injected fixed clock in the 2,000-intent test is correct: the test does not 
 
 ## Work completed
 
-Latest Phase 0 tooling checkpoint: absolute uvx launcher and explicitly requested project env saved with a verified private backup, idempotent narrow merge and preservation of proxy args/unrelated entries. The requested Toolkit/VerifyToolkit command exited 1 (vendor wizard 255, WinError 2); independent catalog retrieval passed with 122 skills. No Codex restart, resource creation or Clerk change occurred. Fourteen bootstrap cases, the full 136-test core suite, TypeScript and PowerShell syntax pass. Application build/local/browser suites were not rerun. Git is initialized on main; the initial baseline includes this checkpoint after the staged credential/exclusion check. [Current Phase 0 evidence](evidence/WP1-AWS-MCP-REPAIR/validation.json) and [project status](../../PROJECT_STATUS.md). Phase 1 has not started.
+Latest: [Phase 1 rule-fix validation](evidence/WP1-RULE-FIXES/validation.json) and [review](evidence/WP1-RULE-FIXES/review.md). New-room tiered rules preserve legacy auctions, UI timing uses a 150 ms latch plus HTTP/pong midpoint samples, inaccessible-room responses are uniform, and ACCOUNT_DELETED terminates the client without WebSockets. All requested automated checks pass. No later phase or cloud operation was performed.
+
+Historical Phase 0 tooling checkpoint: absolute uvx launcher and explicitly requested project env saved with a verified private backup, idempotent narrow merge and preservation of proxy args/unrelated entries. The requested Toolkit/VerifyToolkit command exited 1 (vendor wizard 255, WinError 2); independent catalog retrieval passed with 122 skills. No Codex restart, resource creation or Clerk change occurred. Fourteen bootstrap cases, the full 136-test core suite, TypeScript and PowerShell syntax pass. Application build/local/browser suites were not rerun. Git is initialized on main; the initial baseline includes this checkpoint after the staged credential/exclusion check. [Current Phase 0 evidence](evidence/WP1-AWS-MCP-REPAIR/validation.json) and [project status](../../PROJECT_STATUS.md). Phase 1 has not started.
 
 Implemented the provider-independent ownership coordinator and testkit in [WP1-OWNERSHIP-CORE](../plan/tasks/WP1-OWNERSHIP-CORE.md). Atomic lease/fenced-write ports, fresh acquisition tokens, monotonic request-start TTL bounds, post-claim confirmation, serialized captured proposals and synchronous demotion protect the coordination boundary. Uncertain writes never trigger blind retries or success receipts. Twenty model cases pass, including a real-engine accepted bid whose absolute deadline survives handover and whose winning purchase settles once. This module is not imported by the application, implements no cloud adapter and has no independent review or real datastore/drill evidence.
 

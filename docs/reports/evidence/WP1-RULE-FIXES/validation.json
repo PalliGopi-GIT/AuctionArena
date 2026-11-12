@@ -1,0 +1,89 @@
+{
+  "task": "WP1-RULE-FIXES",
+  "at": "2026-11-12T09:23:01.685Z",
+  "status": "passed",
+  "sourceBaseline": "2ce72bb",
+  "scope": "Phase 1 local rule/timing/privacy/terminal-access fixes only",
+  "ownerDecisions": {
+    "tiers": "current <200: +10; 200<=current<=500: +20; current>500: +25",
+    "newRoomsOnly": true,
+    "preserveExistingRooms": true
+  },
+  "testFirst": {
+    "initial": {
+      "passed": 6,
+      "failed": 19,
+      "report": "before.json"
+    },
+    "privacyExpansion": {
+      "passed": 25,
+      "failed": 3,
+      "report": "privacy-expansion-before.json"
+    }
+  },
+  "typecheck": {
+    "command": "npx.cmd tsc --noEmit",
+    "exitCode": 0
+  },
+  "build": {
+    "at": "2026-11-12T09:20:11.493Z",
+    "command": "node node_modules/vite/bin/vite.js build --configLoader runner",
+    "exitCode": 0,
+    "durationMs": 8517
+  },
+  "core": {
+    "passed": 164,
+    "failed": 0,
+    "skipped": 0,
+    "report": "core-results.json"
+  },
+  "local": {
+    "passed": 76,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0,
+    "report": "local-tests.json"
+  },
+  "browser": {
+    "startTime": "2026-11-12T09:12:23.232Z",
+    "duration": 445734.848,
+    "expected": 32,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "runnerErrors": 0,
+    "exitCode": 0,
+    "report": "results.json"
+  },
+  "accessibility": {
+    "scans": 34,
+    "violations": 0,
+    "files": [
+      "desktop-axe.json",
+      "mobile-axe.json",
+      "desktop-profile-axe.json",
+      "mobile-profile-axe.json"
+    ],
+    "fullConformanceClaimed": false
+  },
+  "testServers": {
+    "ports": [
+      3101,
+      5273
+    ],
+    "listeningAfterRun": false
+  },
+  "limitations": [
+    "Local adapter only; no distributed/cloud reliability claim",
+    "ACCOUNT_DELETED browser response is injected with sockets unavailable; live Clerk deletion remains unverified",
+    "Desktop Chromium and mobile viewport, not a physical Android or Safari test",
+    "Axe incomplete checks and human accessibility remain open",
+    "AWS MCP tools/search/skill/STS are unverified in this pre-repair session; owner will restart Codex after this commit",
+    "Two moderate CDK/minimatch entries remain; no dependency probe in this phase"
+  ],
+  "awsResourcesCreated": 0,
+  "clerkAccountsCreated": 0,
+  "clerkSettingsChanged": 0,
+  "migrationsExecuted": 0,
+  "nextPhaseStarted": false
+}

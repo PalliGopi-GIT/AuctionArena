@@ -3,7 +3,7 @@ import AxeBuilder from '@axe-core/playwright';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join, login } from './helpers';
 
-const directory = 'docs/reports/evidence/WP1-ACCESSIBILITY';
+const directory = process.env.AA_EVIDENCE_DIR ?? 'docs/reports/evidence/WP1-ACCESSIBILITY';
 mkdirSync(directory, { recursive: true });
 
 test('accessibility scans cover auction screens and dialogs', async ({ page, browser }, testInfo) => {

@@ -51,7 +51,7 @@ test('actor revalidates settings without trusting transport schemas',()=>{
 });
 test('lobby participant leaves, frees claim and loses access but can rejoin by invitation',()=>{
  const f=fixture();const room=f.action(guest,'leave');assert.ok(!room.members.some(m=>m.id===guest.id));assert.equal(room.teams[1].ownerId,null);
- assert.equal(room.history.at(-1).type,'left');fails(()=>f.store.get(f.code,guest),'FORBIDDEN');assert.equal(f.store.list(guest).length,0);
+ assert.equal(room.history.at(-1).type,'left');fails(()=>f.store.get(f.code,guest),'ROOM_NOT_FOUND');assert.equal(f.store.list(guest).length,0);
  f.store.join(f.code,guest,f.inviteToken);assert.ok(f.store.get(f.code,guest).members.some(m=>m.id===guest.id));
 });
 test('host cannot leave and membership cannot be abandoned after start',()=>{
@@ -87,17 +87,17 @@ test('removal is idempotent for repeated action id',()=>{
 });
 test('removed members do not consume active room capacity',()=>{
  const f=fixture();for(let i=0;i<18;i++)f.store.join(f.code,{id:`fan-${i}`,name:`Fan ${i}`},f.inviteToken);
- fails(()=>f.store.join(f.code,third,f.inviteToken),'ROOM_FULL');f.action(host,'remove-member',{memberId:guest.id});
+ fails(()=>f.store.join(f.code,third,f.inviteToken),'ROOM_NOT_FOUND');f.action(host,'remove-member',{memberId:guest.id});
  f.store.join(f.code,third,f.inviteToken);assert.equal(f.get().members.filter(m=>!f.get().blockedUserIds.includes(m.id)).length,20);
 });
 test('renew invitation requires host and revokes old links without expelling existing members',()=>{
  const f=fixture();fails(()=>f.store.rotateInvite(f.code,guest),'HOST_ONLY');const renewed=f.store.rotateInvite(f.code,host);
  assert.notEqual(renewed.inviteToken,f.inviteToken);assert.equal(renewed.room.history.at(-1).type,'invite_renewed');
- fails(()=>f.store.join(f.code,third,f.inviteToken),'INVALID_INVITE');f.store.join(f.code,third,renewed.inviteToken);
+ fails(()=>f.store.join(f.code,third,f.inviteToken),'ROOM_NOT_FOUND');f.store.join(f.code,third,renewed.inviteToken);
  assert.equal(f.store.get(f.code,guest).code,f.code);assert.ok(!JSON.stringify(renewed.room).includes(renewed.inviteToken));
 });
 test('expired invite at exact expiry is refused and host can replace it',()=>{
- const f=fixture();f.advance(86400000);fails(()=>f.store.join(f.code,third,f.inviteToken),'INVALID_INVITE');
+ const f=fixture();f.advance(86400000);fails(()=>f.store.join(f.code,third,f.inviteToken),'ROOM_NOT_FOUND');
  const renewed=f.store.rotateInvite(f.code,host);f.store.join(f.code,third,renewed.inviteToken);assert.equal(f.get().members.length,3);
 });
 test('renewal cannot bypass a room block or reopen an ended room',()=>{
@@ -113,7 +113,7 @@ test('restart persists new settings, blocks and invitation hash without leaking 
   f.action(host,'update-settings',{settings:{...defaults,budget:6000}});f.action(host,'remove-member',{memberId:guest.id});
   const renewed=f.store.rotateInvite(f.code,host);const saved=readFileSync(path,'utf8');assert.ok(!saved.includes(renewed.inviteToken));
   const recovered=new LocalRoomStore(path,f.now);assert.equal(recovered.get(f.code,host).teams[0].budget,6000);
-  fails(()=>recovered.get(f.code,guest),'ROOM_BLOCKED');fails(()=>recovered.join(f.code,third,f.inviteToken),'INVALID_INVITE');
+  fails(()=>recovered.get(f.code,guest),'ROOM_BLOCKED');fails(()=>recovered.join(f.code,third,f.inviteToken),'ROOM_NOT_FOUND');
   recovered.join(f.code,third,renewed.inviteToken);assert.equal(recovered.get(f.code,third).code,f.code);
  } finally {rmSync(directory,{recursive:true,force:true});}
 });

@@ -1,6 +1,12 @@
 # AuctionArena project status
 
-Saved: 12 November 2026 (Asia/Calcutta). Current checkpoint: **Phase 0 repair saved; restart approval pending.** No restart or deployment has been performed.
+Updated: 12 November 2026 (Asia/Calcutta).
+
+## Current Phase 1 result
+
+Phase 1 rule fixes are complete for their local scope: TypeScript and production build pass; 164 core tests, 76 local tests and all 32 Chromium desktop/mobile-viewport browser cases pass with zero failures/skips/flaky cases. All 34 axe scans report zero violations; human accessibility remains unverified. The owner confirmed +10 below 200, +20 from 200 through 500 inclusive, +25 above 500 for new rooms only. Existing rooms retain flat rules and accepted prices. Evidence: WP1-RULE-FIXES/validation.json. The owner says this Codex session predates the config repair and will restart Codex after the Phase 1 commit; defer interactive /mcp verification to that fresh session. The current tool list remains empty, which does not prove the saved launcher is broken. The debug wizard failure is identified as bare codex (Windows CMD-shim subprocess resolution), exit 255; all three MCP config files stayed unchanged. Do not blindly rerun registration or edit config. No AWS resources, Clerk users/settings or SQL migrations were created or changed. Phase 2 has not started.
+
+The Phase 0 checkpoint below is historical. Git baseline **2ce72bb** is saved on main; Phase 1 is saved in the checkpoint commit titled fix: complete Phase 1 auction correctness. See [task](docs/plan/tasks/WP1-RULE-FIXES.md), [rule evidence](docs/reports/evidence/WP1-RULE-FIXES/) and [AWS diagnosis](docs/reports/evidence/WP1-AWS-SETUP/reconnect-diagnosis.md).
 
 ## Phase 0 results
 
@@ -18,7 +24,7 @@ Saved: 12 November 2026 (Asia/Calcutta). Current checkpoint: **Phase 0 repair sa
 | Full core suite | 136 passed, 0 failed/skipped |
 | Current session AWS MCP tools / identity | No tools exposed; transport, skill calls and identity not yet verified |
 
-The command used was `powershell.exe -ExecutionPolicy Bypass -File .\scripts\setup-aws.ps1 -Toolkit -VerifyToolkit`. The exact missing executable inside the vendor wizard has not been established. The installed proxy launcher itself works. Catalog access is not proof of a working MCP connection.
+The command used was `powershell.exe -ExecutionPolicy Bypass -File .\scripts\setup-aws.ps1 -Toolkit -VerifyToolkit`. The later approved debug rerun identifies bare codex in the vendor registration subprocess; see the reconnect diagnosis. The installed proxy launcher itself works. Catalog access is not proof of a working MCP connection.
 
 The Git repository is initialized on main. This Phase 0 snapshot is included in the initial baseline commit; obtain its identifier with `git log -1`. Runtime data, environment files, installed dependencies, test artifacts and private tool configuration are excluded. The staged credential/exclusion check is recorded with the [Phase 0 evidence](docs/reports/evidence/WP1-AWS-MCP-REPAIR/validation.json).
 
@@ -30,8 +36,8 @@ Selected resource Region: ap-south-1. Profile: AuctionArena. Toolkit endpoint Re
 
 ## Approved sequence and gates
 
-0. Await the user's restart approval. Do not restart automatically. After an approved reconnect, discover actual AWS tools and verify skill retrieval/identity.
-1. Test-first rule/timing/privacy/deleted-account fixes, then typecheck/build/core/local/browser evidence under WP1-RULE-FIXES. Ask before adopting any rule that differs from the authoritative specification. Not started.
+0. Restart approval received. Current tool inventory remains empty after observed host-server recovery. When the host exposes AWS tools, verify skill retrieval/identity. No config change or wizard rerun is planned.
+1. Phase 1 rule/timing/privacy/deleted-account fixes complete: TypeScript/build/core164/local76/browser32/axe34 pass. Save/commit and report before Phase 2; the owner will restart Codex afterward.
 2. Bound heartbeat writes, history, receipts and messages; add replay/history paging and large-history tests. Not started.
 3. After working MCP guidance/identity checks, present a costed staging design and wait for approval before choosing a cheaper architecture. Then implement and prove real adapters/recovery/routing/archive, obtain independent ownership review, and complete database/account lifecycle work. No cloud resource or migration execution is approved here.
 4. Obtain approval for concrete Clerk test fixtures before creation/settings changes; perform the authorized host CDK probe and guided human Windows/Android accessibility checks.

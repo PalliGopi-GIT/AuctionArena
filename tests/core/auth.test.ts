@@ -61,7 +61,7 @@ describe('Clerk SDK session verification with ephemeral signing keys', () => {
     expect(created.status).toBe(201);
     const { room } = await created.json();
     expect(room.hostId).toBe('user_host');
-    expect((await app.request(`/api/rooms/${room.code}`, { headers: headers(guestToken) })).status).toBe(403);
+    expect((await app.request(`/api/rooms/${room.code}`, { headers: headers(guestToken) })).status).toBe(404);
     const guest = await app.request('/api/me', { headers: headers(guestToken) });
     expect((await guest.json()).rooms).toEqual([]);
     const host = await app.request('/api/me', { headers: headers(hostToken) });

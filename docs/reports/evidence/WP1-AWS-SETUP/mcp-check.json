@@ -1,6 +1,6 @@
 {
-  "at": "2026-11-11T21:08:25.141Z",
-  "status": "launcher_repaired_current_session_not_reconnected",
+  "at": "2026-11-12T09:23:01.703Z",
+  "status": "absolute_launcher_saved_no_exposed_tools_vendor_codex_shim_failure_identified",
   "profile": "AuctionArena",
   "selectedRegion": "ap-south-1",
   "previousRootCause": "bare uvx on inherited PATH returned ENOENT; earlier EPERM restriction is obsolete",
@@ -18,7 +18,7 @@
     "AWS_PROFILE": "AuctionArena"
   },
   "exposedAwsMcpToolCount": 0,
-  "mcpTransportStarted": false,
+  "mcpTransportStarted": null,
   "mcpDocumentationSearchVerified": false,
   "mcpSkillRetrievalVerified": false,
   "mcpIdentityVerified": false,
@@ -33,5 +33,15 @@
   "restartPerformed": false,
   "resourceDeployments": 0,
   "clerkOperations": 0,
-  "nextStep": "Await explicit user restart approval; do not restart Codex. Then verify actual MCP tools/identity before service work."
+  "nextStep": "Owner will restart Codex and run /mcp after the Phase 1 commit. Do not repeat the wizard or edit config; verify actual AWS search/skill/STS only when exposed in that fresh session.",
+  "restartApproved": true,
+  "hostServerRestartObserved": true,
+  "restartPerformedByAgent": false,
+  "exposedAwsMcpTools": [],
+  "mcpTransportStatus": "unverified",
+  "toolkitWizardExitCode": 255,
+  "toolkitWizardMissingExecutable": "codex (bare name; installed CMD shim is not resolved by subprocess.run)",
+  "diagnosticEvidence": "reconnect-diagnosis.md",
+  "freshCodexSessionVerified": false,
+  "ownerReportedCurrentSessionPredatesRepair": true
 }

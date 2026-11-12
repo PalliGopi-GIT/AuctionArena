@@ -3,7 +3,7 @@ import AxeBuilder from '@axe-core/playwright';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { create, join, login, readRoom } from './helpers';
 
-const directory='docs/reports/evidence/WP1-ACCOUNT-LIFECYCLE';
+const directory=process.env.AA_EVIDENCE_DIR ?? 'docs/reports/evidence/WP1-ACCOUNT-LIFECYCLE';
 mkdirSync(directory,{recursive:true});
 test('profile names stay unique and deletion revokes access while retaining shared records',async({page,browser},testInfo)=>{
   const {code,invite}=await create(page);

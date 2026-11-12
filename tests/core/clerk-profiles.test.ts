@@ -54,7 +54,7 @@ describe('server-derived participant names', () => {
     const created = await app.request('/api/rooms', { method: 'POST', headers: headers(), body: '{}' });
     const { room, inviteToken } = await created.json();
     expect(room.members[0]).toMatchObject({ id: 'user_host', name: 'Verified Captain' });
-    expect((await app.request(`/api/rooms/${room.code}`, { headers: headers('user_guest') })).status).toBe(403);
+    expect((await app.request(`/api/rooms/${room.code}`, { headers: headers('user_guest') })).status).toBe(404);
     await app.request(`/api/rooms/${room.code}/join`, { method: 'POST', headers: headers('user_guest'), body: JSON.stringify({ inviteToken }) });
     for (const [id, teamId] of [['user_host', 't1'], ['user_guest', 't2']]) {
       const response = await app.request(`/api/rooms/${room.code}/actions`, { method: 'POST', headers: headers(id), body: JSON.stringify({ id: crypto.randomUUID(), type: 'claim', teamId }) });
