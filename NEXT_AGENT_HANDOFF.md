@@ -1,5 +1,13 @@
 # AuctionArena - next agent handoff
 
+## Latest read-only MCP audit — 12 November 2026
+
+AWS MCP connectivity is verified: 8 exposed tools, successful agent_skills documentation search, retrieval of signing-in-to-aws, and STS GetCallerIdentity. The returned ARN exactly matches the login_session saved under AuctionArena (project ID ending 2955; AccountFullAccessRole). The local profile and plan use ap-south-1 (Mumbai). The owner reports that the sign-in page assigns project "Array of Sunshine" to ap-southeast-2 (Sydney). This discrepancy is unresolved: the assigned project Region/name were not independently verified, no connected browser was available, and STS does not establish assigned Region. No AWS resources, configuration, deployment, Clerk data or migrations changed. Phase 2 has not started.
+
+Evidence: [connected verification](docs/reports/evidence/WP1-AWS-SETUP/connected-verification.json). This audit supersedes the older connection/restart statements below and in the earlier status.json/mcp-check.json snapshots. Earlier Mumbai selection describes the plan/profile, not a verified project assignment. Phase 1 remains committed as 03b98b2; application tests and billing/credits were not rerun. No Region correction or Phase 2 work is authorized by this audit.
+
+## Prior checkpoint record
+
 Last updated: 2026-11-12 (local). Workspace: C:\Users\palli\OneDrive\Desktop\IPL-AUCTION.
 Repository: main. Initial baseline commit: 2ce72bb. The Phase 1 checkpoint commit is titled fix: complete Phase 1 auction correctness; staged credential/exclusion checks are recorded in its evidence. Private/runtime paths remain ignored.
 

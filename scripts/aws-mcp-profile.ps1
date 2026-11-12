@@ -54,7 +54,7 @@ function Merge-AwsMcpLauncherText {
 function Merge-AwsMcpProjectText {
   param([Parameter(Mandatory=$true)][string]$Text,
         [Parameter(Mandatory=$true)][ValidatePattern('^[A-Za-z0-9_+=,.@-]+$')][string]$Profile,
-        [Parameter(Mandatory=$true)][ValidatePattern('^[a-z]{2}(?:-[a-z]+)+-\d+$')][string]$Region)
+        [ValidatePattern('^[a-z]{2}(?:-[a-z]+)+-\d+$')][string]$Region = 'ap-southeast-2')
   $AwsUpdated = Merge-AwsMcpProfileText -Text $Text -Profile $Profile
   $AwsNewline = if ($AwsUpdated.Contains("`r`n")) { "`r`n" } else { "`n" }
   foreach ($AwsVariable in @(@('AWS_PROFILE',$Profile),@('AWS_REGION',$Region))) {

@@ -1,5 +1,13 @@
 # AuctionArena verification - 12 November 2026
 
+## Latest read-only MCP audit — 12 November 2026
+
+AWS MCP connectivity is verified: 8 exposed tools, successful agent_skills documentation search, retrieval of signing-in-to-aws, and STS GetCallerIdentity. The returned ARN exactly matches the login_session saved under AuctionArena (project ID ending 2955; AccountFullAccessRole). The local profile and plan use ap-south-1 (Mumbai). The owner reports that the sign-in page assigns project "Array of Sunshine" to ap-southeast-2 (Sydney). This discrepancy is unresolved: the assigned project Region/name were not independently verified, no connected browser was available, and STS does not establish assigned Region. No AWS resources, configuration, deployment, Clerk data or migrations changed. Phase 2 has not started.
+
+Evidence: [connected verification](evidence/WP1-AWS-SETUP/connected-verification.json). This audit supersedes the older connection/restart statements below and in the earlier status.json/mcp-check.json snapshots. Earlier Mumbai selection describes the plan/profile, not a verified project assignment. Phase 1 remains committed as 03b98b2; application tests and billing/credits were not rerun. No Region correction or Phase 2 work is authorized by this audit.
+
+## Prior checkpoint record
+
 The local application now includes application-name editing, signed Clerk webhook projection and durable account deletion. Engine/store/API and Chromium desktop/mobile-viewport checks pass. Prior host single-user, two-user and profile Clerk checks remain valid for their ticket-sign-in scopes. Full project delivery remains incomplete: live account/challenge/webhook checks, human accessibility, two moderate dependencies and the distributed runtime remain open.
 
 ## Current Phase 1 result

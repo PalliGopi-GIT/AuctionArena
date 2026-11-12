@@ -1,7 +1,7 @@
 param([switch]$InstallTools, [switch]$Login, [switch]$Verify, [switch]$Toolkit, [switch]$VerifyToolkit, [switch]$ConfigureMcpProfile, [switch]$ConfigureRegion, [switch]$ImportGeneratedMcp)
 $ErrorActionPreference = 'Stop'
 $AwsProjectProfile = 'AuctionArena'
-$AwsProjectRegion = 'ap-south-1'
+$AwsProjectRegion = 'ap-southeast-2'
 . (Join-Path $PSScriptRoot 'aws-mcp-profile.ps1')
 Initialize-AwsCliUtf8
 
@@ -52,7 +52,7 @@ if ($Login) {
 }
 if ($Verify) {
   $AwsConfiguredRegion = (& aws configure get region --profile $AwsProjectProfile).Trim()
-  if ($LASTEXITCODE -ne 0 -or $AwsConfiguredRegion -ne $AwsProjectRegion) { throw 'Profile Region is not Mumbai. Rerun with -ConfigureRegion -Verify.' }
+  if ($LASTEXITCODE -ne 0 -or $AwsConfiguredRegion -ne $AwsProjectRegion) { throw 'Profile Region is not Sydney. Rerun with -ConfigureRegion -Verify.' }
   $AwsIdentityRaw = & aws sts get-caller-identity --profile $AwsProjectProfile --region $AwsProjectRegion --output json --no-cli-pager
   if ($LASTEXITCODE -ne 0) { throw 'AWS identity verification failed.' }
   $AwsIdentity = ($AwsIdentityRaw -join "`n") | ConvertFrom-Json
@@ -126,14 +126,14 @@ if ($VerifyToolkit) {
   [IO.File]::WriteAllText((Join-Path $AwsEvidenceDirectory 'skills.json'),($AwsCatalogRaw -join "`n"),(New-Object System.Text.UTF8Encoding($false)))
   Write-Host 'Remote skill catalog retrieved. The MCP tools still need verification after reconnecting Codex.'
 }
-Write-Host 'Profile: AuctionArena; selected Region: ap-south-1.'
+Write-Host 'Profile: AuctionArena; project Region: ap-southeast-2.'
 Write-Host 'Confirm Region in AWS Settings > View all projects > Overview > Additional Info > Region.'
 Write-Host 'Review spend/plan in AWS Settings > Billing. No resources are deployed by this script.'
 Write-Host 'Toolkit configuration is an interactive, separately reviewed step:'
 Write-Host '  aws configure agent-toolkit --yes --region us-east-1 --profile AuctionArena'
 Write-Host 'Review existing Codex MCP entries before accepting wizard changes. Preserve unrelated entries.'
 Write-Host 'MCP service endpoint: https://aws-mcp.us-east-1.api.aws/mcp'
-Write-Host 'Project default Region remains ap-south-1. Merge env.AWS_MCP_PROXY_PROFILES=AuctionArena into generated aws-mcp entries.'
+Write-Host 'Project default Region is ap-southeast-2. Merge env.AWS_MCP_PROXY_PROFILES=AuctionArena into generated aws-mcp entries.'
 Write-Host 'The proxy selects profiles with AWS_MCP_PROXY_PROFILES. AWS_PROFILE/AWS_REGION are retained as explicitly requested project env values.'
 Write-Host 'Only the AWS launcher is normalized to an absolute installed path; generated args, timeout, transport and unrelated entries remain unchanged.'
 Write-Host 'The us-east-1 toolkit endpoint is not permission to deploy regional resources there.'

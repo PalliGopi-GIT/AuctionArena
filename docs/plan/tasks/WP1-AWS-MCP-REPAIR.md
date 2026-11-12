@@ -17,6 +17,8 @@ acceptance:
 status: in_review
 ---
 
+2026-11-12 connected audit (supersedes earlier connection observations): AWS MCP connectivity is verified: 8 exposed tools, successful agent_skills documentation search, retrieval of signing-in-to-aws, and STS GetCallerIdentity. The returned ARN exactly matches the login_session saved under AuctionArena (project ID ending 2955; AccountFullAccessRole). The local profile and plan use ap-south-1 (Mumbai). The owner reports that the sign-in page assigns project "Array of Sunshine" to ap-southeast-2 (Sydney). This discrepancy is unresolved: the assigned project Region/name were not independently verified, no connected browser was available, and STS does not establish assigned Region. No AWS resources, configuration, deployment, Clerk data or migrations changed. Phase 2 has not started. Evidence: docs/reports/evidence/WP1-AWS-SETUP/connected-verification.json. Earlier vendor wizard failure is historical; it was not rerun. Review status is retained.
+
 2026-11-12: User authorized this narrow repair, a backed-up config edit, the toolkit rerun and Git initialization. Prior EPERM restrictions are gone. Bare uvx fails ENOENT in the inherited process PATH; the installed absolute executable runs. No AWS MCP tools are currently exposed. Profile AuctionArena and resource Region ap-south-1 remain selected; toolkit endpoint Region remains us-east-1.
 
 The original config, generated proxy metadata and all other MCP entries must remain private and preserved. The current env contains AWS_MCP_PROXY_PROFILES=AuctionArena; add the user-requested AWS_PROFILE=AuctionArena and AWS_REGION=ap-south-1 without replacing any existing conflicting selection silently.

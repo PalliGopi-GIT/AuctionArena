@@ -1,0 +1,72 @@
+{
+  "at": "2026-11-12T09:42:50.655Z",
+  "scope": "Read-only AWS MCP connectivity, identity and Region audit; local evidence/status writes only.",
+  "results": {
+    "tools": {
+      "status": "PASS",
+      "count": 8,
+      "names": [
+        "mcp__aws_mcp__aws___get_presigned_url",
+        "mcp__aws_mcp__aws___get_regional_availability",
+        "mcp__aws_mcp__aws___get_tasks",
+        "mcp__aws_mcp__aws___list_regions",
+        "mcp__aws_mcp__aws___read_documentation",
+        "mcp__aws_mcp__aws___retrieve_skill",
+        "mcp__aws_mcp__aws___run_script",
+        "mcp__aws_mcp__aws___search_documentation"
+      ]
+    },
+    "documentationSearch": {
+      "status": "PASS",
+      "topic": "agent_skills",
+      "matchingSkill": "signing-in-to-aws"
+    },
+    "skillRetrieval": {
+      "status": "PASS",
+      "skillName": "signing-in-to-aws",
+      "guidanceApplied": "Existing-credential STS verification only. No login, installation or configuration changes."
+    },
+    "sts": {
+      "status": "PASS",
+      "service": "sts",
+      "operation": "GetCallerIdentity",
+      "apiCalls": [
+        {
+          "service": "sts",
+          "operation": "GetCallerIdentity",
+          "status": "success"
+        }
+      ],
+      "projectIdRedacted": "********2955",
+      "role": "AccountFullAccessRole",
+      "profile": "AuctionArena",
+      "profileBinding": "Returned STS ARN exactly matches login_session in local [profile AuctionArena]. MCP run_script has no per-call profile selector.",
+      "sessionIdentifierOmitted": true
+    },
+    "regions": {
+      "status": "MISMATCH_REPORTED_PROJECT_NOT_INDEPENDENTLY_VERIFIED",
+      "localProfile": "ap-south-1",
+      "localProfileSource": "~/.aws/config [profile AuctionArena] region",
+      "plannedRegion": "ap-south-1",
+      "projectName": "Array of Sunshine",
+      "projectRegionReportedByOwner": "ap-southeast-2",
+      "projectRegionIndependentlyVerified": false,
+      "projectNameIndependentlyVerified": false,
+      "source": "Owner reports AWS sign-in page warning in current request.",
+      "limitations": "STS verifies identity, not assigned project Region. AWS MCP helper discovery found no matching project-settings reader. Browser inventory returned no apps or browsers.",
+      "authoritativeCheck": "AWS Settings > Project > Overview > Additional Info > Region, matching the project ID returned by STS.",
+      "documentationUrl": "https://docs.aws.amazon.com/accounts/latest/reference/project-regions.html",
+      "toolkitEndpointRegionHistorical": "us-east-1",
+      "toolkitEndpointIsNotProjectRegion": true
+    }
+  },
+  "mutationCounts": {
+    "awsResources": 0,
+    "configuration": 0,
+    "deployment": 0,
+    "clerk": 0
+  },
+  "phase2Started": false,
+  "testsRerun": false,
+  "conclusion": "AWS MCP connectivity, skill search/retrieval and STS identity are verified. Mumbai profile/plan conflicts with the owner-reported Sydney project Region. No reconciliation was attempted."
+}
