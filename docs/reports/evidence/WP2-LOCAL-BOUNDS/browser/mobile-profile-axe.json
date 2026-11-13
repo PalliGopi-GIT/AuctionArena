@@ -1,0 +1,17 @@
+{
+  "axeVersion": "4.14.0",
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "targets": [
+        [
+          "#profile-name-help"
+        ],
+        [
+          "section[aria-labelledby=\"delete-account-title\"] > p"
+        ]
+      ]
+    }
+  ]
+}

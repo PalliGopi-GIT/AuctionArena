@@ -31,6 +31,7 @@ export function connectRoom(options: {
   const clock = options.clock ?? Date.now;
   let pingAt: number | undefined;
   let lastPingAt = 0;
+  let lastVersion: number | undefined;
   const path = `/rooms/${options.code}`;
   const stop = () => { stopped = true; clearInterval(interval); clearTimeout(retry); socket?.close(); };
   const deny = (message: string) => { if (stopped) return; stop(); options.connection(false); options.accessLost?.(message); };
@@ -43,14 +44,14 @@ export function connectRoom(options: {
     return false;
   };
   const accept = (data: Snapshot) => {
-    if (!stopped && data.room?.code === options.code) options.snapshot(data);
+    if (!stopped && data.room?.code === options.code && (lastVersion === undefined || data.room.version >= lastVersion)) { lastVersion=data.room.version; options.snapshot(data); }
   };
   async function poll() {
     if (stopped || polling) return;
     polling = true;
     const sentAt = clock();
     try {
-      const data: Snapshot = await options.request(path);
+      const data: Snapshot = await options.request(lastVersion===undefined ? path : `${path}/sync?afterVersion=${lastVersion}`);
       const receivedAt = clock();
       if (!stopped && data.room?.code === options.code && Number.isFinite(data.serverNow) && receivedAt >= sentAt) {
         // The HTTP adapter starts its measurement after token retrieval, excluding auth-provider latency.

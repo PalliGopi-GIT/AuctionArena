@@ -40,7 +40,7 @@ test('ACCOUNT_DELETED clears the room and stops retries when WebSockets are unav
   let requests = 0;
   await page.route('**/api/rooms/**', async route => {
     requests++;
-    if (new URL(route.request().url()).pathname === `/api/rooms/${code}`) {
+    if ([`/api/rooms/${code}`, `/api/rooms/${code}/sync`].includes(new URL(route.request().url()).pathname)) {
       await route.fulfill({ status: 401, contentType: 'application/json', body: JSON.stringify({ code: 'ACCOUNT_DELETED', message: 'This account no longer has access.' }) });
     } else await route.continue();
   });

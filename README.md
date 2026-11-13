@@ -1,6 +1,6 @@
-﻿# AuctionArena
+# AuctionArena
 
-An original cricket auction application built around server-confirmed room state. **This is a local Phase 1 implementation. The build, local/core suites, Chromium desktop/mobile-viewport E2E and live Clerk ticket-sign-in smoke test pass. The distributed runtime, deployed service and production reliability remain unimplemented and unverified.**
+An original cricket auction application built around server-confirmed room state. **The local Phase 1 application now includes Phase 2 storage/message hardening. See current verification below. The Cloudflare runtime, deployed service and production reliability remain unimplemented and unverified.**
 
 Continuing development in a new session? Start with [AGENTS.md](AGENTS.md) and [NEXT_AGENT_HANDOFF.md](NEXT_AGENT_HANDOFF.md). They provide the reading order, current verified scope, source map and next implementation. Check [build status and evidence](docs/reports/BUILD-STATUS.md) before repeating completed work.
 
@@ -43,8 +43,9 @@ Original forest/charcoal and lime visual identity, responsive desktop/mobile lay
 - Local mutations execute synchronously in one process; a file lock prevents a second local writer.
 - Accepted state is written and flushed to a temporary file then renamed before it is broadcast.
 - Private rooms require a 256-bit invitation token; only its hash is persisted. Tokens expire after 24 hours. Existing membership persists.
-- WebSocket admission uses a one-use 30-second ticket in a subprotocol, not a URL. Snapshots are versioned; two-second authenticated polling also refreshes state.
-- Duplicate action IDs do not repeat a mutation. Changed content under an existing ID is rejected.
+- WebSocket admission uses a one-use 30-second ticket in a subprotocol, not a URL. Snapshots are versioned and contain at most 100 recent events; two-second authenticated polling resumes using the latest version. Missed/expired replay falls back to current state. Presence writes are batched at one-second intervals.
+- Persist at most 1,000 recent events per room; the history screen pages at most 100 at a time. Accepted prices, budgets, squads and results remain separate durable state. Expired activity is not archived.
+- Current actions include an expected room version. Retain 1,024 versioned receipts per room; a retained duplicate is deduplicated and an evicted original retry is rejected as stale. Preserve legacy receipts; new unversioned actions stop at 4,096 and ask the user to refresh. Historical over-cap legacy data stays intact. See [bounds and exceptions](docs/plan/tasks/WP2-LOCAL-BOUNDS.md).
 - Bids enforce ownership, next price, deadline, squad, overseas and minimum-squad budget reserve rules.
 - Between lots, auctions complete when the pool is exhausted, every participating squad is full, or no participating team with space can afford any remaining base price and its reserve. Results record and explain the reason; older saved results remain readable.
 - Disabled bid buttons explain connection, pending, deadline, pause, spectator, leading, squad, overseas and budget/reserve restrictions. Purchase checks are shared with server validation.
@@ -68,35 +69,34 @@ Automated browser checks (installed Chrome required):
 npm.cmd run test:e2e
 ~~~
 
-This builds the production frontend and starts isolated servers on :3101/:5273 with temporary data. All 20 cases passed: ten scenarios on desktop/mobile Chromium viewports, including sale, reconnect, removal/block, results reopening, invite renewal, leave/close, identity switching/reload, clipboard success/manual fallback and focus/privacy, real host loss with preserved settlement, both late-spectator policies and purse-depletion completion. The development database is untouched. Latest full evidence: [20-case browser report](docs/reports/evidence/WP1-ROOM-RESILIENCE/full-browser-results.json) and [sharing/resilience review](docs/reports/evidence/WP1-ROOM-RESILIENCE/review.md). Mobile emulation does not establish real-device or Safari support; dialog keyboard checks do not constitute a full accessibility audit.
+This builds the production frontend and starts isolated servers on :3101/:5273 with temporary data. Cases cover desktop/mobile Chromium room lifecycle, privacy, reconnection, bidding, results, accessibility and history paging. The development database is untouched. See [current build results](docs/reports/BUILD-STATUS.md) for exact counts and evidence; earlier reports remain historical. Mobile emulation does not establish real-device or Safari support; dialog keyboard checks do not constitute a full accessibility audit.
 
 If restricted filesystem permissions prevent Vite config bundling, use `npx.cmd vite build --configLoader runner` and `npx.cmd vitest run tests/core --configLoader runner`, with `npx.cmd tsc --noEmit` separately.
 
 `npm.cmd run test:a11y` runs focused scans and keyboard/reflow checks. Latest Phase 1 result: TypeScript/build pass, 164 core tests, 76 local tests and one clean 32-case browser run pass; 34 axe scans report zero violations. See [current validation](docs/reports/evidence/WP1-RULE-FIXES/validation.json). New rooms use confirmed +10/+20/+25 lakh tiers; existing rooms retain their flat rules. Earlier reports remain historical. [Human Windows/Android checks](docs/MANUAL-ACCESSIBILITY.md) still need results; automated scans do not establish full conformance.
 
-Zod 4.6.7, Vitest 5.1.0 and the Node adapter 2.1.3 are installed; Clerk SDK versions are unchanged. Oversized API bodies now return JSON `PAYLOAD_TOO_LARGE` with status 413. The fresh host audit has zero critical/high findings and two open moderate entries in the CDK/bundled-minimatch tooling chain. [Dependency review](docs/reports/evidence/WP1-DEPENDENCY-HARDENING/review.md) records the remaining advisory and upgrade rationale. No forced override, downgrade or audit suppression was applied; this is not a clean audit or production-security certification.
+Phase 2 verification on 13 November 2026: typecheck/build passed, 174 core tests, 76 local tests, 34 browser cases and 4 separate accessibility cases passed with zero failures/skips/flaky cases. Full browser axe: 34 scans, zero violations; incomplete rules still need human review. See [Phase 2 validation](docs/reports/evidence/WP2-LOCAL-BOUNDS/validation.json). These results cover the local runtime only.
+
+Zod 4.6.7, Vitest 5.1.0 and the Node adapter 2.1.3 are installed; Clerk SDK versions are unchanged. Oversized API bodies now return JSON `PAYLOAD_TOO_LARGE` with status 413. The fresh host audit has zero critical/high findings and two open moderate entries in a superseded infrastructure tooling chain. [Dependency review](docs/reports/evidence/WP1-DEPENDENCY-HARDENING/review.md) records the remaining advisory and upgrade rationale. No forced override, downgrade or audit suppression was applied; this is not a clean audit or production-security certification.
 
 Run the full checks:
 
 ```powershell
 npm.cmd run build
 npm.cmd run test:report
-npx.cmd tsc -p infra/tsconfig.json
-npx.cmd tsx infra/app.ts
+npm.cmd run test:local
+npm.cmd run test:e2e
+npm.cmd run test:a11y
 ```
 
-The last command synthesizes infrastructure only; it does not deploy. Read [the verification report](docs/reports/BUILD-STATUS.md) before relying on the implementation.
+Use a fresh `AA_EVIDENCE_DIR` for local/browser runs and a fresh Vitest output path to preserve prior evidence. Read [the verification report](docs/reports/BUILD-STATUS.md) before relying on the implementation. Superseded infrastructure tools are retained but are not part of the active application checks.
 
-## AWS toolkit and deployment
+## Cloudflare target
 
-Selected Region: `ap-south-1`; profile: `AuctionArena`; new AWS experience. Host verification confirms AWS CLI 2.40.0, uv 0.13.7, successful STS identity, FREE/ACTIVE plan and 100 USD credits. The toolkit installed 25 skills; its reviewed generated proxy entry was imported into Codex with the AuctionArena profile and a private backup. Remote catalog retrieval now passes. The absolute uvx launcher repair is saved with a verified private backup and preserved args/unrelated config. The requested toolkit rerun exited 1 (wizard 255/WinError 2); independent catalog retrieval passed with 122 skills. The debug wizard identifies bare codex as its missing executable (Windows CMD-shim subprocess resolution). The owner will restart Codex after the Phase 1 commit and check /mcp; this pre-repair session is not a fresh-connection test. MCP guidance/identity remain unverified. See [current project status](PROJECT_STATUS.md). See [setup status and instructions](docs/AWS-TOOLKIT-SETUP.md). Do not repeat installation/login/import.
-
-User policy is $0 out-of-pocket, $10/month staging from credits, and no AWS resource deployment of any kind without explicit approval. Billing/spend restrictions still require review in AWS Settings > Billing. The proxy uses AWS_MCP_PROXY_PROFILES; generated arguments and unrelated entries are preserved. Its us-east-1 endpoint does not change the project's Mumbai resource Region.
-
-`infra/` contains an undeployed AWS foundation and `db/migrations/` an unexecuted Aurora migration. AWS regional resources target `ap-south-1`; toolkit commands use their required `us-east-1` endpoint. **The runtime does not yet implement DynamoDB transactions, Redis ownership/fencing, distributed timers, Aurora archive delivery, or cloud failover. It refuses production mode.**
+The selected target is Workers/Hono and one SQLite-backed Durable Object per room with hibernating WebSockets and alarms. It is not implemented yet; the local runtime remains in use. The root master records the restored design and open gaps. Phase 2 local hardening was authorized on 13 November 2026; storage-port and Cloudflare packages are next after its report and the owner's instruction. No deployment, account/settings changes, R2 activation or spending is authorized. Budget is $0 out of pocket.
 
 ## Deferred work
 
-Automated Chromium desktop/mobile-viewport E2E covers the local lifecycle. Host-run Clerk ticket-sign-in, two-user auction and participant-profile checks passed (completed room 19B480). See [verification status](docs/reports/BUILD-STATUS.md). Required before the Phase 1 gate: actual Clerk challenge/mobile/account-deletion/webhook delivery checks, human accessibility, two moderate dependency fixes, distributed AWS runtime/user store, recovery/fencing drills, measured socket/load tests, security review and deployment. The prepared opt-in challenge harness has passed its no-fixture preflight; new Clerk accounts or settings changes require explicit approval. Frontend decomposition remains deferred.
+Automated Chromium desktop/mobile-viewport E2E covers the local lifecycle. Host-run Clerk ticket-sign-in, two-user auction and participant-profile checks passed (completed room 19B480). See [verification status](docs/reports/BUILD-STATUS.md). Required before the Phase 1 gate: actual Clerk challenge/mobile/account-deletion/webhook delivery checks, human accessibility, two moderate dependency fixes, Cloudflare runtime and cross-room data, recovery and settlement drills, measured socket/load tests, security review and deployment. The prepared opt-in challenge harness has passed its no-fixture preflight; new Clerk accounts or settings changes require explicit approval. Frontend decomposition remains deferred.
 
 PWA install/offline shell, hardened production limits, watchlists, chat, bots, public discovery, analysis, and the remaining Phase 2/3 features are deferred until the core gate passes. No scalability claim is made.

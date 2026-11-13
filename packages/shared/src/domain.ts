@@ -14,7 +14,7 @@ export const completionMessages: Record<CompletionReason, string> = {
   HOST_ENDED: 'The host ended the auction. All accepted bids were settled.',
   HOST_CLOSED: 'The host closed the room before bidding started.',
 };
-export interface Room { code:string; name:string; hostId:string; status:'WAITING'|'LIVE'|'PAUSED'|'RESULT'|'COMPLETED'|'CLOSED'; settings:Settings; bidRule?:'tiered-v1'; members:Member[]; teams:Team[]; players:Player[]; currentPlayerIndex:number; currentBid:number; leadingTeamId:string|null; deadline:number|null; pausedRemaining:number; resultAt:number|null; extensions:number; version:number; history:AuctionEvent[]; createdAt:number; pauseReason?:string; blockedUserIds?:string[]; completion_reason?:CompletionReason }
+export interface Room { code:string; name:string; hostId:string; status:'WAITING'|'LIVE'|'PAUSED'|'RESULT'|'COMPLETED'|'CLOSED'; settings:Settings; bidRule?:'tiered-v1'; members:Member[]; teams:Team[]; players:Player[]; currentPlayerIndex:number; currentBid:number; leadingTeamId:string|null; deadline:number|null; pausedRemaining:number; resultAt:number|null; extensions:number; version:number; history:AuctionEvent[]; historyTruncated?:boolean; createdAt:number; pauseReason?:string; blockedUserIds?:string[]; completion_reason?:CompletionReason }
 export const money = (lakhs:number) => lakhs >= 100 ? `₹${(lakhs/100).toFixed(2)} Cr` : `₹${lakhs} L`;
 /** Unversioned persisted rooms retain the flat increment they were created with. */
 export function bidIncrement(room: Room, amount: number) {

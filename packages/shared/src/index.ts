@@ -22,13 +22,13 @@ const updateSettingsSchema = z.custom<z.input<typeof settingsSchema>>(
  value => settingsErrors(value).length === 0, 'Complete valid room settings are required.',
 ).pipe(settingsSchema);
 export const actionSchema = z.discriminatedUnion('type', [
- z.object({id:z.string().min(1).max(100),type:z.literal('update-settings'),settings:updateSettingsSchema}).strict(),
- z.object({id:z.string().min(1).max(100),type:z.literal('leave')}).strict(),
- z.object({id:z.string().min(1).max(100),type:z.literal('remove-member'),memberId:z.string().min(1).max(200)}).strict(),
- z.object({id:z.string().min(1).max(100),type:z.literal('claim'),teamId:z.string()}).strict(),
- z.object({id:z.string().min(1).max(100),type:z.literal('ready')}).strict(),
- z.object({id:z.string().min(1).max(100),type:z.literal('bid'),amount:z.number().int().positive(),playerId:z.string()}).strict(),
- ...(['start','pause','resume','next','end'] as const).map(type => z.object({id:z.string().min(1).max(100),type:z.literal(type)}).strict()),
+ z.object({expectedVersion:z.number().int().nonnegative().optional(),id:z.string().min(1).max(100),type:z.literal('update-settings'),settings:updateSettingsSchema}).strict(),
+ z.object({expectedVersion:z.number().int().nonnegative().optional(),id:z.string().min(1).max(100),type:z.literal('leave')}).strict(),
+ z.object({expectedVersion:z.number().int().nonnegative().optional(),id:z.string().min(1).max(100),type:z.literal('remove-member'),memberId:z.string().min(1).max(200)}).strict(),
+ z.object({expectedVersion:z.number().int().nonnegative().optional(),id:z.string().min(1).max(100),type:z.literal('claim'),teamId:z.string()}).strict(),
+ z.object({expectedVersion:z.number().int().nonnegative().optional(),id:z.string().min(1).max(100),type:z.literal('ready')}).strict(),
+ z.object({expectedVersion:z.number().int().nonnegative().optional(),id:z.string().min(1).max(100),type:z.literal('bid'),amount:z.number().int().positive(),playerId:z.string()}).strict(),
+ ...(['start','pause','resume','next','end'] as const).map(type => z.object({expectedVersion:z.number().int().nonnegative().optional(),id:z.string().min(1).max(100),type:z.literal(type)}).strict()),
 ]);
 export type Action = z.infer<typeof actionSchema>;
 

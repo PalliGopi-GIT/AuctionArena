@@ -10,6 +10,7 @@ import { RuleError } from '../../../packages/engine/src/index';
 import { LocalRoomStore } from '../../realtime/src/store';
 import { ClerkProfiles, clerkProfileLookup, type ClerkProfileLookup } from './clerk-profiles';
 import { Accounts, clerkUserDeletion, type DeleteClerkUser } from './accounts';
+import { roomSnapshot } from '../../../packages/shared/src/room-sync';
 
 export interface AppOptions {
   localDevAuth:boolean; clerkSecret?:string; clerkJwtKey?:string; clerkIssuer?:string;
@@ -72,7 +73,7 @@ export function createApp(store:LocalRoomStore,options:AppOptions) {
     if(store.accountUnavailable(user.id))return c.json({code:'ACCOUNT_DELETED',message:'This account no longer has access.'},401);
     c.set('user',user);c.set('localIdentity',localIdentity);c.set('firstFactorAge',firstFactorAge);await next();
   });
-  app.get('/api/me',c=>c.json({user:c.get('user'),rooms:store.list(c.get('user'))}));
+  app.get('/api/me',c=>c.json({user:c.get('user'),rooms:store.list(c.get('user')).map(roomSnapshot)}));
   app.patch('/api/me',async c=>{
     const body=z.object({displayName:z.string()}).strict().parse(await c.req.json());
     return c.json({user:store.setDisplayName(c.get('user'),body.displayName)});
@@ -89,14 +90,16 @@ export function createApp(store:LocalRoomStore,options:AppOptions) {
     store.requestAccountDeletion(user.id,c.get('localIdentity'));
     return c.json({accepted:true,message:'Account deletion is queued. Access has ended.'},202);
   });
-  app.post('/api/rooms',async c=>c.json({...store.create(c.get('user'),settingsSchema.parse(await c.req.json())),serverNow:Date.now()},201));
-  app.post('/api/rooms/:code/join',async c=>{const body=z.object({inviteToken:z.string().max(200)}).strict().parse(await c.req.json());return c.json({room:store.join(c.req.param('code').toUpperCase(),c.get('user'),body.inviteToken),serverNow:Date.now()});});
-  app.get('/api/rooms/:code',c=>c.json({room:store.get(c.req.param('code').toUpperCase(),c.get('user'),true),serverNow:Date.now()}));
-  app.post('/api/rooms/:code/invite',c=>c.json({...store.rotateInvite(c.req.param('code').toUpperCase(),c.get('user')),serverNow:Date.now()}));
+  app.post('/api/rooms',async c=>{const created=store.create(c.get('user'),settingsSchema.parse(await c.req.json()));return c.json({...created,room:roomSnapshot(created.room),serverNow:Date.now()},201);});
+  app.post('/api/rooms/:code/join',async c=>{const body=z.object({inviteToken:z.string().max(200)}).strict().parse(await c.req.json());return c.json({room:roomSnapshot(store.join(c.req.param('code').toUpperCase(),c.get('user'),body.inviteToken)),serverNow:Date.now()});});
+  app.get('/api/rooms/:code',c=>c.json({room:roomSnapshot(store.get(c.req.param('code').toUpperCase(),c.get('user'),true)),serverNow:Date.now()}));
+  app.get('/api/rooms/:code/history',c=>c.json(store.history(c.req.param('code').toUpperCase(),c.get('user'),c.req.query('before')===undefined?undefined:Number(c.req.query('before')),Number(c.req.query('limit')??100))));
+  app.get('/api/rooms/:code/sync',c=>c.json({...store.sync(c.req.param('code').toUpperCase(),c.get('user'),Number(c.req.query('afterVersion'))),serverNow:Date.now()}));
+  app.post('/api/rooms/:code/invite',c=>{const renewed=store.rotateInvite(c.req.param('code').toUpperCase(),c.get('user'));return c.json({...renewed,room:roomSnapshot(renewed.room),serverNow:Date.now()});});
   app.post('/api/rooms/:code/actions',async c=>{
     const code=c.req.param('code').toUpperCase(),user=c.get('user');store.get(code,user);
-    try{const action=actionSchema.parse(await c.req.json());const room=store.action(code,user,action);return c.json(action.type==='leave'?{left:true,serverNow:Date.now()}:{room,serverNow:Date.now()});}
-    catch(error){if(error instanceof RuleError)return c.json({code:error.code,message:error.message,requestId:randomBytes(8).toString('hex'),room:store.get(code,user),serverNow:Date.now()},400);throw error;}
+    try{const action=actionSchema.parse(await c.req.json());const room=store.action(code,user,action);return c.json(action.type==='leave'?{left:true,serverNow:Date.now()}:{room:roomSnapshot(room),serverNow:Date.now()});}
+    catch(error){if(error instanceof RuleError)return c.json({code:error.code,message:error.message,requestId:randomBytes(8).toString('hex'),room:roomSnapshot(store.get(code,user)),serverNow:Date.now()},400);throw error;}
   });
   app.post('/api/rooms/:code/ws-ticket',c=>{const code=c.req.param('code').toUpperCase();store.get(code,c.get('user'));for(const [key,value] of tickets)if(value.expires<=Date.now())tickets.delete(key);const ticket=randomBytes(32).toString('base64url');tickets.set(ticket,{user:c.get('user'),code,expires:Date.now()+30000});return c.json({ticket});});
   return {app,processAccounts:()=>accounts.process(),consumeTicket(token:string){const ticket=tickets.get(token);tickets.delete(token);return ticket&&ticket.expires>Date.now()&&!store.accountUnavailable(ticket.user.id)?ticket:null;}};

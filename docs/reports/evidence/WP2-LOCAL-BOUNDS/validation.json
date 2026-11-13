@@ -1,0 +1,70 @@
+{
+    "task":  "WP2-LOCAL-BOUNDS",
+    "status":  "passed-local-scope",
+    "date":  "2026-11-13",
+    "baseCommit":  "9040a3888458a1a1513d92f1d737bb1d6d95fc6b",
+    "workingTreeChanges":  true,
+    "commitCreated":  false,
+    "isolation":  "Temporary source copy, node_modules junction, temporary local identities/data; private environment and original data not copied",
+    "typecheck":  {
+                      "exitCode":  0,
+                      "command":  "npx.cmd tsc --noEmit",
+                      "log":  "typecheck.log"
+                  },
+    "build":  {
+                  "status":  "passed",
+                  "command":  "Vite production build with configLoader runner; also built by scripts/e2e-web.mjs before both browser suites",
+                  "warnings":  "Dependency comment annotation warnings from zod; no build error",
+                  "log":  "browser/servers.log"
+              },
+    "core":  {
+                 "passed":  174,
+                 "failed":  0,
+                 "command":  "npx.cmd vitest run tests/core --configLoader runner --reporter=json --outputFile=../core-final.json",
+                 "success":  true,
+                 "skipped":  0,
+                 "report":  "core.json"
+             },
+    "local":  {
+                  "passed":  76,
+                  "note":  "The unchanged runner still labels its raw output WP1-ROOM-COMPLETION; this is a new run against the WP2 working tree",
+                  "exitCode":  0,
+                  "failed":  0,
+                  "command":  "npm.cmd run test:local",
+                  "report":  "local/local-tests.json",
+                  "skipped":  0
+              },
+    "browser":  {
+                    "axeScans":  34,
+                    "flaky":  0,
+                    "report":  "browser/results.json",
+                    "passed":  34,
+                    "command":  "npm.cmd run test:e2e",
+                    "skipped":  0,
+                    "axeViolations":  0,
+                    "axeIncompleteRuleEntries":  28,
+                    "globalErrors":  0,
+                    "failed":  0
+                },
+    "a11y":  {
+                 "axeScans":  32,
+                 "flaky":  0,
+                 "report":  "a11y/results.json",
+                 "passed":  4,
+                 "command":  "npm.cmd run test:a11y",
+                 "skipped":  0,
+                 "axeViolations":  0,
+                 "axeIncompleteRuleEntries":  26,
+                 "globalErrors":  0,
+                 "exitCode":  0,
+                 "failed":  0
+             },
+    "sourceManifest":  "tested-source.json",
+    "limits":  [
+                   "Local single-process evidence only; no cloud runtime or production/capacity claim",
+                   "Legacy receipts above the new cap are preserved; no whole-database size bound",
+                   "Bounded snapshots plus replay, not state deltas; expired history is not archived",
+                   "Human accessibility and live Clerk provider challenge/deletion/webhook checks remain open"
+               ],
+    "next":  "Report and stop before storage ports / Cloudflare implementation"
+}

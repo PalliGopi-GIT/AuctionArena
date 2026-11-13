@@ -1,6 +1,7 @@
 import type { Room, User } from '../../../packages/shared/src/domain';
 import { RuleError } from '../../../packages/engine/src/index';
 import type { LocalRoomStore } from '../../realtime/src/store';
+import { roomSnapshot } from '../../../packages/shared/src/room-sync';
 
 interface RoomSocket {
   readyState: number;
@@ -20,7 +21,8 @@ export function attachRoomSocket(store: LocalRoomStore, code: string, user: User
     if (room.code !== code || socket.readyState !== 1) return false;
     try { store.get(code, user); } catch (error) { fail(error); return false; }
     if (socket.bufferedAmount > 256 * 1024) { socket.close(1013, 'Slow connection; reconnect'); return false; }
-    socket.send(JSON.stringify({ type: 'snapshot', room, serverNow: clock() }));
+    try { socket.send(JSON.stringify({ type: 'snapshot', room: roomSnapshot(room), serverNow: clock() })); }
+    catch (error) { fail(error); return false; }
     return true;
   };
   try { if (!send(store.get(code, user, true))) return; }

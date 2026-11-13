@@ -1,3 +1,7 @@
+# SUPERSEDED by Cloudflare architecture v3.0
+
+Historical undeployed foundation; do not deploy. Retained until owner-approved later cleanup.
+
 # AWS foundation — not deployed
 
 The selected Region is **ap-south-1 (Mumbai)** and the named profile is **AuctionArena**, as updated by the user on 11 November 2026. These supersede the earlier Sydney/profile instructions. Confirm the selected Region in **AWS Settings → View all projects → Overview → Additional Info → Region**. The `us-east-1` toolkit endpoint does not change the resource Region.

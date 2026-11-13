@@ -1,15 +1,15 @@
+import { validateRoomRecovery } from '../../../packages/room-runtime/src/recovery';
 import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { createHash, randomBytes } from 'node:crypto';
 import { EventEmitter } from 'node:events';
 import type { Room, User } from '../../../packages/shared/src/domain';
-import { completionReasons, validBidOnLadder } from '../../../packages/shared/src/domain';
-import { bidReserve } from '../../../packages/shared/src/bid-rules';
 import type { Settings, Action } from '../../../packages/shared/src/index';
 import { applyAction, createRoom, event, RuleError, tick } from '../../../packages/engine/src/index';
 import { normalizeProfileName, profileNameError, profileNameKey } from '../../../packages/shared/src/profile-rules';
+import { HEARTBEAT_FLUSH_MS, SNAPSHOT_EVENTS, roomSnapshot, type HistoryPage } from '../../../packages/shared/src/room-sync';
+import { advanceRoom, applyStoredAction, boundStoredRoom, type StoredRoom } from '../../../packages/room-runtime/src/record';
 
-interface StoredRoom { room:Room; inviteHash:string; inviteExpires:number; receipts:Record<string,{fingerprint:string}> }
 interface ProfileRecord { name:string; fetchedAt:number; customName?:string; providerVersion?:number }
 interface DeletionRecord { subject?:string; requestedAt:number; attempts:number; retryAt:number; providerDeleted:boolean; completedAt?:number }
 interface Database {rooms:Record<string,StoredRoom>;sessions:Record<string,{user:User;expires:number}>;profiles?:Record<string,ProfileRecord>;deletions?:Record<string,DeletionRecord>}
@@ -29,63 +29,18 @@ function validateRecovery(db:Database) {
   invariant(!!db.deletions&&typeof db.deletions==='object'&&!Array.isArray(db.deletions),'Deletion schema');
   for(const [key,job] of Object.entries(db.deletions)) invariant(/^[a-f0-9]{64}$/.test(key)&&!!job&&Number.isFinite(job.requestedAt)&&job.requestedAt>=0&&Number.isSafeInteger(job.attempts)&&job.attempts>=0&&Number.isFinite(job.retryAt)&&typeof job.providerDeleted==='boolean'&&(job.completedAt===undefined?typeof job.subject==='string'&&digest(job.subject)===key:Number.isFinite(job.completedAt)&&job.subject===undefined),'Deletion');
  }
- for(const {room} of Object.values(db.rooms)) {
-  invariant(room.bidRule===undefined||room.bidRule==='tiered-v1','Bid rule');
-  if(room.completion_reason!==undefined) {
-   invariant(completionReasons.includes(room.completion_reason),'Completion reason');
-   invariant(room.status==='CLOSED'?room.completion_reason==='HOST_CLOSED':room.status==='COMPLETED'&&room.completion_reason!=='HOST_CLOSED','Completion state');
-  }
-  const purchased=new Set<string>();
-  invariant(new Set(room.players.map(p=>p.id)).size===room.players.length,'Player identity');
-  invariant(new Set(room.teams.map(t=>t.id)).size===room.teams.length,'Team identity');
-  for(const team of room.teams) {
-   invariant(Number.isSafeInteger(team.budget)&&team.budget>=0&&team.budget+team.squad.reduce((sum,p)=>sum+p.price,0)===room.settings.budget,'Budget');
-   invariant(team.squad.length<=room.settings.maxSquad,'Squad');
-   for(const purchase of team.squad) {
-    const player=room.players.find(p=>p.id===purchase.playerId);
-    invariant(Number.isSafeInteger(purchase.price)&&purchase.price>0&&!purchased.has(purchase.playerId)&&player?.status==='sold'&&player.soldTo===team.id&&player.soldPrice===purchase.price,'Sale');
-    purchased.add(purchase.playerId);
-   }
-  }
-  for(const player of room.players) invariant(player.status==='sold'?purchased.has(player.id):player.soldTo===undefined&&player.soldPrice===undefined,'Sale');
-  const open=room.players.filter(p=>p.status==='open');
-  const active=room.status==='LIVE'||room.status==='PAUSED';
-  invariant(open.length===(active?1:0),'Open lot');
-  if(active) {
-   const player=room.players[room.currentPlayerIndex];
-   invariant(player?.status==='open','Current player');
-   invariant(room.status==='LIVE'?Number.isFinite(room.deadline)&&room.deadline!==null:room.deadline===null&&Number.isFinite(room.pausedRemaining)&&room.pausedRemaining>=0,'Deadline');
-   invariant(Number.isSafeInteger(room.currentBid)&&room.currentBid>=0,'Bid');
-   if(room.leadingTeamId===null) invariant(room.currentBid===0,'Bid');
-   else {
-    const team=room.teams.find(t=>t.id===room.leadingTeamId);
-    invariant(!!team?.ownerId&&room.members.some(m=>m.id===team?.ownerId),'Leader');
-    invariant(!!team&&team.budget>=room.currentBid&&validBidOnLadder(room,player!.basePrice,room.currentBid)&&team.squad.length<room.settings.maxSquad,'Bid');
-    const overseas=team!.squad.filter(s=>room.players.find(p=>p.id===s.playerId)?.overseas).length;
-    const reserve=bidReserve(room,team!);
-    invariant(team!.budget-room.currentBid>=reserve&&(!player!.overseas||overseas<room.settings.maxOverseas),'Bid eligibility');
-   }
-  }
- }
+ for(const {room} of Object.values(db.rooms))validateRoomRecovery(room);
 }
-function advanceRoom(room:Room,now:number) {
- const host=room.members.find(m=>m.id===room.hostId);
- const absentAt=host?host.lastSeen+10000:now;
- for(const member of room.members) if(member.connected&&now-member.lastSeen>10000) {
-  member.connected=false;event(room,now,'disconnected',member.name+' disconnected.',member.id);
- }
- const pause=(at:number)=>{room.pausedRemaining=Math.max(0,room.deadline!-at);room.deadline=null;room.status='PAUSED';room.pauseReason='Host disconnected. Waiting for the host to return.';event(room,now,'paused',room.pauseReason);};
- // A delayed scheduler must apply host expiry before a later bidding deadline.
- if(room.status==='LIVE'&&!host?.connected&&absentAt<room.deadline!)pause(Math.min(now,absentAt));
- tick(room,now);
- // Auto-advance may have opened another lot while the host was away.
- if(room.status==='LIVE'&&!host?.connected)pause(now);
-}
-/** Development adapter. Exactly one process may own this file. Never use on ECS. */
+/** Development adapter. Exactly one process may own this file. */
 export class LocalRoomStore extends EventEmitter {
  private db:Database={rooms:{},sessions:{}};
+ private heartbeatDirty=false;
+ private lastFlush=0;
  constructor(private path:string|null,private clock:()=>number=Date.now){super();if(path){try{this.db=JSON.parse(readFileSync(path,'utf8')) as Database;}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;}validateRecovery(this.db);const next=structuredClone(this.db);for(const entry of Object.values(next.rooms)){for(const member of entry.room.members)member.connected=false;tick(entry.room,this.clock());if(entry.room.status==='LIVE'){entry.room.pausedRemaining=Math.max(0,entry.room.deadline!-this.clock());entry.room.deadline=null;entry.room.status='PAUSED';entry.room.pauseReason='Service restarted; host must resume';event(entry.room,this.clock(),'paused',entry.room.pauseReason);}}this.commit(next);}}
- private commit(next:Database){if(this.path){mkdirSync(dirname(this.path),{recursive:true});const temp=`${this.path}.tmp`;writeFileSync(temp,JSON.stringify(next),{encoding:'utf8',flush:true});renameSync(temp,this.path);}this.db=next;}
+ private commit(next:Database){
+  for(const entry of Object.values(next.rooms))boundStoredRoom(entry);
+  if(this.path){mkdirSync(dirname(this.path),{recursive:true});const temp=`${this.path}.tmp`;writeFileSync(temp,JSON.stringify(next),{encoding:'utf8',flush:true});renameSync(temp,this.path);}this.db=next;this.heartbeatDirty=false;this.lastFlush=this.clock();
+ }
  session(name:string){const token=randomBytes(32).toString('base64url');const user={id:`local_${randomBytes(12).toString('hex')}`,name};const next=structuredClone(this.db);next.sessions[digest(token)]={user,expires:this.clock()+7*86400000};this.commit(next);return {token,user};}
  authenticate(token:string){const session=this.db.sessions[digest(token)];return session&&session.expires>this.clock()&&!this.accountUnavailable(session.user.id)?session.user:null;}
  accountUnavailable(userId:string){return !!this.db.deletions?.[digest(userId)];}
@@ -156,7 +111,7 @@ export class LocalRoomStore extends EventEmitter {
   this.commit(next);for(const room of changed)this.emit('room',room);
  }
  list(user:User){this.active(user.id);return Object.values(this.db.rooms).filter(e=>!e.room.blockedUserIds?.includes(user.id)&&e.room.members.some(m=>m.id===user.id)).map(e=>structuredClone(e.room));}
- get(code:string,user:User,heartbeat=false){this.active(user.id);const entry=this.db.rooms[code];if(!entry)throw new RuleError('ROOM_NOT_FOUND','Room unavailable. Check your invitation or ask the host for access.');if(entry.room.blockedUserIds?.includes(user.id))throw new RuleError('ROOM_BLOCKED','The host removed you from this room.');if(!entry.room.members.some(m=>m.id===user.id))throw new RuleError('ROOM_NOT_FOUND','Room unavailable. Check your invitation or ask the host for access.');if(heartbeat){this.sweep();const next=structuredClone(this.db);const room=next.rooms[code]!.room;const member=room.members.find(m=>m.id===user.id)!;const changed=!member.connected;member.lastSeen=this.clock();member.connected=true;if(changed)event(room,this.clock(),'connected',`${member.name} reconnected.`,user.id);this.commit(next);if(changed)this.emit('room',room);}return structuredClone(this.db.rooms[code]!.room);}
+ get(code:string,user:User,heartbeat=false){this.active(user.id);const entry=this.db.rooms[code];if(!entry)throw new RuleError('ROOM_NOT_FOUND','Room unavailable. Check your invitation or ask the host for access.');if(entry.room.blockedUserIds?.includes(user.id))throw new RuleError('ROOM_BLOCKED','The host removed you from this room.');if(!entry.room.members.some(m=>m.id===user.id))throw new RuleError('ROOM_NOT_FOUND','Room unavailable. Check your invitation or ask the host for access.');if(heartbeat){this.sweep();const current=this.db.rooms[code]!.room.members.find(m=>m.id===user.id)!;if(current.connected){current.lastSeen=this.clock();this.heartbeatDirty=true;return structuredClone(this.db.rooms[code]!.room);}const next=structuredClone(this.db);const room=next.rooms[code]!.room;const member=room.members.find(m=>m.id===user.id)!;const changed=!member.connected;member.lastSeen=this.clock();member.connected=true;if(changed)event(room,this.clock(),'connected',`${member.name} reconnected.`,user.id);this.commit(next);if(changed)this.emit('room',room);}return structuredClone(this.db.rooms[code]!.room);}
  create(user:User,settings:Settings){this.active(user.id);if(this.list(user).filter(r=>!['COMPLETED','CLOSED'].includes(r.status)).length>=10)throw new RuleError('ROOM_LIMIT','Local preview allows 10 active rooms per host.');let code;do{code=randomBytes(4).toString('hex').slice(0,6).toUpperCase();}while(this.db.rooms[code]);const token=randomBytes(32).toString('base64url');const room=createRoom(code,user,settings,this.clock());const next=structuredClone(this.db);next.rooms[code]={room,inviteHash:digest(token),inviteExpires:this.clock()+86400000,receipts:{}};this.commit(next);return {room:structuredClone(room),inviteToken:token};}
  join(code:string,user:User,token:string){this.active(user.id);const entry=this.db.rooms[code];if(!entry)throw new RuleError('ROOM_NOT_FOUND','Room unavailable. Check your invitation or ask the host for access.');if(entry.room.blockedUserIds?.includes(user.id))throw new RuleError('ROOM_BLOCKED','The host removed you from this room.');if(entry.room.members.some(m=>m.id===user.id))return this.get(code,user,true);if(entry.inviteExpires<=this.clock()||digest(token)!==entry.inviteHash)throw new RuleError('ROOM_NOT_FOUND','Room unavailable. Check your invitation or ask the host for access.');if(['COMPLETED','CLOSED'].includes(entry.room.status))throw new RuleError('ROOM_NOT_FOUND','Room unavailable. Check your invitation or ask the host for access.');if(entry.room.status!=='WAITING'&&!entry.room.settings.spectators)throw new RuleError('ROOM_NOT_FOUND','Room unavailable. Check your invitation or ask the host for access.');if(entry.room.members.filter(m=>!entry.room.blockedUserIds?.includes(m.id)).length>=20)throw new RuleError('ROOM_NOT_FOUND','Room unavailable. Check your invitation or ask the host for access.');const next=structuredClone(this.db);const room=next.rooms[code]!.room;room.members.push({...user,connected:true,ready:false,lastSeen:this.clock()});event(room,this.clock(),'joined',`${user.name} joined the room.`,user.id);this.commit(next);this.emit('room',room);return structuredClone(room);}
  rotateInvite(code:string,user:User) {
@@ -170,6 +125,25 @@ export class LocalRoomStore extends EventEmitter {
   this.commit(next);this.emit('room',entry.room);
   return {room:structuredClone(entry.room),inviteToken:token};
  }
- action(code:string,user:User,action:Action){this.get(code,user);this.sweep();const entry=this.db.rooms[code]!;const key=`${user.id}:${action.id}`;const fingerprint=digest(JSON.stringify(action));if(entry.receipts[key]){if(entry.receipts[key]!.fingerprint!==fingerprint)throw new RuleError('ID_REUSED','Action ID was reused with different content.');return structuredClone(entry.room);}const room=applyAction(entry.room,user.id,action,this.clock());const next=structuredClone(this.db);next.rooms[code]!.room=room;next.rooms[code]!.receipts[key]={fingerprint};this.commit(next);this.emit('room',room);return structuredClone(room);}
- sweep(){const next=structuredClone(this.db);const changed:Room[]=[];const now=this.clock();for(const entry of Object.values(next.rooms)){const room=entry.room;const before=room.version;advanceRoom(room,now);if(room.version!==before)changed.push(room);}if(changed.length){this.commit(next);for(const room of changed)this.emit('room',room);}}
+ action(code:string,user:User,action:Action){this.get(code,user);this.sweep();const entry=this.db.rooms[code]!;
+  const updated=applyStoredAction(entry,user,action,this.clock(),digest(JSON.stringify(action)));if(updated===entry)return structuredClone(entry.room);
+  const next=structuredClone(this.db);next.rooms[code]=updated;this.commit(next);this.emit('room',updated.room);return structuredClone(updated.room);
+ }
+ history(code:string,user:User,before?:number,limit=100):HistoryPage{
+  const room=this.get(code,user);
+  if(!Number.isSafeInteger(limit)||limit<1||limit>100||before!==undefined&&(!Number.isSafeInteger(before)||before<0))throw new RuleError('INVALID_CURSOR','Invalid history page.');
+  const eligible=room.history.filter(item=>before===undefined||item.version<before);
+  const events=eligible.slice(-limit).reverse();
+  return {events,nextBefore:eligible.length>events.length?events.at(-1)!.version:null,truncated:!!room.historyTruncated};
+ }
+ sync(code:string,user:User,afterVersion:number){
+  const room=this.get(code,user,true);
+  if(!Number.isSafeInteger(afterVersion)||afterVersion<0)throw new RuleError('INVALID_CURSOR','Invalid replay version.');
+  const events=room.history.filter(item=>item.version>afterVersion);
+  const resetRequired=afterVersion>room.version||afterVersion<(room.history[0]?.version??room.version+1)-1||events.length>SNAPSHOT_EVENTS;
+  const snapshot=roomSnapshot(room);
+  const overBudget=new TextEncoder().encode(JSON.stringify({room:snapshot,events})).byteLength>124*1024;
+  return {room:snapshot,replay:{afterVersion,resetRequired:resetRequired||overBudget,events:resetRequired||overBudget?[]:events}};
+ }
+ sweep(){const next=structuredClone(this.db);const changed:Room[]=[];const now=this.clock();for(const entry of Object.values(next.rooms)){const room=entry.room;const before=room.version;advanceRoom(room,now);if(room.version!==before)changed.push(room);}if(changed.length||this.heartbeatDirty&&now-this.lastFlush>=HEARTBEAT_FLUSH_MS){this.commit(next);for(const room of changed)this.emit('room',room);}}
 }

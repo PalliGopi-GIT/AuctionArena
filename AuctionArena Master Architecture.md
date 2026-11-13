@@ -1,3 +1,62 @@
+# AuctionArena Cloudflare architecture restoration
+
+**Status:** Restored target from the v1.1-to-v2.0 changelog and deviation register. The owner authorized Phase 2 local hardening on 13 November 2026; its scope and limits are recorded separately. This is not a claim that the Cloudflare runtime is implemented, deployed, production-ready, or tested at 1,000 users. The original v1.1 and blueprint were not found in the repository, so this restoration does not claim to reproduce their missing text. Only the changes supported by the recorded map and the owner's subsequent directions are stated as decisions; unresolved details remain open below.
+
+## Restored target and retained application
+
+- React, Vite and TypeScript remain the frontend. Hono on Cloudflare Workers handles HTTP API and static assets; Clerk authentication remains verified server-side. The pure TypeScript auction engine remains the rules authority.
+- Route a room code deterministically to its room Durable Object with `idFromName`; a separate room-code cache is not required. A derived ID or stub does not establish room existence, membership or permission. Authenticated, authorized creation, reads, joins, sockets and private/nonexistent-room responses must be implemented and tested explicitly.
+- One SQLite-backed Durable Object per room is the authoritative room writer. Store the room, accepted bids, history and action receipts durably; execute related bid/receipt and settlement changes atomically and acknowledge only after persistence. Explicit transaction and interleaving behavior, retry handling and recovery must be verified rather than inferred solely from single-writer ownership.
+- Use WebSocket hibernation for connected clients and Durable Object alarms for due work and recovery. Persist state needed after hibernation; in-memory state is a cache. Each object has one alarm slot, so multiple logical deadlines require durable scheduling of the next due item. Alarm retries and duplicate delivery require idempotent handlers; one writer or an alarm alone does not prove exactly-once settlement. [Cloudflare alarm documentation](https://developers.cloudflare.com/durable-objects/api/alarms/).
+- Preserve the existing local runtime until a tested equivalent exists. Preserve existing rooms, accepted bids, fixtures 139DCB and 19B480, tests and evidence. New rooms use +10 lakh below 200, +20 from 200 through 500 inclusive, and +25 above 500; existing rooms keep their flat rules. The historical v2 money text below is not the authority for the 200 boundary.
+- No AWS, Firebase, Convex or Neon target. R2 is optional and inactive. No deployment, account or setting creation, R2 activation, payment card, cost or production migration without explicit owner approval. Budget is $0 out of pocket.
+
+## Recorded reversal: changelog D1–D12
+
+| Change | Restored direction or retained exception |
+| --- | --- |
+| D1 | Restore Workers and Durable Objects for the target; the later infrastructure is superseded and retained. |
+| D2 | Retain Clerk by explicit owner instruction; do not restore custom password, JWT or session handling. |
+| D3 | Restore SQLite-backed per-room state instead of the later shared live-state model. |
+| D4 | Restore one room Durable Object as writer; do not use the later lease/fencing ownership mechanism for the target. |
+| D5 | Restore Durable Object alarms for deadlines and recovery; the single-slot schedule and retries need implementation and tests. |
+| D6 | Restore per-room socket broadcast with hibernation; bounded snapshots and replay exist locally, with the Cloudflare equivalent still to implement and verify. |
+| D7 | Restore hibernation, per-object schema evolution and wake/recovery handling. The original Turnstile proposal requires a separate security decision; do not activate it. The old room-code cache is replaced by the owner's deterministic-routing direction. |
+| D8 | Supersede the later ownership and service-specific models; retain general correctness, backpressure and failure-test requirements. |
+| D9 | Restore the Cloudflare target across API, room runtime, security, operations and diagrams; retain Clerk and mark unrecovered v1.1 details open. |
+| D10 | Replace platform-specific delivery assumptions with Cloudflare-local work and approved deployment gates; keep reliability testing and review. |
+| D11 | Preserve the v2 deviation register as the historical reversal map, not as active target guidance. |
+| D12 | Use room Durable Object and wake/recovery terminology. |
+
+## Recorded reversal: stack deviations S1–S12
+
+| Register | Restored direction or retained exception |
+| --- | --- |
+| S1–S6 | Workers/Hono; one room Durable Object; embedded SQLite; alarms; WebSocket hibernation. |
+| S7 | Keep Clerk rather than the earlier custom authentication stack. |
+| S8 | Turnstile was listed in the original blueprint; whether and how to use it remains an owner-reviewed security decision, with no activation authorized. |
+| S9 | Use deterministic room-code routing rather than the original KV lookup cache, per the owner's later instruction. |
+| S10 | The earlier external Postgres choice is not restored: the owner excludes Neon and requires Cloudflare as the target. Cross-room data ownership, querying and retention remain unresolved; do not silently substitute another provider. |
+| S11 | Retain suitable existing test and observability tools where compatible; no external service activation is implied. |
+| S12 | Capacity is unproven. Measured 100, 500 and 1,000 concurrent-user tests are future work, not a promise or approval to incur costs. |
+
+## Remaining architecture and implementation gaps
+
+1. Local package A implements batched heartbeat writes, bounded recent history/versioned receipts/snapshots, history paging and retained-event replay. Preserve its [legacy compatibility exceptions and limits](docs/plan/tasks/WP2-LOCAL-BOUNDS.md) in storage parity; it is not a global archive or a bound on the whole database.
+2. Define the storage port, SQLite schema/version migration, transaction and idempotency boundaries, and prove parity with the local adapter. Define result recovery after crashes and alarm retry exhaustion.
+3. Implement and locally test the Workers/Hono entry, Clerk verification, origin/session and room access checks, deterministic routing and private/nonexistent-room equivalence.
+4. Implement and locally test room Durable Object lifecycle, hibernation, alarms, backpressure, durable deadlines and single settlement under duplicate requests, crash and wake.
+5. Decide and implement a permitted cross-room index, room discovery, archive, tombstones, deletion and export. A room-local SQLite database cannot itself answer global queries. R2 remains optional and off.
+6. Establish limits and cost assumptions against official current Cloudflare documentation, test the Free plan and required abuse protections, and measure multi-room load at 100, 500 and 1,000 users only within separately approved constraints. Human accessibility, real Clerk challenge/deletion/webhook flows, monitoring, rollback and release approvals remain open.
+
+Work packages A–F and the gate before package B are recorded in [the transition plan](docs/plan/CLOUDFLARE-TRANSITION.md). The [source audit](docs/architecture/CLOUDFLARE-AUDIT.md) contains observed implementation boundaries. The full original v2 document is also preserved in [the historical archive](docs/archive/aws-v2/AuctionArena%20Master%20Architecture.md). The following v2 text is historical only; do not use its infrastructure instructions as the current target.
+
+---
+
+# SUPERSEDED by the Cloudflare restoration above
+
+This v2.0 document is historical, not the active target. Cloudflare v3.0 is pending owner review. See PROJECT_STATUS.md. The retained original is archived in docs/archive/aws-v2/.
+
 # AuctionArena Master Architecture
 
 *Version 2.0 · 10 Nov 2026 · Supersedes v1.1 (Cloudflare) · Source: AuctionArena Complete Build Blueprint plus the stack change directive of 10 Nov 2026. This document is the single source of truth for the application architecture and for the AI agent orchestration that builds it. Where it differs from the blueprint, this document wins and the change is listed in Section 12.*
