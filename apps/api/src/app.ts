@@ -7,6 +7,14 @@ import { z } from 'zod';
 import { randomBytes } from 'node:crypto';
 import { actionSchema, settingsSchema, type User } from '../../../packages/shared/src/index';
 import { RuleError } from '../../../packages/engine/src/index';
+/**
+ * Every room a user creates must run a real catalog pool (Quick/Standard/Mega).
+ * Legacy mode-less rooms still load from storage but can never be created, so no
+ * normal creation path can initialise fictional sample players.
+ */
+function requireAuctionMode(settings: { mode?: string }): void {
+  if (!settings.mode) throw new RuleError('MODE_REQUIRED', 'Choose an auction mode before creating a room.');
+}
 import { LocalRoomStore } from '../../realtime/src/store';
 import { ClerkProfiles, clerkProfileLookup, type ClerkProfileLookup } from './clerk-profiles';
 import { Accounts, clerkUserDeletion, type DeleteClerkUser } from './accounts';
@@ -92,7 +100,7 @@ export function createApp(store:LocalRoomStore,options:AppOptions) {
     store.requestAccountDeletion(user.id,c.get('localIdentity'));
     return c.json({accepted:true,message:'Account deletion is queued. Access has ended.'},202);
   });
-  app.post('/api/rooms',async c=>{const created=store.create(c.get('user'),settingsSchema.parse(await c.req.json()));return c.json({...created,room:roomSnapshot(created.room),serverNow:Date.now()},201);});
+  app.post('/api/rooms',async c=>{const settings=settingsSchema.parse(await c.req.json());requireAuctionMode(settings);const created=store.create(c.get('user'),settings);return c.json({...created,room:roomSnapshot(created.room),serverNow:Date.now()},201);});
   app.post('/api/rooms/:code/join',async c=>{const body=z.object({inviteToken:z.string().max(200).optional()}).strict().parse(await c.req.json());return c.json({room:roomSnapshot(store.join(c.req.param('code').toUpperCase(),c.get('user'),body.inviteToken)),serverNow:Date.now()});});
   app.get('/api/rooms/:code',c=>c.json({room:roomSnapshot(store.get(c.req.param('code').toUpperCase(),c.get('user'),true)),serverNow:Date.now()}));
   app.delete('/api/rooms/:code',c=>c.json({...store.deleteRoom(c.req.param('code').toUpperCase(),c.get('user')),serverNow:Date.now()}));

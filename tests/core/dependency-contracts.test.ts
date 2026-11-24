@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { serve } from '@hono/node-server';
 import { once } from 'node:events';
 import type { AddressInfo } from 'node:net';
-import { actionSchema, settingsSchema, type Room } from '../../packages/shared/src/index';
+import { actionSchema, settingsForMode, settingsSchema, type Room } from '../../packages/shared/src/index';
 import { createApp } from '../../apps/api/src/app';
 import { LocalRoomStore } from '../../apps/realtime/src/store';
 
@@ -82,7 +82,9 @@ describe('real Node HTTP adapter compatibility', () => {
       const request = (path: string, body: unknown) => fetch(`${base}${path}`, {
         method: 'POST', headers, body: JSON.stringify(body),
       });
-      const created = await request('/api/rooms', { name: '  Contract Room  ' });
+      // A real room now requires an auction mode; the contract under test is the
+      // name trimming and error shape, not legacy mode-less creation.
+      const created = await request('/api/rooms', { ...settingsForMode('standard'), name: '  Contract Room  ' });
       expect(created.status).toBe(201);
       expect(created.headers.get('access-control-allow-origin')).toBe(origin);
       const { room } = await created.json() as { room: Room };

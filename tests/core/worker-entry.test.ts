@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { generateKeyPairSync, sign } from 'node:crypto';
 import { createWorkerApp } from '../../apps/api/src/worker/app';
+import { settingsForMode } from '../../packages/shared/src/index';
 import type { DurableObjectIdLike, DurableObjectNamespaceLike, DurableObjectStubLike, IdentityVerifier, WorkerEnv } from '../../apps/api/src/worker/types';
 
 class FakeStub implements DurableObjectStubLike {
@@ -119,12 +120,18 @@ describe('Cloudflare Worker entry', () => {
     const app = createWorkerApp({ verify, generateCode: () => codes.shift()! });
     const response = await app.request('/api/rooms', {
       method: 'POST', headers: { ...auth(), 'Content-Type': 'application/json' },
-      body: JSON.stringify({ teamCount: 2, minSquad: 1, maxSquad: 2 }),
+      body: JSON.stringify({ ...settingsForMode('quick'), teamCount: 2 }),
     }, environment(room));
     expect(response.status).toBe(201);
     expect(await response.json()).toEqual({ room: { code: 'BBBBBB' }, inviteToken: 'invite' });
     expect(room.names).toEqual(['AAAAAA', 'BBBBBB']);
-    expect(bodies[0]).toMatchObject({ teamCount: 2, minSquad: 1, maxSquad: 2, name: 'Friday Night Auction' });
+    // The room body must forward the normalized settings for the chosen mode.
+    // Quick fixes the squad at 5, so only teamCount is caller-controlled here.
+    const expected = settingsForMode('quick', { teamCount: 2 });
+    expect(bodies[0]).toMatchObject({
+      mode: 'quick', teamCount: 2, minSquad: expected.minSquad, maxSquad: expected.maxSquad,
+      budget: expected.budget, maxOverseas: expected.maxOverseas, name: 'Friday Night Auction',
+    });
   });
 
   it('rejects invalid creation bodies and exhausted code allocation', async () => {
@@ -138,7 +145,7 @@ describe('Cloudflare Worker entry', () => {
     const full = new FakeNamespace(() => Response.json({ code: 'ROOM_EXISTS' }, { status: 409 }));
     const codes = ['AAAAAA', 'BBBBBB', 'CCCCCC', 'DDDDDD', 'EEEEEE'];
     const exhausted = await createWorkerApp({ verify, generateCode: () => codes.shift()! }).request('/api/rooms', {
-      method: 'POST', headers: { ...auth(), 'Content-Type': 'application/json' }, body: '{}',
+      method: 'POST', headers: { ...auth(), 'Content-Type': 'application/json' }, body: JSON.stringify(settingsForMode('quick')),
     }, environment(full));
     expect(exhausted.status).toBe(503);
     expect((await exhausted.json()).code).toBe('ROOM_CODE_UNAVAILABLE');

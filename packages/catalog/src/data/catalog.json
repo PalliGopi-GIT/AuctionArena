@@ -182,8 +182,8 @@
       "marquee": false,
       "battingStyle": "RHB",
       "bowlingStyle": "None",
-      "image": null,
-      "imageStatus": "unconverted"
+      "image": "/assets/players/P013.webp",
+      "imageStatus": "bundled"
     },
     {
       "id": "P014",
@@ -224,8 +224,8 @@
       "marquee": false,
       "battingStyle": "RHB",
       "bowlingStyle": "None",
-      "image": null,
-      "imageStatus": "unconverted"
+      "image": "/assets/players/P016.webp",
+      "imageStatus": "bundled"
     },
     {
       "id": "P017",
@@ -322,8 +322,8 @@
       "marquee": false,
       "battingStyle": "RHB",
       "bowlingStyle": "None",
-      "image": null,
-      "imageStatus": "unconverted"
+      "image": "/assets/players/P023.webp",
+      "imageStatus": "bundled"
     },
     {
       "id": "P024",
@@ -1722,8 +1722,8 @@
       "marquee": true,
       "battingStyle": "RHB",
       "bowlingStyle": "Right-arm fast",
-      "image": null,
-      "imageStatus": "unconverted"
+      "image": "/assets/players/P123.webp",
+      "imageStatus": "bundled"
     },
     {
       "id": "P124",
@@ -1736,8 +1736,8 @@
       "marquee": false,
       "battingStyle": "LHB",
       "bowlingStyle": "Right-arm off-break",
-      "image": null,
-      "imageStatus": "unconverted"
+      "image": "/assets/players/P124.webp",
+      "imageStatus": "bundled"
     },
     {
       "id": "P125",
@@ -1750,8 +1750,8 @@
       "marquee": false,
       "battingStyle": "LHB",
       "bowlingStyle": "Left-arm fast-medium",
-      "image": null,
-      "imageStatus": "unconverted"
+      "image": "/assets/players/P125.webp",
+      "imageStatus": "bundled"
     },
     {
       "id": "P126",
@@ -1918,8 +1918,8 @@
       "marquee": false,
       "battingStyle": "LHB",
       "bowlingStyle": "Right-arm fast-medium",
-      "image": null,
-      "imageStatus": "unconverted"
+      "image": "/assets/players/P137.webp",
+      "imageStatus": "bundled"
     },
     {
       "id": "P138",
@@ -1932,8 +1932,8 @@
       "marquee": false,
       "battingStyle": "RHB",
       "bowlingStyle": "Right-arm off-break",
-      "image": null,
-      "imageStatus": "unconverted"
+      "image": "/assets/players/P138.webp",
+      "imageStatus": "bundled"
     },
     {
       "id": "P139",
@@ -2128,8 +2128,8 @@
       "marquee": false,
       "battingStyle": "RHB",
       "bowlingStyle": "Right-arm fast-medium",
-      "image": null,
-      "imageStatus": "unconverted"
+      "image": "/assets/players/P152.webp",
+      "imageStatus": "bundled"
     },
     {
       "id": "P153",
@@ -2170,8 +2170,8 @@
       "marquee": false,
       "battingStyle": "RHB",
       "bowlingStyle": "Right-arm fast",
-      "image": null,
-      "imageStatus": "unconverted"
+      "image": "/assets/players/P155.webp",
+      "imageStatus": "bundled"
     },
     {
       "id": "P156",
@@ -2464,8 +2464,8 @@
       "marquee": false,
       "battingStyle": "RHB",
       "bowlingStyle": "Right-arm fast-medium",
-      "image": null,
-      "imageStatus": "unconverted"
+      "image": "/assets/players/P176.webp",
+      "imageStatus": "bundled"
     },
     {
       "id": "P177",
@@ -2562,8 +2562,8 @@
       "marquee": false,
       "battingStyle": "RHB",
       "bowlingStyle": "Right-arm fast-medium",
-      "image": null,
-      "imageStatus": "unconverted"
+      "image": "/assets/players/P183.webp",
+      "imageStatus": "bundled"
     },
     {
       "id": "P184",
@@ -2590,8 +2590,8 @@
       "marquee": false,
       "battingStyle": "LHB",
       "bowlingStyle": "Left-arm fast-medium",
-      "image": null,
-      "imageStatus": "unconverted"
+      "image": "/assets/players/P185.webp",
+      "imageStatus": "bundled"
     },
     {
       "id": "P186",
@@ -2688,8 +2688,8 @@
       "marquee": false,
       "battingStyle": "RHB",
       "bowlingStyle": "Right-arm fast-medium",
-      "image": null,
-      "imageStatus": "unconverted"
+      "image": "/assets/players/P192.webp",
+      "imageStatus": "bundled"
     },
     {
       "id": "P193",
@@ -2814,8 +2814,8 @@
       "marquee": false,
       "battingStyle": "LHB",
       "bowlingStyle": "Right-arm leg-break",
-      "image": null,
-      "imageStatus": "unconverted"
+      "image": "/assets/players/P201.webp",
+      "imageStatus": "bundled"
     },
     {
       "id": "P202",
@@ -3262,8 +3262,8 @@
       "marquee": false,
       "battingStyle": "RHB",
       "bowlingStyle": "Right-arm fast",
-      "image": null,
-      "imageStatus": "unconverted"
+      "image": "/assets/players/P233.webp",
+      "imageStatus": "bundled"
     },
     {
       "id": "P234",
@@ -3276,8 +3276,8 @@
       "marquee": false,
       "battingStyle": "RHB",
       "bowlingStyle": "Right-arm fast",
-      "image": null,
-      "imageStatus": "unconverted"
+      "image": "/assets/players/P234.webp",
+      "imageStatus": "bundled"
     },
     {
       "id": "P235",
@@ -3402,8 +3402,8 @@
       "marquee": false,
       "battingStyle": "RHB",
       "bowlingStyle": "Right-arm off-break",
-      "image": null,
-      "imageStatus": "unconverted"
+      "image": "/assets/players/P243.webp",
+      "imageStatus": "bundled"
     },
     {
       "id": "P244",
@@ -3444,8 +3444,8 @@
       "marquee": false,
       "battingStyle": "RHB",
       "bowlingStyle": "Right-arm leg-break",
-      "image": null,
-      "imageStatus": "unconverted"
+      "image": "/assets/players/P246.webp",
+      "imageStatus": "bundled"
     },
     {
       "id": "P247",
@@ -3472,8 +3472,8 @@
       "marquee": false,
       "battingStyle": "RHB",
       "bowlingStyle": "Left-arm orthodox",
-      "image": null,
-      "imageStatus": "unconverted"
+      "image": "/assets/players/P248.webp",
+      "imageStatus": "bundled"
     },
     {
       "id": "P249",
@@ -3500,8 +3500,8 @@
       "marquee": false,
       "battingStyle": "RHB",
       "bowlingStyle": "Right-arm leg-break",
-      "image": null,
-      "imageStatus": "unconverted"
+      "image": "/assets/players/P250.webp",
+      "imageStatus": "bundled"
     }
   ]
 }

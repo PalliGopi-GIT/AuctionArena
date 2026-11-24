@@ -33,12 +33,11 @@ async function fixture(options: { path?: string; now?: () => number; autoAdvance
   const hostSession = store.session(host.name), guestSession = store.session(guest.name);
   const hostUser = hostSession.user, guestUser = guestSession.user;
   const hostToken = hostSession.token, guestToken = guestSession.token;
-  const created = await app.request('/api/rooms', {
-    method: 'POST', headers: auth(hostToken),
-    body: JSON.stringify({ teamCount: 4, minSquad: 2, maxSquad: 8, maxOverseas: 4, autoAdvance: options.autoAdvance ?? false }),
-  });
-  expect(created.status).toBe(201);
-  const { room, inviteToken } = await created.json() as { room: Room; inviteToken: string };
+  // Explicitly isolated legacy fixture: plan previews may use either mode, which
+  // a fixed-mode HTTP room no longer allows, so it is created through the store.
+  const legacySettings = settingsSchema.parse({ teamCount: 4, minSquad: 2, maxSquad: 8, maxOverseas: 4, autoAdvance: options.autoAdvance ?? false });
+  const legacy = store.create(hostUser, legacySettings);
+  const room = legacy.room, inviteToken = legacy.inviteToken;
   store.join(room.code, guestUser, inviteToken);
   for (const [token, teamId] of [[hostToken, 't1'], [guestToken, 't2']] as const) {
     const response = await app.request(`/api/rooms/${room.code}/actions`, {
@@ -257,6 +256,9 @@ describe('WP-H room plan persistence and host-only access', () => {
   });
 
   it('keeps legacy rooms on the sample pool until a plan is approved', () => {
+    // Historical, mode-less rooms are the one place the legacy sample pool is
+    // legitimate; the HTTP creation paths never reach this shape (see the
+    // creation-mode-guard suite).
     const room = createRoom('LEGACY', host, settingsSchema.parse({}), 1000);
     expect(room.players[0]!.isSample).toBe(true);
     expect(room.plan).toBeUndefined();

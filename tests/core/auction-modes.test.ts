@@ -184,7 +184,10 @@ describe('pool feasibility before starting', () => {
     const owners = Array.from({ length: 10 }, (_, index) => ({ id: `owner_${index}`, name: `Owner ${index}`, connected: true, ready: false, lastSeen: now }));
     room.members.push(...owners);
     room.teams.forEach((team, index) => { team.ownerId = index === 0 ? host.id : owners[index]!.id; });
-    // Ten teams need 110 slots. The 24-player sample pool cannot satisfy them.
+    // Ten teams need 110 slots. A Standard room now seeds the real 120-player
+    // catalog pool, which satisfies them; only a genuinely short pool is blocked.
+    expect(startProblems(room).join(' ')).not.toMatch(/players but 10 teams need/i);
+    room.players = room.players.slice(0, 24);
     expect(startProblems(room).join(' ')).toMatch(/24 players but 10 teams need 110/i);
   });
 

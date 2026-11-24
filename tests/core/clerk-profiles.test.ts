@@ -7,7 +7,7 @@ import { ClerkProfiles, clerkProfileName, displayName, type ClerkProfile } from 
 import { LocalRoomStore } from '../../apps/realtime/src/store';
 import { attachRoomSocket } from '../../apps/api/src/room-socket';
 import { deriveAuctionResults } from '../../packages/results/src/index';
-import { actionSchema, settingsSchema, type Action } from '../../packages/shared/src/index';
+import { actionSchema, settingsForMode, settingsSchema, type Action } from '../../packages/shared/src/index';
 
 const keys = generateKeyPairSync('rsa', { modulusLength: 2048 });
 const jwtKey = keys.publicKey.export({ format: 'pem', type: 'spki' }).toString();
@@ -51,7 +51,7 @@ describe('server-derived participant names', () => {
   it('separates colliding provider names without changing verified ownership or host permissions', async () => {
     const store = new LocalRoomStore(null, () => 100000);
     const { app } = createApp(store, { ...options, clerkProfileLookup: async id => profile(id) });
-    const created = await app.request('/api/rooms', { method: 'POST', headers: headers(), body: '{}' });
+    const created = await app.request('/api/rooms', { method: 'POST', headers: headers(), body: JSON.stringify(settingsForMode('quick')) });
     const { room, inviteToken } = await created.json();
     expect(room.members[0]).toMatchObject({ id: 'user_host', name: 'Verified Captain' });
     expect((await app.request(`/api/rooms/${room.code}`, { headers: headers('user_guest') })).status).toBe(404);
@@ -85,7 +85,7 @@ describe('server-derived participant names', () => {
     const freshStore = new LocalRoomStore(null, () => now);
     const { room } = freshStore.create(verified, settingsSchema.parse({}));
     const { app } = createApp(freshStore, { ...options, clerkProfileLookup: lookup });
-    await app.request(`/api/rooms/${room.code}/ws-ticket`, { method: 'POST', headers: headers(), body: '{}' });
+    await app.request(`/api/rooms/${room.code}/ws-ticket`, { method: 'POST', headers: headers(), body: JSON.stringify(settingsForMode('quick')) });
     await app.request(`/api/rooms/${room.code}/actions`, { method: 'POST', headers: headers(), body: JSON.stringify({ id: crypto.randomUUID(), type: 'claim', teamId: 't1' }) });
     expect(lookup).toHaveBeenCalledTimes(2);
     expect(freshStore.profile(verified.id)).toBeUndefined();
@@ -119,7 +119,7 @@ describe('server-derived participant names', () => {
     await Promise.resolve();
     expect(store.profile('user_host')).toBeUndefined();
     const { app } = createApp(store, { ...options, clerkProfileLookup: async () => { throw new Error('private backend response'); } });
-    const response = await app.request('/api/rooms', { method: 'POST', headers: headers(), body: '{}' });
+    const response = await app.request('/api/rooms', { method: 'POST', headers: headers(), body: JSON.stringify(settingsForMode('quick')) });
     expect(response.status).toBe(201);
     expect((await response.json()).room.members[0].name).toBe('Auction fan');
   });

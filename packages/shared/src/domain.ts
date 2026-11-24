@@ -174,6 +174,22 @@ export function validBidOnLadder(room: Room, base: number, amount: number) {
 }
 /** Franchise order is stable: index 0 is t1 (host) and index 1 is t2 (guest). */
 export const teamNames = ['Mumbai Indians','Chennai Super Kings','Royal Challengers Bengaluru','Kolkata Knight Riders','Sunrisers Hyderabad','Rajasthan Royals','Delhi Capitals','Punjab Kings','Gujarat Titans','Lucknow Super Giants'];
+/** Official short code per franchise, used where space is tight. */
+export const teamShortNames: Record<string,string> = {
+  'Chennai Super Kings':'CSK',
+  'Mumbai Indians':'MI',
+  'Royal Challengers Bengaluru':'RCB',
+  'Kolkata Knight Riders':'KKR',
+  'Sunrisers Hyderabad':'SRH',
+  'Rajasthan Royals':'RR',
+  'Delhi Capitals':'DC',
+  'Punjab Kings':'PBKS',
+  'Gujarat Titans':'GT',
+  'Lucknow Super Giants':'LSG',
+};
+export function teamShortName(name:string):string {
+  return teamShortNames[name] ?? name.split(' ').map(part => part[0]).join('');
+}
 /** Runtime logo per franchise. Rajasthan Royals has no supplied file and falls back to initials. */
 export const teamLogos: Record<string,string> = {
   'Chennai Super Kings':'/assets/teams/csk.svg',

@@ -306,6 +306,11 @@ export function createWorkerApp(options: WorkerAppOptions = {}) {
     try { parsed = JSON.parse(raw); }
     catch { return c.json({ code: 'INVALID_INPUT', message: 'Request body must be valid JSON.', requestId: c.get('requestId') }, 400); }
     const settings = settingsSchema.parse(parsed);
+    // A user-created room must always run a real catalog pool (Quick/Standard/Mega).
+    // Stored legacy rooms without a mode still load; this route never creates one.
+    if (!settings.mode) {
+      return c.json({ code: 'MODE_REQUIRED', message: 'Choose an auction mode before creating a room.', requestId: c.get('requestId') }, 400);
+    }
     const body = JSON.stringify(settings), request = c.req.raw;
     for (let attempt = 0; attempt < 5; attempt++) {
       const code = normalizeRoomCode(nextCode());

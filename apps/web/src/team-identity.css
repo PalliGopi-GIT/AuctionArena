@@ -1,0 +1,114 @@
+/* Franchise identity: prominent logo, compact supporting text. */
+
+/* The container is intentionally larger than the logo it frames so irregular
+   crests keep their aspect ratio instead of being cropped into a circle. */
+.team-crest {
+  --crest-size: clamp(56px, 6vw, 84px);
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: var(--crest-size);
+  height: var(--crest-size);
+  padding: calc(var(--crest-size) * 0.1);
+  border-radius: 12px;
+  background: #0d1a15;
+  border: 1px solid #2f3f36;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.team-crest--row {
+  --crest-size: clamp(40px, 4vw, 56px);
+  border-radius: 9px;
+  padding: calc(var(--crest-size) * 0.08);
+}
+
+/* object-fit: contain guarantees no stretching or cropping. */
+.team-crest-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+.team-crest-initials {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--team-color, #709279) 22%, #0d1a15);
+  color: var(--team-color, #cfe0d2);
+  font: 700 clamp(15px, 1.6vw, 20px) / 1 var(--display, 'Barlow Condensed', sans-serif);
+  letter-spacing: 0.04em;
+}
+
+/* --- Lobby / team selection cards ------------------------------------- */
+.team-choice {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-areas: 'crest name' 'crest meta' 'crest action';
+  align-items: center;
+  column-gap: 12px;
+  row-gap: 2px;
+  padding: 12px 14px;
+  text-align: left;
+}
+
+.team-choice .team-crest { grid-area: crest; align-self: center; }
+.team-choice h3 {
+  grid-area: name;
+  margin: 0;
+  font: 650 clamp(13px, 1.05vw, 15px) / 1.2 var(--display, 'Barlow Condensed', sans-serif);
+  letter-spacing: 0.01em;
+}
+.team-choice p { grid-area: meta; margin: 0; font-size: 11px; line-height: 1.3; }
+.team-choice .tag { grid-area: action; justify-self: start; padding: 2px 6px; font-size: 8px; }
+
+/* --- Live auction / squad headings ------------------------------------ */
+.squad-team-title { display: flex; align-items: center; gap: 10px; }
+.squad-team-title .team-crest { --crest-size: clamp(48px, 4.4vw, 64px); }
+.squad-team-title { font-size: clamp(15px, 1.4vw, 19px); }
+
+/* Compact inline crest where the row already carries the full name. */
+.leading .team-crest,
+.lot-winner .team-crest {
+  --crest-size: clamp(40px, 4vw, 52px);
+  vertical-align: middle;
+  margin: 0 8px 0 0;
+}
+.lot-result-copy .lot-winner .team-crest { --crest-size: clamp(44px, 4.4vw, 56px); }
+
+@media (max-width: 760px) {
+  .team-crest { --crest-size: clamp(52px, 14vw, 68px); }
+  .team-crest--row { --crest-size: clamp(38px, 10vw, 46px); }
+  .team-choice { padding: 10px 12px; column-gap: 10px; }
+  .team-choice h3 { font-size: 13px; }
+  .squad-team-title .team-crest { --crest-size: clamp(44px, 12vw, 56px); }
+  .leading .team-crest, .lot-winner .team-crest { --crest-size: clamp(36px, 10vw, 44px); }
+}
+
+/* --- Career statistics (collapsed by default) ------------------------- */
+.player-stats { margin-top: 8px; font-size: 11px; }
+.player-stats > summary {
+  cursor: pointer;
+  color: #a9b7a4;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+}
+.player-stats > summary .tag { margin-left: 6px; padding: 1px 5px; font-size: 7px; }
+.player-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
+  gap: 6px 10px;
+  margin: 8px 0 0;
+  padding: 8px 10px;
+  border: 1px solid #2f3f36;
+  border-radius: 8px;
+  background: #101a16;
+}
+.player-stats-grid dt { margin: 0; font-size: 8px; letter-spacing: 0.06em; color: #a9b7a4; text-transform: uppercase; }
+.player-stats-grid dd { margin: 0; font-size: 13px; font-weight: 650; font-variant-numeric: tabular-nums; }
+.player-stats-note { margin: 6px 0 0; font-size: 9px; color: #8f9a8c; }

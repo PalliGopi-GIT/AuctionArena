@@ -1,14 +1,55 @@
-import { type Room, type User, type CompletionReason, auctionModeLabels, auctionModeRules, completionMessages, money, nextBid, samplePlayers, teamColors, teamNames } from '../../shared/src/domain';
+import { type Room, type User, type CompletionReason, type Player, auctionModeLabels, auctionModeRules, completionMessages, money, nextBid, samplePlayers, teamColors, teamNames } from '../../shared/src/domain';
 import { bidReserve, purchaseRestriction } from '../../shared/src/bid-rules';
 import type { Action, Settings } from '../../shared/src/index';
 import { settingsErrors, normalizedSettings } from '../../shared/src/settings-rules';
 import { catalog } from '../../catalog/src/index';
-import { approvePlan } from '../../catalog/src/room-plan';
+import { approvePlan, toRoomPlayers } from '../../catalog/src/room-plan';
+import { planAuction } from '../../catalog/src/planner';
 
 export class RuleError extends Error { constructor(public code:string,message:string) { super(message); } }
 const requireRule=(condition:unknown,code:string,message:string):void=>{if(!condition)throw new RuleError(code,message);};
 export function event(room:Room,now:number,type:string,text:string,actorId?:string) { room.version++; room.history.push({id:`${room.code}-${room.version}`,version:room.version,at:now,type,text,...(actorId?{actorId}:{})}); }
-export function createRoom(code:string,user:User,settings:Settings,now:number):Room { const errors=settingsErrors(settings);requireRule(!errors.length,'INVALID_SETTINGS',errors.join(' '));settings=normalizedSettings(settings);return {code,name:settings.name,hostId:user.id,status:'WAITING',settings,bidRule:'tiered-v1',members:[{...user,connected:true,ready:false,lastSeen:now}],teams:teamNames.slice(0,settings.teamCount).map((name,i)=>({id:`t${i+1}`,name,color:teamColors[i]!,ownerId:null,budget:settings.budget,squad:[]})),players:samplePlayers(),currentPlayerIndex:-1,currentBid:0,leadingTeamId:null,deadline:null,pausedRemaining:0,resultAt:null,extensions:0,version:0,history:[],createdAt:now}; }
+/**
+ * Seed the real catalog pool at creation so a new room never shows sample players.
+ *
+ * The mode decides the pool: Quick 80, Standard 120, Mega 250. The same seeded
+ * planner that approves a plan produces this pool, so approving/starting later
+ * reproduces the identical selection instead of replacing fictional players.
+ */
+/**
+ * Seed the real catalog pool at creation so a new room never shows sample players.
+ *
+ * The mode decides the pool: Quick 80, Standard 120, Mega 250. The same seeded
+ * planner that approves a plan produces this pool, so approving/starting later
+ * reproduces the identical selection instead of replacing fictional players.
+ *
+ * A room created without a mode is a historical legacy room; it keeps the sample
+ * pool so earlier stored rooms and explicit engine fixtures stay valid. Both HTTP
+ * creation paths reject a mode-less request before reaching this function, so a
+ * normal user can never create a room that initialises fictional players.
+ */
+function initialPlayers(settings:Settings):Player[] {
+  const mode=settings.mode;
+  if(!mode)return samplePlayers();
+  const rules=auctionModeRules[mode];
+  // deterministic, order-preserving seed: the pool itself is catalog-ordered.
+  const seed='initial-'+mode+'-'+rules.players;
+  const result=planAuction({catalog,mode,seed,rules:settings});
+  if(!result.ok){
+    // A legacy custom room may be too large for any catalog pool; fail clearly
+    // instead of silently falling back to fictional players.
+    throw new RuleError('CATALOG_UNAVAILABLE',result.blockedReason??'The player catalog could not be prepared for this auction room.');
+  }
+  const selected=new Set(result.poolIds);
+  const pool=catalog.players.filter(player=>selected.has(player.id));
+  if(!pool.length)throw new RuleError('CATALOG_UNAVAILABLE','The player catalog could not be prepared for this room.');
+  return toRoomPlayers(pool);
+}
+export function createRoom(code:string,user:User,settings:Settings,now:number):Room { const errors=settingsErrors(settings);requireRule(!errors.length,'INVALID_SETTINGS',errors.join(' '));settings=normalizedSettings(settings);const room:Room={code,name:settings.name,hostId:user.id,status:'WAITING',settings,bidRule:'tiered-v1',members:[{...user,connected:true,ready:false,lastSeen:now}],teams:teamNames.slice(0,settings.teamCount).map((name,i)=>({id:`t${i+1}`,name,color:teamColors[i]!,ownerId:null,budget:settings.budget,squad:[]})),players:initialPlayers(settings),currentPlayerIndex:-1,currentBid:0,leadingTeamId:null,deadline:null,pausedRemaining:0,resultAt:null,extensions:0,version:0,history:[],createdAt:now};
+ // A mode room starts with the same draft the host would generate, so the plan
+ // preview is available immediately and approving it reproduces this pool.
+ if(settings.mode)room.planDraft={catalogVersion:catalog.catalogVersion,mode:settings.mode,seed:'initial-'+settings.mode+'-'+auctionModeRules[settings.mode].players,planVersion:1};
+ return room; }
 /** Authoritative pre-start checks: pool size, nationality capacity and purse reserve. */
 export function startProblems(room:Room):string[] {
  const problems:string[]=[];

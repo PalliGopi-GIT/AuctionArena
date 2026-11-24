@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { generateKeyPairSync, sign } from 'node:crypto';
 import { createApp } from '../../apps/api/src/app';
+import { settingsForMode } from '../../packages/shared/src/index';
 import { LocalRoomStore } from '../../apps/realtime/src/store';
 import { clerkDevelopmentConfig } from '../../scripts/clerk-config';
 
@@ -57,7 +58,7 @@ describe('Clerk SDK session verification with ephemeral signing keys', () => {
   it('keeps private rooms separate when the browser switches verified identities', async () => {
     const { app } = fixture();
     const hostToken = jwt(), guestToken = jwt({ sub: 'user_guest', sid: 'sess_guest', name: 'Verified Guest' });
-    const created = await app.request('/api/rooms', { method: 'POST', headers: headers(hostToken), body: '{}' });
+    const created = await app.request('/api/rooms', { method: 'POST', headers: headers(hostToken), body: JSON.stringify(settingsForMode('quick')) });
     expect(created.status).toBe(201);
     const { room } = await created.json();
     expect(room.hostId).toBe('user_host');
