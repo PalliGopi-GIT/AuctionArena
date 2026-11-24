@@ -1,0 +1,78 @@
+{
+  "task": "WP-E-CROSS-ROOM-DIRECTORY",
+  "status": "passed-local-scope",
+  "date": "2026-11-13",
+  "baseCommit": "53967a292833c5ba3496fcbba02e8cdb39d446eb",
+  "workingTreeChanges": true,
+  "commitCreated": false,
+  "isolation": "Temporary source copy, node_modules junction, empty temporary .data directory; private environment file and original data not copied",
+  "typecheck": {
+    "exitCode": 0,
+    "command": "npx.cmd tsc --noEmit",
+    "log": "typecheck.log",
+    "exitRecord": "typecheck-exit.txt",
+    "note": "typecheck.log is empty; exit record is 0"
+  },
+  "core": {
+    "passed": 259,
+    "failed": 0,
+    "skipped": 0,
+    "testFiles": 19,
+    "success": true,
+    "command": "npx.cmd vitest run tests/core --configLoader runner --reporter=json",
+    "report": "core.json",
+    "note": "29 new cross-room tests; baseline was 230 after Package D. The 29 comprise 9 directory-core, 5 directory-object, 9 Worker-directory and 6 room-object outbox/deletion cases."
+  },
+  "local": {
+    "passed": 76,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0,
+    "command": "npm.cmd run test:local",
+    "report": "local/local-tests.json",
+    "note": "The unchanged runner still labels its raw output WP1-ROOM-COMPLETION"
+  },
+  "browser": {
+    "passed": 34,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "globalErrors": 0,
+    "axeScans": 34,
+    "axeViolations": 0,
+    "axeIncompleteRuleEntries": 28,
+    "command": "npm.cmd run test:e2e",
+    "report": "browser/results.json",
+    "exitRecord": "browser-exit.txt",
+    "note": "Regression run against the unchanged local Node runtime, not the Worker or directory object"
+  },
+  "a11y": {
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "globalErrors": 0,
+    "exitCode": 0,
+    "axeScans": 32,
+    "axeViolations": 0,
+    "axeIncompleteRuleEntries": 26,
+    "command": "npm.cmd run test:a11y",
+    "report": "a11y/results.json",
+    "exitRecord": "a11y-exit.txt",
+    "note": "Regression run against the unchanged local Node runtime, not the Worker or directory object"
+  },
+  "sourceManifest": "tested-source.json",
+  "sourceHashNote": "SHA-256 values were computed from the isolated WP-E verification copy at run time and matched the repository working tree for all twelve E files",
+  "limits": [
+    "No wrangler or Miniflare run; the Workers runtime, ROOM and DIRECTORY bindings, SQLite-backed object storage, hibernation, alarms and 101 WebSocket upgrade are unverified",
+    "The E tests use in-process fakes, node:sqlite and fake Durable Object state; they do not prove Cloudflare transaction isolation, outbox delivery or global scheduling",
+    "The directory is a single global SQLite projection and a potential write bottleneck; no measured load or multi-object throughput is claimed",
+    "The room outbox is durable and retried by later requests or alarms, but there is no dedicated background drainer; a permanently failing delivery can leave a room's projection stale until another activity occurs",
+    "Directory delivery is eventually consistent; a just-completed room may not appear in discovery or export until its outbox flush succeeds",
+    "A provider-deleted account whose room fan-out fails cannot self-retry because the Clerk identity is gone; the durable deletion job requires an operator replay",
+    "Archives are privacy-minimised results only and are immutable per code and version; they are not a full audit log or a backup of room state",
+    "Browser and accessibility runs exercise the unchanged local Node runtime, not the Worker or directory object",
+    "No deployment, cloud resource, account setting, R2 activation or production migration was created"
+  ],
+  "next": "Run measured local load at 100, 500 and 1,000 concurrent users without deployment, cloud cost or a production capacity claim"
+}

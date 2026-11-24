@@ -1,0 +1,1524 @@
+{
+  "stateDir": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-TtSD0I\\directory-state",
+  "inspection": "private copy of SQLite database and WAL after runtime exit",
+  "directories": [
+    [
+      {
+        "code": "00F921",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "016473",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "020443",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "0281CB",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "0315CF",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "04B870",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "065A09",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "0798B2",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "07E9C4",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "080CBB",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "088733",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "09222C",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "0AB487",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "0B9DF1",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "0CAABA",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "0DBACA",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "0EF077",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "0FDD53",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "108192",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "117553",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "11CFBA",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "136031",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "150A49",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "16EE42",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "171DF4",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "178504",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "19F703",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "1AF425",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "1B57CA",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "1DDDF7",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "1E4254",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "1E773B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "1E8775",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "1FA826",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "20E322",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "213543",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "2787A1",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "27ABBB",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "2831A6",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "284873",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "298E1A",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "29EAB5",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "2A22C5",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "2A662C",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "2AB334",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "2B09FC",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "2B7C05",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "2BB98D",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "2C0614",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "2D50E9",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "2DABFE",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "30B49D",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "30FF49",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "322FA0",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "329E87",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "32CD75",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "339C1A",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "34CCA1",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "34E1C8",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "35CDA1",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "35E1E7",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "363E88",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "36DD65",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "38961E",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "39214D",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "39CE05",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "3A48BC",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "3BA90D",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "3DF817",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "3E4BA1",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "3F4E46",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "3F55AC",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "40360B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "408D5E",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "40A747",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "40C3BE",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "42F143",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "445BAC",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "44B11C",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "454092",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "466FA3",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "47DC76",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "483AA2",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "4887E0",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "49C450",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "4A15E1",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "4DABB5",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "4FC6FF",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "4FE42E",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "4FF1ED",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "507FC7",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "51C5B7",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "53A629",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "547C33",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "54A67B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "54E20A",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "559E38",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "55B5C8",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "5656EC",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "568324",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "573E01",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "5789E9",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "591A34",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "59702C",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "59FE5D",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "5B8719",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "5C96FB",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "5DD6E0",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "5E2B38",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "5E8F78",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "5EA334",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "5F65FD",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "61C0BF",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "61D492",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "626D2B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "631C22",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "638756",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "649E79",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "656F5E",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "660965",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "6641FF",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "666105",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "671A5F",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "68BFA6",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "695AA7",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "69D363",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "6AB8EA",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "6C7218",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "6C9E92",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "6CEBB8",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "6DD00B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "6E1A6C",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "6F05C7",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "6FBC62",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "702BB3",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "7078F7",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "707FAE",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "70FACC",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "728253",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "72E1AC",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "74570A",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "7583BC",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "760105",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "7707B6",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "78FBC5",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "799DE5",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "79B7ED",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "79CB8A",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "7AC46C",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "7AE286",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "7D4107",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "7DB5BB",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "7F80A2",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "7F86A3",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "7FADEC",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "801CD2",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "81112D",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "811146",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "812AFD",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "814730",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "82617E",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "836791",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "840464",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "853B2C",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "854C96",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "856AC0",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "85A389",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "85DE54",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "868E61",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "86BA14",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "86CED3",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "871598",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "88A5B2",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "8933B8",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "89F935",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "8B24DC",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "8D126A",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "8E5076",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "9100C2",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "915557",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "9179A3",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "92B9B1",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "92EF48",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "939E89",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "957152",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "957553",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "9612F6",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "9615A5",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "9650EF",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "971354",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "975A4B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "988659",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "99E089",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "99E4F0",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "99F597",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "9B5098",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "9CB651",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "9E7BDC",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "9ED3AA",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "9EEEB0",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "9F7137",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "A0744E",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "A08DF2",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "A5141C",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "A5547B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "A5A0BB",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "A683B0",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "A6971F",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "A6BD1B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "AA5AD7",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "AB4A47",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "AC2988",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "AD6209",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "AFC00C",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "B11CF1",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "B18290",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "B2A272",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "B3FDE1",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "B605CA",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "B666F0",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "B7F41A",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "B83088",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "BB0FD8",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "BB44D7",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "BB8965",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "BDBF42",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "C17295",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "C18CA0",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "C1A2AA",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "C2099B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "C2C02A",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "C30A6A",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "C32BBC",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "C37F4B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "C4454E",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "C6AC98",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "C6B0AE",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "C7A614",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "C928E0",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "CB49D8",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "CB5156",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "CC50B2",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "CCA6CA",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "CD8FE3",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "CFE365",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "D0B1AC",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "D2547A",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "D2F272",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "D41818",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "D5BCBD",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "D5F2F3",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "D6A536",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "D7D733",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "D8752D",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "D91ABB",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "DA31A0",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "DD74C3",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "DE2564",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "DF5890",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E0A724",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E0F53B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E17CD1",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E24DDA",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E2975C",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E3B6ED",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E41095",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E41AAD",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E4362F",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E5B5AA",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E63A24",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E644C3",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E6CD6A",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E6E544",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E7121F",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E722DC",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E85DA9",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E89286",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E8C352",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E9F3B5",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "EA2E3B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "EA5899",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "EABF28",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "EAE2C6",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "EC0992",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "EE668F",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "EF20A5",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "EF7984",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "EF870B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "EFB24B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "F537C2",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "F5E139",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "F612C8",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "F750C1",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "F8509C",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "F882C7",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "F9AE33",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "FA8CA4",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "FB1A5F",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "FB4104",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "FDF11B",
+        "members": 10,
+        "memberships": 10
+      }
+    ]
+  ],
+  "sqliteFiles": 4,
+  "rooms": 0,
+  "expectedRooms": 0,
+  "roomCountMatches": true,
+  "statuses": {},
+  "totals": {
+    "soldPlayers": 0,
+    "unsoldPlayers": 0,
+    "bidEvents": 0,
+    "events": 0,
+    "receipts": 0
+  },
+  "problems": [],
+  "errors": [],
+  "pass": true,
+  "roomDetails": []
+}

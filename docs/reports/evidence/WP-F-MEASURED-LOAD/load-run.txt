@@ -1,0 +1,4 @@
+node scripts/load-local.mjs --users=100,500,1000 --duration=10000 --poll=2000 --connectConcurrency=10 --output=evidence/load.json
+{"users":100,"rooms":5,"setupMs":1352.17,"connectMs":321.22,"pingP95":8.31,"stateP95":24.3,"broadcastP95":131.25,"errors":0}
+{"users":500,"rooms":25,"setupMs":11971.73,"connectMs":31806.9,"pingP95":9576.39,"stateP95":18004.65,"broadcastP95":9347.08,"errors":1093}
+{"users":1000,"rooms":50,"setupMs":91852.29,"connectMs":137339.18,"pingP95":14780.25,"stateP95":8975.05,"broadcastP95":null,"errors":2917}

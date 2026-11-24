@@ -1,0 +1,20 @@
+﻿{
+    "task":  "WP-G-WORKERS-RUNTIME",
+    "algorithm":  "SHA-256",
+    "generatedAt":  "2026-11-14T19:11:52.2255925+05:30",
+    "files":  {
+                  "apps/api/src/worker/room-do.ts":  "7b67777a08642a8e0711a032a1a16480833cde963cf27ff1523b1d524ec63e15",
+                  "apps/api/src/worker/app.ts":  "2b3ebac9fd257b7371f2d210ac99898e53e69fbd9b56381c0e7eaa8ee20a30f4",
+                  "apps/api/src/worker/room.ts":  "915eb75f66554aff7ac888f96d78bd1415917e62f7152cdd31c94a6fe17e5a47",
+                  "apps/api/src/worker/ticket.ts":  "11065d2c407bf732ac8b4bfa60de4fab8bb4c76e081f3076ba45e5546a647b7b",
+                  "apps/api/src/worker/directory-do.ts":  "d430473e26b4fe32c2babc558a7b0b920ed3e63642f7700fdf5cf5a2cc34cb05",
+                  "apps/web/src/room-connection.ts":  "b917fdc9d38e691df833d8466a82ce469832f2f2a858d2f003522775b6e34a43",
+                  "packages/room-runtime/src/record.ts":  "09bc43eff12d7364881d05413ab226fa03f3d50afd6757b578db318bd1f5e7af",
+                  "packages/room-runtime/src/recovery.ts":  "674929b88bdc09dd0c5cb2a2adb36e384ed19e6489fd34395bc82e72f6d98a72",
+                  "packages/storage/src/sqlite-room.ts":  "b8f13864cf00f77bd30ceaf1869b8ed630e920782add4c1979b2a3da2b4e81df",
+                  "scripts/load-worker.mjs":  "325cebfb43a96d6b5902f9111347d354765e9d97290c7e1b243bff59ebef41fd",
+                  "scripts/run-worker-load.ps1":  "bad291f0005169eba003cfce30b9c8ff5cdb24f1bbfda4830ad673822cd2915d",
+                  "scripts/summarize-load.mjs":  "83595a0d1eee521d3c4cd69fddded92826502a0cd253b710838cf5ce64b152a4",
+                  "wrangler.jsonc":  "6b2577918cb752b85cca46bdc821f044d344a9b087072b8abca40e95fb971fa3"
+              }
+}

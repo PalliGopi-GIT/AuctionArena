@@ -1,0 +1,386 @@
+{
+  "task": "WP-G-WORKERS-RUNTIME",
+  "generatedAt": "2026-11-19T11:24:56.277Z",
+  "label": "auctionarena-100",
+  "environment": {
+    "node": "v22.23.2",
+    "platform": "win32",
+    "arch": "x64",
+    "cpus": 12,
+    "totalMemory": 16857817088,
+    "base": "http://127.0.0.1:8931",
+    "roomSize": 10,
+    "users": 100
+  },
+  "workload": {
+    "durationMs": 40000,
+    "roomSize": 10,
+    "connectConcurrency": 20,
+    "setupConcurrency": 20,
+    "bidRounds": 8,
+    "timerSeconds": 30,
+    "mode": "sample",
+    "separateStart": false
+  },
+  "setup": {
+    "rooms": 10,
+    "membersPerRoom": [
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10
+    ],
+    "setupMs": 1430
+  },
+  "connections": {
+    "attempted": 100,
+    "connected": 100,
+    "connectMs": 2187
+  },
+  "claims": {
+    "claimMs": 4365,
+    "startedRooms": 10,
+    "startSpreadMs": 17,
+    "claimSummary": {
+      "count": 80,
+      "min": 108,
+      "p50": 445,
+      "p95": 643,
+      "p99": 716,
+      "max": 716,
+      "mean": 445.03
+    },
+    "retries": 0,
+    "retrySamples": [],
+    "errors": 0,
+    "errorSamples": []
+  },
+  "ping": {
+    "summary": {
+      "count": 360,
+      "min": 2,
+      "p50": 10,
+      "p95": 299,
+      "p99": 538,
+      "max": 832,
+      "mean": 43.76
+    },
+    "errors": 0,
+    "errorSamples": [],
+    "messages": 360,
+    "heartbeats": 2221,
+    "windowMs": 40004
+  },
+  "actions": {
+    "accepted": 80,
+    "latencySummary": {
+      "count": 80,
+      "min": 43,
+      "p50": 494,
+      "p95": 655,
+      "p99": 668,
+      "max": 668,
+      "mean": 455.34
+    },
+    "errors": 0,
+    "errorSamples": [],
+    "expectedConflicts": 10,
+    "conflictCodes": [
+      "STALE_VERSION",
+      "STALE_VERSION",
+      "STALE_VERSION",
+      "STALE_VERSION",
+      "STALE_VERSION",
+      "STALE_VERSION",
+      "STALE_VERSION",
+      "STALE_VERSION",
+      "STALE_VERSION",
+      "STALE_VERSION"
+    ]
+  },
+  "broadcast": {
+    "deliverySummary": {
+      "count": 900,
+      "min": 67,
+      "p50": 381,
+      "p95": 773,
+      "p99": 874,
+      "max": 881,
+      "mean": 437.43
+    },
+    "missing": 0,
+    "missingSamples": []
+  },
+  "settlement": [
+    {
+      "room": "D2B35D",
+      "clients": 10,
+      "expectedClients": 10,
+      "firstDeliveryAfterDeadline": 65,
+      "lastDeliveryAfterDeadline": 76,
+      "status": "RESULT",
+      "currentBid": 180,
+      "leadingTeamId": "t1",
+      "playerId": "p1",
+      "playerStatus": "sold",
+      "soldPrice": 180,
+      "soldTo": "t1",
+      "diverged": false
+    },
+    {
+      "room": "5C8A56",
+      "clients": 10,
+      "expectedClients": 10,
+      "firstDeliveryAfterDeadline": 74,
+      "lastDeliveryAfterDeadline": 78,
+      "status": "RESULT",
+      "currentBid": 180,
+      "leadingTeamId": "t1",
+      "playerId": "p1",
+      "playerStatus": "sold",
+      "soldPrice": 180,
+      "soldTo": "t1",
+      "diverged": false
+    },
+    {
+      "room": "3698E0",
+      "clients": 10,
+      "expectedClients": 10,
+      "firstDeliveryAfterDeadline": 26,
+      "lastDeliveryAfterDeadline": 32,
+      "status": "RESULT",
+      "currentBid": 180,
+      "leadingTeamId": "t1",
+      "playerId": "p1",
+      "playerStatus": "sold",
+      "soldPrice": 180,
+      "soldTo": "t1",
+      "diverged": false
+    },
+    {
+      "room": "E3CFA6",
+      "clients": 10,
+      "expectedClients": 10,
+      "firstDeliveryAfterDeadline": 33,
+      "lastDeliveryAfterDeadline": 35,
+      "status": "RESULT",
+      "currentBid": 180,
+      "leadingTeamId": "t1",
+      "playerId": "p1",
+      "playerStatus": "sold",
+      "soldPrice": 180,
+      "soldTo": "t1",
+      "diverged": false
+    },
+    {
+      "room": "610239",
+      "clients": 10,
+      "expectedClients": 10,
+      "firstDeliveryAfterDeadline": 43,
+      "lastDeliveryAfterDeadline": 47,
+      "status": "RESULT",
+      "currentBid": 180,
+      "leadingTeamId": "t1",
+      "playerId": "p1",
+      "playerStatus": "sold",
+      "soldPrice": 180,
+      "soldTo": "t1",
+      "diverged": false
+    },
+    {
+      "room": "E3FAAF",
+      "clients": 10,
+      "expectedClients": 10,
+      "firstDeliveryAfterDeadline": 64,
+      "lastDeliveryAfterDeadline": 67,
+      "status": "RESULT",
+      "currentBid": 180,
+      "leadingTeamId": "t1",
+      "playerId": "p1",
+      "playerStatus": "sold",
+      "soldPrice": 180,
+      "soldTo": "t1",
+      "diverged": false
+    },
+    {
+      "room": "A8C731",
+      "clients": 10,
+      "expectedClients": 10,
+      "firstDeliveryAfterDeadline": 51,
+      "lastDeliveryAfterDeadline": 55,
+      "status": "RESULT",
+      "currentBid": 180,
+      "leadingTeamId": "t1",
+      "playerId": "p1",
+      "playerStatus": "sold",
+      "soldPrice": 180,
+      "soldTo": "t1",
+      "diverged": false
+    },
+    {
+      "room": "80A7F3",
+      "clients": 10,
+      "expectedClients": 10,
+      "firstDeliveryAfterDeadline": 44,
+      "lastDeliveryAfterDeadline": 50,
+      "status": "RESULT",
+      "currentBid": 180,
+      "leadingTeamId": "t1",
+      "playerId": "p1",
+      "playerStatus": "sold",
+      "soldPrice": 180,
+      "soldTo": "t1",
+      "diverged": false
+    },
+    {
+      "room": "D29DF5",
+      "clients": 10,
+      "expectedClients": 10,
+      "firstDeliveryAfterDeadline": 40,
+      "lastDeliveryAfterDeadline": 45,
+      "status": "RESULT",
+      "currentBid": 180,
+      "leadingTeamId": "t1",
+      "playerId": "p1",
+      "playerStatus": "sold",
+      "soldPrice": 180,
+      "soldTo": "t1",
+      "diverged": false
+    },
+    {
+      "room": "BC68BD",
+      "clients": 10,
+      "expectedClients": 10,
+      "firstDeliveryAfterDeadline": 74,
+      "lastDeliveryAfterDeadline": 77,
+      "status": "RESULT",
+      "currentBid": 180,
+      "leadingTeamId": "t1",
+      "playerId": "p1",
+      "playerStatus": "sold",
+      "soldPrice": 180,
+      "soldTo": "t1",
+      "diverged": false
+    }
+  ],
+  "http": {
+    "requests": 400,
+    "errors": 0,
+    "statuses": {
+      "200": 380,
+      "201": 10,
+      "400": 10
+    },
+    "errorSamples": []
+  },
+  "sockets": {
+    "connected": 100,
+    "errors": 0,
+    "closedEarly": 0,
+    "closedCodes": {},
+    "errorSamples": []
+  },
+  "memory": {
+    "workerd": {
+      "samples": 48,
+      "peakWorkingSet": 428019712,
+      "meanWorkingSet": 401773653,
+      "lastWorkingSet": 428019712,
+      "cpuSeconds": 14.97
+    },
+    "harnessRss": 105488384
+  },
+  "loopLag": {
+    "samples": 2448,
+    "summary": {
+      "count": 2448,
+      "min": 0,
+      "p50": 6,
+      "p95": 11,
+      "p99": 35,
+      "max": 134,
+      "mean": 6.34
+    }
+  },
+  "serverTiming": {
+    "advance": {
+      "count": 90,
+      "min": 1,
+      "p50": 3,
+      "p95": 10,
+      "p99": 15,
+      "max": 15,
+      "mean": 3.64
+    },
+    "commit": {
+      "count": 90,
+      "min": 1,
+      "p50": 3,
+      "p95": 12,
+      "p99": 31,
+      "max": 31,
+      "mean": 5.01
+    },
+    "alarm": {
+      "count": 90,
+      "min": 0,
+      "p50": 0,
+      "p95": 0,
+      "p99": 1,
+      "max": 1,
+      "mean": 0.01
+    },
+    "snapshot": {
+      "count": 90,
+      "min": 0,
+      "p50": 0,
+      "p95": 2,
+      "p99": 16,
+      "max": 16,
+      "mean": 0.78
+    },
+    "fanout": {
+      "count": 90,
+      "min": 0,
+      "p50": 2,
+      "p95": 6,
+      "p99": 11,
+      "max": 11,
+      "mean": 2.1
+    },
+    "broadcast": {
+      "count": 90,
+      "min": 0,
+      "p50": 2,
+      "p95": 7,
+      "p99": 18,
+      "max": 18,
+      "mean": 2.9
+    },
+    "outbox_launch": {
+      "count": 90,
+      "min": 0,
+      "p50": 0,
+      "p95": 4,
+      "p99": 11,
+      "max": 11,
+      "mean": 0.91
+    },
+    "response": {
+      "count": 90,
+      "min": 0,
+      "p50": 1,
+      "p95": 5,
+      "p99": 21,
+      "max": 21,
+      "mean": 1.27
+    }
+  },
+  "finishedAt": "2026-11-19T11:25:46.723Z"
+}

@@ -1,19 +1,36 @@
-import { validateRoomRecovery } from '../../../packages/room-runtime/src/recovery';
+import { recoverRoomOnWake, validateRoomRecovery } from '../../../packages/room-runtime/src/recovery';
 import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { createHash, randomBytes } from 'node:crypto';
 import { EventEmitter } from 'node:events';
-import type { Room, User } from '../../../packages/shared/src/domain';
+import { isDeletableRoomStatus, type Room, type User } from '../../../packages/shared/src/domain';
 import type { Settings, Action } from '../../../packages/shared/src/index';
-import { applyAction, createRoom, event, RuleError, tick } from '../../../packages/engine/src/index';
+import { applyAction, createRoom, event, RuleError } from '../../../packages/engine/src/index';
 import { normalizeProfileName, profileNameError, profileNameKey } from '../../../packages/shared/src/profile-rules';
 import { HEARTBEAT_FLUSH_MS, SNAPSHOT_EVENTS, roomSnapshot, type HistoryPage } from '../../../packages/shared/src/room-sync';
 import { advanceRoom, applyStoredAction, boundStoredRoom, type StoredRoom } from '../../../packages/room-runtime/src/record';
+import { withPlanSeed } from '../../../packages/catalog/src/room-plan';
 
 interface ProfileRecord { name:string; fetchedAt:number; customName?:string; providerVersion?:number }
 interface DeletionRecord { subject?:string; requestedAt:number; attempts:number; retryAt:number; providerDeleted:boolean; completedAt?:number }
 interface Database {rooms:Record<string,StoredRoom>;sessions:Record<string,{user:User;expires:number}>;profiles?:Record<string,ProfileRecord>;deletions?:Record<string,DeletionRecord>}
 export const digest=(value:string)=>createHash('sha256').update(value).digest('hex');
+/**
+ * Mirrors advanceRoom's change conditions. Over-approximating is safe: a false
+ * positive clones and advances, while a false negative would lose a deadline.
+ * Most heartbeats and reads have no due room, so this avoids cloning the whole
+ * development database on every request.
+ */
+function needsAdvance(room:Room,now:number){
+ const host=room.members.find(member=>member.id===room.hostId);
+ for(const member of room.members)if(member.connected&&now-member.lastSeen>10000)return true;
+ if(room.status==='LIVE'){
+  if(!host?.connected)return true;
+  if(room.deadline!==null&&now>=room.deadline)return true;
+ }
+ if(room.status==='RESULT'&&room.settings.autoAdvance&&room.resultAt!==null&&now>=room.resultAt)return true;
+ return false;
+}
 function validateRecovery(db:Database) {
  if(!db.rooms||!db.sessions)throw new Error('Invalid local database schema; refusing to start.');
  const invariant=(condition:boolean,message:string)=>{if(!condition)throw new Error(message+' invariant failed; refusing to start.');};
@@ -36,7 +53,7 @@ export class LocalRoomStore extends EventEmitter {
  private db:Database={rooms:{},sessions:{}};
  private heartbeatDirty=false;
  private lastFlush=0;
- constructor(private path:string|null,private clock:()=>number=Date.now){super();if(path){try{this.db=JSON.parse(readFileSync(path,'utf8')) as Database;}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;}validateRecovery(this.db);const next=structuredClone(this.db);for(const entry of Object.values(next.rooms)){for(const member of entry.room.members)member.connected=false;tick(entry.room,this.clock());if(entry.room.status==='LIVE'){entry.room.pausedRemaining=Math.max(0,entry.room.deadline!-this.clock());entry.room.deadline=null;entry.room.status='PAUSED';entry.room.pauseReason='Service restarted; host must resume';event(entry.room,this.clock(),'paused',entry.room.pauseReason);}}this.commit(next);}}
+ constructor(private path:string|null,private clock:()=>number=Date.now){super();if(path){try{this.db=JSON.parse(readFileSync(path,'utf8')) as Database;}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;}validateRecovery(this.db);const next=structuredClone(this.db);for(const entry of Object.values(next.rooms))recoverRoomOnWake(entry.room,this.clock());this.commit(next);}}
  private commit(next:Database){
   for(const entry of Object.values(next.rooms))boundStoredRoom(entry);
   if(this.path){mkdirSync(dirname(this.path),{recursive:true});const temp=`${this.path}.tmp`;writeFileSync(temp,JSON.stringify(next),{encoding:'utf8',flush:true});renameSync(temp,this.path);}this.db=next;this.heartbeatDirty=false;this.lastFlush=this.clock();
@@ -113,7 +130,7 @@ export class LocalRoomStore extends EventEmitter {
  list(user:User){this.active(user.id);return Object.values(this.db.rooms).filter(e=>!e.room.blockedUserIds?.includes(user.id)&&e.room.members.some(m=>m.id===user.id)).map(e=>structuredClone(e.room));}
  get(code:string,user:User,heartbeat=false){this.active(user.id);const entry=this.db.rooms[code];if(!entry)throw new RuleError('ROOM_NOT_FOUND','Room unavailable. Check your invitation or ask the host for access.');if(entry.room.blockedUserIds?.includes(user.id))throw new RuleError('ROOM_BLOCKED','The host removed you from this room.');if(!entry.room.members.some(m=>m.id===user.id))throw new RuleError('ROOM_NOT_FOUND','Room unavailable. Check your invitation or ask the host for access.');if(heartbeat){this.sweep();const current=this.db.rooms[code]!.room.members.find(m=>m.id===user.id)!;if(current.connected){current.lastSeen=this.clock();this.heartbeatDirty=true;return structuredClone(this.db.rooms[code]!.room);}const next=structuredClone(this.db);const room=next.rooms[code]!.room;const member=room.members.find(m=>m.id===user.id)!;const changed=!member.connected;member.lastSeen=this.clock();member.connected=true;if(changed)event(room,this.clock(),'connected',`${member.name} reconnected.`,user.id);this.commit(next);if(changed)this.emit('room',room);}return structuredClone(this.db.rooms[code]!.room);}
  create(user:User,settings:Settings){this.active(user.id);if(this.list(user).filter(r=>!['COMPLETED','CLOSED'].includes(r.status)).length>=10)throw new RuleError('ROOM_LIMIT','Local preview allows 10 active rooms per host.');let code;do{code=randomBytes(4).toString('hex').slice(0,6).toUpperCase();}while(this.db.rooms[code]);const token=randomBytes(32).toString('base64url');const room=createRoom(code,user,settings,this.clock());const next=structuredClone(this.db);next.rooms[code]={room,inviteHash:digest(token),inviteExpires:this.clock()+86400000,receipts:{}};this.commit(next);return {room:structuredClone(room),inviteToken:token};}
- join(code:string,user:User,token:string){this.active(user.id);const entry=this.db.rooms[code];if(!entry)throw new RuleError('ROOM_NOT_FOUND','Room unavailable. Check your invitation or ask the host for access.');if(entry.room.blockedUserIds?.includes(user.id))throw new RuleError('ROOM_BLOCKED','The host removed you from this room.');if(entry.room.members.some(m=>m.id===user.id))return this.get(code,user,true);if(entry.inviteExpires<=this.clock()||digest(token)!==entry.inviteHash)throw new RuleError('ROOM_NOT_FOUND','Room unavailable. Check your invitation or ask the host for access.');if(['COMPLETED','CLOSED'].includes(entry.room.status))throw new RuleError('ROOM_NOT_FOUND','Room unavailable. Check your invitation or ask the host for access.');if(entry.room.status!=='WAITING'&&!entry.room.settings.spectators)throw new RuleError('ROOM_NOT_FOUND','Room unavailable. Check your invitation or ask the host for access.');if(entry.room.members.filter(m=>!entry.room.blockedUserIds?.includes(m.id)).length>=20)throw new RuleError('ROOM_NOT_FOUND','Room unavailable. Check your invitation or ask the host for access.');const next=structuredClone(this.db);const room=next.rooms[code]!.room;room.members.push({...user,connected:true,ready:false,lastSeen:this.clock()});event(room,this.clock(),'joined',`${user.name} joined the room.`,user.id);this.commit(next);this.emit('room',room);return structuredClone(room);}
+ join(code:string,user:User,token?:string){this.active(user.id);const entry=this.db.rooms[code];if(!entry)throw new RuleError('ROOM_NOT_FOUND','Room unavailable. Check your invitation or ask the host for access.');if(entry.room.blockedUserIds?.includes(user.id))throw new RuleError('ROOM_BLOCKED','The host removed you from this room.');if(entry.room.members.some(m=>m.id===user.id))return this.get(code,user,true);if(token&&(entry.inviteExpires<=this.clock()||digest(token)!==entry.inviteHash))throw new RuleError('ROOM_NOT_FOUND','Room unavailable. Check your invitation or ask the host for access.');if(['COMPLETED','CLOSED'].includes(entry.room.status))throw new RuleError('ROOM_NOT_FOUND','Room unavailable. Check your invitation or ask the host for access.');if(entry.room.status!=='WAITING'&&!entry.room.settings.spectators)throw new RuleError('ROOM_NOT_FOUND','Room unavailable. Check your invitation or ask the host for access.');if(entry.room.members.filter(m=>!entry.room.blockedUserIds?.includes(m.id)).length>=20)throw new RuleError('ROOM_NOT_FOUND','Room unavailable. Check your invitation or ask the host for access.');const next=structuredClone(this.db);const room=next.rooms[code]!.room;room.members.push({...user,connected:true,ready:false,lastSeen:this.clock()});event(room,this.clock(),'joined',`${user.name} joined the room.`,user.id);this.commit(next);this.emit('room',room);return structuredClone(room);}
  rotateInvite(code:string,user:User) {
   const existing=this.get(code,user);
   if(existing.hostId!==user.id)throw new RuleError('HOST_ONLY','Only the host can renew the invitation.');
@@ -125,8 +142,22 @@ export class LocalRoomStore extends EventEmitter {
   this.commit(next);this.emit('room',entry.room);
   return {room:structuredClone(entry.room),inviteToken:token};
  }
+ /** Permanently remove an ended room. A missing room is treated as already deleted. */
+ deleteRoom(code:string,user:User){
+  this.active(user.id);
+  const entry=this.db.rooms[code];
+  if(!entry)return {deleted:true,alreadyDeleted:true};
+  if(entry.room.hostId!==user.id)throw new RuleError('HOST_ONLY','Only the host can delete this room.');
+  if(!isDeletableRoomStatus(entry.room.status))throw new RuleError('ROOM_ACTIVE','Only completed or closed rooms can be deleted.');
+  const next=structuredClone(this.db);delete next.rooms[code];this.commit(next);this.emit('room-deleted',code);
+  return {deleted:true,alreadyDeleted:false};
+ }
  action(code:string,user:User,action:Action){this.get(code,user);this.sweep();const entry=this.db.rooms[code]!;
-  const updated=applyStoredAction(entry,user,action,this.clock(),digest(JSON.stringify(action)));if(updated===entry)return structuredClone(entry.room);
+  // The fingerprint uses the client payload so a retry stays idempotent; the
+  // server-only seed is injected afterwards.
+  const fingerprint=digest(JSON.stringify(action));
+  const prepared=withPlanSeed(action,()=>randomBytes(16).toString('hex'));
+  const updated=applyStoredAction(entry,user,prepared,this.clock(),fingerprint);if(updated===entry)return structuredClone(entry.room);
   const next=structuredClone(this.db);next.rooms[code]=updated;this.commit(next);this.emit('room',updated.room);return structuredClone(updated.room);
  }
  history(code:string,user:User,before?:number,limit=100):HistoryPage{
@@ -145,5 +176,5 @@ export class LocalRoomStore extends EventEmitter {
   const overBudget=new TextEncoder().encode(JSON.stringify({room:snapshot,events})).byteLength>124*1024;
   return {room:snapshot,replay:{afterVersion,resetRequired:resetRequired||overBudget,events:resetRequired||overBudget?[]:events}};
  }
- sweep(){const next=structuredClone(this.db);const changed:Room[]=[];const now=this.clock();for(const entry of Object.values(next.rooms)){const room=entry.room;const before=room.version;advanceRoom(room,now);if(room.version!==before)changed.push(room);}if(changed.length||this.heartbeatDirty&&now-this.lastFlush>=HEARTBEAT_FLUSH_MS){this.commit(next);for(const room of changed)this.emit('room',room);}}
+ sweep(){const now=this.clock();if(!(this.heartbeatDirty&&now-this.lastFlush>=HEARTBEAT_FLUSH_MS)&&!Object.values(this.db.rooms).some(entry=>needsAdvance(entry.room,now)))return;const next=structuredClone(this.db);const changed:Room[]=[];for(const entry of Object.values(next.rooms)){const room=entry.room;const before=room.version;advanceRoom(room,now);if(room.version!==before)changed.push(room);}if(changed.length||this.heartbeatDirty&&now-this.lastFlush>=HEARTBEAT_FLUSH_MS){this.commit(next);for(const room of changed)this.emit('room',room);}}
 }

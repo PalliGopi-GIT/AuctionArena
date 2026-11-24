@@ -1,0 +1,101 @@
+{
+  "pass": false,
+  "failures": [
+    "generator 0 actions 33",
+    "generator 0 main bid count",
+    "generator 0 exact version deliveries",
+    "first sale / durable outcome 967A37",
+    "first sale / durable outcome 5EC9A4",
+    "first sale / durable outcome 23A53F",
+    "first sale / durable outcome 64B37B",
+    "first sale / durable outcome 93235E",
+    "first sale / durable outcome 9DA0E4",
+    "first sale / durable outcome B8BD96",
+    "first sale / durable outcome 684C2F",
+    "first sale / durable outcome F13389",
+    "first sale / durable outcome D468F9",
+    "first sale / durable outcome D87500",
+    "first sale / durable outcome CF85EC",
+    "first sale / durable outcome 9206FA",
+    "first sale / durable outcome 2EF637",
+    "first sale / durable outcome F14C64",
+    "first sale / durable outcome 0877CF",
+    "first sale / durable outcome A64CC7",
+    "first sale / durable outcome A7F559",
+    "first sale / durable outcome C17BA8",
+    "first sale / durable outcome 566D9E",
+    "first sale / durable outcome D983F8",
+    "first sale / durable outcome 082700",
+    "first sale / durable outcome FA254D",
+    "first sale / durable outcome 3ED5A9",
+    "first sale / durable outcome D03B30",
+    "first sale / durable outcome BB828E",
+    "first sale / durable outcome 915A68",
+    "first sale / durable outcome D5E236",
+    "first sale / durable outcome 45E3C6",
+    "first sale / durable outcome 96376C",
+    "first sale / durable outcome CAC61F",
+    "first sale / durable outcome 4C93F7",
+    "first sale / durable outcome E54DF8",
+    "runtime 0 bid p95 5298.311599999986",
+    "runtime 0 broadcast p95 3291.9694999999774",
+    "runtime 0 ping p95 2588.997900000002",
+    "pooled bid p95 5298.311599999986",
+    "pooled broadcast p95 3291.9694999999774",
+    "pooled ping p95 2588.997900000002"
+  ],
+  "latency": {
+    "bid": {
+      "count": 1532,
+      "p50": 3122.9179000000004,
+      "p95": 5298.311599999986,
+      "p99": 6687.020199999999
+    },
+    "broadcast": {
+      "count": 16990,
+      "p50": 1745.5161999999982,
+      "p95": 3291.9694999999774,
+      "p99": 5407.676600000006
+    },
+    "ping": {
+      "count": 13080,
+      "p50": 716.7292999999918,
+      "p95": 2588.997900000002,
+      "p99": 3152.7068
+    }
+  },
+  "perInstance": [
+    {
+      "bid": {
+        "count": 1532,
+        "p50": 3122.9179000000004,
+        "p95": 5298.311599999986,
+        "p99": 6687.020199999999
+      },
+      "broadcast": {
+        "count": 16990,
+        "p50": 1745.5161999999982,
+        "p95": 3291.9694999999774,
+        "p99": 5407.676600000006
+      },
+      "ping": {
+        "count": 13080,
+        "p50": 716.7292999999918,
+        "p95": 2588.997900000002,
+        "p99": 3152.7068
+      }
+    }
+  ],
+  "overlapMs": 70019,
+  "accepted": 1499,
+  "races": 200,
+  "deliveries": 16990,
+  "settled": 167,
+  "errors": {
+    "http": 0,
+    "actions": 33,
+    "ping": 0,
+    "sockets": 0,
+    "closedEarly": 0
+  }
+}

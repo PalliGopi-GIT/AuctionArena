@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Room } from '../../../../packages/shared/src/domain';
 import { createAuctionAnnouncer } from '../auction-announcements';
+import { useDisplayTime } from './AuctionClock';
 
-export function AuctionAnnouncements({ room, connected, serverNow }: { room: Room | null; connected: boolean; serverNow: number }) {
+export function AuctionAnnouncements({ room, connected, offset }: { room: Room | null; connected: boolean; offset: number }) {
+  const serverNow = useDisplayTime(offset, room?.status === 'LIVE');
   const [polite, setPolite] = useState(''), [urgent, setUrgent] = useState('');
   const announcer = useRef<ReturnType<typeof createAuctionAnnouncer> | null>(null);
   useEffect(() => {

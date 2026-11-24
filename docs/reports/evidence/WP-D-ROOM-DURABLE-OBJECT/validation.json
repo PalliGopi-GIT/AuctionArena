@@ -1,0 +1,77 @@
+{
+  "task": "WP-D-ROOM-DURABLE-OBJECT",
+  "status": "passed-local-scope",
+  "date": "2026-11-13",
+  "baseCommit": "53967a292833c5ba3496fcbba02e8cdb39d446eb",
+  "workingTreeChanges": true,
+  "commitCreated": false,
+  "isolation": "Temporary source copy, node_modules junction, empty temporary .data directory; private environment file and original data not copied",
+  "typecheck": {
+    "exitCode": 0,
+    "command": "npx.cmd tsc --noEmit",
+    "log": "typecheck.log",
+    "exitRecord": "typecheck-exit.txt",
+    "note": "typecheck.log is empty; exit record is 0"
+  },
+  "core": {
+    "passed": 230,
+    "failed": 0,
+    "skipped": 0,
+    "suites": 40,
+    "success": true,
+    "command": "npx.cmd vitest run tests/core --configLoader runner --reporter=json",
+    "report": "core.json",
+    "note": "16 new room Durable Object tests; baseline was 214 after Package C"
+  },
+  "local": {
+    "passed": 76,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0,
+    "command": "npm.cmd run test:local",
+    "report": "local/local-tests.json",
+    "note": "The unchanged runner still labels its raw output WP1-ROOM-COMPLETION"
+  },
+  "browser": {
+    "passed": 34,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "globalErrors": 0,
+    "axeScans": 34,
+    "axeViolations": 0,
+    "axeIncompleteRuleEntries": 28,
+    "command": "npm.cmd run test:e2e",
+    "report": "browser/results.json",
+    "exitRecord": "browser-exit.txt",
+    "note": "Regression run against the unchanged local Node runtime, not the Durable Object"
+  },
+  "a11y": {
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "globalErrors": 0,
+    "exitCode": 0,
+    "axeScans": 32,
+    "axeViolations": 0,
+    "axeIncompleteRuleEntries": 26,
+    "command": "npm.cmd run test:a11y",
+    "report": "a11y/results.json",
+    "exitRecord": "a11y-exit.txt",
+    "note": "Regression run against the unchanged local Node runtime, not the Durable Object"
+  },
+  "sourceManifest": "tested-source.json",
+  "sourceHashNote": "SHA-256 values were computed from the isolated WP-D verification copy at run time and matched the repository working tree for all four D files",
+  "limits": [
+    "No wrangler or Miniflare run; the Workers runtime, Durable Object binding, SQLite-backed storage, hibernation, alarms and 101 WebSocket upgrade are unverified",
+    "The D tests use a fake Durable Object state backed by node:sqlite, transactionSync emulation, fake alarms and socket doubles; they do not prove Cloudflare scheduling or transaction semantics",
+    "Browser and accessibility runs exercise the unchanged local Node runtime, not the Worker or room object",
+    "One alarm slot is shared by lot deadlines, result advances and host-absence checks; alarm execution is idempotent by state version but has no queue or multi-room scheduling",
+    "A wake disconnects all members and pauses a live lot; the host must reconnect and resume",
+    "Socket tickets are HMAC-signed, expire after 30 seconds and are replayable within that window; the room object rechecks membership",
+    "No cross-room index, discovery, archive, deletion or export exists yet; those are Package E",
+    "No deployment, cloud resource, account setting, R2 activation or production migration was created"
+  ],
+  "next": "Implement Package E cross-room discovery, index, archive, deletion and export without assuming room-local SQLite provides global queries"
+}

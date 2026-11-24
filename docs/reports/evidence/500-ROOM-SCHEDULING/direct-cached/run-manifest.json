@@ -1,0 +1,43 @@
+{
+    "task":  "AUCTIONARENA-LOAD-TEST",
+    "generatedAt":  "2026-11-19T17:51:31.6767480+05:30",
+    "environment":  "loopback workerd with fresh SQLite state per level",
+    "wrangler":  "4.162.0",
+    "durationMs":  70000,
+    "bids":  8,
+    "roomSize":  10,
+    "timerSeconds":  60,
+    "mode":  "quick",
+    "separateStart":  true,
+    "trace":  true,
+    "cacheSnapshots":  true,
+    "runtime":  "direct Miniflare",
+    "bidSpreadMs":  40000,
+    "freeMemoryFloorMiB":  1536,
+    "levels":  [
+                   {
+                       "users":  2000,
+                       "expectedRooms":  200,
+                       "port":  9001,
+                       "state":  "C:\\Users\\palli\\AppData\\Local\\Temp\\auctionarena-perf-lfo8cdb9\\runtime\\level-2000-769f26f362a34467a5043dead4504631\\state",
+                       "startedAt":  "2026-11-19T17:51:36.3272724+05:30",
+                       "finishedAt":  "2026-11-19T17:55:56.4972759+05:30",
+                       "exitCode":  0,
+                       "harness":  "load-2000.json",
+                       "integrity":  "integrity-2000.json",
+                       "pass":  false,
+                       "failures":  [
+                                        "harness error: TimeoutError: The operation was aborted due to timeout",
+                                        "http errors 254",
+                                        "ping errors 1433",
+                                        "action errors 259",
+                                        "accepted 650/1600 actions",
+                                        "race conflicts 83/200",
+                                        "settled 197/200 rooms",
+                                        "ping p95 8486.68 ms",
+                                        "broadcast p95 11822.31 ms"
+                                    ]
+                   }
+               ],
+    "pass":  false
+}

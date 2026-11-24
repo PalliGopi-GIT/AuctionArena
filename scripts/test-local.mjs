@@ -2,7 +2,7 @@ import { spawnSync } from 'node:child_process';
 import { mkdirSync, writeFileSync } from 'node:fs';
 
 const started=Date.now();
-const args=['--import','./scripts/register-typescript.mjs','--test','tests/local/core.test.mjs','tests/local/connection.test.mjs','tests/local/management.test.mjs','tests/local/results.test.mjs','tests/local/completion.test.mjs'];
+const args=['--import','./scripts/register-typescript.mjs','--test','tests/local/core.test.mjs','tests/local/connection.test.mjs','tests/local/management.test.mjs','tests/local/results.test.mjs','tests/local/completion.test.mjs','tests/local/plan-persistence.test.mjs'];
 const result=spawnSync(process.execPath,args,{encoding:'utf8',timeout:90000});
 const output=(result.stdout??'')+(result.stderr??'');
 const count=name=>Number(output.match(new RegExp(`^# ${name} (\\d+)`,'m'))?.[1]??0);

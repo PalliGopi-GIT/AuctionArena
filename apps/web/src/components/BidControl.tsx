@@ -9,10 +9,11 @@ interface Props {
   connected: boolean;
   serverOffset: number;
   busy: boolean;
-  onBid: () => void;
+  onBid: () => Promise<boolean>;
 }
 
 export function BidControl({ room, userId, connected, serverOffset, busy, onBid }: Props) {
+  const submitting = useRef(false);
   const [, setDeadlineTick] = useState(0);
   const serverNow = Date.now() + serverOffset;
   useEffect(() => {
@@ -31,9 +32,11 @@ export function BidControl({ room, userId, connected, serverOffset, busy, onBid 
   const mine = room.teams.find(team => team.ownerId === userId);
   const leading = !!mine && mine.id === room.leadingTeamId;
   return <>
-    <button type="button" className="button" disabled={!!restriction} aria-describedby="bid-reason" onClick={() => {
+    <button type="button" className="button bid-action" disabled={!!restriction} aria-describedby="bid-reason" onClick={async () => {
       const currentTime = Date.now() + serverOffset;
-      if (!busy && connected && !deadlineGuard.current!(room, currentTime) && !bidRestriction(room, userId, currentTime)) onBid();
+      if (submitting.current || busy || !connected || deadlineGuard.current!(room, currentTime) || bidRestriction(room, userId, currentTime)) return;
+      submitting.current = true;
+      try { await onBid(); } finally { submitting.current = false; }
     }}>
       {busy ? 'Confirming…' : leading ? 'You’re leading' : `Bid ${money(nextBid(room))}`} <Zap size={20} aria-hidden="true" />
     </button>

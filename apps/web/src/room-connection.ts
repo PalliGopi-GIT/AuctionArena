@@ -4,6 +4,11 @@ export interface Snapshot { room: Room; serverNow: number; clockOffset?: number 
 export function clockOffset(serverNow: number, sentAt: number, receivedAt: number) {
   return serverNow - (sentAt + (receivedAt - sentAt) / 2);
 }
+
+/** The Worker resolves the room from the query string and rechecks it against the signed ticket. */
+export function socketUrl(protocol: string, host: string, roomCode: string) {
+  return `${protocol === 'https:' ? 'wss' : 'ws'}://${host}/ws?room=${encodeURIComponent(roomCode)}`;
+}
 export function isCurrentSnapshot(current: Snapshot | null, incoming: Snapshot, code: string) {
   return incoming.room.code === code && (!current || current.room.code !== code ||
     (incoming.room.version >= current.room.version && incoming.serverNow >= current.serverNow));
@@ -28,12 +33,19 @@ export function connectRoom(options: {
   let retry: ReturnType<typeof setTimeout> | undefined;
   let interval: ReturnType<typeof setInterval> | undefined;
   let retryDelay = options.retryMs ?? 1000;
+  let opening = 0;
+  let generation = 0;
+  let onlineHandler: (() => void) | undefined;
   const clock = options.clock ?? Date.now;
   let pingAt: number | undefined;
   let lastPingAt = 0;
   let lastVersion: number | undefined;
   const path = `/rooms/${options.code}`;
-  const stop = () => { stopped = true; clearInterval(interval); clearTimeout(retry); socket?.close(); };
+  const stop = () => {
+    stopped = true; clearInterval(interval); clearTimeout(retry);
+    if (onlineHandler && typeof window !== 'undefined') window.removeEventListener('online', onlineHandler);
+    socket?.close();
+  };
   const deny = (message: string) => { if (stopped) return; stop(); options.connection(false); options.accessLost?.(message); };
   const denied = (error: unknown) => {
     const code = (error as { code?: string })?.code;
@@ -67,15 +79,35 @@ export function connectRoom(options: {
     retry = setTimeout(() => { retry = undefined; void open(); }, retryDelay);
     retryDelay = Math.min(retryDelay * 2, 8000);
   }
+  /**
+   * Regaining connectivity must not wait out the backoff, and a socket that was
+   * open when the network dropped can look alive to the browser. Replace it.
+   */
+  function resume() {
+    if (stopped) return;
+    retryDelay = options.retryMs ?? 1000;
+    if (retry) { clearTimeout(retry); retry = undefined; }
+    if (socket && socket.readyState !== 3) {
+      socket.onclose = null;
+      try { socket.close(); } catch { /* already closed */ }
+    }
+    socket = undefined; pingAt = undefined;
+    generation++; opening = 0;
+    void open();
+    void poll();
+  }
   function ping() {
     if (socket?.readyState !== 1) return;
     pingAt = clock(); lastPingAt = pingAt;
     socket.send(JSON.stringify({ type: 'ping', clientSentAt: pingAt }));
   }
   async function open() {
+    if (stopped || opening) return;
+    const attempt = ++generation;
+    opening = attempt;
     try {
       const { ticket } = await options.request(`${path}/ws-ticket`, {});
-      if (stopped) return;
+      if (stopped || attempt !== generation) return;
       socket = options.socket(ticket);
       socket.onopen = () => { retryDelay = options.retryMs ?? 1000; pingAt = undefined; ping(); };
       socket.onmessage = event => {
@@ -97,16 +129,25 @@ export function connectRoom(options: {
         options.connection(false); void poll(); reconnect();
       };
       socket.onerror = () => socket?.close();
-    } catch (error) { if (!denied(error)) reconnect(); }
+    } catch (error) { if (!denied(error) && attempt === generation) reconnect(); }
+    finally { if (opening === attempt) opening = 0; }
+  }
+  if (typeof window !== 'undefined') {
+    onlineHandler = () => resume();
+    window.addEventListener('online', onlineHandler);
   }
   options.connection(false);
   void poll();
   void open();
   interval = setInterval(() => {
-    void poll();
     if (socket?.readyState === 1) {
+      // The socket carries every state change. Polling only resumes when the
+      // socket is unavailable, so a connected room makes no HTTP reads.
+      if (pingAt !== undefined && clock() - pingAt > 10000) { socket.close(); return; }
       if (clock() - lastPingAt >= 30000) ping();
       else socket.send(JSON.stringify({ type: 'heartbeat' }));
+    } else {
+      void poll();
     }
   }, options.pollMs ?? 2000);
   return stop;

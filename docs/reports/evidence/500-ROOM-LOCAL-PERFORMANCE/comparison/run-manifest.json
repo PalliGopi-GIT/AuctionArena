@@ -1,0 +1,47 @@
+{
+    "task":  "AUCTIONARENA-LOAD-TEST",
+    "generatedAt":  "2026-11-19T16:54:48.5650149+05:30",
+    "environment":  "local wrangler dev (workerd), fresh --persist-to state per level; not a Cloudflare deployment",
+    "wrangler":  "4.162.0",
+    "durationMs":  40000,
+    "bids":  8,
+    "roomSize":  10,
+    "timerSeconds":  30,
+    "mode":  "sample",
+    "separateStart":  false,
+    "freeMemoryFloorMiB":  1536,
+    "levels":  [
+                   {
+                       "users":  100,
+                       "expectedRooms":  10,
+                       "port":  8931,
+                       "state":  "C:\\Users\\palli\\AppData\\Local\\Temp\\auctionarena-perf-lfo8cdb9\\runtime\\level-100-f8bd50b1b82f4961aa1b7039d962effc\\state",
+                       "startedAt":  "2026-11-19T16:54:50.8329058+05:30",
+                       "finishedAt":  "2026-11-19T16:55:51.2753059+05:30",
+                       "exitCode":  0,
+                       "harness":  "load-100.json",
+                       "integrity":  "integrity-100.json",
+                       "pass":  true,
+                       "failures":  [
+
+                                    ]
+                   },
+                   {
+                       "users":  500,
+                       "expectedRooms":  50,
+                       "port":  8932,
+                       "state":  "C:\\Users\\palli\\AppData\\Local\\Temp\\auctionarena-perf-lfo8cdb9\\runtime\\level-500-8bb75fda4f1b44b697f64a0753f973d6\\state",
+                       "startedAt":  "2026-11-19T16:55:51.8379252+05:30",
+                       "finishedAt":  "2026-11-19T16:57:37.5050462+05:30",
+                       "exitCode":  0,
+                       "harness":  "load-500.json",
+                       "integrity":  "integrity-500.json",
+                       "pass":  false,
+                       "failures":  [
+                                        "ping p95 1672 ms",
+                                        "broadcast p95 3442 ms"
+                                    ]
+                   }
+               ],
+    "pass":  false
+}

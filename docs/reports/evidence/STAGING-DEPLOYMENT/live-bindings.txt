@@ -1,0 +1,16 @@
+workers count: 1
+worker: auctionarena-staging
+settings status: 200
+binding count: 8
+binding: ALLOWED_ORIGINS -> plain_text (plain text var)
+binding: ASSETS -> assets
+binding: CLERK_ISSUER -> plain_text (plain text var)
+binding: CLERK_JWT_KEY -> secret_text (secret)
+binding: CLERK_SECRET_KEY -> secret_text (secret)
+binding: DIRECTORY -> durable_object_namespace
+binding: ROOM -> durable_object_namespace
+binding: WS_TICKET_SECRET -> secret_text (secret)
+compatibility_date: 2026-11-13
+migrations tag present: false
+subdomain status: 200
+subdomain: palligopi1924

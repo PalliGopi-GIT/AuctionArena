@@ -1,0 +1,14 @@
+VERIFIED — A1 protected source and evidence copy: C:\Users\palli\AppData\Local\AuctionArenaSafety\20261120-083120. Manifest SHA-256: 08A253AD225A03AE30466A5D0639EDA95CCD47B4875174D5F8F8D0B014B46C9B.
+DOCUMENTED — Private environment, private runtime state, caches, Git metadata, exports, database/key files and test output are excluded from the backup under the no-secret-copy rule. Original files remain in place. Whole-tree backup is partial.
+DOCUMENTED — Next: A2 storage equivalence tests.
+VERIFIED — storage exit 0. Isolated results C:\Users\palli\AppData\Local\Temp\auctionarena-auto-94fe5f0713c94d7192beaaba8658b549\results-storage
+VERIFIED — typecheck exit 0. Isolated results C:\Users\palli\AppData\Local\Temp\auctionarena-auto-94fe5f0713c94d7192beaaba8658b549\results-typecheck
+VERIFIED — build exit 0. Isolated results C:\Users\palli\AppData\Local\Temp\auctionarena-auto-94fe5f0713c94d7192beaaba8658b549\results-build
+VERIFIED — core exit 1. Isolated results C:\Users\palli\AppData\Local\Temp\auctionarena-auto-94fe5f0713c94d7192beaaba8658b549\results-core
+VERIFIED — local exit 0. Isolated results C:\Users\palli\AppData\Local\Temp\auctionarena-auto-94fe5f0713c94d7192beaaba8658b549\results-local
+VERIFIED — A2 storage parity passed 26/26. A3 pinned the installed Clerk versions, Wrangler, Miniflare and Wrangler-compatible Workers types, selected npm 10.9.8 with package-lock.json, and updated the obsolete gate. npm ls --package-lock-only resolved all five pins. A4 isolated core retry passed 313/313 after creating the missing empty private .data parent. Local API passed 78/78.
+VERIFIED — B diagnostic launcher now pipes short-lived signing material through child stdin and monitors host CPU over 15 samples in addition to the original memory floor. The Directory-only control completed two fresh Miniflare trials of 500 room projections each in four phases. All 4,000 replies had the expected version, membership count and code. Private proxy timing includes Miniflare transport. Outbox age and internal queue depth are unmeasured.
+VERIFIED — Mega opening snapshots measured 72,301 and 73,241 bytes at 10 and 20 members. These measurements cover empty history only. The isolated core suite traversed Quick, Standard and Mega with simulated time.
+DOCUMENTED — Next checkpoint is the strictly gated aggregate using one Directory through a private process pipe. The two Node hops on the peer runtime are included in latency. Browser and accessibility runs continue independently in a temporary checkout.
+VERIFIED — browser exit 1. Isolated results C:\Users\palli\AppData\Local\Temp\auctionarena-auto-94fe5f0713c94d7192beaaba8658b549\results-browser
+VERIFIED — accessibility exit 0. Isolated results C:\Users\palli\AppData\Local\Temp\auctionarena-auto-94fe5f0713c94d7192beaaba8658b549\results-accessibility

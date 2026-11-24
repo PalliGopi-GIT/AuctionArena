@@ -37,8 +37,14 @@ export function applyStoredAction(entry: StoredRoom, user: User, action: Action,
 }
 
 /** Existing local deadline/host-presence ordering, shared with persistent room adapters. */
-export function advanceRoom(room: Room, now: number) {
+export function advanceRoom(room: Room, now: number, presence?: ReadonlyMap<string, number>) {
   const host = room.members.find(member => member.id === room.hostId);
+  for (const member of room.members) {
+    // Live sockets are the source of truth for presence between persistence
+    // points; callers without a presence map keep the stored timestamps.
+    const seen = presence?.get(member.id);
+    if (seen !== undefined && seen > member.lastSeen) member.lastSeen = seen;
+  }
   const absentAt = host ? host.lastSeen + 10000 : now;
   for (const member of room.members) if (member.connected && now - member.lastSeen > 10000) {
     member.connected = false; event(room, now, 'disconnected', member.name + ' disconnected.', member.id);

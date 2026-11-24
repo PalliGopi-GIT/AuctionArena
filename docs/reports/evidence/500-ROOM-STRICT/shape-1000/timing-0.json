@@ -1,0 +1,481 @@
+{
+  "users": 1000,
+  "rooms": 100,
+  "clock": {
+    "before": {
+      "count": 12,
+      "bestRttMs": 2.304931640625,
+      "offsetLowerMs": -2.043701171875,
+      "offsetUpperMs": 2.26123046875,
+      "maxWallDriftMs": 0.656494140625
+    },
+    "after": {
+      "count": 12,
+      "bestRttMs": 2.203369140625,
+      "offsetLowerMs": -1.90966796875,
+      "offsetUpperMs": 2.293701171875,
+      "maxWallDriftMs": 0.562255859375
+    }
+  },
+  "httpMs": {
+    "createdToBodySent": {
+      "count": 900,
+      "p50": 7.617,
+      "p95": 16.37,
+      "p99": 17.648,
+      "max": 21.319
+    },
+    "startToWorkerIngress": {
+      "count": 900,
+      "p50": 10,
+      "p95": 19.873,
+      "p99": 34.419,
+      "max": 65.212
+    },
+    "bodySentToWorkerIngress": {
+      "count": 900,
+      "p50": 1.731,
+      "p95": 7.642,
+      "p99": 26.153,
+      "max": 55.633
+    },
+    "workerIngressToForward": {
+      "count": 900,
+      "p50": 1,
+      "p95": 1,
+      "p99": 2,
+      "max": 5
+    },
+    "forwardToRoomCallback": {
+      "count": 900,
+      "p50": 0,
+      "p95": 1,
+      "p99": 6,
+      "max": 53
+    },
+    "roomCallbackToReady": {
+      "count": 900,
+      "p50": 0,
+      "p95": 0,
+      "p99": 1,
+      "max": 1
+    },
+    "roomCallbackToReply": {
+      "count": 900,
+      "p50": 8,
+      "p95": 13,
+      "p99": 17,
+      "max": 28
+    },
+    "roomReplyToWorkerReply": {
+      "count": 900,
+      "p50": 6,
+      "p95": 12,
+      "p99": 15,
+      "max": 22
+    },
+    "workerReplyToNodeWireHeaders": {
+      "count": 900,
+      "p50": 3.948,
+      "p95": 9.018,
+      "p99": 13.325,
+      "max": 17.783
+    },
+    "nodeWireHeadersToFetchHeaders": {
+      "count": 900,
+      "p50": 0.369,
+      "p95": 0.648,
+      "p99": 2.083,
+      "max": 5.154
+    },
+    "nodeBodyRead": {
+      "count": 900,
+      "p50": 0.98,
+      "p95": 15.417,
+      "p99": 25.41,
+      "max": 39.497
+    },
+    "nodeBodyParse": {
+      "count": 900,
+      "p50": 0.285,
+      "p95": 0.391,
+      "p99": 0.533,
+      "max": 1.891
+    }
+  },
+  "broadcastMs": {
+    "sentToScheduled": {
+      "count": 1024,
+      "p50": 16.758,
+      "p95": 28.992,
+      "p99": 51.872,
+      "max": 79.212
+    },
+    "scheduledToNodeCallback": {
+      "count": 1024,
+      "p50": 7.517,
+      "p95": 30.867,
+      "p99": 49.613,
+      "max": 79.807
+    },
+    "nodeDecode": {
+      "count": 1024,
+      "p50": 0.273,
+      "p95": 0.414,
+      "p99": 1.015,
+      "max": 2.097
+    }
+  },
+  "broadcastBytes": {
+    "count": 1024,
+    "p50": 29435,
+    "p95": 29875,
+    "p99": 29923,
+    "max": 29987
+  },
+  "pingMs": {
+    "elapsed": {
+      "count": 1024,
+      "p50": 34.957,
+      "p95": 70.713,
+      "p99": 175.597,
+      "max": 645.69
+    },
+    "nodeSendFlush": {
+      "count": 1024,
+      "p50": 19.631,
+      "p95": 48.623,
+      "p99": 64.135,
+      "max": 105.988
+    },
+    "sendToIngress": {
+      "count": 1024,
+      "p50": 31.68,
+      "p95": 63.855,
+      "p99": 173.267,
+      "max": 592.981
+    },
+    "ingressToPong": {
+      "count": 1024,
+      "p50": 0,
+      "p95": 0,
+      "p99": 1,
+      "max": 1
+    },
+    "outsidePongHandler": {
+      "count": 1024,
+      "p50": 34.957,
+      "p95": 70.713,
+      "p99": 175.597,
+      "max": 645.69
+    },
+    "pongToNodeCallback": {
+      "count": 1024,
+      "p50": 1.135,
+      "p95": 15.885,
+      "p99": 29.566,
+      "max": 107.446
+    },
+    "nodeDecode": {
+      "count": 1024,
+      "p50": 0.012,
+      "p95": 0.026,
+      "p99": 0.056,
+      "max": 0.377
+    },
+    "serverBufferedBytes": {
+      "count": 0,
+      "p50": null,
+      "p95": null,
+      "p99": null,
+      "max": null
+    },
+    "clientBufferedBytes": {
+      "count": 1024,
+      "p50": 0,
+      "p95": 20,
+      "p99": 20,
+      "max": 20
+    }
+  },
+  "pingSlowestFivePercent": {
+    "elapsed": {
+      "count": 52,
+      "p50": 80.078,
+      "p95": 510.956,
+      "p99": 645.69,
+      "max": 645.69
+    },
+    "nodeSendFlush": {
+      "count": 52,
+      "p50": 55.324,
+      "p95": 83.052,
+      "p99": 105.988,
+      "max": 105.988
+    },
+    "sendToIngress": {
+      "count": 52,
+      "p50": 78.221,
+      "p95": 470.612,
+      "p99": 592.981,
+      "max": 592.981
+    },
+    "ingressToPong": {
+      "count": 52,
+      "p50": 0,
+      "p95": 1,
+      "p99": 1,
+      "max": 1
+    },
+    "outsidePongHandler": {
+      "count": 52,
+      "p50": 80.078,
+      "p95": 510.956,
+      "p99": 645.69,
+      "max": 645.69
+    },
+    "pongToNodeCallback": {
+      "count": 52,
+      "p50": 9.768,
+      "p95": 48.755,
+      "p99": 107.446,
+      "max": 107.446
+    },
+    "nodeDecode": {
+      "count": 52,
+      "p50": 0.014,
+      "p95": 0.029,
+      "p99": 0.058,
+      "max": 0.058
+    },
+    "serverBufferedBytes": {
+      "count": 0,
+      "p50": null,
+      "p95": null,
+      "p99": null,
+      "max": null
+    },
+    "clientBufferedBytes": {
+      "count": 52,
+      "p50": 0,
+      "p95": 20,
+      "p99": 20,
+      "max": 20
+    }
+  },
+  "pingWindows": [
+    {
+      "fromFirstPingMs": 0,
+      "rtt": {
+        "count": 77,
+        "p50": 30.606,
+        "p95": 63.158,
+        "p99": 66.131,
+        "max": 66.131
+      }
+    },
+    {
+      "fromFirstPingMs": 5000,
+      "rtt": {
+        "count": 76,
+        "p50": 39.019,
+        "p95": 72.261,
+        "p99": 79.039,
+        "max": 79.039
+      }
+    },
+    {
+      "fromFirstPingMs": 10000,
+      "rtt": {
+        "count": 69,
+        "p50": 33.934,
+        "p95": 51.113,
+        "p99": 58.327,
+        "max": 58.327
+      }
+    },
+    {
+      "fromFirstPingMs": 15000,
+      "rtt": {
+        "count": 91,
+        "p50": 41.745,
+        "p95": 56.439,
+        "p99": 62.633,
+        "max": 62.633
+      }
+    },
+    {
+      "fromFirstPingMs": 20000,
+      "rtt": {
+        "count": 75,
+        "p50": 29.127,
+        "p95": 51.529,
+        "p99": 70.088,
+        "max": 70.088
+      }
+    },
+    {
+      "fromFirstPingMs": 25000,
+      "rtt": {
+        "count": 83,
+        "p50": 36.6,
+        "p95": 52.55,
+        "p99": 64.273,
+        "max": 64.273
+      }
+    },
+    {
+      "fromFirstPingMs": 30000,
+      "rtt": {
+        "count": 80,
+        "p50": 38.953,
+        "p95": 68.992,
+        "p99": 77.639,
+        "max": 77.639
+      }
+    },
+    {
+      "fromFirstPingMs": 35000,
+      "rtt": {
+        "count": 76,
+        "p50": 36.87,
+        "p95": 63.89,
+        "p99": 81.716,
+        "max": 81.716
+      }
+    },
+    {
+      "fromFirstPingMs": 40000,
+      "rtt": {
+        "count": 75,
+        "p50": 34.238,
+        "p95": 54.963,
+        "p99": 61.463,
+        "max": 61.463
+      }
+    },
+    {
+      "fromFirstPingMs": 45000,
+      "rtt": {
+        "count": 78,
+        "p50": 27.38,
+        "p95": 70.255,
+        "p99": 78.307,
+        "max": 78.307
+      }
+    },
+    {
+      "fromFirstPingMs": 50000,
+      "rtt": {
+        "count": 85,
+        "p50": 25.75,
+        "p95": 72.374,
+        "p99": 73.176,
+        "max": 73.176
+      }
+    },
+    {
+      "fromFirstPingMs": 55000,
+      "rtt": {
+        "count": 65,
+        "p50": 44.377,
+        "p95": 508.989,
+        "p99": 645.69,
+        "max": 645.69
+      }
+    },
+    {
+      "fromFirstPingMs": 60000,
+      "rtt": {
+        "count": 75,
+        "p50": 24.815,
+        "p95": 158.094,
+        "p99": 274.583,
+        "max": 274.583
+      }
+    },
+    {
+      "fromFirstPingMs": 65000,
+      "rtt": {
+        "count": 19,
+        "p50": 23.894,
+        "p95": 48.005,
+        "p99": 48.005,
+        "max": 48.005
+      }
+    }
+  ],
+  "bidTimerLatenessMs": {
+    "count": 100,
+    "p50": 6.522,
+    "p95": 15.427,
+    "p99": 16.167,
+    "max": 16.454
+  },
+  "rampMs": {
+    "ticket": {
+      "count": 1000,
+      "p50": 20.525,
+      "p95": 32.194,
+      "p99": 42.479,
+      "max": 46.458
+    },
+    "upgradeToReady": {
+      "count": 1000,
+      "p50": 26.475,
+      "p95": 37.646,
+      "p99": 43.55,
+      "max": 53.835
+    }
+  },
+  "node": {
+    "averageCores": 0.31981768466497373,
+    "cpuCoresPerSample": {
+      "count": 69,
+      "p50": 0.312,
+      "p95": 0.539,
+      "p99": 1.047,
+      "max": 1.047
+    },
+    "rssMiB": {
+      "count": 69,
+      "p50": 407.375,
+      "p95": 411.039,
+      "p99": 411.043,
+      "max": 411.043
+    },
+    "eventLoopUtilization": 0.28817857524202933,
+    "eventLoopDelayMs": {
+      "p50": 14.835711,
+      "p95": 21.102591,
+      "p99": 23.986175,
+      "max": 38.567935
+    }
+  },
+  "workerd": [
+    {
+      "pid": 10860,
+      "cores": {
+        "count": 174,
+        "p50": 0.183,
+        "p95": 0.848,
+        "p99": 0.923,
+        "max": 0.958
+      },
+      "rssMiB": {
+        "count": 174,
+        "p50": 601.051,
+        "p95": 647.191,
+        "p99": 652.715,
+        "max": 659.508
+      },
+      "busiestThreadCores": {
+        "count": 174,
+        "p50": 0.17,
+        "p95": 0.829,
+        "p99": 0.917,
+        "max": 0.927
+      }
+    }
+  ]
+}

@@ -1,10 +1,11 @@
 import { test, expect } from '@playwright/test';
-import { create, join, login, readRoom } from './helpers';
+import { create, currentLot, join, login, money, readRoom } from './helpers';
 
 test('two browsers complete a sale, recover, remove/block and reopen results', async ({ page, browser }, testInfo) => {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
-  const { code, invite } = await create(page);
+  // Legacy room: this test pins an exact purse (₹2,000) and result timing.
+  const { code, invite } = await create(page, { budget: 2000 });
   await page.getByRole('button', { name: /Mumbai Meteors/ }).click();
   const guestContext = await browser.newContext({ baseURL: 'http://127.0.0.1:5273', viewport: testInfo.project.use.viewport, isMobile: !!testInfo.project.use.isMobile, hasTouch: !!testInfo.project.use.hasTouch });
   const guest = await guestContext.newPage();
@@ -14,8 +15,9 @@ test('two browsers complete a sale, recover, remove/block and reopen results', a
     await guest.getByRole('button', { name: /Chennai/ }).click();
     await guest.getByRole('button', { name: 'I’m ready' }).click();
     await page.getByRole('button', { name: 'I’m ready' }).click();
-    await page.getByRole('button', { name: 'Start auction' }).click();
+    await page.getByRole('button', { name: 'Start auction', exact: true }).click();
     await expect(guest.locator('.room-status')).toContainText('LIVE');
+    const { lot } = await currentLot(page, code);
     await page.getByRole('button', { name: 'Pause', exact: true }).click();
     await expect(guest.locator('.room-status')).toContainText('PAUSED');
     await expect(guest.getByRole('button', { name: /^Bid ₹/ })).toBeDisabled();
@@ -27,8 +29,8 @@ test('two browsers complete a sale, recover, remove/block and reopen results', a
     await expect(page.locator('.room-status')).toContainText('RESULT', { timeout: 20_000 });
     await expect(guest.locator('.room-status')).toContainText('RESULT');
     const sold = (await readRoom(page, code)).body.room;
-    expect(sold.teams[1].budget).toBe(1900);
-    expect(sold.teams[1].squad).toEqual([{ playerId: 'p1', price: 100 }]);
+    expect(sold.teams[1].budget).toBe(2000 - lot.basePrice);
+    expect(sold.teams[1].squad).toEqual([{ playerId: lot.id, price: lot.basePrice }]);
     await guestContext.setOffline(true);
     await expect(guest.locator('.room-status')).toContainText('Reconnecting');
     await guestContext.setOffline(false);
@@ -50,11 +52,11 @@ test('two browsers complete a sale, recover, remove/block and reopen results', a
     await page.getByRole('dialog').getByRole('button', { name: 'End auction', exact: true }).click();
     await expect(page.locator('.room-status')).toContainText('COMPLETED');
     await expect(page.getByLabel('Auction end reason')).toContainText('The host ended the auction');
-    await expect(page.getByLabel('Auction totals')).toContainText('₹1.00 Cr');
-    await expect(page.locator('.results-team').filter({ hasText: 'Chennai' })).toContainText('₹19.00 Cr');
+    await expect(page.getByLabel('Auction totals')).toContainText(money(lot.basePrice));
+    await expect(page.locator('.results-team').filter({ hasText: 'Chennai' })).toContainText(money(2000 - lot.basePrice));
     await page.reload();
-    await expect(page.getByLabel('Auction totals')).toContainText('₹1.00 Cr');
-    await expect(page.locator('.results-team').filter({ hasText: 'Chennai' })).toContainText('₹19.00 Cr');
+    await expect(page.getByLabel('Auction totals')).toContainText(money(lot.basePrice));
+    await expect(page.locator('.results-team').filter({ hasText: 'Chennai' })).toContainText(money(2000 - lot.basePrice));
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await page.screenshot({ path: `${process.env.AA_EVIDENCE_DIR ?? 'docs/reports/evidence/WP1-E2E'}/${testInfo.project.name}-results.png`, fullPage: true });
     expect(errors).toEqual([]);
@@ -73,7 +75,8 @@ test('invitation renewal, invalid invite, leave and close before start', async (
   const guest = await guestContext.newPage();
   try {
     await joinWithInvalidInvite();
-    await guest.getByLabel('Invite link or token').fill(renewed!);
+    // The join form takes a room code or a full link, not a bare token.
+    await guest.getByLabel('Room code or invitation link').fill(`http://127.0.0.1:5273/?room=${code}&invite=${renewed}`);
     await guest.getByRole('button', { name: 'Join private auction' }).click();
     await expect(guest.getByRole('heading', { name: 'Browser auction' })).toBeVisible();
     await guest.getByRole('button', { name: /Chennai/ }).click();
@@ -90,7 +93,7 @@ test('invitation renewal, invalid invite, leave and close before start', async (
 
   async function joinWithInvalidInvite() {
     await guest.goto(`/?room=${code}&invite=${invite}`);
-    await guest.getByRole('button', { name: 'Sign in', exact: false }).click();
+    await guest.getByRole('banner').getByRole('button', { name: 'Sign in' }).click();
     await login(guest, 'E2E Guest');
     await guest.getByRole('button', { name: 'Join private auction' }).click();
     await expect(guest.getByRole('alert')).toBeVisible();
@@ -106,7 +109,7 @@ test('switching local profiles clears the prior private room and invitation', as
   await expect(page.getByRole('heading', { name: /Build a squad/ })).toBeVisible();
   expect(await page.evaluate(() => Object.keys(sessionStorage).filter(key => key.startsWith('invite-')))).toEqual([]);
   expect(new URL(page.url()).search).toBe('');
-  await page.getByRole('button', { name: 'Sign in', exact: false }).click();
+  await page.getByRole('banner').getByRole('button', { name: 'Sign in' }).click();
   await login(page, 'Next identity');
   await page.locator('.user-pill').click();
   await expect(page.locator('.room-list-card')).toHaveCount(0);
@@ -131,7 +134,7 @@ test('a signed-out full reload clears the old identity invitation and room route
 test('real clipboard invitations join and results links work without invitation credentials', async ({ page, browser }) => {
   await page.context().grantPermissions(['clipboard-read', 'clipboard-write']);
   const { code, invite } = await create(page);
-  await page.getByRole('button', { name: 'Copy invite', exact: true }).click();
+  await page.getByRole('button', { name: 'Copy Link', exact: true }).click();
   await expect(page.getByRole('status').filter({ hasText: 'Copied to clipboard' })).toBeVisible();
   const copied = new URL(await page.evaluate(() => navigator.clipboard.readText()));
   expect(copied.origin).toBe('http://127.0.0.1:5273');
@@ -140,10 +143,17 @@ test('real clipboard invitations join and results links work without invitation 
   const guestContext = await browser.newContext({ baseURL: 'http://127.0.0.1:5273' });
   const guest = await guestContext.newPage();
   try {
+    // Join through the same single-field form every other test uses; the URL
+    // prefill leaves only the bare token, which the form rejects.
     await guest.goto(copied.toString());
-    await guest.getByRole('button', { name: 'Sign in', exact: false }).click();
+    await guest.getByRole('banner').getByRole('button', { name: 'Sign in' }).click();
     await login(guest, 'Clipboard guest');
-    await guest.getByRole('button', { name: 'Join private auction' }).click();
+    const joinButton = guest.getByRole('button', { name: 'Join private auction' });
+    await joinButton.or(guest.getByRole('heading', { name: 'Browser auction' })).first().waitFor({ state: 'visible' });
+    if (await joinButton.isVisible().catch(() => false)) {
+      await guest.getByLabel('Room code or invitation link').fill(copied.toString());
+      await joinButton.click();
+    }
     await expect(guest.getByRole('heading', { name: 'Browser auction' })).toBeVisible();
     await page.getByRole('button', { name: 'Close room', exact: true }).click();
     await page.getByRole('dialog').getByRole('button', { name: 'Close room', exact: true }).click();
@@ -164,7 +174,7 @@ test('clipboard denial provides selectable links with keyboard focus and clears 
   await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: {
     writeText: async () => { throw new DOMException('Denied for this test', 'NotAllowedError'); },
   } }));
-  const trigger = page.getByRole('button', { name: 'Copy invite', exact: true });
+  const trigger = page.getByRole('button', { name: 'Copy Link', exact: true });
   await trigger.click();
   const dialog = page.getByRole('dialog', { name: 'Copy invitation', exact: true });
   const link = dialog.getByLabel('Invitation link');
@@ -207,7 +217,7 @@ test('clipboard denial provides selectable links with keyboard focus and clears 
 
 test('host heartbeat expiry pauses an accepted bid until the host reconnects and resumes', async ({ page, browser }, testInfo) => {
   test.setTimeout(100000);
-  const { code, invite } = await create(page, { timer: 30 });
+  const { code, invite } = await create(page, { timer: 30, budget: 2000 });
   await page.getByRole('button', { name: /Mumbai Meteors/ }).click();
   const guestContext = await browser.newContext({ baseURL: 'http://127.0.0.1:5273', viewport: testInfo.project.use.viewport, isMobile: !!testInfo.project.use.isMobile, hasTouch: !!testInfo.project.use.hasTouch });
   const guest = await guestContext.newPage();
@@ -215,6 +225,8 @@ test('host heartbeat expiry pauses an accepted bid until the host reconnects and
     await join(guest, code, invite);
     await guest.getByRole('button', { name: /Chennai/ }).click();
     await page.getByRole('button', { name: 'Start auction', exact: true }).click();
+    await expect(guest.locator('.room-status')).toContainText('LIVE');
+    const { lot } = await currentLot(page, code);
     await guest.getByRole('button', { name: /^Bid / }).click();
     await expect(page.locator('.leading')).toContainText('Chennai');
     const accepted = (await readRoom(guest, code)).body.room;
@@ -222,8 +234,8 @@ test('host heartbeat expiry pauses an accepted bid until the host reconnects and
     await expect(guest.locator('.room-status')).toContainText('PAUSED', { timeout: 16000 });
     await expect(guest.locator('#bid-reason')).toContainText('paused');
     const paused = (await readRoom(guest, code)).body.room;
-    expect(paused.leadingTeamId).toBe('t2'); expect(paused.currentBid).toBe(100);
-    expect(paused.players[0].status).toBe('open'); expect(paused.teams).toEqual(accepted.teams);
+    expect(paused.leadingTeamId).toBe('t2'); expect(paused.currentBid).toBe(lot.basePrice);
+    expect(paused.players[paused.currentPlayerIndex].status).toBe('open'); expect(paused.teams).toEqual(accepted.teams);
     expect(paused.pausedRemaining).toBeGreaterThan(0);
     // Keep the guest connected beyond the original server deadline; nothing may settle while paused.
     await expect.poll(async () => { await readRoom(guest, code); return Date.now() > accepted.deadline + 500; }, { timeout: 35000, intervals: [1000] }).toBe(true);
@@ -237,19 +249,19 @@ test('host heartbeat expiry pauses an accepted bid until the host reconnects and
     await page.getByRole('button', { name: 'Resume', exact: true }).click();
     await expect(guest.locator('.room-status')).toContainText('LIVE');
     const resumed = (await readRoom(guest, code)).body.room;
-    expect(resumed.currentBid).toBe(100); expect(resumed.leadingTeamId).toBe('t2');
+    expect(resumed.currentBid).toBe(lot.basePrice); expect(resumed.leadingTeamId).toBe('t2');
     expect(resumed.deadline - Date.now()).toBeGreaterThan(paused.pausedRemaining - 4000);
     expect(resumed.deadline - Date.now()).toBeLessThanOrEqual(paused.pausedRemaining);
     await expect(guest.locator('.room-status')).toContainText('RESULT', { timeout: 35000 });
     const sold = (await readRoom(guest, code)).body.room;
-    expect(sold.teams[1].budget).toBe(1900);
-    expect(sold.teams[1].squad).toEqual([{ playerId: 'p1', price: 100 }]);
+    expect(sold.teams[1].budget).toBe(2000 - lot.basePrice);
+    expect(sold.teams[1].squad).toEqual([{ playerId: lot.id, price: lot.basePrice }]);
     expect(sold.history.filter((event: { type: string }) => event.type === 'sold')).toHaveLength(1);
   } finally { await page.context().setOffline(false); await guestContext.close(); }
 });
 
 for (const allowed of [true, false]) test(`late invited spectator is ${allowed ? 'read-only and receives results' : 'denied when spectators are disabled'}`, async ({ page, browser }, testInfo) => {
-  const { code, invite } = await create(page, { timer: 60, spectators: allowed });
+  const { code, invite } = await create(page, { timer: 60, spectators: allowed, budget: 2000 });
   await page.getByRole('button', { name: /Mumbai Meteors/ }).click();
   const participantContext = await browser.newContext({ baseURL: 'http://127.0.0.1:5273' });
   const spectatorContext = await browser.newContext({ baseURL: 'http://127.0.0.1:5273', viewport: testInfo.project.use.viewport, isMobile: !!testInfo.project.use.isMobile, hasTouch: !!testInfo.project.use.hasTouch });
@@ -262,6 +274,7 @@ for (const allowed of [true, false]) test(`late invited spectator is ${allowed ?
     await join(participant, code, invite); await participant.getByRole('button', { name: /Chennai/ }).click();
     await page.getByRole('button', { name: 'Start auction', exact: true }).click();
     await expect(participant.locator('.room-status')).toContainText('LIVE');
+    const { lot } = await currentLot(page, code);
     await join(spectator, code, invite, 'Late spectator', allowed);
     if (!allowed) {
       await expect(spectator.getByRole('alert')).toContainText('Room unavailable');
@@ -271,26 +284,26 @@ for (const allowed of [true, false]) test(`late invited spectator is ${allowed ?
     }
     await expect(spectator.locator('#bid-reason')).toContainText('spectating');
     await expect(spectator.getByRole('button', { name: /^Bid / })).toBeDisabled();
-    const rejected = await spectator.evaluate(async code => {
+    const rejected = await spectator.evaluate(async ({ code, lot }) => {
       const post = async (type: string, extra: object) => {
         const response = await fetch(`/api/rooms/${code}/actions`, { method: 'POST', headers: { Authorization: 'Bearer ' + localStorage.getItem('aa-token'), 'Content-Type': 'application/json' }, body: JSON.stringify({ id: crypto.randomUUID(), type, ...extra }) });
         return { status: response.status, code: (await response.json()).code };
       };
-      return [await post('claim', { teamId: 't1' }), await post('bid', { playerId: 'p1', amount: 100 })];
-    }, code);
+      return [await post('claim', { teamId: 't1' }), await post('bid', { playerId: lot.id, amount: lot.basePrice })];
+    }, { code, lot });
     expect(rejected).toEqual([{ status: 400, code: 'ALREADY_STARTED' }, { status: 400, code: 'NO_TEAM' }]);
     await participant.getByRole('button', { name: /^Bid / }).click();
     await expect(spectator.locator('.leading')).toContainText('Chennai');
     await page.getByRole('button', { name: 'End auction', exact: true }).click();
     await page.getByRole('dialog').getByRole('button', { name: 'End auction', exact: true }).click();
-    await expect(spectator.getByLabel('Auction totals')).toContainText('₹1.00 Cr');
+    await expect(spectator.getByLabel('Auction totals')).toContainText(money(lot.basePrice));
     await expect.poll(() => socketStates.has('COMPLETED')).toBe(true);
     const final = (await readRoom(spectator, code)).body.room;
     expect(final.members).toHaveLength(3);
     expect(final.teams.map((team: { ownerId: string }) => team.ownerId).filter(Boolean)).toHaveLength(2);
-    expect(final.teams[1].budget).toBe(1900);
+    expect(final.teams[1].budget).toBe(2000 - lot.basePrice);
     await spectator.reload();
-    await expect(spectator.getByLabel('Auction totals')).toContainText('₹1.00 Cr');
+    await expect(spectator.getByLabel('Auction totals')).toContainText(money(lot.basePrice));
     await spectator.screenshot({ path: `${process.env.AA_EVIDENCE_DIR ?? 'docs/reports/evidence/WP1-ROOM-RESILIENCE'}/${testInfo.project.name}-spectator-results.png`, fullPage: true });
   } finally { await participantContext.close(); await spectatorContext.close(); }
 });
@@ -304,34 +317,31 @@ test('depleted purses disable bids and finish with an affordability reason', asy
   try {
     await join(guest, code, invite);
     await guest.getByRole('button', { name: /Chennai/ }).click();
-    await page.getByRole('button', { name: 'Start auction' }).click();
-    // Real competing browser bids exhaust the guest's purse at 200 lakhs.
-    for (let amount = 100; amount <= 200; amount += 10) {
-      await (amount % 20 === 0 ? guest : page).getByRole('button', { name: /^Bid / }).click();
-    }
+    await page.getByRole('button', { name: 'Start auction', exact: true }).click();
+    await expect(guest.locator('.room-status')).toContainText('LIVE');
+    const { lot } = await currentLot(page, code);
+    // The opening marquee is tier A at a 200-lakh base price. Both teams have
+    // exactly 200, so each can win one opening lot and then neither can bid.
+    expect(lot.basePrice).toBe(200);
+    await page.getByRole('button', { name: /^Bid / }).click();
     await expect(page.locator('.room-status')).toContainText('RESULT', { timeout: 20_000 });
-    for (let index = 1; index <= 5; index++) {
-      await page.getByRole('button', { name: 'Next player' }).click();
-      await expect(guest.locator('.room-status')).toContainText('LIVE');
-      await expect(guest.getByRole('button', { name: /^Bid / })).toBeDisabled();
-      await expect(guest.locator('#bid-reason')).toContainText('remaining purse cannot cover');
-      // Skip the 100-lakh player: host has 50 left and can afford the later 50-lakh player.
-      if (index === 4) {
-        await expect(page.getByRole('button', { name: /^Bid / })).toBeDisabled();
-        await expect(page.locator('#bid-reason')).toContainText('remaining purse cannot cover');
-      } else {
-        await page.getByRole('button', { name: /^Bid / }).click();
-      }
-      await expect(page.locator('.room-status')).toContainText('RESULT', { timeout: 20_000 });
-    }
+    let state = (await readRoom(page, code)).body.room;
+    expect(state.teams.map((team: { budget: number }) => team.budget)).toEqual([0, 200]);
+    await page.getByRole('button', { name: 'Next player' }).click();
+    await expect(guest.locator('.room-status')).toContainText('LIVE');
+    await guest.getByRole('button', { name: /^Bid / }).click();
+    await expect(page.locator('.room-status')).toContainText('RESULT', { timeout: 20_000 });
+    state = (await readRoom(page, code)).body.room;
+    expect(state.teams.map((team: { budget: number }) => team.budget)).toEqual([0, 0]);
     await page.getByRole('button', { name: 'Next player' }).click();
     await expect(page.locator('.room-status')).toContainText('COMPLETED');
     await expect(guest.locator('.room-status')).toContainText('COMPLETED');
     await expect(page.getByLabel('Auction end reason')).toContainText('No participating team with squad space can afford');
     const final = (await readRoom(page, code)).body.room;
     expect(final.completion_reason).toBe('NO_AFFORDABLE_PLAYERS');
-    expect(final.teams.map((team: { budget: number }) => team.budget)).toEqual([0, 0]);
-    await expect(page.getByLabel('Auction totals')).toContainText('₹4.00 Cr');
+    const total = final.teams.reduce((sum: number, team: { squad: { price: number }[] }) => sum + team.squad.reduce((spent, pick) => spent + pick.price, 0), 0);
+    expect(total).toBe(400);
+    await expect(page.getByLabel('Auction totals')).toContainText(money(total));
     await page.reload();
     await expect(page.getByLabel('Auction end reason')).toContainText('No participating team with squad space can afford');
     await page.screenshot({ path: `${process.env.AA_EVIDENCE_DIR ?? 'docs/reports/evidence/WP1-E2E'}/${testInfo.project.name}-affordability.png`, fullPage: true });

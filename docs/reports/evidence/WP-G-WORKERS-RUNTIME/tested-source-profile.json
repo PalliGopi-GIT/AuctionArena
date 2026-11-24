@@ -1,0 +1,17 @@
+{
+  "task": "WP-G-WORKERS-RUNTIME post-integration",
+  "algorithm": "SHA-256",
+  "generatedAt": "2026-11-15T13:43:42.962Z",
+  "files": {
+    "apps/api/src/accounts.ts": "6bea9d303b66b24506d557e3edc53925d98fdb99d50f213cee2c701007144701",
+    "apps/api/src/worker/app.ts": "e1d2a4aeb6e70c1d7f124e1491344601577b1cd1fa116a29a673a1efb42bb946",
+    "apps/api/src/worker/room-do.ts": "b4dc71fc3ddb5ea8dfb8880bff4dc6e6cb2848111919494140b890a7f8f511c5",
+    "apps/api/src/worker/room.ts": "02f2ec501ee85e41e96bef4bcdd703e5510537540004a0457057dff7b1c8d8b9",
+    "tests/core/worker-entry.test.ts": "4d0cd38c1331421c47af83d015426d0fe28016f5e790a2eea8fa7d5b1a6c8ce4",
+    "tests/core/room-durable-object.test.ts": "991db625eedad5ac09449e371fbc5d8d7970359cf9db562d221f768d521099cf",
+    "scripts/staging-preflight.mjs": "844da78ff07bde2e34b8a37124042d0077084c27d472311811961514479cdb47",
+    "package.json": "5611621c937aa1220b336677b3632a661de62abc4376d4565030347b884c0ac0",
+    "wrangler.jsonc": "2f0cfc900e3e62d2872c289dfab9067dd8fd840a4157f7c10e5a04ff13a75729",
+    ".env.example": "ebefcecbf1ec8b99544d29ee734af49ddee698edcf0d9fc9d9fe2d851405ec4c"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "task": "WP-G-WORKERS-RUNTIME",
+  "generatedAt": "2026-11-14T19:30:00.000Z",
+  "environment": "local working tree based on 53967a2; no commit, no deployment",
+  "commands": {
+    "typecheck": "npm run typecheck",
+    "core": "npm test -- --configLoader runner",
+    "local": "npm run test:local",
+    "build": "npm run build",
+    "browser": "npm run test:e2e",
+    "accessibility": "npm run test:a11y",
+    "load": "scripts/run-worker-load.ps1",
+    "lifecycle": "run-lifecycle.ps1 (verify.mjs plus worker restart)"
+  },
+  "results": {
+    "typecheck": { "exitCode": 0, "passed": true },
+    "core": { "exitCode": 0, "files": 19, "passed": 259, "failed": 0, "skipped": 0 },
+    "local": { "exitCode": 0, "passed": 76, "failed": 0, "skipped": 0 },
+    "build": { "exitCode": 0, "viteBuildSeconds": 5.95, "warnings": "dependency annotation warnings only" },
+    "browser": { "exitCode": 0, "passed": 34, "failed": 0, "flaky": 0, "projects": ["desktop", "mobile"], "durationMinutes": 7.4, "evidence": "browser-e2e.txt and browser-results.json" },
+    "accessibility": {
+      "exitCode": 0,
+      "passed": 4,
+      "failed": 0,
+      "durationMinutes": 1.1,
+      "axeVersion": "4.14.0",
+      "recordedScans": 32,
+      "violations": 0,
+      "incomplete": 26,
+      "passedRules": { "desktop": 584, "mobile": 586 },
+      "evidence": "a11y/desktop-axe.json, a11y/mobile-axe.json, browser-a11y.txt"
+    },
+    "load": { "pass": true, "levels": [100, 250, 500, 1000], "evidence": "load-summary.json" },
+    "settlementIntegrity": {
+      "pass": true,
+      "levels": [
+        { "users": 100, "rooms": 5, "soldRooms": 5, "problems": 0 },
+        { "users": 250, "rooms": 13, "soldRooms": 13, "problems": 0 },
+        { "users": 500, "rooms": 25, "soldRooms": 25, "problems": 0 },
+        { "users": 1000, "rooms": 50, "soldRooms": 50, "problems": 0 }
+      ],
+      "checked": "one sold event per sold player, sale present in the team squad at the same price, unique event and receipt ids, contiguous event versions, conserved team budgets, cleared current bid and leading team, expected room count"
+    },
+    "lifecycle": { "pass": true, "verifyExit": 0, "restartExit": 0, "evidence": "lifecycle.json, lifecycle-verify.txt, lifecycle-restart.txt" }
+  },
+  "notes": [
+    "The accessibility JSON records 16 screens per viewport; the keyboard test also runs one home-page axe audit per viewport, so 34 audits executed in total and all asserted zero violations.",
+    "The 26 incomplete axe entries need human assessment and are not violations or a conformance claim.",
+    "Node prints an ExperimentalWarning for node:sqlite during local tests; it is not a failure.",
+    "Browser and accessibility runs use temporary local profiles and data, not private .data or fixtures."
+  ]
+}

@@ -1,0 +1,2095 @@
+{
+  "users": 2000,
+  "rooms": 200,
+  "roomSize": 10,
+  "instances": 2,
+  "generators": 2,
+  "mode": "quick",
+  "depth": false,
+  "ramp": 20,
+  "controls": false,
+  "sharedDirectory": true,
+  "dedicatedDirectory": true,
+  "profile": false,
+  "compression": "default",
+  "serverCompression": "default",
+  "affinity": "default",
+  "bundleSha256": "0109674a2a8c828c74f6ef009fc2f8637c2da745a18d0934c2f0b42dc20e1d96",
+  "node": "v22.23.2",
+  "host": {
+    "cpu": "Intel(R) Core(TM) 5 210H",
+    "logicalProcessors": 12,
+    "totalBytes": 16857817088,
+    "memoryFloorBytes": 1610612736
+  },
+  "started": "2026-11-20T09:55:05.306Z",
+  "syntheticState": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-2efa3x",
+  "pass": true,
+  "runtimePids": [
+    9632,
+    6468,
+    15168
+  ],
+  "directoryRelay": [
+    {
+      "peer": 0,
+      "requests": 2636,
+      "pending": 0,
+      "peakPending": 71,
+      "samples": [
+        {
+          "ownerRoundTripMs": 26.75760000000082,
+          "enqueueToOwnerReplyMs": 36
+        },
+        {
+          "ownerRoundTripMs": 5.076900000000023,
+          "enqueueToOwnerReplyMs": 10
+        },
+        {
+          "ownerRoundTripMs": 8.122799999999188,
+          "enqueueToOwnerReplyMs": 14
+        },
+        {
+          "ownerRoundTripMs": 11.862500000001091,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 15.052499999999782,
+          "enqueueToOwnerReplyMs": 31
+        },
+        {
+          "ownerRoundTripMs": 6.240600000000995,
+          "enqueueToOwnerReplyMs": 11
+        },
+        {
+          "ownerRoundTripMs": 9.947500000000218,
+          "enqueueToOwnerReplyMs": 13
+        },
+        {
+          "ownerRoundTripMs": 8.910900000000765,
+          "enqueueToOwnerReplyMs": 22
+        },
+        {
+          "ownerRoundTripMs": 7.010200000000623,
+          "enqueueToOwnerReplyMs": 9
+        },
+        {
+          "ownerRoundTripMs": 5.727700000001278,
+          "enqueueToOwnerReplyMs": 16
+        },
+        {
+          "ownerRoundTripMs": 5.561900000000605,
+          "enqueueToOwnerReplyMs": 10
+        },
+        {
+          "ownerRoundTripMs": 7.817900000000009,
+          "enqueueToOwnerReplyMs": 20
+        },
+        {
+          "ownerRoundTripMs": 4.827299999999013,
+          "enqueueToOwnerReplyMs": 8
+        },
+        {
+          "ownerRoundTripMs": 6.16610000000037,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 5.783400000000256,
+          "enqueueToOwnerReplyMs": 18
+        },
+        {
+          "ownerRoundTripMs": 7.331700000000637,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 6.397300000000541,
+          "enqueueToOwnerReplyMs": 10
+        },
+        {
+          "ownerRoundTripMs": 5.60399999999936,
+          "enqueueToOwnerReplyMs": 14
+        },
+        {
+          "ownerRoundTripMs": 6.032900000000154,
+          "enqueueToOwnerReplyMs": 18
+        },
+        {
+          "ownerRoundTripMs": 5.516999999999825,
+          "enqueueToOwnerReplyMs": 15
+        },
+        {
+          "ownerRoundTripMs": 7.790399999999863,
+          "enqueueToOwnerReplyMs": 12
+        },
+        {
+          "ownerRoundTripMs": 5.195799999999508,
+          "enqueueToOwnerReplyMs": 12
+        },
+        {
+          "ownerRoundTripMs": 5.63550000000032,
+          "enqueueToOwnerReplyMs": 21
+        },
+        {
+          "ownerRoundTripMs": 4.639699999999721,
+          "enqueueToOwnerReplyMs": 6
+        },
+        {
+          "ownerRoundTripMs": 6.961999999999534,
+          "enqueueToOwnerReplyMs": 10
+        },
+        {
+          "ownerRoundTripMs": 6.270300000000134,
+          "enqueueToOwnerReplyMs": 22
+        },
+        {
+          "ownerRoundTripMs": 4.9856999999992695,
+          "enqueueToOwnerReplyMs": 7
+        },
+        {
+          "ownerRoundTripMs": 7.090500000000247,
+          "enqueueToOwnerReplyMs": 9
+        },
+        {
+          "ownerRoundTripMs": 5.982500000000073,
+          "enqueueToOwnerReplyMs": 25
+        },
+        {
+          "ownerRoundTripMs": 5.286099999999351,
+          "enqueueToOwnerReplyMs": 11
+        },
+        {
+          "ownerRoundTripMs": 6.1875,
+          "enqueueToOwnerReplyMs": 10
+        },
+        {
+          "ownerRoundTripMs": 5.78230000000076,
+          "enqueueToOwnerReplyMs": 12
+        },
+        {
+          "ownerRoundTripMs": 7.818500000001222,
+          "enqueueToOwnerReplyMs": 11
+        },
+        {
+          "ownerRoundTripMs": 29.38709999999992,
+          "enqueueToOwnerReplyMs": 85
+        },
+        {
+          "ownerRoundTripMs": 20.743500000000495,
+          "enqueueToOwnerReplyMs": 141
+        },
+        {
+          "ownerRoundTripMs": 12.291799999999057,
+          "enqueueToOwnerReplyMs": 112
+        },
+        {
+          "ownerRoundTripMs": 23.136099999999715,
+          "enqueueToOwnerReplyMs": 79
+        },
+        {
+          "ownerRoundTripMs": 5.9200999999993655,
+          "enqueueToOwnerReplyMs": 186
+        },
+        {
+          "ownerRoundTripMs": 8.865900000000693,
+          "enqueueToOwnerReplyMs": 86
+        },
+        {
+          "ownerRoundTripMs": 10.002800000002026,
+          "enqueueToOwnerReplyMs": 21
+        },
+        {
+          "ownerRoundTripMs": 14.684800000002724,
+          "enqueueToOwnerReplyMs": 40
+        },
+        {
+          "ownerRoundTripMs": 9.715899999999237,
+          "enqueueToOwnerReplyMs": 64
+        },
+        {
+          "ownerRoundTripMs": 18.74170000000231,
+          "enqueueToOwnerReplyMs": 85
+        },
+        {
+          "ownerRoundTripMs": 11.295500000000175,
+          "enqueueToOwnerReplyMs": 65
+        },
+        {
+          "ownerRoundTripMs": 8.329900000000634,
+          "enqueueToOwnerReplyMs": 18
+        },
+        {
+          "ownerRoundTripMs": 4.315299999998388,
+          "enqueueToOwnerReplyMs": 79
+        },
+        {
+          "ownerRoundTripMs": 9.648400000001857,
+          "enqueueToOwnerReplyMs": 41
+        },
+        {
+          "ownerRoundTripMs": 11.642100000000937,
+          "enqueueToOwnerReplyMs": 25
+        },
+        {
+          "ownerRoundTripMs": 14.406100000000151,
+          "enqueueToOwnerReplyMs": 36
+        },
+        {
+          "ownerRoundTripMs": 12.877299999996467,
+          "enqueueToOwnerReplyMs": 25
+        },
+        {
+          "ownerRoundTripMs": 18.49989999999889,
+          "enqueueToOwnerReplyMs": 46
+        },
+        {
+          "ownerRoundTripMs": 18.58339999999953,
+          "enqueueToOwnerReplyMs": 51
+        },
+        {
+          "ownerRoundTripMs": 16.41830000000118,
+          "enqueueToOwnerReplyMs": 33
+        },
+        {
+          "ownerRoundTripMs": 5.8751999999985856,
+          "enqueueToOwnerReplyMs": 89
+        },
+        {
+          "ownerRoundTripMs": 12.837299999999232,
+          "enqueueToOwnerReplyMs": 35
+        },
+        {
+          "ownerRoundTripMs": 24.888699999999517,
+          "enqueueToOwnerReplyMs": 49
+        },
+        {
+          "ownerRoundTripMs": 7.882799999999406,
+          "enqueueToOwnerReplyMs": 34
+        },
+        {
+          "ownerRoundTripMs": 5.364299999997456,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 14.813899999997375,
+          "enqueueToOwnerReplyMs": 39
+        },
+        {
+          "ownerRoundTripMs": 12.947999999996682,
+          "enqueueToOwnerReplyMs": 36
+        },
+        {
+          "ownerRoundTripMs": 17.71770000000106,
+          "enqueueToOwnerReplyMs": 44
+        },
+        {
+          "ownerRoundTripMs": 10.879599999996572,
+          "enqueueToOwnerReplyMs": 43
+        },
+        {
+          "ownerRoundTripMs": 11.428799999997864,
+          "enqueueToOwnerReplyMs": 28
+        },
+        {
+          "ownerRoundTripMs": 12.82419999999911,
+          "enqueueToOwnerReplyMs": 35
+        },
+        {
+          "ownerRoundTripMs": 15.972099999999045,
+          "enqueueToOwnerReplyMs": 29
+        },
+        {
+          "ownerRoundTripMs": 18.2570999999989,
+          "enqueueToOwnerReplyMs": 40
+        },
+        {
+          "ownerRoundTripMs": 12.320700000000215,
+          "enqueueToOwnerReplyMs": 42
+        },
+        {
+          "ownerRoundTripMs": 14.45850000000064,
+          "enqueueToOwnerReplyMs": 25
+        },
+        {
+          "ownerRoundTripMs": 13.738000000001193,
+          "enqueueToOwnerReplyMs": 31
+        },
+        {
+          "ownerRoundTripMs": 4.407899999998335,
+          "enqueueToOwnerReplyMs": 10
+        },
+        {
+          "ownerRoundTripMs": 5.118800000000192,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 10.109199999998964,
+          "enqueueToOwnerReplyMs": 32
+        },
+        {
+          "ownerRoundTripMs": 5.569799999997485,
+          "enqueueToOwnerReplyMs": 18
+        },
+        {
+          "ownerRoundTripMs": 18.825799999998708,
+          "enqueueToOwnerReplyMs": 41
+        },
+        {
+          "ownerRoundTripMs": 5.122000000003027,
+          "enqueueToOwnerReplyMs": 11
+        },
+        {
+          "ownerRoundTripMs": 22.076599999996688,
+          "enqueueToOwnerReplyMs": 36
+        },
+        {
+          "ownerRoundTripMs": 26.060999999997875,
+          "enqueueToOwnerReplyMs": 48
+        },
+        {
+          "ownerRoundTripMs": 4.460699999999633,
+          "enqueueToOwnerReplyMs": 35
+        },
+        {
+          "ownerRoundTripMs": 13.666799999999057,
+          "enqueueToOwnerReplyMs": 28
+        },
+        {
+          "ownerRoundTripMs": 4.08469999999943,
+          "enqueueToOwnerReplyMs": 10
+        },
+        {
+          "ownerRoundTripMs": 4.490799999999581,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 8.58599999999933,
+          "enqueueToOwnerReplyMs": 63
+        },
+        {
+          "ownerRoundTripMs": 5.590700000000652,
+          "enqueueToOwnerReplyMs": 15
+        },
+        {
+          "ownerRoundTripMs": 14.286500000001979,
+          "enqueueToOwnerReplyMs": 34
+        },
+        {
+          "ownerRoundTripMs": 4.627700000000914,
+          "enqueueToOwnerReplyMs": 11
+        },
+        {
+          "ownerRoundTripMs": 6.02560000000085,
+          "enqueueToOwnerReplyMs": 21
+        },
+        {
+          "ownerRoundTripMs": 10.583099999999831,
+          "enqueueToOwnerReplyMs": 31
+        },
+        {
+          "ownerRoundTripMs": 4.596000000001368,
+          "enqueueToOwnerReplyMs": 15
+        },
+        {
+          "ownerRoundTripMs": 19.11069999999745,
+          "enqueueToOwnerReplyMs": 36
+        },
+        {
+          "ownerRoundTripMs": 16.66019999999844,
+          "enqueueToOwnerReplyMs": 156
+        },
+        {
+          "ownerRoundTripMs": 30.324899999999616,
+          "enqueueToOwnerReplyMs": 1314
+        },
+        {
+          "ownerRoundTripMs": 57.60409999999683,
+          "enqueueToOwnerReplyMs": 1263
+        },
+        {
+          "ownerRoundTripMs": 105.92829999999958,
+          "enqueueToOwnerReplyMs": 1252
+        },
+        {
+          "ownerRoundTripMs": 158.60689999999886,
+          "enqueueToOwnerReplyMs": 1259
+        },
+        {
+          "ownerRoundTripMs": 155.4678000000058,
+          "enqueueToOwnerReplyMs": 1195
+        },
+        {
+          "ownerRoundTripMs": 146.82910000000265,
+          "enqueueToOwnerReplyMs": 1157
+        },
+        {
+          "ownerRoundTripMs": 8.446899999995367,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 6.758300000001327,
+          "enqueueToOwnerReplyMs": 19
+        },
+        {
+          "ownerRoundTripMs": 7.934300000000803,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 7.178999999996449,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 5.30290000000241,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 5.354800000000978,
+          "enqueueToOwnerReplyMs": 16
+        },
+        {
+          "ownerRoundTripMs": 5.040600000000268,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 7.415799999995215,
+          "enqueueToOwnerReplyMs": 15
+        },
+        {
+          "ownerRoundTripMs": 3.9281000000046333,
+          "enqueueToOwnerReplyMs": 13
+        },
+        {
+          "ownerRoundTripMs": 6.852500000000873,
+          "enqueueToOwnerReplyMs": 15
+        },
+        {
+          "ownerRoundTripMs": 6.370200000004843,
+          "enqueueToOwnerReplyMs": 24
+        },
+        {
+          "ownerRoundTripMs": 4.3738999999986845,
+          "enqueueToOwnerReplyMs": 14
+        },
+        {
+          "ownerRoundTripMs": 4.229500000001281,
+          "enqueueToOwnerReplyMs": 13
+        },
+        {
+          "ownerRoundTripMs": 6.1828999999997905,
+          "enqueueToOwnerReplyMs": 18
+        },
+        {
+          "ownerRoundTripMs": 6.621800000000803,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 5.125500000001921,
+          "enqueueToOwnerReplyMs": 16
+        },
+        {
+          "ownerRoundTripMs": 4.980999999999767,
+          "enqueueToOwnerReplyMs": 16
+        },
+        {
+          "ownerRoundTripMs": 6.509099999995669,
+          "enqueueToOwnerReplyMs": 20
+        },
+        {
+          "ownerRoundTripMs": 6.5570000000006985,
+          "enqueueToOwnerReplyMs": 14
+        },
+        {
+          "ownerRoundTripMs": 5.457699999999022,
+          "enqueueToOwnerReplyMs": 16
+        },
+        {
+          "ownerRoundTripMs": 6.775500000003376,
+          "enqueueToOwnerReplyMs": 19
+        },
+        {
+          "ownerRoundTripMs": 7.95969999999943,
+          "enqueueToOwnerReplyMs": 21
+        },
+        {
+          "ownerRoundTripMs": 5.18239999999787,
+          "enqueueToOwnerReplyMs": 13
+        },
+        {
+          "ownerRoundTripMs": 5.614699999998265,
+          "enqueueToOwnerReplyMs": 16
+        },
+        {
+          "ownerRoundTripMs": 4.005799999998999,
+          "enqueueToOwnerReplyMs": 10
+        },
+        {
+          "ownerRoundTripMs": 6.555299999999988,
+          "enqueueToOwnerReplyMs": 15
+        },
+        {
+          "ownerRoundTripMs": 6.5732999999963795,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 6.745799999996962,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 7.169099999999162,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 4.3716999999960535,
+          "enqueueToOwnerReplyMs": 18
+        },
+        {
+          "ownerRoundTripMs": 12.10450000000128,
+          "enqueueToOwnerReplyMs": 28
+        },
+        {
+          "ownerRoundTripMs": 4.750700000004144,
+          "enqueueToOwnerReplyMs": 14
+        },
+        {
+          "ownerRoundTripMs": 6.174800000000687,
+          "enqueueToOwnerReplyMs": 18
+        },
+        {
+          "ownerRoundTripMs": 5.55000000000291,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 10.840700000000652,
+          "enqueueToOwnerReplyMs": 26
+        },
+        {
+          "ownerRoundTripMs": 5.076200000003155,
+          "enqueueToOwnerReplyMs": 14
+        },
+        {
+          "ownerRoundTripMs": 3.969199999999546,
+          "enqueueToOwnerReplyMs": 11
+        },
+        {
+          "ownerRoundTripMs": 6.811900000000605,
+          "enqueueToOwnerReplyMs": 18
+        },
+        {
+          "ownerRoundTripMs": 6.746200000001409,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 7.40740000000369,
+          "enqueueToOwnerReplyMs": 21
+        },
+        {
+          "ownerRoundTripMs": 4.244099999996251,
+          "enqueueToOwnerReplyMs": 13
+        },
+        {
+          "ownerRoundTripMs": 4.563099999999395,
+          "enqueueToOwnerReplyMs": 13
+        },
+        {
+          "ownerRoundTripMs": 6.361000000004424,
+          "enqueueToOwnerReplyMs": 18
+        },
+        {
+          "ownerRoundTripMs": 7.871500000001106,
+          "enqueueToOwnerReplyMs": 22
+        },
+        {
+          "ownerRoundTripMs": 5.777800000003481,
+          "enqueueToOwnerReplyMs": 16
+        },
+        {
+          "ownerRoundTripMs": 4.30109999999695,
+          "enqueueToOwnerReplyMs": 13
+        },
+        {
+          "ownerRoundTripMs": 6.366099999999278,
+          "enqueueToOwnerReplyMs": 19
+        },
+        {
+          "ownerRoundTripMs": 7.51480000000447,
+          "enqueueToOwnerReplyMs": 18
+        },
+        {
+          "ownerRoundTripMs": 8.393600000010338,
+          "enqueueToOwnerReplyMs": 23
+        },
+        {
+          "ownerRoundTripMs": 4.872000000003027,
+          "enqueueToOwnerReplyMs": 16
+        },
+        {
+          "ownerRoundTripMs": 9.401500000007218,
+          "enqueueToOwnerReplyMs": 19
+        },
+        {
+          "ownerRoundTripMs": 4.0341000000044005,
+          "enqueueToOwnerReplyMs": 22
+        },
+        {
+          "ownerRoundTripMs": 6.3576000000030035,
+          "enqueueToOwnerReplyMs": 20
+        },
+        {
+          "ownerRoundTripMs": 6.634600000004866,
+          "enqueueToOwnerReplyMs": 21
+        },
+        {
+          "ownerRoundTripMs": 5.187599999990198,
+          "enqueueToOwnerReplyMs": 18
+        },
+        {
+          "ownerRoundTripMs": 5.014999999999418,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 29.757800000006682,
+          "enqueueToOwnerReplyMs": 69
+        },
+        {
+          "ownerRoundTripMs": 15.965700000000652,
+          "enqueueToOwnerReplyMs": 445
+        },
+        {
+          "ownerRoundTripMs": 20.13509999999951,
+          "enqueueToOwnerReplyMs": 612
+        },
+        {
+          "ownerRoundTripMs": 66.84849999999278,
+          "enqueueToOwnerReplyMs": 628
+        },
+        {
+          "ownerRoundTripMs": 95.81549999999697,
+          "enqueueToOwnerReplyMs": 444
+        },
+        {
+          "ownerRoundTripMs": 110.0905999999959,
+          "enqueueToOwnerReplyMs": 287
+        },
+        {
+          "ownerRoundTripMs": 10.879400000005262,
+          "enqueueToOwnerReplyMs": 63
+        },
+        {
+          "ownerRoundTripMs": 15.075599999996484,
+          "enqueueToOwnerReplyMs": 75
+        },
+        {
+          "ownerRoundTripMs": 16.04430000000866,
+          "enqueueToOwnerReplyMs": 82
+        },
+        {
+          "ownerRoundTripMs": 53.628899999996065,
+          "enqueueToOwnerReplyMs": 365
+        },
+        {
+          "ownerRoundTripMs": 76.4311000000016,
+          "enqueueToOwnerReplyMs": 345
+        },
+        {
+          "ownerRoundTripMs": 74.48129999999946,
+          "enqueueToOwnerReplyMs": 265
+        }
+      ]
+    },
+    {
+      "peer": 1,
+      "requests": 2629,
+      "pending": 0,
+      "peakPending": 52,
+      "samples": [
+        {
+          "ownerRoundTripMs": 11.4399999999996,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 10.106699999999364,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 8.550799999999981,
+          "enqueueToOwnerReplyMs": 16
+        },
+        {
+          "ownerRoundTripMs": 6.402099999999336,
+          "enqueueToOwnerReplyMs": 12
+        },
+        {
+          "ownerRoundTripMs": 12.046800000000076,
+          "enqueueToOwnerReplyMs": 19
+        },
+        {
+          "ownerRoundTripMs": 12.885199999998804,
+          "enqueueToOwnerReplyMs": 22
+        },
+        {
+          "ownerRoundTripMs": 11.878699999999299,
+          "enqueueToOwnerReplyMs": 16
+        },
+        {
+          "ownerRoundTripMs": 8.44340000000011,
+          "enqueueToOwnerReplyMs": 10
+        },
+        {
+          "ownerRoundTripMs": 7.296299999999974,
+          "enqueueToOwnerReplyMs": 21
+        },
+        {
+          "ownerRoundTripMs": 6.313099999999395,
+          "enqueueToOwnerReplyMs": 12
+        },
+        {
+          "ownerRoundTripMs": 13.830799999999726,
+          "enqueueToOwnerReplyMs": 24
+        },
+        {
+          "ownerRoundTripMs": 5.59230000000025,
+          "enqueueToOwnerReplyMs": 19
+        },
+        {
+          "ownerRoundTripMs": 5.366099999999278,
+          "enqueueToOwnerReplyMs": 12
+        },
+        {
+          "ownerRoundTripMs": 7.492599999999584,
+          "enqueueToOwnerReplyMs": 10
+        },
+        {
+          "ownerRoundTripMs": 8.225399999999354,
+          "enqueueToOwnerReplyMs": 13
+        },
+        {
+          "ownerRoundTripMs": 5.245100000000093,
+          "enqueueToOwnerReplyMs": 9
+        },
+        {
+          "ownerRoundTripMs": 6.609599999999773,
+          "enqueueToOwnerReplyMs": 29
+        },
+        {
+          "ownerRoundTripMs": 5.587600000000748,
+          "enqueueToOwnerReplyMs": 20
+        },
+        {
+          "ownerRoundTripMs": 4.99750000000131,
+          "enqueueToOwnerReplyMs": 11
+        },
+        {
+          "ownerRoundTripMs": 5.955500000000029,
+          "enqueueToOwnerReplyMs": 20
+        },
+        {
+          "ownerRoundTripMs": 4.618499999998676,
+          "enqueueToOwnerReplyMs": 19
+        },
+        {
+          "ownerRoundTripMs": 5.3312000000005355,
+          "enqueueToOwnerReplyMs": 13
+        },
+        {
+          "ownerRoundTripMs": 8.223500000000058,
+          "enqueueToOwnerReplyMs": 12
+        },
+        {
+          "ownerRoundTripMs": 6.563999999998487,
+          "enqueueToOwnerReplyMs": 21
+        },
+        {
+          "ownerRoundTripMs": 5.07970000000023,
+          "enqueueToOwnerReplyMs": 22
+        },
+        {
+          "ownerRoundTripMs": 4.933100000000195,
+          "enqueueToOwnerReplyMs": 25
+        },
+        {
+          "ownerRoundTripMs": 4.201100000000224,
+          "enqueueToOwnerReplyMs": 10
+        },
+        {
+          "ownerRoundTripMs": 4.900900000000547,
+          "enqueueToOwnerReplyMs": 10
+        },
+        {
+          "ownerRoundTripMs": 6.539300000000367,
+          "enqueueToOwnerReplyMs": 8
+        },
+        {
+          "ownerRoundTripMs": 8.143700000000536,
+          "enqueueToOwnerReplyMs": 11
+        },
+        {
+          "ownerRoundTripMs": 4.954999999999927,
+          "enqueueToOwnerReplyMs": 7
+        },
+        {
+          "ownerRoundTripMs": 6.869300000000294,
+          "enqueueToOwnerReplyMs": 24
+        },
+        {
+          "ownerRoundTripMs": 7.709499999999025,
+          "enqueueToOwnerReplyMs": 11
+        },
+        {
+          "ownerRoundTripMs": 6.561099999998987,
+          "enqueueToOwnerReplyMs": 108
+        },
+        {
+          "ownerRoundTripMs": 26.335900000001857,
+          "enqueueToOwnerReplyMs": 78
+        },
+        {
+          "ownerRoundTripMs": 11.092599999999948,
+          "enqueueToOwnerReplyMs": 180
+        },
+        {
+          "ownerRoundTripMs": 21.419300000001385,
+          "enqueueToOwnerReplyMs": 121
+        },
+        {
+          "ownerRoundTripMs": 15.275799999999435,
+          "enqueueToOwnerReplyMs": 122
+        },
+        {
+          "ownerRoundTripMs": 22.222799999999552,
+          "enqueueToOwnerReplyMs": 44
+        },
+        {
+          "ownerRoundTripMs": 6.146499999998923,
+          "enqueueToOwnerReplyMs": 35
+        },
+        {
+          "ownerRoundTripMs": 8.394199999998818,
+          "enqueueToOwnerReplyMs": 33
+        },
+        {
+          "ownerRoundTripMs": 18.1875,
+          "enqueueToOwnerReplyMs": 40
+        },
+        {
+          "ownerRoundTripMs": 18.05739999999787,
+          "enqueueToOwnerReplyMs": 40
+        },
+        {
+          "ownerRoundTripMs": 6.192300000002433,
+          "enqueueToOwnerReplyMs": 38
+        },
+        {
+          "ownerRoundTripMs": 6.09059999999954,
+          "enqueueToOwnerReplyMs": 25
+        },
+        {
+          "ownerRoundTripMs": 28.33510000000024,
+          "enqueueToOwnerReplyMs": 50
+        },
+        {
+          "ownerRoundTripMs": 15.756199999999808,
+          "enqueueToOwnerReplyMs": 29
+        },
+        {
+          "ownerRoundTripMs": 14.492500000000291,
+          "enqueueToOwnerReplyMs": 33
+        },
+        {
+          "ownerRoundTripMs": 5.0441000000028,
+          "enqueueToOwnerReplyMs": 28
+        },
+        {
+          "ownerRoundTripMs": 5.804700000000594,
+          "enqueueToOwnerReplyMs": 19
+        },
+        {
+          "ownerRoundTripMs": 18.792100000002392,
+          "enqueueToOwnerReplyMs": 44
+        },
+        {
+          "ownerRoundTripMs": 16.20390000000043,
+          "enqueueToOwnerReplyMs": 44
+        },
+        {
+          "ownerRoundTripMs": 21.012300000002142,
+          "enqueueToOwnerReplyMs": 61
+        },
+        {
+          "ownerRoundTripMs": 11.333000000002357,
+          "enqueueToOwnerReplyMs": 41
+        },
+        {
+          "ownerRoundTripMs": 13.822800000001735,
+          "enqueueToOwnerReplyMs": 31
+        },
+        {
+          "ownerRoundTripMs": 13.675400000000081,
+          "enqueueToOwnerReplyMs": 46
+        },
+        {
+          "ownerRoundTripMs": 8.73609999999826,
+          "enqueueToOwnerReplyMs": 21
+        },
+        {
+          "ownerRoundTripMs": 16.076200000003155,
+          "enqueueToOwnerReplyMs": 44
+        },
+        {
+          "ownerRoundTripMs": 12.54149999999936,
+          "enqueueToOwnerReplyMs": 47
+        },
+        {
+          "ownerRoundTripMs": 5.641300000002957,
+          "enqueueToOwnerReplyMs": 36
+        },
+        {
+          "ownerRoundTripMs": 12.1945999999989,
+          "enqueueToOwnerReplyMs": 78
+        },
+        {
+          "ownerRoundTripMs": 11.988600000000588,
+          "enqueueToOwnerReplyMs": 65
+        },
+        {
+          "ownerRoundTripMs": 11.29910000000018,
+          "enqueueToOwnerReplyMs": 73
+        },
+        {
+          "ownerRoundTripMs": 16.98449999999866,
+          "enqueueToOwnerReplyMs": 42
+        },
+        {
+          "ownerRoundTripMs": 13.429400000000896,
+          "enqueueToOwnerReplyMs": 82
+        },
+        {
+          "ownerRoundTripMs": 15,
+          "enqueueToOwnerReplyMs": 49
+        },
+        {
+          "ownerRoundTripMs": 12.397300000000541,
+          "enqueueToOwnerReplyMs": 21
+        },
+        {
+          "ownerRoundTripMs": 19.01220000000103,
+          "enqueueToOwnerReplyMs": 44
+        },
+        {
+          "ownerRoundTripMs": 12.227399999999761,
+          "enqueueToOwnerReplyMs": 58
+        },
+        {
+          "ownerRoundTripMs": 5.920000000001892,
+          "enqueueToOwnerReplyMs": 67
+        },
+        {
+          "ownerRoundTripMs": 19.025799999999435,
+          "enqueueToOwnerReplyMs": 43
+        },
+        {
+          "ownerRoundTripMs": 14.04739999999947,
+          "enqueueToOwnerReplyMs": 27
+        },
+        {
+          "ownerRoundTripMs": 18.182300000000396,
+          "enqueueToOwnerReplyMs": 52
+        },
+        {
+          "ownerRoundTripMs": 5.257200000000012,
+          "enqueueToOwnerReplyMs": 71
+        },
+        {
+          "ownerRoundTripMs": 19.618999999998778,
+          "enqueueToOwnerReplyMs": 34
+        },
+        {
+          "ownerRoundTripMs": 15.595399999998335,
+          "enqueueToOwnerReplyMs": 114
+        },
+        {
+          "ownerRoundTripMs": 12.3279999999977,
+          "enqueueToOwnerReplyMs": 38
+        },
+        {
+          "ownerRoundTripMs": 12.128799999998591,
+          "enqueueToOwnerReplyMs": 55
+        },
+        {
+          "ownerRoundTripMs": 18.029900000001362,
+          "enqueueToOwnerReplyMs": 47
+        },
+        {
+          "ownerRoundTripMs": 16.511099999999715,
+          "enqueueToOwnerReplyMs": 28
+        },
+        {
+          "ownerRoundTripMs": 11.773999999997613,
+          "enqueueToOwnerReplyMs": 63
+        },
+        {
+          "ownerRoundTripMs": 8.900699999998324,
+          "enqueueToOwnerReplyMs": 40
+        },
+        {
+          "ownerRoundTripMs": 19.142700000000332,
+          "enqueueToOwnerReplyMs": 77
+        },
+        {
+          "ownerRoundTripMs": 16.81749999999738,
+          "enqueueToOwnerReplyMs": 44
+        },
+        {
+          "ownerRoundTripMs": 9.444400000000314,
+          "enqueueToOwnerReplyMs": 22
+        },
+        {
+          "ownerRoundTripMs": 22.65849999999773,
+          "enqueueToOwnerReplyMs": 54
+        },
+        {
+          "ownerRoundTripMs": 23.901599999997416,
+          "enqueueToOwnerReplyMs": 56
+        },
+        {
+          "ownerRoundTripMs": 9.283299999999144,
+          "enqueueToOwnerReplyMs": 110
+        },
+        {
+          "ownerRoundTripMs": 14.813799999999901,
+          "enqueueToOwnerReplyMs": 46
+        },
+        {
+          "ownerRoundTripMs": 28.744000000002416,
+          "enqueueToOwnerReplyMs": 477
+        },
+        {
+          "ownerRoundTripMs": 23.80500000000029,
+          "enqueueToOwnerReplyMs": 1247
+        },
+        {
+          "ownerRoundTripMs": 11.193099999996775,
+          "enqueueToOwnerReplyMs": 884
+        },
+        {
+          "ownerRoundTripMs": 59.63169999999809,
+          "enqueueToOwnerReplyMs": 854
+        },
+        {
+          "ownerRoundTripMs": 62.01039999999921,
+          "enqueueToOwnerReplyMs": 826
+        },
+        {
+          "ownerRoundTripMs": 94.6955999999991,
+          "enqueueToOwnerReplyMs": 819
+        },
+        {
+          "ownerRoundTripMs": 7.319400000000314,
+          "enqueueToOwnerReplyMs": 19
+        },
+        {
+          "ownerRoundTripMs": 5.464899999999034,
+          "enqueueToOwnerReplyMs": 16
+        },
+        {
+          "ownerRoundTripMs": 6.821300000003248,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 7.8378000000011525,
+          "enqueueToOwnerReplyMs": 21
+        },
+        {
+          "ownerRoundTripMs": 5.644399999997404,
+          "enqueueToOwnerReplyMs": 15
+        },
+        {
+          "ownerRoundTripMs": 4.273200000003271,
+          "enqueueToOwnerReplyMs": 13
+        },
+        {
+          "ownerRoundTripMs": 5.513299999998708,
+          "enqueueToOwnerReplyMs": 16
+        },
+        {
+          "ownerRoundTripMs": 5.414900000003399,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 6.109199999998964,
+          "enqueueToOwnerReplyMs": 19
+        },
+        {
+          "ownerRoundTripMs": 3.9769000000014785,
+          "enqueueToOwnerReplyMs": 16
+        },
+        {
+          "ownerRoundTripMs": 8.1591000000044,
+          "enqueueToOwnerReplyMs": 21
+        },
+        {
+          "ownerRoundTripMs": 7.004500000002736,
+          "enqueueToOwnerReplyMs": 19
+        },
+        {
+          "ownerRoundTripMs": 13.02049999999872,
+          "enqueueToOwnerReplyMs": 23
+        },
+        {
+          "ownerRoundTripMs": 7.713899999995192,
+          "enqueueToOwnerReplyMs": 16
+        },
+        {
+          "ownerRoundTripMs": 6.236699999994016,
+          "enqueueToOwnerReplyMs": 15
+        },
+        {
+          "ownerRoundTripMs": 4.276499999999942,
+          "enqueueToOwnerReplyMs": 15
+        },
+        {
+          "ownerRoundTripMs": 6.105999999999767,
+          "enqueueToOwnerReplyMs": 18
+        },
+        {
+          "ownerRoundTripMs": 11.705399999998917,
+          "enqueueToOwnerReplyMs": 20
+        },
+        {
+          "ownerRoundTripMs": 5.23399999999674,
+          "enqueueToOwnerReplyMs": 14
+        },
+        {
+          "ownerRoundTripMs": 7.078700000005483,
+          "enqueueToOwnerReplyMs": 28
+        },
+        {
+          "ownerRoundTripMs": 5.259100000002945,
+          "enqueueToOwnerReplyMs": 16
+        },
+        {
+          "ownerRoundTripMs": 5.810400000002119,
+          "enqueueToOwnerReplyMs": 15
+        },
+        {
+          "ownerRoundTripMs": 5.498599999998987,
+          "enqueueToOwnerReplyMs": 15
+        },
+        {
+          "ownerRoundTripMs": 4.331100000003062,
+          "enqueueToOwnerReplyMs": 32
+        },
+        {
+          "ownerRoundTripMs": 7.960700000003271,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 7.322599999999511,
+          "enqueueToOwnerReplyMs": 15
+        },
+        {
+          "ownerRoundTripMs": 4.8237999999983,
+          "enqueueToOwnerReplyMs": 14
+        },
+        {
+          "ownerRoundTripMs": 7.7607999999963795,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 7.105100000000675,
+          "enqueueToOwnerReplyMs": 16
+        },
+        {
+          "ownerRoundTripMs": 3.8597000000008848,
+          "enqueueToOwnerReplyMs": 12
+        },
+        {
+          "ownerRoundTripMs": 7.447999999996682,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 6.228299999995215,
+          "enqueueToOwnerReplyMs": 18
+        },
+        {
+          "ownerRoundTripMs": 4.820899999998801,
+          "enqueueToOwnerReplyMs": 13
+        },
+        {
+          "ownerRoundTripMs": 6.102100000003702,
+          "enqueueToOwnerReplyMs": 28
+        },
+        {
+          "ownerRoundTripMs": 4.686999999998079,
+          "enqueueToOwnerReplyMs": 15
+        },
+        {
+          "ownerRoundTripMs": 8.140400000003865,
+          "enqueueToOwnerReplyMs": 23
+        },
+        {
+          "ownerRoundTripMs": 4.052400000000489,
+          "enqueueToOwnerReplyMs": 18
+        },
+        {
+          "ownerRoundTripMs": 4.524799999999232,
+          "enqueueToOwnerReplyMs": 15
+        },
+        {
+          "ownerRoundTripMs": 5.4395000000004075,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 10.789600000003702,
+          "enqueueToOwnerReplyMs": 22
+        },
+        {
+          "ownerRoundTripMs": 6.517500000001746,
+          "enqueueToOwnerReplyMs": 20
+        },
+        {
+          "ownerRoundTripMs": 5.137199999997392,
+          "enqueueToOwnerReplyMs": 16
+        },
+        {
+          "ownerRoundTripMs": 7.462200000001758,
+          "enqueueToOwnerReplyMs": 23
+        },
+        {
+          "ownerRoundTripMs": 10.033300000002782,
+          "enqueueToOwnerReplyMs": 23
+        },
+        {
+          "ownerRoundTripMs": 7.636500000000524,
+          "enqueueToOwnerReplyMs": 20
+        },
+        {
+          "ownerRoundTripMs": 8.776400000002468,
+          "enqueueToOwnerReplyMs": 21
+        },
+        {
+          "ownerRoundTripMs": 5.855899999995017,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 4.795500000007451,
+          "enqueueToOwnerReplyMs": 21
+        },
+        {
+          "ownerRoundTripMs": 4.6203999999997905,
+          "enqueueToOwnerReplyMs": 15
+        },
+        {
+          "ownerRoundTripMs": 6.1502999999938766,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 8.522199999992154,
+          "enqueueToOwnerReplyMs": 19
+        },
+        {
+          "ownerRoundTripMs": 4.724499999996624,
+          "enqueueToOwnerReplyMs": 20
+        },
+        {
+          "ownerRoundTripMs": 6.639100000000326,
+          "enqueueToOwnerReplyMs": 20
+        },
+        {
+          "ownerRoundTripMs": 7.453900000007707,
+          "enqueueToOwnerReplyMs": 17
+        },
+        {
+          "ownerRoundTripMs": 6.566200000001118,
+          "enqueueToOwnerReplyMs": 26
+        },
+        {
+          "ownerRoundTripMs": 6.0305999999982305,
+          "enqueueToOwnerReplyMs": 18
+        },
+        {
+          "ownerRoundTripMs": 10.764400000000023,
+          "enqueueToOwnerReplyMs": 47
+        },
+        {
+          "ownerRoundTripMs": 17.924800000007963,
+          "enqueueToOwnerReplyMs": 333
+        },
+        {
+          "ownerRoundTripMs": 57.9829000000027,
+          "enqueueToOwnerReplyMs": 348
+        },
+        {
+          "ownerRoundTripMs": 7.566599999991013,
+          "enqueueToOwnerReplyMs": 63
+        },
+        {
+          "ownerRoundTripMs": 20.727699999988545,
+          "enqueueToOwnerReplyMs": 143
+        },
+        {
+          "ownerRoundTripMs": 25.1024000000034,
+          "enqueueToOwnerReplyMs": 165
+        },
+        {
+          "ownerRoundTripMs": 121.16259999999602,
+          "enqueueToOwnerReplyMs": 165
+        },
+        {
+          "ownerRoundTripMs": 29.00669999999809,
+          "enqueueToOwnerReplyMs": 111
+        },
+        {
+          "ownerRoundTripMs": 23.702000000004773,
+          "enqueueToOwnerReplyMs": 133
+        },
+        {
+          "ownerRoundTripMs": 7.774099999995087,
+          "enqueueToOwnerReplyMs": 36
+        },
+        {
+          "ownerRoundTripMs": 16.420100000003004,
+          "enqueueToOwnerReplyMs": 36
+        },
+        {
+          "ownerRoundTripMs": 19.94089999998687,
+          "enqueueToOwnerReplyMs": 41
+        },
+        {
+          "ownerRoundTripMs": 42.61019999999553,
+          "enqueueToOwnerReplyMs": 194
+        }
+      ]
+    }
+  ],
+  "failures": [],
+  "latency": {
+    "bid": {
+      "count": 1600,
+      "p50": 28.39050000000134,
+      "p95": 50.26759999999922,
+      "p99": 72.96089999999822
+    },
+    "broadcast": {
+      "count": 18000,
+      "p50": 22.841700000004494,
+      "p95": 40.05030000000261,
+      "p99": 58.368900000001304
+    },
+    "ping": {
+      "count": 13160,
+      "p50": 8.303599999999278,
+      "p95": 45.85280000000057,
+      "p99": 192.45709999999963
+    }
+  },
+  "perInstance": [
+    {
+      "bid": {
+        "count": 800,
+        "p50": 28.311399999998685,
+        "p95": 50.37380000000121,
+        "p99": 67.72200000000157
+      },
+      "broadcast": {
+        "count": 9000,
+        "p50": 22.63289999999688,
+        "p95": 40.62189999999828,
+        "p99": 59.344899999996414
+      },
+      "ping": {
+        "count": 6580,
+        "p50": 8.734599999996135,
+        "p95": 47.14310000000114,
+        "p99": 251.36720000000787
+      }
+    },
+    {
+      "bid": {
+        "count": 800,
+        "p50": 28.628100000001723,
+        "p95": 49.55939999999828,
+        "p99": 76.24129999999423
+      },
+      "broadcast": {
+        "count": 9000,
+        "p50": 23.030500000000757,
+        "p95": 39.57979999999952,
+        "p99": 54.69350000000122
+      },
+      "ping": {
+        "count": 6580,
+        "p50": 7.908100000000559,
+        "p95": 43.67500000000291,
+        "p99": 156.3176999999996
+      }
+    }
+  ],
+  "overlapMs": 70016,
+  "accepted": 1600,
+  "races": 200,
+  "deliveries": 18000,
+  "settled": 200,
+  "errors": {
+    "http": 0,
+    "actions": 0,
+    "ping": 0,
+    "sockets": 0,
+    "closedEarly": 0
+  },
+  "ended": "2026-11-20T09:56:58.712Z",
+  "hostSamples": [
+    {
+      "at": 1795168505308,
+      "free": 8841060352,
+      "idle": 7346074,
+      "total": 9953059
+    },
+    {
+      "at": 1795168506323,
+      "free": 8742936576,
+      "idle": 7356652,
+      "total": 9965169
+    },
+    {
+      "at": 1795168507334,
+      "free": 8624140288,
+      "idle": 7366087,
+      "total": 9977431
+    },
+    {
+      "at": 1795168508349,
+      "free": 8522498048,
+      "idle": 7375449,
+      "total": 9989091
+    },
+    {
+      "at": 1795168509355,
+      "free": 8466767872,
+      "idle": 7386166,
+      "total": 10001888
+    },
+    {
+      "at": 1795168510367,
+      "free": 8384995328,
+      "idle": 7396744,
+      "total": 10014043
+    },
+    {
+      "at": 1795168511372,
+      "free": 8324849664,
+      "idle": 7406478,
+      "total": 10026246
+    },
+    {
+      "at": 1795168512373,
+      "free": 8274440192,
+      "idle": 7416275,
+      "total": 10038294
+    },
+    {
+      "at": 1795168513373,
+      "free": 8160854016,
+      "idle": 7423947,
+      "total": 10050526
+    },
+    {
+      "at": 1795168514374,
+      "free": 8094539776,
+      "idle": 7431541,
+      "total": 10062586
+    },
+    {
+      "at": 1795168515376,
+      "free": 8027021312,
+      "idle": 7439650,
+      "total": 10074713
+    },
+    {
+      "at": 1795168516376,
+      "free": 7960936448,
+      "idle": 7447322,
+      "total": 10086650
+    },
+    {
+      "at": 1795168517389,
+      "free": 7884279808,
+      "idle": 7455229,
+      "total": 10098964
+    },
+    {
+      "at": 1795168518394,
+      "free": 7879630848,
+      "idle": 7462731,
+      "total": 10110997
+    },
+    {
+      "at": 1795168519398,
+      "free": 7842312192,
+      "idle": 7470323,
+      "total": 10123106
+    },
+    {
+      "at": 1795168520404,
+      "free": 7726612480,
+      "idle": 7477994,
+      "total": 10135307
+    },
+    {
+      "at": 1795168521418,
+      "free": 7547465728,
+      "idle": 7485884,
+      "total": 10147526
+    },
+    {
+      "at": 1795168522432,
+      "free": 7307907072,
+      "idle": 7493870,
+      "total": 10159682
+    },
+    {
+      "at": 1795168523437,
+      "free": 7125823488,
+      "idle": 7501918,
+      "total": 10171904
+    },
+    {
+      "at": 1795168524438,
+      "free": 6953873408,
+      "idle": 7509760,
+      "total": 10183994
+    },
+    {
+      "at": 1795168525450,
+      "free": 6782754816,
+      "idle": 7517901,
+      "total": 10196118
+    },
+    {
+      "at": 1795168526450,
+      "free": 6598828032,
+      "idle": 7525666,
+      "total": 10208151
+    },
+    {
+      "at": 1795168527457,
+      "free": 6456315904,
+      "idle": 7532760,
+      "total": 10220323
+    },
+    {
+      "at": 1795168528463,
+      "free": 6346366976,
+      "idle": 7539666,
+      "total": 10232322
+    },
+    {
+      "at": 1795168529465,
+      "free": 6302248960,
+      "idle": 7546527,
+      "total": 10244245
+    },
+    {
+      "at": 1795168530465,
+      "free": 6272286720,
+      "idle": 7554074,
+      "total": 10256590
+    },
+    {
+      "at": 1795168531470,
+      "free": 6239285248,
+      "idle": 7561415,
+      "total": 10268650
+    },
+    {
+      "at": 1795168532469,
+      "free": 6199828480,
+      "idle": 7568526,
+      "total": 10280465
+    },
+    {
+      "at": 1795168533470,
+      "free": 6177054720,
+      "idle": 7576338,
+      "total": 10292745
+    },
+    {
+      "at": 1795168534471,
+      "free": 6155497472,
+      "idle": 7583947,
+      "total": 10304775
+    },
+    {
+      "at": 1795168535484,
+      "free": 6150832128,
+      "idle": 7593839,
+      "total": 10316980
+    },
+    {
+      "at": 1795168536487,
+      "free": 6140588032,
+      "idle": 7603432,
+      "total": 10329044
+    },
+    {
+      "at": 1795168537490,
+      "free": 6076239872,
+      "idle": 7611950,
+      "total": 10341092
+    },
+    {
+      "at": 1795168538504,
+      "free": 6056448000,
+      "idle": 7619885,
+      "total": 10353369
+    },
+    {
+      "at": 1795168539505,
+      "free": 6061031424,
+      "idle": 7628979,
+      "total": 10365387
+    },
+    {
+      "at": 1795168540520,
+      "free": 6063640576,
+      "idle": 7638229,
+      "total": 10377871
+    },
+    {
+      "at": 1795168541520,
+      "free": 6064635904,
+      "idle": 7647307,
+      "total": 10389903
+    },
+    {
+      "at": 1795168542524,
+      "free": 6063751168,
+      "idle": 7656823,
+      "total": 10401933
+    },
+    {
+      "at": 1795168543533,
+      "free": 6061039616,
+      "idle": 7666089,
+      "total": 10414122
+    },
+    {
+      "at": 1795168544535,
+      "free": 6057422848,
+      "idle": 7675588,
+      "total": 10426042
+    },
+    {
+      "at": 1795168545548,
+      "free": 6063292416,
+      "idle": 7685385,
+      "total": 10438259
+    },
+    {
+      "at": 1795168546549,
+      "free": 6045904896,
+      "idle": 7695104,
+      "total": 10450308
+    },
+    {
+      "at": 1795168547557,
+      "free": 6042066944,
+      "idle": 7704825,
+      "total": 10462451
+    },
+    {
+      "at": 1795168548561,
+      "free": 6031712256,
+      "idle": 7714261,
+      "total": 10474592
+    },
+    {
+      "at": 1795168549571,
+      "free": 6029422592,
+      "idle": 7723572,
+      "total": 10486636
+    },
+    {
+      "at": 1795168550574,
+      "free": 6034477056,
+      "idle": 7733105,
+      "total": 10498793
+    },
+    {
+      "at": 1795168551574,
+      "free": 6017900544,
+      "idle": 7742464,
+      "total": 10510777
+    },
+    {
+      "at": 1795168552583,
+      "free": 6023061504,
+      "idle": 7751698,
+      "total": 10522855
+    },
+    {
+      "at": 1795168553583,
+      "free": 6020644864,
+      "idle": 7761180,
+      "total": 10535025
+    },
+    {
+      "at": 1795168554587,
+      "free": 6018494464,
+      "idle": 7770073,
+      "total": 10547026
+    },
+    {
+      "at": 1795168555588,
+      "free": 6022955008,
+      "idle": 7779431,
+      "total": 10559135
+    },
+    {
+      "at": 1795168556590,
+      "free": 6020259840,
+      "idle": 7788698,
+      "total": 10571199
+    },
+    {
+      "at": 1795168557598,
+      "free": 6026354688,
+      "idle": 7798212,
+      "total": 10583261
+    },
+    {
+      "at": 1795168558597,
+      "free": 6021193728,
+      "idle": 7807806,
+      "total": 10595261
+    },
+    {
+      "at": 1795168559600,
+      "free": 6016786432,
+      "idle": 7817306,
+      "total": 10607260
+    },
+    {
+      "at": 1795168560601,
+      "free": 6015340544,
+      "idle": 7826759,
+      "total": 10619244
+    },
+    {
+      "at": 1795168561603,
+      "free": 6015004672,
+      "idle": 7836356,
+      "total": 10631340
+    },
+    {
+      "at": 1795168562604,
+      "free": 6011207680,
+      "idle": 7845902,
+      "total": 10643479
+    },
+    {
+      "at": 1795168563604,
+      "free": 6013263872,
+      "idle": 7853855,
+      "total": 10654980
+    },
+    {
+      "at": 1795168564611,
+      "free": 6005862400,
+      "idle": 7863122,
+      "total": 10667623
+    },
+    {
+      "at": 1795168565617,
+      "free": 6011875328,
+      "idle": 7872387,
+      "total": 10679714
+    },
+    {
+      "at": 1795168566619,
+      "free": 6016466944,
+      "idle": 7881308,
+      "total": 10691791
+    },
+    {
+      "at": 1795168567619,
+      "free": 6014976000,
+      "idle": 7890354,
+      "total": 10703872
+    },
+    {
+      "at": 1795168568633,
+      "free": 6011293696,
+      "idle": 7899902,
+      "total": 10716091
+    },
+    {
+      "at": 1795168569634,
+      "free": 6009647104,
+      "idle": 7909276,
+      "total": 10728200
+    },
+    {
+      "at": 1795168570640,
+      "free": 6011248640,
+      "idle": 7918916,
+      "total": 10740448
+    },
+    {
+      "at": 1795168571641,
+      "free": 6014844928,
+      "idle": 7928512,
+      "total": 10752482
+    },
+    {
+      "at": 1795168572643,
+      "free": 6020214784,
+      "idle": 7938027,
+      "total": 10764389
+    },
+    {
+      "at": 1795168573649,
+      "free": 6016884736,
+      "idle": 7947526,
+      "total": 10776324
+    },
+    {
+      "at": 1795168574651,
+      "free": 6021836800,
+      "idle": 7957121,
+      "total": 10788559
+    },
+    {
+      "at": 1795168575652,
+      "free": 6019923968,
+      "idle": 7966323,
+      "total": 10800762
+    },
+    {
+      "at": 1795168576654,
+      "free": 6020554752,
+      "idle": 7975355,
+      "total": 10812856
+    },
+    {
+      "at": 1795168577669,
+      "free": 6003445760,
+      "idle": 7984352,
+      "total": 10825119
+    },
+    {
+      "at": 1795168578670,
+      "free": 6004121600,
+      "idle": 7993933,
+      "total": 10837121
+    },
+    {
+      "at": 1795168579683,
+      "free": 6004924416,
+      "idle": 8004121,
+      "total": 10849404
+    },
+    {
+      "at": 1795168580684,
+      "free": 6005051392,
+      "idle": 8014871,
+      "total": 10861606
+    },
+    {
+      "at": 1795168581695,
+      "free": 6005157888,
+      "idle": 8024777,
+      "total": 10873560
+    },
+    {
+      "at": 1795168582709,
+      "free": 6005186560,
+      "idle": 8035322,
+      "total": 10885573
+    },
+    {
+      "at": 1795168583719,
+      "free": 6013644800,
+      "idle": 8046260,
+      "total": 10898073
+    },
+    {
+      "at": 1795168584729,
+      "free": 6013489152,
+      "idle": 8056573,
+      "total": 10909809
+    },
+    {
+      "at": 1795168585739,
+      "free": 6013591552,
+      "idle": 8068244,
+      "total": 10922432
+    },
+    {
+      "at": 1795168586745,
+      "free": 6013657088,
+      "idle": 8078650,
+      "total": 10934572
+    },
+    {
+      "at": 1795168587769,
+      "free": 6013894656,
+      "idle": 8089025,
+      "total": 10946416
+    },
+    {
+      "at": 1795168588783,
+      "free": 6011723776,
+      "idle": 8100026,
+      "total": 10958651
+    },
+    {
+      "at": 1795168589791,
+      "free": 6012018688,
+      "idle": 8111353,
+      "total": 10971025
+    },
+    {
+      "at": 1795168590800,
+      "free": 6011768832,
+      "idle": 8121950,
+      "total": 10983029
+    },
+    {
+      "at": 1795168591811,
+      "free": 6012862464,
+      "idle": 8133323,
+      "total": 10995418
+    },
+    {
+      "at": 1795168592816,
+      "free": 6000361472,
+      "idle": 8143871,
+      "total": 11007451
+    },
+    {
+      "at": 1795168593818,
+      "free": 6030917632,
+      "idle": 8154464,
+      "total": 11019653
+    },
+    {
+      "at": 1795168594834,
+      "free": 6038691840,
+      "idle": 8165011,
+      "total": 11031716
+    },
+    {
+      "at": 1795168595844,
+      "free": 6045384704,
+      "idle": 8175839,
+      "total": 11043701
+    },
+    {
+      "at": 1795168596848,
+      "free": 6028804096,
+      "idle": 8185495,
+      "total": 11056261
+    },
+    {
+      "at": 1795168597848,
+      "free": 6002352128,
+      "idle": 8191901,
+      "total": 11068310
+    },
+    {
+      "at": 1795168598859,
+      "free": 5999153152,
+      "idle": 8201683,
+      "total": 11080495
+    },
+    {
+      "at": 1795168599861,
+      "free": 5972545536,
+      "idle": 8209340,
+      "total": 11092622
+    },
+    {
+      "at": 1795168600874,
+      "free": 5972443136,
+      "idle": 8219478,
+      "total": 11104837
+    },
+    {
+      "at": 1795168601884,
+      "free": 5972459520,
+      "idle": 8230603,
+      "total": 11116994
+    },
+    {
+      "at": 1795168602902,
+      "free": 5938188288,
+      "idle": 8241260,
+      "total": 11129276
+    },
+    {
+      "at": 1795168603914,
+      "free": 5938298880,
+      "idle": 8251994,
+      "total": 11141463
+    },
+    {
+      "at": 1795168604925,
+      "free": 5921193984,
+      "idle": 8262713,
+      "total": 11153449
+    },
+    {
+      "at": 1795168605926,
+      "free": 5920268288,
+      "idle": 8273635,
+      "total": 11165587
+    },
+    {
+      "at": 1795168606928,
+      "free": 5919322112,
+      "idle": 8284416,
+      "total": 11177652
+    },
+    {
+      "at": 1795168607939,
+      "free": 5914423296,
+      "idle": 8294729,
+      "total": 11189948
+    },
+    {
+      "at": 1795168608953,
+      "free": 5892513792,
+      "idle": 8304793,
+      "total": 11202404
+    },
+    {
+      "at": 1795168609967,
+      "free": 5846155264,
+      "idle": 8311167,
+      "total": 11214855
+    },
+    {
+      "at": 1795168610977,
+      "free": 5770452992,
+      "idle": 8318166,
+      "total": 11226916
+    },
+    {
+      "at": 1795168611985,
+      "free": 6452465664,
+      "idle": 8325653,
+      "total": 11239248
+    },
+    {
+      "at": 1795168612992,
+      "free": 6494203904,
+      "idle": 8333073,
+      "total": 11251402
+    },
+    {
+      "at": 1795168614003,
+      "free": 6788427776,
+      "idle": 8340340,
+      "total": 11263732
+    }
+  ]
+}

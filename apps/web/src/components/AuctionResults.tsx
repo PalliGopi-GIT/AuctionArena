@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { ArrowUpRight, Copy, Trophy } from 'lucide-react';
 import { money, type Room } from '../../../../packages/shared/src/domain';
 import { deriveAuctionResults, playerRoles } from '../../../../packages/results/src/index';
+import { PlayerIcon } from './PlayerIcon';
 import '../results.css';
 
 interface AuctionResultsProps {
@@ -82,23 +83,30 @@ export function AuctionResults({ room, onSquads, onHistory, onCreate, onCopyLink
         {summary.team.ownerId ? <p className={summary.minimumMissing ? 'results-rule-note' : 'results-rule-met'}>{summary.minimumMissing ? `Minimum squad not met: ${summary.minimumMissing} more player${summary.minimumMissing === 1 ? '' : 's'} required.` : 'Minimum squad requirement met.'}</p> : <p className="results-composition">No manager claimed this team.</p>}
         <details className="results-lineup">
           <summary>View signings <span aria-hidden="true">+</span></summary>
-          {summary.lineup.length ? <ul>{summary.lineup.map(purchase => <li key={purchase.playerId}><div><b>{purchase.player?.name ?? 'Player details unavailable'}</b><small>{purchase.player ? `${purchase.player.role} · ${purchase.player.country}` : purchase.playerId}</small></div><strong>{money(purchase.price)}</strong></li>)}</ul> : <p>No players purchased.</p>}
+          {summary.lineup.length ? <ul>{summary.lineup.map(purchase => <li key={purchase.playerId}><div className="player-with-art">{purchase.player&&<PlayerIcon p={purchase.player} compact/>}<div><b>{purchase.player?.name ?? 'Player details unavailable'}</b><small>{purchase.player ? `${purchase.player.role} · ${purchase.player.country}` : purchase.playerId}</small></div></div><strong>{money(purchase.price)}</strong></li>)}</ul> : <p>No players purchased.</p>}
         </details>
       </article>)}
     </div>
 
     <div className="results-pool-grid">
       <details className="panel results-pool">
+        <summary><span>Sold players <b>{result.sold.length}</b></span><span aria-hidden="true">+</span></summary>
+        {result.sold.length ? <ul>{result.sold.map(player => <li key={player.id}>
+          <div className="player-with-art"><PlayerIcon p={player} compact/><span>{player.name}<small>{room.teams.find(team => team.id === player.soldTo)?.name ?? 'Team unavailable'}</small></span></div>
+          <span>{money(player.soldPrice!)}</span>
+        </li>)}</ul> : <p>No players were sold in this auction.</p>}
+      </details>
+      <details className="panel results-pool">
         <summary><span>Unsold players <b>{result.unsold.length}</b></span><span aria-hidden="true">+</span></summary>
         <p>These players reached the end of bidding without an accepted bid.</p>
-        {result.unsold.length ? <ul>{result.unsold.map(player => <li key={player.id}><span>{player.name}<small>{player.role} · {player.country}</small></span><span>Base {money(player.basePrice)}</span></li>)}</ul> : <p>No unsold players in this auction.</p>}
+        {result.unsold.length ? <ul>{result.unsold.map(player => <li key={player.id}><div className="player-with-art"><PlayerIcon p={player} compact/><span>{player.name}<small>{player.role} · {player.country}</small></span></div><span>Base {money(player.basePrice)}</span></li>)}</ul> : <p>No unsold players in this auction.</p>}
       </details>
       <details className="panel results-pool">
         <summary><span>Not auctioned <b>{result.unauctioned.length}</b></span><span aria-hidden="true">+</span></summary>
         <p>These players did not receive a final auction result before the room ended.</p>
-        {result.unauctioned.length ? <ul>{result.unauctioned.map(player => <li key={player.id}><span>{player.name}<small>{player.role} · {player.country}</small></span><span>Base {money(player.basePrice)}</span></li>)}</ul> : <p>Every player received a final result.</p>}
+        {result.unauctioned.length ? <ul>{result.unauctioned.map(player => <li key={player.id}><div className="player-with-art"><PlayerIcon p={player} compact/><span>{player.name}<small>{player.role} · {player.country}</small></span></div><span>Base {money(player.basePrice)}</span></li>)}</ul> : <p>Every player received a final result.</p>}
       </details>
     </div>
-    <div className="results-closing"><p>Fictional players and sample statistics · All budgets are virtual.<br />Squad breakdowns describe this auction; they do not predict match results.</p><button type="button" className="button secondary" onClick={onHistory}>Review auction history <ArrowUpRight size={16} aria-hidden="true" /></button></div>
+    <div className="results-closing"><p>{room.players.some(player => !player.isSample) ? 'Catalog players · All budgets are virtual.' : 'Fictional players and sample statistics · All budgets are virtual.'}<br />Squad breakdowns describe this auction; they do not predict match results.</p><button type="button" className="button secondary" onClick={onHistory}>Review auction history <ArrowUpRight size={16} aria-hidden="true" /></button></div>
   </section>;
 }

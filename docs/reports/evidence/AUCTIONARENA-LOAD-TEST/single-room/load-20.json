@@ -1,0 +1,152 @@
+{
+  "task": "WP-G-WORKERS-RUNTIME",
+  "generatedAt": "2026-11-19T05:28:50.539Z",
+  "label": "auctionarena-20",
+  "environment": {
+    "node": "v22.23.2",
+    "platform": "win32",
+    "arch": "x64",
+    "cpus": 12,
+    "totalMemory": 16857817088,
+    "base": "http://127.0.0.1:8805",
+    "roomSize": 20,
+    "users": 20
+  },
+  "workload": {
+    "durationMs": 40000,
+    "roomSize": 20,
+    "connectConcurrency": 20,
+    "setupConcurrency": 20,
+    "bidRounds": 8
+  },
+  "setup": {
+    "rooms": 1,
+    "membersPerRoom": [
+      20
+    ],
+    "setupMs": 361
+  },
+  "connections": {
+    "attempted": 20,
+    "connected": 20,
+    "connectMs": 185
+  },
+  "claims": {
+    "claimMs": 426,
+    "claimSummary": {
+      "count": 8,
+      "min": 25,
+      "p50": 45,
+      "p95": 64,
+      "p99": 64,
+      "max": 64,
+      "mean": 44.13
+    },
+    "retries": 0,
+    "retrySamples": [],
+    "errors": 0,
+    "errorSamples": []
+  },
+  "ping": {
+    "summary": {
+      "count": 182,
+      "min": 1,
+      "p50": 3,
+      "p95": 10,
+      "p99": 30,
+      "max": 32,
+      "mean": 4.51
+    },
+    "errors": 0,
+    "errorSamples": [],
+    "messages": 182,
+    "heartbeats": 398,
+    "windowMs": 40015
+  },
+  "actions": {
+    "accepted": 8,
+    "latencySummary": {
+      "count": 8,
+      "min": 24,
+      "p50": 47,
+      "p95": 58,
+      "p99": 58,
+      "max": 58,
+      "mean": 44.38
+    },
+    "errors": 0,
+    "errorSamples": [],
+    "expectedConflicts": 1,
+    "conflictCodes": [
+      "STALE_VERSION"
+    ]
+  },
+  "broadcast": {
+    "deliverySummary": {
+      "count": 180,
+      "min": 10,
+      "p50": 25,
+      "p95": 36,
+      "p99": 39,
+      "max": 39,
+      "mean": 23.86
+    },
+    "missing": 0,
+    "missingSamples": []
+  },
+  "settlement": [
+    {
+      "room": "7E6D62",
+      "clients": 20,
+      "expectedClients": 20,
+      "firstDeliveryAfterDeadline": 36,
+      "lastDeliveryAfterDeadline": 42,
+      "status": "RESULT",
+      "playerStatus": "sold",
+      "currentBid": 180,
+      "leadingTeamId": "t1",
+      "soldPrice": 180,
+      "soldTo": "t1"
+    }
+  ],
+  "http": {
+    "requests": 60,
+    "errors": 0,
+    "statuses": {
+      "200": 58,
+      "201": 1,
+      "400": 1
+    },
+    "errorSamples": []
+  },
+  "sockets": {
+    "connected": 20,
+    "errors": 0,
+    "closedEarly": 0,
+    "closedCodes": {},
+    "errorSamples": []
+  },
+  "memory": {
+    "workerd": {
+      "samples": 42,
+      "peakWorkingSet": 271142912,
+      "meanWorkingSet": 263966525,
+      "lastWorkingSet": 271142912,
+      "cpuSeconds": 3.06
+    },
+    "harnessRss": 65417216
+  },
+  "loopLag": {
+    "samples": 2567,
+    "summary": {
+      "count": 2567,
+      "min": 0,
+      "p50": 6,
+      "p95": 6,
+      "p99": 7,
+      "max": 13,
+      "mean": 5.58
+    }
+  },
+  "finishedAt": "2026-11-19T05:29:33.889Z"
+}

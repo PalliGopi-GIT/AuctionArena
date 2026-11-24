@@ -1,0 +1,3327 @@
+{
+  "stateDir": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0",
+  "inspection": "private copy of SQLite database and WAL after runtime exit",
+  "directories": [
+    [
+      {
+        "code": "011375",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "029C21",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "02CA5B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "0385F7",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "04A522",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "07F177",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "0AAE45",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "0C354E",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "0C40F9",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "0CB245",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "120030",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "13C5D5",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "13D9E3",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "13DF00",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "152840",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "165831",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "169769",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "16BA3D",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "182DD6",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "1D839C",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "1F2D85",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "1F617E",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "203051",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "20B124",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "2272B4",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "232998",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "235DE8",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "24D391",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "253B90",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "256227",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "280C9E",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "283BD0",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "29F5E1",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "2A16E8",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "2A8D29",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "2D3C4B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "2D48BC",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "2E23E7",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "2E6E41",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "2FAA64",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "31BF01",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "32EF4F",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "3395C5",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "34CCF8",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "36C399",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "3AE888",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "3D03F3",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "3D4663",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "3E16E9",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "3EBDA8",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "407F41",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "40FB63",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "41771F",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "41DB36",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "440404",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "44513A",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "44864B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "45A05A",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "4873C7",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "4BB895",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "4C4333",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "4EF9C6",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "4F03DB",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "50C2EB",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "521EE5",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "524AFF",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "52F44C",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "54B449",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "586D49",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "5928CD",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "5A98A5",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "5CB954",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "5CDFFA",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "611A78",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "6166FB",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "62E21E",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "63EC2B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "6504EC",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "68912B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "68D18D",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "69294A",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "694569",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "694952",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "69E102",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "6A2C58",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "6C01CD",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "6C1694",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "6C8680",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "6CEED5",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "6D4D15",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "6E0FE7",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "6F7997",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "725906",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "735A52",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "73CCBA",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "75F1DD",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "76D231",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "770AF3",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "7E475D",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "7F829D",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "7FDCD7",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "837762",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "83B078",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "84D0EB",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "8520D1",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "85C907",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "86F30F",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "885A48",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "888845",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "8A15C9",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "8AA7F9",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "8B7804",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "8B8EF6",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "8BFC00",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "8CF26E",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "8DED62",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "90AB15",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "916DD5",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "917A62",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "93D80C",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "9419DD",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "95F2D4",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "99918B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "9D153D",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "9D5B66",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "9F2355",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "A09832",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "A19FFB",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "A1C204",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "A255AE",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "A26847",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "A2BB47",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "A53BD0",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "A66653",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "A79735",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "A8F6F9",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "AAD21C",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "AB180A",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "AB9390",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "AD26A6",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "AE1C46",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "AF874B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "B150A6",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "B3D432",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "B70550",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "B7B54A",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "BACD01",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "BB6BD5",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "BC1984",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "BC8126",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "BDD304",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "BE1319",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "BEFF75",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "BFA504",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "BFBA3A",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "BFFD9E",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "C225AF",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "C2FB62",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "C305F3",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "C324C7",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "C4C20B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "C752D5",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "C9A4B3",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "CE1A3A",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "CE5AB0",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "D027A5",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "D3568C",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "D4D78B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "DA3EF5",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "DD9EBE",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "DDDF12",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "DEBC08",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E04251",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E0A055",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E18101",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E4918D",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E4DFA6",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E60076",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E6EEC5",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "E74CD0",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "EA8658",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "EBE776",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "EDD560",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "EF43A7",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "F0E560",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "F1D99F",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "F2E4DB",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "F2E831",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "F37753",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "F4A91A",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "F50AE3",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "F5EA9C",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "F6581B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "F79F7F",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "F7F400",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "F8124F",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "F8686E",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "FA1B4A",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "FDCB0B",
+        "members": 10,
+        "memberships": 10
+      },
+      {
+        "code": "FEE40B",
+        "members": 10,
+        "memberships": 10
+      }
+    ]
+  ],
+  "sqliteFiles": 104,
+  "rooms": 100,
+  "expectedRooms": 100,
+  "roomCountMatches": true,
+  "statuses": {
+    "PAUSED": 100
+  },
+  "totals": {
+    "soldPlayers": 100,
+    "unsoldPlayers": 0,
+    "bidEvents": 900,
+    "events": 4210,
+    "receipts": 1900
+  },
+  "problems": [],
+  "errors": [],
+  "pass": true,
+  "roomDetails": [
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\008ae166abc4cbf6acb0d6cb38278ed06b04849677d265ab7e9bdc7780a9d268.sqlite",
+      "code": "182DD6",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P002",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\01cf1183d353a25319be30eb39826451db033521638ef7dd7be5418fc3fc971c.sqlite",
+      "code": "8AA7F9",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P019",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\02f3dcde7cc182d97f649466b607ab96f7a32a0ca653f8e3f6f58a6d26d7b02e.sqlite",
+      "code": "69E102",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P001",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\0d768b79cf2b49c5396e09f752dd9c519b275940f6d79174459213abe25357d2.sqlite",
+      "code": "B3D432",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P003",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\1453f06d64592502ed3aa428f5fdb3e849f83af657da8a9408d4bd0d1bb18387.sqlite",
+      "code": "F4A91A",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P001",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\1647092532b9ee83ee73f54c1f2a570e9e817e75b7f20e218b91c0b8947f5c1f.sqlite",
+      "code": "44513A",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P003",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\16b8cf45afcd49374e5cf229b72d7b995b44118806b9a74d00c89f6d75893c4e.sqlite",
+      "code": "A1C204",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P003",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\1ba44a87b593a7a6ddd04eac69e3ee1e53c736e0dcd58cf22724fbbf1e4f332a.sqlite",
+      "code": "8520D1",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P003",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\1bd1e69b53e5c5694aae561c4f637c0de6b8cb192e5272835fab92498af73acb.sqlite",
+      "code": "86F30F",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P021",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\1ff661a47384ff1b0f0b5fe1368002ae0948a8dc9a7b85ffc5a62097d26c382a.sqlite",
+      "code": "02CA5B",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P021",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\20c8c8eedc141b6d988c2c159c89c65b421592adebf389193b5d617a79730db4.sqlite",
+      "code": "F79F7F",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P002",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\26a0dd3e57f4f3d0ab3a2e039f0d8f32d236d47adc64c84f8fd17662aa2c7c36.sqlite",
+      "code": "232998",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P001",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\27ee96c254c2844016cd83f34596d00f3fa150fa1d99ddeb8efa5910b67655c5.sqlite",
+      "code": "2E6E41",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P020",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\2b324a88034e47dca8800ca3f8e4be7d31d6dbe05182f0f7d8db56e2ff5e7051.sqlite",
+      "code": "FEE40B",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P002",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\2cbfdb100c45c33c7442ae180764ad1b2f7bf3d8e300fbd403eb534307fbc161.sqlite",
+      "code": "40FB63",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P001",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\2d197d627aae94b81825a52546865a8b6448c17da0fe580a48207644fafe9181.sqlite",
+      "code": "FDCB0B",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P020",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\31d22e08fef728c0dda66a96d9d371ead2bc9d8c51982bfc3819a0a0e578ca04.sqlite",
+      "code": "011375",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P019",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\36487992d39f42b9ac1395f7a3c1adb2b47317686b75f44b83b51a493b662d64.sqlite",
+      "code": "440404",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P003",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\374c118c0dfab30fbcf9412fe7aedce9e986c818b716ab185e81786f703bc7cb.sqlite",
+      "code": "4EF9C6",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P002",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\410ed5bfaf8ced64ee38d5fbce8708d11ef73d327e384d432472371876f69a78.sqlite",
+      "code": "95F2D4",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P019",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\4373b644d3d7de7b3df7efd5685f922619431c7d34d9ef4ec359d458bf5317db.sqlite",
+      "code": "611A78",
+      "status": "PAUSED",
+      "version": 44,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 44,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P019",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\44fcebb3e91485bc475a5c8ce2f639922c244d01d2101f6f9ff17b254ef1bdc8.sqlite",
+      "code": "BEFF75",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P001",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\452b03a8a703ac2c1bc29f75e81f6c7d53619e6b3a507138c69ea87d67e15d8c.sqlite",
+      "code": "2D48BC",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P003",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\4726b0ff679ffc500a9f468aede56b7a66341acda2bbc21d5cb9f32c5287145f.sqlite",
+      "code": "029C21",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P001",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\49a69d40109662a731d0a1857f5665df6ee56d14f7643b10df835a86fffc3d88.sqlite",
+      "code": "169769",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P002",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\4d1938cd0dad5bf063f59f5d3c7dcaadb36ac6003e6eba48e125b3dcafbfd3d9.sqlite",
+      "code": "5928CD",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P002",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\4d559f1169d8c3b7248a553888372dfe70432137ef67838c862982b05343bb91.sqlite",
+      "code": "8BFC00",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P018",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\4e5b28842aef04027a4145302007af45573bec2ca8205642699dc9ea238991cf.sqlite",
+      "code": "5CDFFA",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P001",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\4f19216749bd4e80916fee9651579f8ea9d6afbb3b19d49760488f343200a377.sqlite",
+      "code": "9F2355",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P021",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\54f2a202ccded7b77718fc6ca2e37373bedd5035ddf3a46c9c596f6502a47100.sqlite",
+      "code": "916DD5",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P018",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\56d4efc2c849c3423663f7882076a37be69a161583a035222a7281602b59764f.sqlite",
+      "code": "CE5AB0",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P001",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\5a5d1466d63ede3ab0639fa6897dc325503de395d5e3ba639d4322039be019d0.sqlite",
+      "code": "AE1C46",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P001",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\5ad05b0ec4e7da94a8c6e5876d376c89efaf24ae199d5c6d276d199afc093d3c.sqlite",
+      "code": "0CB245",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P019",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\5c6b1daeea7cacd5efbd37195612a4379eee42d856fe844ee359ab8732bb195e.sqlite",
+      "code": "9D153D",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P018",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\5ebf013debde6ab505d23c4d7c62c264f21a4ccbdde95fbde1f2c858c8e9dd27.sqlite",
+      "code": "4BB895",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P019",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\6410d1bebf2ef2daf1d87b48865965f5ece403c217820cfeb1a95e08f6ad5ec9.sqlite",
+      "code": "75F1DD",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P020",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\6617b3c3ec8adc62d53e51b02243525f9ad04b24a3eecf68a800613895204717.sqlite",
+      "code": "6E0FE7",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P019",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\6744077c0ff9af0fdae186b4998f4a30480755fac68b11c5991036a33f0bacad.sqlite",
+      "code": "90AB15",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P019",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\68e4b2c2d73018a673beee78b86bb8fc213c7f6c937a8345970a036f9374cead.sqlite",
+      "code": "E04251",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P018",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\6be42cf3360392c136c586c4acc5ccb4ec2a5a55bbbfd51ac450c321d5a3f932.sqlite",
+      "code": "34CCF8",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P019",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\6df8a2ecf1491b8744323746b67ae4c0a9e6ee87586ee0ab09ce875fdec3fef6.sqlite",
+      "code": "BACD01",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P020",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\6ea080097f5e0de268738872131cdae7666868e68554811cd5bfb0824a324ee4.sqlite",
+      "code": "8DED62",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P003",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\6f2c49ef1260f8c2f173651815ae1ca6443ed13aa43399e8bbe944fc9f8a03ea.sqlite",
+      "code": "69294A",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P001",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\6fed5c4c15c558361ed7f57d4c9f72d44fe102bc782cdd7bbf707b27bbaba7b6.sqlite",
+      "code": "885A48",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P020",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\70cee2380d6fc56f2adc8a919ed17412f6a1b58e1a67141d523a8549157b5d18.sqlite",
+      "code": "694952",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P019",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\7a666098ae7bc2a142be664a0304a453eab17906fc94b7d1e823c3bd2bf3c555.sqlite",
+      "code": "6166FB",
+      "status": "PAUSED",
+      "version": 44,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 44,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P021",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\7ab6e698587ee6e69ad413967cb6e887b7edc182d80b8c34198be57ad1489c29.sqlite",
+      "code": "BFFD9E",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P002",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\7d0dc76fb0a790baca6285fe2611b088da27c71bf2d82f70b8ff396e71d213b8.sqlite",
+      "code": "837762",
+      "status": "PAUSED",
+      "version": 44,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 44,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P021",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\7f1cafe51169b669ffafca442f2e6446e34952615af9ec0b943bd35fde2b3ecc.sqlite",
+      "code": "524AFF",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P018",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\806e572e90e5cf9f1e6f0adef59f2a46653837f9bb935a24480b987cd7214e06.sqlite",
+      "code": "A66653",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P003",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\81f4f0ddd733d64a7b7f589f3cfe64b71db4f09147f2e3e3313fbf68680745a2.sqlite",
+      "code": "1F2D85",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P021",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\825f341dc2462c5a8ac5629c8c516b37a8ef2207d6ee1f38320eb872f0c13eef.sqlite",
+      "code": "725906",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P001",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\83ffede50b763fa6e521703846c1f26d8549ea0e73dda8b03ef54c8b048c89c7.sqlite",
+      "code": "253B90",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P001",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\861a300861b63f3a56531bf30b467033cb8c13a4d43cae4ee81377f496ad18bf.sqlite",
+      "code": "C324C7",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P003",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\8f6d722d1ac6586ca90ffc23d6a9b57feab427e10dd79b941da03b6c501e4abf.sqlite",
+      "code": "7FDCD7",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P003",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\903d24fcef6157bb413c2fe8a62c7a61425f2daf1328b5e61d58cd36bf276550.sqlite",
+      "code": "13DF00",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P019",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\90f0c7b29e778cd28de576cab29cbf87d65c9609e88c8ef978b75dcaf8e80776.sqlite",
+      "code": "DDDF12",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P021",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\91ba7e7d5c948e660bd1a156299adbbd9abc858faca23f9db708f8d4d9cdf549.sqlite",
+      "code": "7F829D",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P001",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\926b2903cd6b46f0fd165089fdc1533adb2d83f17b0f2d164feea366a5c8abc4.sqlite",
+      "code": "2272B4",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P018",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\9616cfaaa9b41b1df72e631ce6834929be477802806b366ecba45c8316516677.sqlite",
+      "code": "280C9E",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P019",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\975288189d699e05d088b8a9bd78cbc752f230872a771fada5714382d15a1b47.sqlite",
+      "code": "B150A6",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P020",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\98a2e66cbe793c9bcda790eb4822f9e9f03c2df76f6b2ab0de8d853742b70e8e.sqlite",
+      "code": "29F5E1",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P003",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\9a3141f65fb9e8372063dfb57a53a6039881c595ab1e43e65a8b8531c0322513.sqlite",
+      "code": "E0A055",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P002",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\9b8dbcb4c31123d1e8ea766b9518e895649a1e659c50898ffa0973d5ce8699da.sqlite",
+      "code": "5A98A5",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P019",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\9c180c2b11d3e54a901562c504ba1856c7c710f746323cd9baed8f186853b415.sqlite",
+      "code": "13D9E3",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P001",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\9eac533a61e98ed2b19517a94c22bb6fae63882b2f819ee32b909e2dfd109939.sqlite",
+      "code": "C4C20B",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P018",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\a3de3a928adf45450683b45dd22c6f3a04ec97c28d259fa18d2cd45f6422d18b.sqlite",
+      "code": "DA3EF5",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P003",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\a5ccd2bfe4787c224e94af59cdc5604685bc43d484a59ca567e0819551e3affa.sqlite",
+      "code": "44864B",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P019",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\a5f4100f432d2f2ba73796124520431b76007c5eaf355768b44b7bdb924a8793.sqlite",
+      "code": "24D391",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P002",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\a9aff64546407cedb5b0117aec92586bc633b90100264bd95e389062cb7b2dba.sqlite",
+      "code": "52F44C",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P020",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\abaa66c3d45ee132f95c54053c21929763959dc7eab29930b850162d70dfd635.sqlite",
+      "code": "AF874B",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P003",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\ac43bd3acbe9361d3d37fb9a424b4760953d49656f40c4281bdb416c7e988a50.sqlite",
+      "code": "1D839C",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P021",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\accbbcd16e237be900703a4c6b55b1a15cf91c4a78f3a7d011a9a835c62e1a27.sqlite",
+      "code": "0C354E",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P003",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\b90ffa0dc42ddb9cbad5bfb4c2219b936c8bf04fbfa2f4bbf4c9fd34e1fc1d15.sqlite",
+      "code": "6D4D15",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P018",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\ba5978b3322997d29f4a45e9769a434b297f752b0f4dc1c440ec46cf57d9a6a5.sqlite",
+      "code": "C305F3",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P002",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\ba992b82a90559d08ee526bd440a9683e707ea4c2bd1da5fe667e9d567f2b556.sqlite",
+      "code": "4873C7",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P001",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\bf1fba045fd78327901439d6d2e380066183a4351b729ed4476655b7d5be28ec.sqlite",
+      "code": "F0E560",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P018",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\c2b6aa6239f3b4f5ce191bed78687df0d1fe0de933b2a146336b663b111d814d.sqlite",
+      "code": "AD26A6",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P018",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\c51ec3cc2323316ae6ee7860b7671c4d6bf0ccb0a7e928dd20b66deebb705ee5.sqlite",
+      "code": "407F41",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P021",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\c80c21c4b326996c0788157a6e78a67ff2910b30f980c15a2abca56986c9d68c.sqlite",
+      "code": "235DE8",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P020",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\cc0774b52f88a45d8f52da832d241bee1da24449927d692a5b4b15166c1673d9.sqlite",
+      "code": "BC8126",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P001",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\d1f7d7685607402e34602c3af8beb6c5c0bb1a23e8a04cc871295971cf47d0fd.sqlite",
+      "code": "F37753",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P003",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\d81742808d7ab6dfd322771926af684c05256fe30d5b422dfc3ea5afbce2330c.sqlite",
+      "code": "283BD0",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P003",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\d897e23dead99a63f4fb2424e72f768dae22837767249aa910c228a29fb74854.sqlite",
+      "code": "888845",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P020",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\db74883c6159c0ab67f7927e4a98a271fcc2b7b209c6e1555af8e8b215d640eb.sqlite",
+      "code": "8B7804",
+      "status": "PAUSED",
+      "version": 44,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 44,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P018",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\de215875188c899f9fa67db02be9457f5dbc582c2b6f9b314671fd8f24ca8ce4.sqlite",
+      "code": "45A05A",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P001",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\e1a284de454dbce13d8b3e79820c8b99d5fbcee8027d98d7d9bf9ca224ad19e6.sqlite",
+      "code": "7E475D",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P018",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\e47460b793857ef4cc763744581a2896d6e3c4fdcbad54f5e98ad84c0c63d88b.sqlite",
+      "code": "256227",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P020",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\e66173eb6e4ad45cda8d80ee1e855efd4b14fb8767690708dba48fa8288e3b96.sqlite",
+      "code": "8B8EF6",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P020",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\eab83862b951ac9efe20785f18e8863f37d76a37ecb75a9a2df649ece4d5ff62.sqlite",
+      "code": "2A8D29",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P018",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\ececaa29df7b14984cfe533c956cc7e864903bac03be80552b0b1b3287b6e6ba.sqlite",
+      "code": "120030",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P021",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\f169cf56d8d83c63b82437776f1001ca309793de0eb9e8d6284a833b549845b7.sqlite",
+      "code": "AAD21C",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P018",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\f17ec6ccb960693ff7198bb8b2292aba73dda559aeac66833951cbf03ecfbcfe.sqlite",
+      "code": "6C8680",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P019",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\f2aedd767abeeae7325512d576328c6a4e0809250a5066bff1ce78a95afd3ffe.sqlite",
+      "code": "770AF3",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P018",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\f3110cbdaf898e30e43afcef9ebe045d45a6de1ce1fc90edadb620d75eac6059.sqlite",
+      "code": "8CF26E",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P002",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\f402515bea853f0fe21f3171640efe8bbce8bcf31480ad34ba798e53b08aac51.sqlite",
+      "code": "F8124F",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P021",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\f7f3435114043f805536db5ef24ff7ee9a1b3c7dbad6a7f278c89268715ed7f7.sqlite",
+      "code": "3E16E9",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P003",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\f845516f5a641b19824824c5b525ca827fcefae1c266c2c02fd15a5183886267.sqlite",
+      "code": "FA1B4A",
+      "status": "PAUSED",
+      "version": 44,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 44,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P002",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\fbcae9755fe2e7edbf06237438df13a69c4401876974ce4d2f75637ec11ff4b3.sqlite",
+      "code": "DD9EBE",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P003",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    },
+    {
+      "path": "C:\\Users\\palli\\AppData\\Local\\Temp\\arena-room-bench-tQGYGu\\state-0\\do\\-RoomDurableObject\\ff7685b1f43bd1078cc8f7d79830638740042302e520875ce16bfd2e278e4742.sqlite",
+      "code": "521EE5",
+      "status": "PAUSED",
+      "version": 42,
+      "members": 10,
+      "teams": 8,
+      "players": 80,
+      "events": 42,
+      "receipts": 19,
+      "bidEvents": 9,
+      "soldPlayers": 1,
+      "firstSold": {
+        "id": "P002",
+        "price": 360,
+        "team": "t1"
+      },
+      "unsoldPlayers": 0,
+      "openPlayers": 1,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "problems": []
+    }
+  ]
+}

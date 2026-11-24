@@ -1,0 +1,11 @@
+ ⛅️ wrangler 4.162.0
+────────────────────
+✨ Read 4 files from the assets directory C:\Users\palli\OneDrive\Desktop\IPL-AUCTION\dist
+Total Upload: 1296.37 KiB / gzip: 231.33 KiB
+Your Worker has access to the following bindings:
+Binding                                     Resource
+env.ROOM (RoomDurableObject)                Durable Object
+env.DIRECTORY (DirectoryDurableObject)      Durable Object
+env.ASSETS                                  Assets
+
+--dry-run: exiting now.

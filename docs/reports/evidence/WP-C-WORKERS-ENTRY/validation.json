@@ -1,0 +1,76 @@
+{
+  "task": "WP-C-WORKERS-ENTRY",
+  "status": "passed-local-scope",
+  "date": "2026-11-13",
+  "baseCommit": "53967a292833c5ba3496fcbba02e8cdb39d446eb",
+  "workingTreeChanges": true,
+  "commitCreated": false,
+  "isolation": "Temporary source copy, node_modules junction, empty temporary .data directory; private environment file and original data not copied",
+  "typecheck": {
+    "exitCode": 0,
+    "command": "npx.cmd tsc --noEmit",
+    "log": "typecheck.log",
+    "exitRecord": "typecheck-exit.txt",
+    "note": "typecheck.log is empty; exit record is 0"
+  },
+  "core": {
+    "passed": 214,
+    "failed": 0,
+    "skipped": 0,
+    "suites": 38,
+    "success": true,
+    "command": "npx.cmd vitest run tests/core --configLoader runner --reporter=json",
+    "report": "core.json",
+    "note": "15 new Worker-entry tests; baseline was 199 after Package B"
+  },
+  "local": {
+    "passed": 76,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0,
+    "command": "npm.cmd run test:local",
+    "report": "local/local-tests.json",
+    "note": "The unchanged runner still labels its raw output WP1-ROOM-COMPLETION"
+  },
+  "browser": {
+    "passed": 34,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "globalErrors": 0,
+    "axeScans": 34,
+    "axeViolations": 0,
+    "axeIncompleteRuleEntries": 28,
+    "command": "npm.cmd run test:e2e",
+    "report": "browser/results.json",
+    "exitRecord": "browser-exit.txt",
+    "note": "Regression run against the unchanged local Node runtime, not the Worker"
+  },
+  "a11y": {
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "globalErrors": 0,
+    "exitCode": 0,
+    "axeScans": 32,
+    "axeViolations": 0,
+    "axeIncompleteRuleEntries": 26,
+    "command": "npm.cmd run test:a11y",
+    "report": "a11y/results.json",
+    "exitRecord": "a11y-exit.txt",
+    "note": "Regression run against the unchanged local Node runtime, not the Worker"
+  },
+  "sourceManifest": "tested-source.json",
+  "sourceHashNote": "SHA-256 values were computed from the isolated WP-C verification copy at run time; Package D later changed apps/api/src/worker/index.ts, so that file no longer matches the repository working tree",
+  "limits": [
+    "No wrangler or Miniflare run; Workers runtime, bindings, WebSocket upgrade and bundling compatibility are unverified",
+    "Browser and accessibility runs exercise the unchanged local Node runtime, not the Worker entry",
+    "Socket tickets are HMAC-signed and expire after 30 seconds but are replayable within that window; the room object must recheck membership",
+    "Rate limiting is per isolate and best effort, not a global quota",
+    "/api/me returns an empty room list until Package E provides a cross-room index",
+    "Clerk profile projection, account lifecycle, webhooks and live provider challenge flows are not implemented on Workers",
+    "No deployment, cloud resource, account setting, R2 activation or production migration was created"
+  ],
+  "next": "Implement Package D room Durable Object with SQLite transactions, hibernating WebSockets, one alarm slot and wake recovery"
+}

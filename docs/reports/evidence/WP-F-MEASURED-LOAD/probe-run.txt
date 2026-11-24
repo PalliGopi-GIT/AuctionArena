@@ -1,0 +1,2 @@
+node scripts/load-local.mjs --users=500 --duration=10000 --poll=60000 --connectConcurrency=10 --output=evidence/probe-500-ping.json
+{"users":500,"rooms":25,"setupMs":10605.82,"connectMs":15585.33,"pingP95":14168.41,"stateP95":25643.31,"broadcastP95":25992.31,"errors":164}

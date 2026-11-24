@@ -1,0 +1,33 @@
+{
+    "task":  "AUCTIONARENA-LOAD-TEST",
+    "generatedAt":  "2026-11-19T17:29:06.2459261+05:30",
+    "environment":  "local wrangler dev (workerd), fresh --persist-to state per level; not a Cloudflare deployment",
+    "wrangler":  "4.162.0",
+    "durationMs":  70000,
+    "bids":  8,
+    "roomSize":  10,
+    "timerSeconds":  60,
+    "mode":  "quick",
+    "separateStart":  true,
+    "trace":  true,
+    "bidSpreadMs":  40000,
+    "freeMemoryFloorMiB":  1536,
+    "levels":  [
+                   {
+                       "users":  500,
+                       "expectedRooms":  50,
+                       "port":  8971,
+                       "state":  "C:\\Users\\palli\\AppData\\Local\\Temp\\auctionarena-perf-lfo8cdb9\\runtime\\level-500-fc0671a7afc24b1b8e35ab308bfb3e37\\state",
+                       "startedAt":  "2026-11-19T17:29:08.2423527+05:30",
+                       "finishedAt":  "2026-11-19T17:31:22.7757313+05:30",
+                       "exitCode":  0,
+                       "harness":  "load-500.json",
+                       "integrity":  "integrity-500.json",
+                       "pass":  true,
+                       "failures":  [
+
+                                    ]
+                   }
+               ],
+    "pass":  true
+}

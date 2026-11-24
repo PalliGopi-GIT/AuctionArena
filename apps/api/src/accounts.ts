@@ -9,6 +9,13 @@ export function clerkUserDeletion(secretKey?:string):DeleteClerkUser|undefined {
   const client=createClerkClient({secretKey});
   return async subject=>{try{await client.users.deleteUser(subject);}catch(error){if((error as {status?:number}).status!==404)throw error;}};
 }
+export type RenameClerkUser = (verifiedSubject:string,name:string)=>Promise<void>;
+/** Display-name edits update the provider so the next session token carries the new name. */
+export function clerkUserRename(secretKey?:string):RenameClerkUser|undefined {
+  if(!secretKey)return;
+  const client=createClerkClient({secretKey});
+  return async (subject,name)=>{await client.users.updateUser(subject,{firstName:name,lastName:''});};
+}
 const webhookSchema=z.object({type:z.string(),timestamp:z.number().int().nonnegative(),
   data:z.object({id:z.string().startsWith('user_'),first_name:z.string().nullable().optional(),last_name:z.string().nullable().optional(),username:z.string().nullable().optional(),updated_at:z.number().int().nonnegative().optional()}).passthrough(),
 }).passthrough();

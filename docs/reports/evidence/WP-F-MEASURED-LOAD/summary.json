@@ -1,0 +1,114 @@
+{
+  "task": "WP-F-MEASURED-LOAD",
+  "status": "measured-local-limit",
+  "date": "2026-11-14",
+  "baseCommit": "53967a292833c5ba3496fcbba02e8cdb39d446eb",
+  "workingTreeChanges": true,
+  "commitCreated": false,
+  "environment": {
+    "runtime": "single-process local Node runtime with file-backed JSON state",
+    "node": "v22.23.2",
+    "platform": "win32",
+    "arch": "x64",
+    "cpus": 12,
+    "totalMemoryBytes": 16857817088,
+    "data": "isolated temporary DATA_FILE per level; private .data, fixtures and prior evidence untouched"
+  },
+  "workload": {
+    "rooms": "ceil(users / 20); the local runtime caps a room at 20 members",
+    "membersPerRoom": 20,
+    "durationMs": 10000,
+    "pollIntervalMs": 2000,
+    "pollEndpoint": "GET /api/rooms/:code/sync?afterVersion=<version>",
+    "ping": "one WebSocket ping per connected user, staggered over the first 5 seconds",
+    "broadcast": "one host claim action per room at about 3 seconds; delivery measured to all 20 room sockets",
+    "connectConcurrency": 10,
+    "note": "Polls and pings are staggered across the window rather than fired as one simultaneous burst. The intended 10-second window is measured client-side and stretched under contention; actual values are recorded per level."
+  },
+  "criteria": {
+    "allUsersConnected": true,
+    "requestErrors": 0,
+    "pingP95MsMax": 1000,
+    "pollP95MsMax": 1000,
+    "broadcastDeliveryP95MsMax": 2000,
+    "broadcastActionsComplete": "all rooms"
+  },
+  "levels": [
+    {
+      "users": 100,
+      "rooms": 5,
+      "connected": 100,
+      "setupMs": 1352.17,
+      "connectMs": 321.22,
+      "measuredWindowMs": 10100,
+      "pingP95Ms": 8.31,
+      "pollP95Ms": 24.3,
+      "broadcastActions": 5,
+      "broadcastActionsCompleted": 5,
+      "broadcastDeliveryP95Ms": 131.25,
+      "errors": 0,
+      "result": "pass",
+      "evidence": "load-100.json"
+    },
+    {
+      "users": 500,
+      "rooms": 25,
+      "connected": 500,
+      "setupMs": 11971.73,
+      "connectMs": 31806.9,
+      "measuredWindowMs": 40126,
+      "pingP95Ms": 9576.39,
+      "pollP95Ms": 18004.65,
+      "broadcastActions": 25,
+      "broadcastActionsCompleted": 7,
+      "broadcastDeliveryP95Ms": 9347.08,
+      "errors": 1093,
+      "result": "fail",
+      "reasons": [
+        "Ping, poll and broadcast latencies exceed the local criteria",
+        "1093 request, pong or action errors",
+        "Only 7 of 25 room broadcasts completed"
+      ],
+      "evidence": "load-500.json"
+    },
+    {
+      "users": 1000,
+      "rooms": 50,
+      "connected": 1000,
+      "setupMs": 91852.29,
+      "connectMs": 137339.18,
+      "measuredWindowMs": 32168,
+      "pingP95Ms": 14780.25,
+      "pollP95Ms": 8975.05,
+      "broadcastActions": 50,
+      "broadcastActionsCompleted": 0,
+      "broadcastDeliveryP95Ms": null,
+      "errors": 2917,
+      "result": "fail",
+      "reasons": [
+        "Ping and poll latencies exceed the local criteria",
+        "2917 request, pong or action errors",
+        "No room broadcast completed"
+      ],
+      "evidence": "load-1000.json"
+    }
+  ],
+  "diagnostic": {
+    "name": "500 users, polls effectively disabled (60-second interval), pings only",
+    "result": "fail",
+    "measuredWindowMs": 31065,
+    "pingP95Ms": 14168.41,
+    "pingErrors": 155,
+    "pollErrors": 9,
+    "broadcastActionsCompleted": 25,
+    "broadcastDeliveryP95Ms": 25992.31,
+    "errors": 164,
+    "evidence": "probe-500-ping.json",
+    "note": "The 500-user limit is not caused only by the 2-second poll rate; the file-backed store, 10-second presence timeout and whole-database work on many requests also contribute."
+  },
+  "conclusion": "The local single-process runtime sustained 100 connected users for the measured 10-second window with zero errors. It did not sustain 500 or 1,000 users under the same workload. This is a measured local limit, not a Cloudflare Workers, Durable Object, production, 500-user or 1,000-user capacity claim.",
+  "changes": [
+    "Added a repeatable local HTTP/WebSocket load harness (scripts/load-local.mjs and scripts/load-api.mjs) using isolated temporary data files",
+    "Added an idle fast path to LocalRoomStore.sweep so a read or heartbeat does not clone the whole database when no room is due; core and local suites still pass"
+  ]
+}

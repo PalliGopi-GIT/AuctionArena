@@ -18,6 +18,13 @@ registerHooks({
       format: 'module', shortCircuit: true,
       source: stripTypeScriptTypes(readFileSync(fileURLToPath(url), 'utf8'), { mode: 'transform' }),
     };
+    // Node's default JSON loader requires an import attribute. The catalog
+    // imports its generated JSON with a plain default import, so serve it as a
+    // module here instead of changing application code for one test loader.
+    if (url.endsWith('.json')) return {
+      format: 'module', shortCircuit: true,
+      source: `export default ${readFileSync(fileURLToPath(url), 'utf8')};`,
+    };
     return next(url, context);
   },
 });

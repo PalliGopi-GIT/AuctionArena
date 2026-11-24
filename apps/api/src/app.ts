@@ -11,6 +11,8 @@ import { LocalRoomStore } from '../../realtime/src/store';
 import { ClerkProfiles, clerkProfileLookup, type ClerkProfileLookup } from './clerk-profiles';
 import { Accounts, clerkUserDeletion, type DeleteClerkUser } from './accounts';
 import { roomSnapshot } from '../../../packages/shared/src/room-sync';
+import { catalog } from '../../../packages/catalog/src/index';
+import { buildPlanPreview, planCsv } from '../../../packages/catalog/src/room-plan';
 
 export interface AppOptions {
   localDevAuth:boolean; clerkSecret?:string; clerkJwtKey?:string; clerkIssuer?:string;
@@ -30,7 +32,7 @@ export function createApp(store:LocalRoomStore,options:AppOptions) {
     onError:c=>c.json({code:'PAYLOAD_TOO_LARGE',message:'Request body exceeds the allowed size.',requestId:randomBytes(8).toString('hex')},413)})(c,next));
   app.onError((error,c)=>{
     const requestId=randomBytes(8).toString('hex');
-    if(error instanceof RuleError)return c.json({code:error.code,message:error.message,requestId},error.code==='ROOM_NOT_FOUND'?404:['FORBIDDEN','ROOM_BLOCKED','HOST_ONLY'].includes(error.code)?403:400);
+    if(error instanceof RuleError)return c.json({code:error.code,message:error.message,requestId},error.code==='ROOM_NOT_FOUND'?404:['FORBIDDEN','ROOM_BLOCKED','HOST_ONLY'].includes(error.code)?403:error.code==='ROOM_ACTIVE'?409:400);
     if(error instanceof z.ZodError)return c.json({code:'INVALID_INPUT',message:error.issues.map(i=>i.message).join('; '),requestId},400);
     console.error('Request failed',requestId,error.message);
     return c.json({code:'SERVICE_ERROR',message:'The service could not confirm this action. Please reconnect.',requestId},500);
@@ -91,11 +93,24 @@ export function createApp(store:LocalRoomStore,options:AppOptions) {
     return c.json({accepted:true,message:'Account deletion is queued. Access has ended.'},202);
   });
   app.post('/api/rooms',async c=>{const created=store.create(c.get('user'),settingsSchema.parse(await c.req.json()));return c.json({...created,room:roomSnapshot(created.room),serverNow:Date.now()},201);});
-  app.post('/api/rooms/:code/join',async c=>{const body=z.object({inviteToken:z.string().max(200)}).strict().parse(await c.req.json());return c.json({room:roomSnapshot(store.join(c.req.param('code').toUpperCase(),c.get('user'),body.inviteToken)),serverNow:Date.now()});});
+  app.post('/api/rooms/:code/join',async c=>{const body=z.object({inviteToken:z.string().max(200).optional()}).strict().parse(await c.req.json());return c.json({room:roomSnapshot(store.join(c.req.param('code').toUpperCase(),c.get('user'),body.inviteToken)),serverNow:Date.now()});});
   app.get('/api/rooms/:code',c=>c.json({room:roomSnapshot(store.get(c.req.param('code').toUpperCase(),c.get('user'),true)),serverNow:Date.now()}));
+  app.delete('/api/rooms/:code',c=>c.json({...store.deleteRoom(c.req.param('code').toUpperCase(),c.get('user')),serverNow:Date.now()}));
   app.get('/api/rooms/:code/history',c=>c.json(store.history(c.req.param('code').toUpperCase(),c.get('user'),c.req.query('before')===undefined?undefined:Number(c.req.query('before')),Number(c.req.query('limit')??100))));
   app.get('/api/rooms/:code/sync',c=>c.json({...store.sync(c.req.param('code').toUpperCase(),c.get('user'),Number(c.req.query('afterVersion'))),serverNow:Date.now()}));
   app.post('/api/rooms/:code/invite',c=>{const renewed=store.rotateInvite(c.req.param('code').toUpperCase(),c.get('user'));return c.json({...renewed,room:roomSnapshot(renewed.room),serverNow:Date.now()});});
+  app.get('/api/rooms/:code/plan',c=>{
+    const user=c.get('user'),room=store.get(c.req.param('code').toUpperCase(),user,true);
+    if(room.hostId!==user.id)throw new RuleError('HOST_ONLY','Only the host can review the auction plan.');
+    if(!room.plan&&!room.planDraft)throw new RuleError('PLAN_REQUIRED','Generate and review an auction plan first.');
+    return c.json({plan:buildPlanPreview(room,catalog),serverNow:Date.now()});
+  });
+  app.get('/api/rooms/:code/plan/export',c=>{
+    const user=c.get('user'),room=store.get(c.req.param('code').toUpperCase(),user,true);
+    if(room.hostId!==user.id)throw new RuleError('HOST_ONLY','Only the host can export the auction plan.');
+    if(!room.plan&&!room.planDraft)throw new RuleError('PLAN_REQUIRED','Generate and review an auction plan before exporting it.');
+    return c.body(planCsv(room,catalog),200,{'Content-Type':'text/csv; charset=utf-8','Content-Disposition':`attachment; filename="auction-order-${room.code}.csv"`});
+  });
   app.post('/api/rooms/:code/actions',async c=>{
     const code=c.req.param('code').toUpperCase(),user=c.get('user');store.get(code,user);
     try{const action=actionSchema.parse(await c.req.json());const room=store.action(code,user,action);return c.json(action.type==='leave'?{left:true,serverNow:Date.now()}:{room:roomSnapshot(room),serverNow:Date.now()});}

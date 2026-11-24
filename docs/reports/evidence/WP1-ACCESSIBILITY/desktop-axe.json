@@ -3,7 +3,7 @@
   "scans": [
     {
       "screen": "home",
-      "passedRules": 36,
+      "passedRules": 39,
       "violations": [],
       "incomplete": [
         {
@@ -15,55 +15,19 @@
               "header > .brand[title=\"Go to overview\"] > .brand-mark[aria-hidden=\"true\"]"
             ],
             [
-              ".sample-tag"
+              ".cover-mast > span:nth-child(2)"
             ],
             [
-              ".vertical-text"
+              ".cover-caption > span"
             ],
             [
-              ".player-number"
+              ".cover-caption > h2"
             ],
             [
-              ".tag"
+              ".cover-score > span:nth-child(2)"
             ],
             [
-              ".preview-player > h2"
-            ],
-            [
-              ".preview-player > p"
-            ],
-            [
-              ".preview-stats > span:nth-child(1)"
-            ],
-            [
-              "span:nth-child(1) > b"
-            ],
-            [
-              ".preview-stats > span:nth-child(2)"
-            ],
-            [
-              "span:nth-child(2) > b"
-            ],
-            [
-              ".preview-stats > span:nth-child(3)"
-            ],
-            [
-              "span:nth-child(3) > b"
-            ],
-            [
-              ".label"
-            ],
-            [
-              ".preview-bottom > span:nth-child(2)"
-            ],
-            [
-              ".card-decoration"
-            ],
-            [
-              ".bottom-cta > .eyebrow"
-            ],
-            [
-              ".bottom-cta > h2"
+              "span:nth-child(2) > strong"
             ],
             [
               "footer > .brand[title=\"Go to overview\"] > .brand-mark[aria-hidden=\"true\"]"
@@ -72,22 +36,10 @@
           "summaries": [
             "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background",
             "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
-            "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
-            "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
-            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
-            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
-            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
-            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
-            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
-            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
-            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
-            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements",
             "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
             "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
             "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
-            "Fix any of the following:\n  Element content is too short to determine if it is actual text content",
-            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
-            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
             "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background"
           ]
         }
@@ -97,41 +49,13 @@
       "screen": "local-sign-in",
       "passedRules": 33,
       "violations": [],
-      "incomplete": [
-        {
-          "id": "color-contrast",
-          "impact": "serious",
-          "help": "Elements must meet minimum color contrast ratio thresholds",
-          "targets": [
-            [
-              ".modal > p"
-            ]
-          ],
-          "summaries": [
-            "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
-          ]
-        }
-      ]
+      "incomplete": []
     },
     {
       "screen": "create-settings",
-      "passedRules": 33,
+      "passedRules": 34,
       "violations": [],
-      "incomplete": [
-        {
-          "id": "color-contrast",
-          "impact": "serious",
-          "help": "Elements must meet minimum color contrast ratio thresholds",
-          "targets": [
-            [
-              ".fine-print"
-            ]
-          ],
-          "summaries": [
-            "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
-          ]
-        }
-      ]
+      "incomplete": []
     },
     {
       "screen": "create-review",
@@ -144,10 +68,14 @@
           "help": "Elements must meet minimum color contrast ratio thresholds",
           "targets": [
             [
+              "p:nth-child(4) > b"
+            ],
+            [
               ".fine-print"
             ]
           ],
           "summaries": [
+            "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements",
             "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
           ]
         }
@@ -155,7 +83,7 @@
     },
     {
       "screen": "lobby",
-      "passedRules": 38,
+      "passedRules": 40,
       "violations": [],
       "incomplete": [
         {
@@ -167,11 +95,19 @@
               "header > .brand[title=\"Go to overview\"] > .brand-mark[aria-hidden=\"true\"]"
             ],
             [
+              ".team-choice:nth-child(1) > .team-crest[aria-hidden=\"true\"] > b"
+            ],
+            [
+              ".team-choice:nth-child(2) > .team-crest[aria-hidden=\"true\"] > b"
+            ],
+            [
               "footer > .brand[title=\"Go to overview\"] > .brand-mark[aria-hidden=\"true\"]"
             ]
           ],
           "summaries": [
             "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
             "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background"
           ]
         }
@@ -191,11 +127,19 @@
               "header > .brand[title=\"Go to overview\"] > .brand-mark[aria-hidden=\"true\"]"
             ],
             [
+              "section:nth-child(1) > .panel-heading > h2 > .team-crest[aria-hidden=\"true\"] > b"
+            ],
+            [
+              "section:nth-child(2) > .panel-heading > h2 > .team-crest[aria-hidden=\"true\"] > b"
+            ],
+            [
               "footer > .brand[title=\"Go to overview\"] > .brand-mark[aria-hidden=\"true\"]"
             ]
           ],
           "summaries": [
             "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
             "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background"
           ]
         }
@@ -275,7 +219,7 @@
     },
     {
       "screen": "edit-rules",
-      "passedRules": 33,
+      "passedRules": 34,
       "violations": [],
       "incomplete": []
     },
@@ -293,13 +237,7 @@
               "header > .brand[title=\"Go to overview\"] > .brand-mark[aria-hidden=\"true\"]"
             ],
             [
-              ".player-number"
-            ],
-            [
-              ".live-stats > span:nth-child(1) > b"
-            ],
-            [
-              ".live-stats > span:nth-child(2) > b"
+              ".team-crest > b"
             ],
             [
               "footer > .brand[title=\"Go to overview\"] > .brand-mark[aria-hidden=\"true\"]"
@@ -307,9 +245,7 @@
           ],
           "summaries": [
             "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background",
-            "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
-            "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
-            "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
             "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background"
           ]
         }
@@ -329,7 +265,7 @@
               "header > .brand[title=\"Go to overview\"] > .brand-mark[aria-hidden=\"true\"]"
             ],
             [
-              ".player-number"
+              ".team-crest > b"
             ],
             [
               "footer > .brand[title=\"Go to overview\"] > .brand-mark[aria-hidden=\"true\"]"
@@ -337,7 +273,7 @@
           ],
           "summaries": [
             "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background",
-            "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+            "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
             "Fix any of the following:\n  Element has a 1:1 contrast ratio with the background"
           ]
         }
@@ -439,7 +375,21 @@
       "screen": "manual-results-copy",
       "passedRules": 33,
       "violations": [],
-      "incomplete": []
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "targets": [
+            [
+              "#share-help"
+            ]
+          ],
+          "summaries": [
+            "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
+          ]
+        }
+      ]
     },
     {
       "screen": "my-auctions",

@@ -1,0 +1,184 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\palli\\AppData\\Local\\Temp\\opencode\\wp-h-verify\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/debug.spec.ts",
+      "--project=desktop"
+    ],
+    "configFile": "C:\\Users\\palli\\AppData\\Local\\Temp\\opencode\\wp-h-verify\\playwright.config.ts",
+    "rootDir": "C:/Users/palli/AppData/Local/Temp/opencode/wp-h-verify/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "C:\\Users\\palli\\AppData\\Local\\Temp\\opencode\\wp-h-verify\\tests\\e2e\\setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/palli/AppData/Local/Temp/opencode/wp-h-verify/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "C:/Users/palli/AppData/Local/Temp/opencode/wp-h-verify/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/palli/AppData/Local/Temp/opencode/wp-h-verify/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "C:/Users/palli/AppData/Local/Temp/opencode/wp-h-verify/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\palli\\AppData\\Local\\Temp\\opencode\\wp-h-verify\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop",
+        "testDir": "C:\\Users\\palli\\AppData\\Local\\Temp\\opencode\\wp-h-verify\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\palli\\AppData\\Local\\Temp\\opencode\\wp-h-verify\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5273",
+          "channel": "chrome",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\palli\\OneDrive\\Desktop\\IPL-AUCTION\\docs\\reports\\evidence\\WP-H-PLAYER-POOLS\\debug/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "debug.spec.ts",
+      "file": "debug.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "debug websocket interception",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7055,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "WS INTERCEPTED ws://127.0.0.1:5273/ws?room=7292CD\n"
+                    },
+                    {
+                      "text": "CODE 7292CD\n"
+                    },
+                    {
+                      "text": "WS INTERCEPTED ws://127.0.0.1:5273/ws?room=7292CD\n"
+                    },
+                    {
+                      "text": "WS INTERCEPTED ws://127.0.0.1:5273/ws?room=7292CD\n"
+                    },
+                    {
+                      "text": "STATUS Connected\nWAITING\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-18T22:21:51.325Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5ee6126738e1012db859-e2b05c23056015b6c365",
+          "file": "debug.spec.ts",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-18T22:21:42.736Z",
+    "duration": 16608.990999999998,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

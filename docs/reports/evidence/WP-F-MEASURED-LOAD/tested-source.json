@@ -1,0 +1,26 @@
+[
+  {
+    "path": "scripts/load-local.mjs",
+    "sha256": "38f0300940fc6233029035e99f05f50521abad0d83cd2572ca494d14d9c5062c"
+  },
+  {
+    "path": "scripts/load-api.mjs",
+    "sha256": "bb2f38aefc699d0f46cfb0277c5c6e0e1fba60ce84741cbed29ef593acd517ca"
+  },
+  {
+    "path": "apps/realtime/src/store.ts",
+    "sha256": "fa25e32e10dcd2a36242f5a525f76b9718a5c63791b23997af9022aaff1ef462"
+  },
+  {
+    "path": "package.json",
+    "sha256": "99a5120a88f9cf6db5758a83bcd8f125068d476c0797de64e60f364682266c01"
+  },
+  {
+    "path": "tests/core/local-bounds.test.ts",
+    "sha256": "8963e8d70fb53365efd3fcbc58231f052053b43a7834dee2d5e09993b8df24c7"
+  },
+  {
+    "path": "tests/local/core.test.mjs",
+    "sha256": "8e5593e6380fd5659c4fa36861dce524b7e97153843d7426b7a4f6d5a6803b28"
+  }
+]

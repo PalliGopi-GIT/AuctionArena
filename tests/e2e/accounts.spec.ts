@@ -28,7 +28,7 @@ test('profile names stay unique and deletion revokes access while retaining shar
     await page.getByRole('dialog').getByRole('button',{name:'Close room',exact:true}).click();
     const oldToken=await page.evaluate(()=>localStorage.getItem('aa-token'));
     await page.getByRole('button',{name:'Profile',exact:true}).click();await page.getByLabel('Type DELETE MY ACCOUNT').fill('DELETE MY ACCOUNT');await page.getByRole('button',{name:'Delete my account',exact:true}).click();
-    await expect(page.getByRole('button',{name:'Sign in',exact:true})).toBeVisible();
+    await expect(page.getByRole('banner').getByRole('button',{name:'Sign in'})).toBeVisible();
     const denied=await page.request.get(`/api/rooms/${code}`,{headers:{Authorization:`Bearer ${oldToken}`}});expect(denied.status()).toBe(401);
     await expect.poll(async()=>JSON.stringify((await readRoom(guest,code)).body.room)).toContain('Deleted player');
     expect((await readRoom(guest,code)).status).toBe(200);
@@ -43,5 +43,5 @@ test('a pending profile response cannot restore names or rooms after sign-out',a
   await page.getByRole('button',{name:'Close dialog'}).click();await page.getByRole('button',{name:'My auctions',exact:true}).click();await page.getByRole('button',{name:'Sign out of local profile'}).click();release();
   await expect(page.getByRole('alert')).toContainText('Account changed');
   expect(await page.evaluate(()=>localStorage.getItem('aa-user'))).toBeNull();await expect(page.getByRole('button',{name:'Profile',exact:true})).toHaveCount(0);
-  await page.getByRole('button',{name:'Sign in',exact:true}).click();await login(page,'Following Captain');await page.getByRole('button',{name:'Profile',exact:true}).click();await expect(page.getByLabel('Display name',{exact:true})).toHaveValue('Following Captain');
+  await page.getByRole('banner').getByRole('button',{name:'Sign in'}).click();await login(page,'Following Captain');await page.getByRole('button',{name:'Profile',exact:true}).click();await expect(page.getByLabel('Display name',{exact:true})).toHaveValue('Following Captain');
 });

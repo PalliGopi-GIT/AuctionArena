@@ -24,7 +24,7 @@ test('accessibility scans cover auction screens and dialogs', async ({ page, bro
   await scan('local-sign-in');
   await login(page, 'Accessibility host');
   await page.getByLabel('Room name', { exact: true }).fill('Browser auction');
-  for (const [label, value] of [['Number of teams', '2'], ['Budget (lakhs)', '2000'], ['Minimum squad', '1'], ['Maximum squad', '2'], ['Overseas limit', '2'], ['Bid timer (seconds)', '120']]) await page.getByLabel(label).fill(value);
+  await page.getByLabel('Number of teams').fill('2');
   await page.getByLabel('Automatically open the next player').uncheck();
   await page.getByLabel('Extend timer after a late bid').uncheck();
   await scan('create-settings');

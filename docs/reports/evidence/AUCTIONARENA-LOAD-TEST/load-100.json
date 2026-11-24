@@ -1,0 +1,212 @@
+{
+  "task": "WP-G-WORKERS-RUNTIME",
+  "generatedAt": "2026-11-19T05:23:50.789Z",
+  "label": "auctionarena-100",
+  "environment": {
+    "node": "v22.23.2",
+    "platform": "win32",
+    "arch": "x64",
+    "cpus": 12,
+    "totalMemory": 16857817088,
+    "base": "http://127.0.0.1:8801",
+    "roomSize": 20,
+    "users": 100
+  },
+  "workload": {
+    "durationMs": 40000,
+    "roomSize": 20,
+    "connectConcurrency": 20,
+    "setupConcurrency": 20,
+    "bidRounds": 8
+  },
+  "setup": {
+    "rooms": 5,
+    "membersPerRoom": [
+      20,
+      20,
+      20,
+      20,
+      20
+    ],
+    "setupMs": 972
+  },
+  "connections": {
+    "attempted": 100,
+    "connected": 100,
+    "connectMs": 903
+  },
+  "claims": {
+    "claimMs": 976,
+    "claimSummary": {
+      "count": 40,
+      "min": 42,
+      "p50": 95,
+      "p95": 118,
+      "p99": 119,
+      "max": 119,
+      "mean": 97.1
+    },
+    "retries": 0,
+    "retrySamples": [],
+    "errors": 0,
+    "errorSamples": []
+  },
+  "ping": {
+    "summary": {
+      "count": 364,
+      "min": 1,
+      "p50": 6,
+      "p95": 13,
+      "p99": 68,
+      "max": 99,
+      "mean": 7.53
+    },
+    "errors": 0,
+    "errorSamples": [],
+    "messages": 364,
+    "heartbeats": 2020,
+    "windowMs": 40015
+  },
+  "actions": {
+    "accepted": 40,
+    "latencySummary": {
+      "count": 40,
+      "min": 33,
+      "p50": 107,
+      "p95": 133,
+      "p99": 149,
+      "max": 149,
+      "mean": 106.83
+    },
+    "errors": 0,
+    "errorSamples": [],
+    "expectedConflicts": 5,
+    "conflictCodes": [
+      "STALE_VERSION",
+      "STALE_VERSION",
+      "STALE_VERSION",
+      "STALE_VERSION",
+      "STALE_VERSION"
+    ]
+  },
+  "broadcast": {
+    "deliverySummary": {
+      "count": 900,
+      "min": 16,
+      "p50": 60,
+      "p95": 134,
+      "p99": 138,
+      "max": 139,
+      "mean": 69.87
+    },
+    "missing": 0,
+    "missingSamples": []
+  },
+  "settlement": [
+    {
+      "room": "4926E7",
+      "clients": 20,
+      "expectedClients": 20,
+      "firstDeliveryAfterDeadline": 36,
+      "lastDeliveryAfterDeadline": 42,
+      "status": "RESULT",
+      "playerStatus": "sold",
+      "currentBid": 180,
+      "leadingTeamId": "t1",
+      "soldPrice": 180,
+      "soldTo": "t1"
+    },
+    {
+      "room": "705E16",
+      "clients": 20,
+      "expectedClients": 20,
+      "firstDeliveryAfterDeadline": 86,
+      "lastDeliveryAfterDeadline": 97,
+      "status": "RESULT",
+      "playerStatus": "sold",
+      "currentBid": 180,
+      "leadingTeamId": "t1",
+      "soldPrice": 180,
+      "soldTo": "t1"
+    },
+    {
+      "room": "2FD2EC",
+      "clients": 20,
+      "expectedClients": 20,
+      "firstDeliveryAfterDeadline": 99,
+      "lastDeliveryAfterDeadline": 105,
+      "status": "RESULT",
+      "playerStatus": "sold",
+      "currentBid": 180,
+      "leadingTeamId": "t1",
+      "soldPrice": 180,
+      "soldTo": "t1"
+    },
+    {
+      "room": "43FB26",
+      "clients": 20,
+      "expectedClients": 20,
+      "firstDeliveryAfterDeadline": 95,
+      "lastDeliveryAfterDeadline": 101,
+      "status": "RESULT",
+      "playerStatus": "sold",
+      "currentBid": 180,
+      "leadingTeamId": "t1",
+      "soldPrice": 180,
+      "soldTo": "t1"
+    },
+    {
+      "room": "94FF3E",
+      "clients": 20,
+      "expectedClients": 20,
+      "firstDeliveryAfterDeadline": 43,
+      "lastDeliveryAfterDeadline": 51,
+      "status": "RESULT",
+      "playerStatus": "sold",
+      "currentBid": 180,
+      "leadingTeamId": "t1",
+      "soldPrice": 180,
+      "soldTo": "t1"
+    }
+  ],
+  "http": {
+    "requests": 300,
+    "errors": 0,
+    "statuses": {
+      "200": 290,
+      "201": 5,
+      "400": 5
+    },
+    "errorSamples": []
+  },
+  "sockets": {
+    "connected": 100,
+    "errors": 0,
+    "closedEarly": 0,
+    "closedCodes": {},
+    "errorSamples": []
+  },
+  "memory": {
+    "workerd": {
+      "samples": 43,
+      "peakWorkingSet": 438099968,
+      "meanWorkingSet": 417977749,
+      "lastWorkingSet": 438099968,
+      "cpuSeconds": 8.11
+    },
+    "harnessRss": 103313408
+  },
+  "loopLag": {
+    "samples": 2575,
+    "summary": {
+      "count": 2575,
+      "min": 0,
+      "p50": 6,
+      "p95": 7,
+      "p99": 12,
+      "max": 18,
+      "mean": 5.55
+    }
+  },
+  "finishedAt": "2026-11-19T05:24:36.047Z"
+}

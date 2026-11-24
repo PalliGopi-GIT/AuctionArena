@@ -1,0 +1,5 @@
+{
+    "isolated":  true,
+    "command":  "npm ci --dry-run --ignore-scripts --no-audit --no-fund --offline",
+    "exit":  0
+}

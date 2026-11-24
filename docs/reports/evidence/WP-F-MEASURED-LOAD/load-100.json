@@ -1,0 +1,129 @@
+﻿{
+    "task":  "WP-F-MEASURED-LOAD",
+    "generatedAt":  "2026-11-14T11:24:26.071Z",
+    "environment":  {
+                        "node":  "v22.23.2",
+                        "platform":  "win32",
+                        "arch":  "x64",
+                        "cpus":  12,
+                        "totalMemory":  16857817088
+                    },
+    "levels":  [
+                   100
+               ],
+    "durationMs":  10000,
+    "pollMs":  2000,
+    "connectConcurrency":  10,
+    "maxMembersPerRoom":  20,
+    "results":  [
+                    {
+                        "users":  100,
+                        "port":  54819,
+                        "rooms":  5,
+                        "membersPerRoom":  [
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20
+                                           ],
+                        "setupMs":  1352.17,
+                        "connectMs":  321.22,
+                        "workload":  {
+                                         "durationMs":  10000,
+                                         "pollMs":  2000,
+                                         "connectConcurrency":  10
+                                     },
+                        "steady":  {
+                                       "windowMs":  10099.79
+                                   },
+                        "ping":  {
+                                     "summary":  {
+                                                     "count":  100,
+                                                     "min":  0.87,
+                                                     "p50":  2.3,
+                                                     "p95":  8.31,
+                                                     "p99":  44.54,
+                                                     "max":  88.6,
+                                                     "mean":  4.57
+                                                 },
+                                     "errors":  0,
+                                     "errorSamples":  [
+
+                                                      ]
+                                 },
+                        "stateRead":  {
+                                          "summary":  {
+                                                          "count":  503,
+                                                          "min":  3.29,
+                                                          "p50":  14.16,
+                                                          "p95":  24.3,
+                                                          "p99":  46.61,
+                                                          "max":  118.93,
+                                                          "mean":  15.33
+                                                      },
+                                          "errors":  0,
+                                          "errorSamples":  [
+
+                                                           ]
+                                      },
+                        "broadcast":  {
+                                          "actions":  5,
+                                          "actionSummary":  {
+                                                                "count":  5,
+                                                                "min":  46.54,
+                                                                "p50":  84.66,
+                                                                "p95":  131.23,
+                                                                "p99":  131.23,
+                                                                "max":  131.23,
+                                                                "mean":  85.92
+                                                            },
+                                          "deliverySummary":  {
+                                                                  "count":  100,
+                                                                  "min":  46.79,
+                                                                  "p50":  84.68,
+                                                                  "p95":  131.25,
+                                                                  "p99":  131.25,
+                                                                  "max":  131.25,
+                                                                  "mean":  86.01
+                                                              },
+                                          "missing":  0,
+                                          "missingSamples":  [
+
+                                                             ],
+                                          "errors":  0,
+                                          "errorSamples":  [
+
+                                                           ]
+                                      },
+                        "memory":  {
+                                       "serverMaxRss":  122531840,
+                                       "serverMaxHeap":  39602464,
+                                       "harnessRss":  92438528
+                                   },
+                        "sockets":  {
+                                        "connected":  100,
+                                        "errors":  0,
+                                        "closedEarly":  0,
+                                        "errorSamples":  [
+
+                                                         ]
+                                    },
+                        "serverLog":  [
+                                          "AuctionArena local API listening on http://127.0.0.1:54819",
+                                          "(node:6964) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 room listeners added to [LocalRoomStore]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit",
+                                          "(Use `node --trace-warnings ...` to show where the warning was created)",
+                                          "(node:6964) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 access-ended listeners added to [LocalRoomStore]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit"
+                                      ],
+                        "durationMs":  13525
+                    }
+                ],
+    "limitations":  [
+                        "Runs the single-process local Node runtime with file-backed JSON state, not Cloudflare Workers, Durable Objects or SQLite-backed object storage",
+                        "Uses local development sessions and an isolated temporary data file; no Clerk, private data, deployment or cloud resource is involved",
+                        "Client and server share one machine, so CPU, disk and event-loop contention are not representative of Cloudflare placement",
+                        "The local runtime caps a room at 20 members and a host at 10 active rooms; rooms are sized to the cap",
+                        "Ping/pong measures socket liveness, not auction action throughput; broadcast uses one host claim per room",
+                        "No production capacity, cost or latency claim is made"
+                    ]
+}

@@ -1,0 +1,387 @@
+{
+  "task": "AUCTIONARENA-LOAD-TEST/correctness",
+  "generatedAt": "2026-11-19T05:20:38.916Z",
+  "environment": {
+    "node": "v22.23.2",
+    "platform": "win32",
+    "base": "http://127.0.0.1:8810",
+    "origin": "http://127.0.0.1:8810",
+    "users": 20,
+    "mode": "quick",
+    "lots": 2,
+    "settings": {
+      "name": "Correctness Auction",
+      "teamCount": 8,
+      "budget": 8000,
+      "minSquad": 2,
+      "maxSquad": 8,
+      "maxOverseas": 4,
+      "timerSeconds": 10,
+      "lateExtension": true,
+      "bidIncrement": 10,
+      "autoAdvance": true,
+      "resultSeconds": 2,
+      "spectators": true
+    }
+  },
+  "setup": {
+    "room": "35B95E",
+    "members": 20,
+    "users": 20,
+    "status": "WAITING"
+  },
+  "connections": {
+    "attempted": 20,
+    "connected": 20
+  },
+  "plan": {
+    "mode": "quick",
+    "planVersion": 1,
+    "catalogVersion": "real-v1-3fb107eb",
+    "selected": 80,
+    "sets": [
+      {
+        "name": "Opening Marquee",
+        "count": 8
+      },
+      {
+        "name": "Balanced Mix",
+        "count": 8
+      },
+      {
+        "name": "Balanced Mix 2",
+        "count": 8
+      },
+      {
+        "name": "Batters",
+        "count": 8
+      },
+      {
+        "name": "Balanced Mix 3",
+        "count": 8
+      },
+      {
+        "name": "All-rounders",
+        "count": 8
+      },
+      {
+        "name": "Balanced Mix 4",
+        "count": 8
+      },
+      {
+        "name": "Bowlers",
+        "count": 8
+      },
+      {
+        "name": "Balanced Mix 5",
+        "count": 8
+      },
+      {
+        "name": "Emerging Mix",
+        "count": 8
+      }
+    ],
+    "adjustments": [],
+    "approvedOrderSample": [
+      "P003",
+      "P032",
+      "P091",
+      "P218",
+      "P019"
+    ],
+    "poolIdSample": [
+      "P003",
+      "P032",
+      "P091",
+      "P218",
+      "P019"
+    ],
+    "catalogOrderCheck": "not evaluated here; WP-H core tests cover the catalog-order snapshot rule"
+  },
+  "claims": {
+    "claimMs": 617,
+    "latency": {
+      "count": 8,
+      "min": 32,
+      "p50": 51,
+      "p95": 62,
+      "p99": 62,
+      "max": 62,
+      "mean": 48
+    }
+  },
+  "lots": [
+    {
+      "lot": 1,
+      "player": "P003",
+      "name": "Sanju Samson",
+      "rounds": [
+        {
+          "round": 0,
+          "status": 200,
+          "teamId": "t1",
+          "amount": 200,
+          "version": 31
+        },
+        {
+          "round": 1,
+          "status": 200,
+          "teamId": "t2",
+          "amount": 220,
+          "version": 32
+        },
+        {
+          "round": 2,
+          "status": 200,
+          "teamId": "t2",
+          "amount": 260,
+          "version": 34
+        },
+        {
+          "round": 3,
+          "status": 200,
+          "teamId": "t1",
+          "amount": 280,
+          "version": 35
+        },
+        {
+          "round": 4,
+          "status": 200,
+          "teamId": "t2",
+          "amount": 300,
+          "version": 36
+        }
+      ],
+      "status": "RESULT",
+      "version": 37,
+      "soldTo": "t2",
+      "soldPrice": 300,
+      "convergenceMs": 649,
+      "clientSignatures": 1,
+      "clients": 20,
+      "integrity": {
+        "sold": 1,
+        "unsold": 0,
+        "open": 0,
+        "budgetTotal": 64000,
+        "expectedBudget": 64000,
+        "teams": 8
+      }
+    },
+    {
+      "lot": 2,
+      "player": "P032",
+      "name": "Suryakumar Yadav",
+      "rounds": [
+        {
+          "round": 0,
+          "status": 200,
+          "teamId": "t1",
+          "amount": 200,
+          "version": 39
+        },
+        {
+          "round": 1,
+          "status": 200,
+          "teamId": "t2",
+          "amount": 220,
+          "version": 40
+        },
+        {
+          "round": 2,
+          "status": 200,
+          "teamId": "t2",
+          "amount": 260,
+          "version": 42
+        },
+        {
+          "round": 3,
+          "status": 200,
+          "teamId": "t1",
+          "amount": 280,
+          "version": 43
+        },
+        {
+          "round": 4,
+          "status": 200,
+          "teamId": "t2",
+          "amount": 300,
+          "version": 44
+        }
+      ],
+      "status": "RESULT",
+      "version": 45,
+      "soldTo": "t2",
+      "soldPrice": 300,
+      "convergenceMs": 652,
+      "clientSignatures": 1,
+      "clients": 20,
+      "integrity": {
+        "sold": 2,
+        "unsold": 0,
+        "open": 0,
+        "budgetTotal": 64000,
+        "expectedBudget": 64000,
+        "teams": 8
+      }
+    }
+  ],
+  "actions": {
+    "accepted": 10,
+    "latency": {
+      "count": 10,
+      "min": 53,
+      "p50": 61,
+      "p95": 71,
+      "p99": 71,
+      "max": 71,
+      "mean": 61.4
+    },
+    "rounds": 10
+  },
+  "broadcasts": {
+    "delivery": {
+      "count": 240,
+      "min": 21.47,
+      "p50": 35.83,
+      "p95": 46.13,
+      "p99": 50.78,
+      "max": 51.68,
+      "mean": 35.75
+    },
+    "missing": 0
+  },
+  "reconnect": {
+    "count": 2,
+    "latency": {
+      "count": 2,
+      "min": 77.6,
+      "p50": 77.6,
+      "p95": 77.82,
+      "p99": 77.82,
+      "max": 77.82,
+      "mean": 77.71
+    },
+    "results": [
+      {
+        "user": "correctness_8_1795065639326",
+        "beforeVersion": 45,
+        "afterVersion": 48,
+        "closedMs": 2011.63,
+        "pauseMs": 300,
+        "reconnectMs": 77.6,
+        "status": "LIVE",
+        "connected": true
+      },
+      {
+        "user": "correctness_9_1795065639371",
+        "beforeVersion": 48,
+        "afterVersion": 50,
+        "closedMs": 2013.62,
+        "pauseMs": 300,
+        "reconnectMs": 77.82,
+        "status": "LIVE",
+        "connected": true
+      }
+    ]
+  },
+  "duplicate": {
+    "status": 200,
+    "code": null,
+    "originalVersion": 39,
+    "duplicateVersion": 39,
+    "versionDelta": 0
+  },
+  "idReuse": {
+    "status": 400,
+    "code": "ID_REUSED",
+    "version": 39
+  },
+  "unauthorized": {
+    "status": 400,
+    "code": "NO_TEAM",
+    "versionBefore": 39,
+    "versionAfter": 39
+  },
+  "convergence": [
+    {
+      "lot": 1,
+      "convergenceMs": 649,
+      "signatures": 1,
+      "clients": 20
+    },
+    {
+      "lot": 2,
+      "convergenceMs": 652,
+      "signatures": 1,
+      "clients": 20
+    }
+  ],
+  "integrity": [
+    {
+      "stage": "final",
+      "sold": 2,
+      "unsold": 1,
+      "open": 0,
+      "budgetTotal": 64000,
+      "expectedBudget": 64000,
+      "teams": 8,
+      "clientSignatures": 1,
+      "clients": 20
+    }
+  ],
+  "http": {
+    "requests": 110,
+    "errors": 0,
+    "statuses": {
+      "200": 100,
+      "201": 1,
+      "400": 6,
+      "404": 3
+    },
+    "samples": []
+  },
+  "sockets": {
+    "connected": 20,
+    "errors": 0,
+    "closedEarly": 0,
+    "closedCodes": {}
+  },
+  "violations": [],
+  "notes": [
+    {
+      "lot": 1,
+      "player": "P003",
+      "name": "Sanju Samson",
+      "basePrice": 200
+    },
+    {
+      "lot": 2,
+      "player": "P032",
+      "name": "Suryakumar Yadav",
+      "basePrice": 200
+    }
+  ],
+  "cap": {
+    "attempted": 21,
+    "status": 404,
+    "code": "ROOM_NOT_FOUND",
+    "membersAfter": 20
+  },
+  "race": {
+    "winners": 1,
+    "losers": 1,
+    "loserCodes": [
+      "STALE_VERSION"
+    ]
+  },
+  "final": {
+    "status": "COMPLETED",
+    "version": 52,
+    "sold": 2,
+    "unsold": 1,
+    "completionReason": "HOST_ENDED"
+  },
+  "pass": true,
+  "finishedAt": "2026-11-19T05:21:12.023Z"
+}

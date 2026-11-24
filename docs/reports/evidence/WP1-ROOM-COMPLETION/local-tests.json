@@ -4,13 +4,13 @@
   "command": "node scripts/test-local.mjs",
   "exitCode": 0,
   "tests": {
-    "passed": 76,
+    "passed": 78,
     "failed": 0,
     "skipped": 0
   },
-  "durationMs": 31384,
+  "durationMs": 2743,
   "runner": "Node 22 local real engine/store, room management/results, and fake-transport client tests",
-  "at": "2026-11-11T17:07:38.046Z",
+  "at": "2026-11-23T19:44:55.074Z",
   "concurrencyScenario": {
     "rooms": 10,
     "simulatedMembers": 200,

@@ -1,0 +1,189 @@
+﻿{
+    "task":  "WP-F-MEASURED-LOAD",
+    "generatedAt":  "2026-11-14T11:24:26.071Z",
+    "environment":  {
+                        "node":  "v22.23.2",
+                        "platform":  "win32",
+                        "arch":  "x64",
+                        "cpus":  12,
+                        "totalMemory":  16857817088
+                    },
+    "levels":  [
+                   1000
+               ],
+    "durationMs":  10000,
+    "pollMs":  2000,
+    "connectConcurrency":  10,
+    "maxMembersPerRoom":  20,
+    "results":  [
+                    {
+                        "users":  1000,
+                        "port":  56618,
+                        "rooms":  50,
+                        "membersPerRoom":  [
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20,
+                                               20
+                                           ],
+                        "setupMs":  91852.29,
+                        "connectMs":  137339.18,
+                        "workload":  {
+                                         "durationMs":  10000,
+                                         "pollMs":  2000,
+                                         "connectConcurrency":  10
+                                     },
+                        "steady":  {
+                                       "windowMs":  32168.08
+                                   },
+                        "ping":  {
+                                     "summary":  {
+                                                     "count":  34,
+                                                     "min":  333.28,
+                                                     "p50":  10489.08,
+                                                     "p95":  14780.25,
+                                                     "p99":  14915.93,
+                                                     "max":  14915.93,
+                                                     "mean":  10878.41
+                                                 },
+                                     "errors":  764,
+                                     "errorSamples":  [
+                                                          "Error: pong timeout",
+                                                          "Error: pong timeout",
+                                                          "Error: pong timeout",
+                                                          "Error: pong timeout",
+                                                          "Error: pong timeout"
+                                                      ]
+                                 },
+                        "stateRead":  {
+                                          "summary":  {
+                                                          "count":  38,
+                                                          "min":  455.82,
+                                                          "p50":  4454.73,
+                                                          "p95":  8975.05,
+                                                          "p99":  9227.18,
+                                                          "max":  9227.18,
+                                                          "mean":  4757.82
+                                                      },
+                                          "errors":  2103,
+                                          "errorSamples":  [
+                                                               "TypeError: fetch failed",
+                                                               "TypeError: fetch failed",
+                                                               "TypeError: fetch failed",
+                                                               "TypeError: fetch failed",
+                                                               "TypeError: fetch failed"
+                                                           ]
+                                      },
+                        "broadcast":  {
+                                          "actions":  50,
+                                          "actionSummary":  {
+                                                                "count":  0
+                                                            },
+                                          "deliverySummary":  {
+                                                                  "count":  0
+                                                              },
+                                          "missing":  0,
+                                          "missingSamples":  [
+
+                                                             ],
+                                          "errors":  50,
+                                          "errorSamples":  [
+                                                               {
+                                                                   "code":  "710ABF",
+                                                                   "message":  "TypeError: fetch failed"
+                                                               },
+                                                               {
+                                                                   "code":  "A85DBD",
+                                                                   "message":  "TypeError: fetch failed"
+                                                               },
+                                                               {
+                                                                   "code":  "11FF03",
+                                                                   "message":  "TypeError: fetch failed"
+                                                               },
+                                                               {
+                                                                   "code":  "9FC20D",
+                                                                   "message":  "TypeError: fetch failed"
+                                                               },
+                                                               {
+                                                                   "code":  "4430FC",
+                                                                   "message":  "TypeError: fetch failed"
+                                                               }
+                                                           ]
+                                      },
+                        "memory":  {
+                                       "serverMaxRss":  127897600,
+                                       "serverMaxHeap":  61032088,
+                                       "harnessRss":  130916352
+                                   },
+                        "sockets":  {
+                                        "connected":  1000,
+                                        "errors":  0,
+                                        "closedEarly":  0,
+                                        "errorSamples":  [
+
+                                                         ]
+                                    },
+                        "serverLog":  [
+                                          "AuctionArena local API listening on http://127.0.0.1:56618",
+                                          "(node:9472) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 room listeners added to [LocalRoomStore]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit",
+                                          "(Use `node --trace-warnings ...` to show where the warning was created)",
+                                          "(node:9472) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 access-ended listeners added to [LocalRoomStore]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit"
+                                      ],
+                        "durationMs":  268508
+                    }
+                ],
+    "limitations":  [
+                        "Runs the single-process local Node runtime with file-backed JSON state, not Cloudflare Workers, Durable Objects or SQLite-backed object storage",
+                        "Uses local development sessions and an isolated temporary data file; no Clerk, private data, deployment or cloud resource is involved",
+                        "Client and server share one machine, so CPU, disk and event-loop contention are not representative of Cloudflare placement",
+                        "The local runtime caps a room at 20 members and a host at 10 active rooms; rooms are sized to the cap",
+                        "Ping/pong measures socket liveness, not auction action throughput; broadcast uses one host claim per room",
+                        "No production capacity, cost or latency claim is made"
+                    ]
+}

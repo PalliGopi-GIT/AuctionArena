@@ -1,0 +1,26 @@
+[
+  {
+    "path": "apps/api/src/worker/app.ts",
+    "sha256": "73ab7b5740502bd08e235c10444e90c4a0d69c62fc4ac3c5b1c99ac0abf2d836"
+  },
+  {
+    "path": "apps/api/src/worker/index.ts",
+    "sha256": "7887c0f25fd07cee4238d74348a7f1c16bab94a3c14d9943e2924f08d19a1f9a"
+  },
+  {
+    "path": "apps/api/src/worker/room.ts",
+    "sha256": "915eb75f66554aff7ac888f96d78bd1415917e62f7152cdd31c94a6fe17e5a47"
+  },
+  {
+    "path": "apps/api/src/worker/ticket.ts",
+    "sha256": "11065d2c407bf732ac8b4bfa60de4fab8bb4c76e081f3076ba45e5546a647b7b"
+  },
+  {
+    "path": "apps/api/src/worker/types.ts",
+    "sha256": "ac8921b5c45ae5c645719c830c30e14d90f4d7a35f58fd0ee2d9a8d54f3ab467"
+  },
+  {
+    "path": "tests/core/worker-entry.test.ts",
+    "sha256": "65291fd11c68be7de80f16abbf76ef2e184c8492a34d89a5a95fe4555d1f539f"
+  }
+]

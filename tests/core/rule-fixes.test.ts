@@ -10,7 +10,7 @@ import { applyAction, createRoom } from '../../packages/engine/src/index';
 import { LocalRoomStore } from '../../apps/realtime/src/store';
 import { createApp } from '../../apps/api/src/app';
 import { attachRoomSocket } from '../../apps/api/src/room-socket';
-import { connectRoom } from '../../apps/web/src/room-connection';
+import { connectRoom, socketUrl } from '../../apps/web/src/room-connection';
 
 const host = { id: 'host', name: 'Host' }, guest = { id: 'guest', name: 'Guest' };
 let sequence = 0;
@@ -131,6 +131,10 @@ class ClientSocket {
   message(data: unknown) { this.onmessage?.({ data: JSON.stringify(data) }); }
 }
 describe('client timing and terminal HTTP failures', () => {
+  it('builds a socket URL that carries the room code the Worker requires', () => {
+    expect(socketUrl('https:', 'arena.example', 'ABC123')).toBe('wss://arena.example/ws?room=ABC123');
+    expect(socketUrl('http:', 'localhost:5173', 'ABC123')).toBe('ws://localhost:5173/ws?room=ABC123');
+  });
   it('uses the request midpoint and ignores untimed pushes or unmatched pongs', async () => {
     vi.useFakeTimers(); let now = 1000; const offsets: number[] = [], socket = new ClientSocket(); const room = liveRoom();
     const stop = connectRoom({ code: room.code, clock: () => now, syncClock: offset => offsets.push(offset),

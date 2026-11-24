@@ -28,6 +28,8 @@ export function attachRoomSocket(store: LocalRoomStore, code: string, user: User
   try { if (!send(store.get(code, user, true))) return; }
   catch (error) { fail(error); return; }
   store.on('room', send);
+  const deleted=(deletedCode:string)=>{if(deletedCode===code)socket.close(1001,'Room deleted');};
+  store.on('room-deleted',deleted);
   const accessEnded=(subject:string)=>{if(subject===user.id)socket.close(1008,'Account access ended');};
   store.on('access-ended',accessEnded);
   socket.on('message', (raw: unknown) => {
@@ -42,5 +44,5 @@ export function attachRoomSocket(store: LocalRoomStore, code: string, user: User
     } catch (error) { fail(error); }
   });
   socket.on('error', () => socket.close());
-  socket.on('close', () => {store.off('room', send);store.off('access-ended',accessEnded);});
+  socket.on('close', () => {store.off('room', send);store.off('room-deleted',deleted);store.off('access-ended',accessEnded);});
 }

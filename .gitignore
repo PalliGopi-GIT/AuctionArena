@@ -2,10 +2,12 @@ node_modules/
 dist/
 .env*
 !.env.example
+.dev.vars
 .data/
 cdk.out/
 .npm-cache/
 test-results/
+exports/
 
 # Local tool configuration, credentials and private repair backups
 .aws/
@@ -17,3 +19,10 @@ test-results/
 *.auctionarena-*.tmp
 *.pem
 *.key
+.wrangler/
+
+# Raw source images for assets:ingest; never a build input (Vite serves public/).
+# Anchored to the repository root so it cannot also match public/assets/.
+/Assets/
+# Local agent/tool state
+/.commandcode/

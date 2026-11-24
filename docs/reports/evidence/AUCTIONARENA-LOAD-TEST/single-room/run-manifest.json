@@ -1,0 +1,26 @@
+{
+    "task":  "AUCTIONARENA-LOAD-TEST",
+    "generatedAt":  "2026-11-19T10:58:45.1028560+05:30",
+    "environment":  "local wrangler dev (workerd), fresh --persist-to state per level; not a Cloudflare deployment",
+    "wrangler":  "4.162.0",
+    "durationMs":  40000,
+    "bids":  8,
+    "levels":  [
+                   {
+                       "users":  20,
+                       "expectedRooms":  1,
+                       "port":  8805,
+                       "state":  "C:\\Users\\palli\\AppData\\Local\\Temp\\opencode\\auctionarena-load-runtime\\level-20\\state",
+                       "startedAt":  "2026-11-19T10:58:45.1507945+05:30",
+                       "finishedAt":  "2026-11-19T10:59:39.4144026+05:30",
+                       "exitCode":  0,
+                       "harness":  "load-20.json",
+                       "integrity":  "integrity-20.json",
+                       "pass":  true,
+                       "failures":  [
+
+                                    ]
+                   }
+               ],
+    "pass":  true
+}

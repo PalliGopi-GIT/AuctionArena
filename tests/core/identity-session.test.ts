@@ -18,6 +18,14 @@ describe('private room state across identity changes', () => {
     expect(canViewRoom(room, 'user_b')).toBe(false);
     expect(canViewRoom(room, 'user_a')).toBe(true);
   });
+  it('renders privacy-preserving account listings that omit member identities', () => {
+    const listing = { code: 'LISTED', name: 'Listed room', status: 'WAITING', memberCount: 3 };
+    expect(canViewRoom(listing, 'user_a')).toBe(true);
+    expect(canViewRoom(listing, undefined)).toBe(false);
+    expect(canViewRoom({ ...listing, blockedUserIds: ['user_a'] }, 'user_a')).toBe(false);
+    const rooms = [listing, { ...listing, code: 'BLOCKED', blockedUserIds: ['user_a'] }];
+    expect(rooms.filter(room => canViewRoom(room, 'user_a')).map(room => room.code)).toEqual(['LISTED']);
+  });
   it('removes all old invitation credentials without deleting unrelated tab state', () => {
     const values = new Map([['invite-ONE', 'private-a'], ['theme', 'dark'], ['invite-TWO', 'private-b'], ['draft', 'text']]);
     const storage = { get length() { return values.size; }, key: (index: number) => [...values.keys()][index] ?? null, removeItem: (key: string) => { values.delete(key); } };

@@ -24,10 +24,16 @@ Pull development keys only. Keep `.env.local` private and do not paste keys into
 ## Start the application
 
 ```powershell
-npm.cmd run dev:clerk
+npm.cmd run dev
 ```
 
-This command privately loads `.env.local`, requires development keys, derives the expected issuer from the publishable key, disables local-profile sign-in, and serves a production frontend bundle on `http://127.0.0.1:5173` with the API on port 3001. It uses `.data/auctionarena-clerk.json` by default; the local-profile database remains separate. Restart the command after frontend changes. It refuses occupied ports rather than connecting to an unrelated server.
+`npm.cmd run dev` is the normal developer command and the documented way to reach real Clerk sign-in. It runs the same launcher as `npm.cmd run dev:clerk`. This command privately loads `.env.local`, requires development keys, derives the expected issuer from the publishable key, disables local-profile sign-in, and serves a production frontend bundle on `http://127.0.0.1:5173` with the API on port 3001. It uses `.data/auctionarena-clerk.json` by default; the local-profile database remains separate. Restart the command after frontend changes. It refuses occupied ports rather than connecting to an unrelated server. Open `http://127.0.0.1:5173`, choose **Sign in**, and use **Continue with Google** or email/password.
+
+Using the wrong command is the usual cause of "Google sign-in disappeared":
+
+- `npm.cmd run dev:local` clears the Clerk keys in its children and shows local test identities. That is intentional for offline evaluation and automated tests, not real sign-in.
+- `npm.cmd run dev:vite` starts only the frontend with no API and therefore no Clerk verification. It is for static frontend work only.
+- A previously built `dist/` served without a Clerk key is a production bundle with no sign-in configuration; it now shows an explicit "Clerk is not configured" message instead of local identities.
 
 The bundle lives in `.data/clerk-preview/`, separate from the local/E2E build in `dist/`. Run the launcher in the host terminal if an agent sandbox blocks outbound HTTPS: secret-key verification retrieves Clerk signing keys and must reach Clerk. The API keeps verification enabled and returns an authentication failure if it cannot verify a token.
 

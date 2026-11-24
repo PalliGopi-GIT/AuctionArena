@@ -42,7 +42,7 @@ test('shrinking teams cannot drop a claim; unclaimed tails may be removed',()=>{
  f.action(guest,'claim',{teamId:'t2'});assert.equal(f.action(host,'update-settings',{settings:{...defaults,teamCount:2}}).teams.length,2);
 });
 test('actor revalidates settings without trusting transport schemas',()=>{
- const f=fixture();for(const settings of [{...defaults,budget:NaN},{...defaults,teamCount:9},{...defaults,minSquad:4,maxSquad:2},{...defaults,teamCount:8,minSquad:4},{...defaults,name:'  '},{...defaults,spectators:'yes'},{...defaults,extra:123}]) {
+ const f=fixture();for(const settings of [{...defaults,budget:NaN},{...defaults,teamCount:11},{...defaults,minSquad:4,maxSquad:2},{...defaults,teamCount:8,minSquad:4},{...defaults,name:'  '},{...defaults,spectators:'yes'},{...defaults,extra:123}]) {
   fails(()=>applyAction(f.get(),host.id,intent('update-settings',{settings}),f.now()),'INVALID_SETTINGS');
  }
  const incomplete={...defaults};delete incomplete.budget;

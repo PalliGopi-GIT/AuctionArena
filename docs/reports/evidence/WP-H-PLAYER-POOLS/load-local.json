@@ -1,0 +1,116 @@
+{
+  "task": "WP-F-MEASURED-LOAD",
+  "generatedAt": "2026-11-19T04:01:24.595Z",
+  "environment": {
+    "node": "v22.23.2",
+    "platform": "win32",
+    "arch": "x64",
+    "cpus": 12,
+    "totalMemory": 16857817088
+  },
+  "levels": [
+    20
+  ],
+  "durationMs": 5000,
+  "pollMs": 2000,
+  "connectConcurrency": 20,
+  "maxMembersPerRoom": 20,
+  "results": [
+    {
+      "users": 20,
+      "port": 54631,
+      "rooms": 1,
+      "membersPerRoom": [
+        20
+      ],
+      "setupMs": 244.76,
+      "connectMs": 93.9,
+      "workload": {
+        "durationMs": 5000,
+        "pollMs": 2000,
+        "connectConcurrency": 20
+      },
+      "steady": {
+        "windowMs": 5071.6
+      },
+      "ping": {
+        "summary": {
+          "count": 20,
+          "min": 0.76,
+          "p50": 1.22,
+          "p95": 1.78,
+          "p99": 3.02,
+          "max": 3.02,
+          "mean": 1.36
+        },
+        "errors": 0,
+        "errorSamples": []
+      },
+      "stateRead": {
+        "summary": {
+          "count": 51,
+          "min": 4.1,
+          "p50": 18.65,
+          "p95": 25.27,
+          "p99": 27.38,
+          "max": 27.38,
+          "mean": 17.4
+        },
+        "errors": 0,
+        "errorSamples": []
+      },
+      "broadcast": {
+        "actions": 1,
+        "actionSummary": {
+          "count": 1,
+          "min": 39.2,
+          "p50": 39.2,
+          "p95": 39.2,
+          "p99": 39.2,
+          "max": 39.2,
+          "mean": 39.2
+        },
+        "deliverySummary": {
+          "count": 20,
+          "min": 39.58,
+          "p50": 39.59,
+          "p95": 39.62,
+          "p99": 39.62,
+          "max": 39.62,
+          "mean": 39.6
+        },
+        "missing": 0,
+        "missingSamples": [],
+        "errors": 0,
+        "errorSamples": []
+      },
+      "memory": {
+        "serverMaxRss": 111259648,
+        "serverMaxHeap": 36879080,
+        "harnessRss": 63430656
+      },
+      "sockets": {
+        "connected": 20,
+        "errors": 0,
+        "closedEarly": 0,
+        "errorSamples": []
+      },
+      "serverLog": [
+        "AuctionArena local API listening on http://127.0.0.1:54631",
+        "(node:17608) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 room listeners added to [LocalRoomStore]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit",
+        "(Use `node --trace-warnings ...` to show where the warning was created)",
+        "(node:17608) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 room-deleted listeners added to [LocalRoomStore]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit",
+        "(node:17608) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 access-ended listeners added to [LocalRoomStore]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit"
+      ],
+      "durationMs": 7961
+    }
+  ],
+  "limitations": [
+    "Runs the single-process local Node runtime with file-backed JSON state, not Cloudflare Workers, Durable Objects or SQLite-backed object storage",
+    "Uses local development sessions and an isolated temporary data file; no Clerk, private data, deployment or cloud resource is involved",
+    "Client and server share one machine, so CPU, disk and event-loop contention are not representative of Cloudflare placement",
+    "The local runtime caps a room at 20 members and a host at 10 active rooms; rooms are sized to the cap",
+    "Ping/pong measures socket liveness, not auction action throughput; broadcast uses one host claim per room",
+    "No production capacity, cost or latency claim is made"
+  ]
+}

@@ -1,6 +1,29 @@
 import type { Room } from '../../shared/src/domain';
 import { completionReasons, validBidOnLadder } from '../../shared/src/domain';
 import { bidReserve } from '../../shared/src/bid-rules';
+import { event, tick } from '../../engine/src/index';
+
+/**
+ * Wake/restart transition shared by the file store and persistent room adapters.
+ * Members without a surviving socket must re-establish presence; an open lot is
+ * paused unless the host's socket also survived. Call inside the same
+ * transaction that persists the recovered room.
+ */
+export function recoverRoomOnWake(room: Room, now: number, liveUserIds?: ReadonlySet<string>) {
+  for (const member of room.members) {
+    if (liveUserIds?.has(member.id)) { member.connected = true; member.lastSeen = now; }
+    else member.connected = false;
+  }
+  tick(room, now);
+  const host = room.members.find(member => member.id === room.hostId);
+  if (room.status === 'LIVE' && !host?.connected) {
+    room.pausedRemaining = Math.max(0, room.deadline! - now);
+    room.deadline = null;
+    room.status = 'PAUSED';
+    room.pauseReason = 'Service restarted; host must resume';
+    event(room, now, 'paused', room.pauseReason);
+  }
+}
 
 export function validateRoomRecovery(room: Room) {
  const invariant=(condition:boolean,message:string)=>{if(!condition)throw new Error(message+' invariant failed; refusing to start.');};
