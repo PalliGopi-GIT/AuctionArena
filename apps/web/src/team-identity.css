@@ -163,8 +163,22 @@
 .player-stats--live .player-stats-note { margin: 8px 0 0; font-size: 8px; }
 
 @media (max-width: 760px) {
-  .player-stats--live { margin-top: 10px; padding: 9px 10px; }
-  .player-stats--live .player-stats-grid { grid-template-columns: repeat(auto-fit, minmax(52px, 1fr)); gap: 6px 8px; }
-  .player-stats--live .player-stats-grid dd { font-size: 14px; }
+  /* Compact enough that the photograph stays the primary element and the
+     countdown, bid and controls stay on screen without extra scrolling. */
+  .player-stats--live {
+    margin-top: 8px;
+    padding: 6px 8px;
+    border-left-width: 2px;
+    border-radius: 6px;
+  }
+  .player-stats--live .player-stats-heading { margin-bottom: 5px; font-size: 8px; }
+  .player-stats--live .player-stats-heading .tag { padding: 0 4px; font-size: 7px; }
+  /* Three balanced columns keep every figure visible with no overflow. */
+  .player-stats--live .player-stats-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px 6px;
+  }
+  .player-stats--live .player-stats-grid dt { font-size: 7px; letter-spacing: 0.02em; }
+  .player-stats--live .player-stats-grid dd { font-size: 12px; line-height: 1.15; }
   .player-stats--live .player-stats-note { display: none; }
 }

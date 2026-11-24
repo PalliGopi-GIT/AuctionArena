@@ -289,9 +289,16 @@ footer>span { color: #8f9a8c; }
   .current-set-banner strong { font-size: 15px; }
   .current-set-banner > span:last-child { display: none; }
   .arena-toolbar .tabs button { padding-block: 8px; font-size: 10px; }
-  .live-player-layout { grid-template-columns: 64px minmax(0,1fr); gap: 8px; }
-  .live-player-layout .player-art { height: 82px; }
-  .live-player-layout h2 { font-size: 22px; }
+  /* Mobile live card: the photograph is the primary visual element, so it gets a
+     sized column of its own instead of the 64px strip it used to share. The
+     statistics panel below stays compact so the countdown, bid and controls fit. */
+  .live-player-layout { grid-template-columns: minmax(0, 40%) minmax(0, 1fr); align-items: start; gap: 10px; }
+  .live-player-layout .player-art {
+    display: block; width: 100%; min-width: 0;
+    height: clamp(172px, 48vw, 208px); margin: 0;
+  }
+  .live-player-layout .player-photo { object-fit: contain; object-position: center bottom; }
+  .live-player-layout h2 { font-size: 21px; }
   .current-player { padding: 9px 10px; }
   .bid-panel { padding: 9px 10px; }
   .bid-panel .bid-action { min-height: 44px; }

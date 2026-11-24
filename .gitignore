@@ -33,3 +33,4 @@ exports/
 /AGENTS.md
 /docs/reports/evidence/
 /docs/reports/AUTONOMOUS-*.md
+dist-e2e/
