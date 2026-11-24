@@ -112,3 +112,59 @@
 .player-stats-grid dt { margin: 0; font-size: 8px; letter-spacing: 0.06em; color: #a9b7a4; text-transform: uppercase; }
 .player-stats-grid dd { margin: 0; font-size: 13px; font-weight: 650; font-variant-numeric: tabular-nums; }
 .player-stats-note { margin: 6px 0 0; font-size: 9px; color: #8f9a8c; }
+
+/* --- Live lot: always-visible career stats beside the photograph ---------- */
+/* Only this block styles the live card. `.live-player-layout` and `.player-art`
+   are untouched so the player photograph keeps its size, ratio and styling. */
+.player-stats--live {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border: 1px solid #2f3f36;
+  border-left: 3px solid #6ed8bc;
+  border-radius: 8px;
+  background: #101a16;
+  font-size: 11px;
+}
+.player-stats-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #b9c9b7;
+}
+.player-stats-heading .tag {
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: #22301f;
+  font-size: 8px;
+  letter-spacing: 0.04em;
+  color: #d6e6cf;
+}
+/* Auto-fitting grid: as many compact columns as fit, so nothing overflows. */
+.player-stats--live .player-stats-grid {
+  grid-template-columns: repeat(auto-fit, minmax(58px, 1fr));
+  gap: 8px 10px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+.player-stats--live .player-stats-grid dt { font-size: 8px; color: #9fb3a1; }
+.player-stats--live .player-stats-grid dd {
+  font-size: clamp(14px, 1.4vw, 17px);
+  font-weight: 700;
+  color: #f2f7ec;
+}
+.player-stats--live .player-stats-note { margin: 8px 0 0; font-size: 8px; }
+
+@media (max-width: 760px) {
+  .player-stats--live { margin-top: 10px; padding: 9px 10px; }
+  .player-stats--live .player-stats-grid { grid-template-columns: repeat(auto-fit, minmax(52px, 1fr)); gap: 6px 8px; }
+  .player-stats--live .player-stats-grid dd { font-size: 14px; }
+  .player-stats--live .player-stats-note { display: none; }
+}
