@@ -27,6 +27,7 @@
     "setup:aws:check": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./scripts/setup-aws.ps1 -ConfigureMcpProfile -VerifyToolkit",
     "typecheck": "tsc --noEmit",
     "check:staging": "node scripts/staging-preflight.mjs",
+    "check:deploy": "node scripts/check-deploy-bundle.mjs",
     "dev:local": "node scripts/dev.mjs",
     "dev:clerk": "node scripts/dev-clerk.mjs",
     "test:report": "vitest run tests/core --reporter=json --outputFile=docs/reports/vitest-results.json",
