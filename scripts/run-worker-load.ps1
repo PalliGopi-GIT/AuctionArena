@@ -27,6 +27,8 @@ foreach ($users in $Levels) {
   $stderr = Join-Path $levelDir 'wrangler.err.log'
   $state = Join-Path $levelDir 'state'
   Remove-Item -Recurse -Force $state -ErrorAction SilentlyContinue
+  node scripts/check-do-state-path.mjs --state $state --config wrangler.jsonc
+  if ($LASTEXITCODE -ne 0) { throw "Durable Object state path preflight failed for $state" }
   $env:CI = '1'
   $env:WRANGLER_SEND_METRICS = 'false'
   $process = Start-Process -FilePath $WranglerBin -ArgumentList @(

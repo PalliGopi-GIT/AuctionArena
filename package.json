@@ -10,6 +10,7 @@
     "dev:vite": "vite --host 127.0.0.1",
     "dev:api": "tsx apps/api/src/index.ts",
     "build": "tsc --noEmit && vite build",
+    "build:production": "node --env-file-if-exists=.env.production.local scripts/build-production.mjs",
     "test": "vitest run tests/core",
     "test:local": "node scripts/test-local.mjs",
     "test:load": "node scripts/load-local.mjs",

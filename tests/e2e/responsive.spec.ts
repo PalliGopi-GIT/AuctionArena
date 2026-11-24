@@ -20,14 +20,14 @@ test('catalog cover and live bid desk reflow without losing the primary action',
     if (width === 1440 || width === 390) await page.screenshot({ path: info.outputPath(`home-${width}.png`) });
   }
   const { code, invite } = await create(page, { timer: 120 });
-  await page.getByRole('button', { name: /Mumbai Meteors/ }).click();
+  await page.getByRole('button', { name: /Mumbai Indians/ }).click();
   const other = await browser.newContext({ baseURL: 'http://127.0.0.1:5273' });
   try {
     const guest = await other.newPage();
     await join(guest, code, invite);
-    await expect(guest.getByRole('button', { name: /Mumbai Meteors/ })).toContainText('E2E Host');
-    await guest.getByRole('button', { name: /Chennai/ }).click();
-    await expect(page.getByRole('button', { name: /Chennai/ })).toContainText('E2E Guest');
+    await expect(guest.getByRole('button', { name: /Mumbai Indians/ })).toContainText('E2E Host');
+    await guest.getByRole('button', { name: /Chennai Super Kings/ }).click();
+    await expect(page.getByRole('button', { name: /Chennai Super Kings/ })).toContainText('E2E Guest');
     await page.getByRole('button', { name: 'Start auction', exact: true }).click();
     const bid = page.getByRole('button', { name: /^Bid / });
     await expect(bid).toBeEnabled();
@@ -43,6 +43,6 @@ test('catalog cover and live bid desk reflow without losing the primary action',
     await page.setViewportSize({ width: 844, height: 390 });
     await fitsPage(page, 844);
     await bid.click();
-    await expect(guest.locator('.leading')).toContainText('Mumbai Meteors');
+    await expect(guest.locator('.leading')).toContainText('Mumbai Indians');
   } finally { await other.close(); }
 });

@@ -172,6 +172,19 @@ export function validBidOnLadder(room: Room, base: number, amount: number) {
   }
   return current === amount;
 }
-export const teamNames = ['Mumbai Meteors','Chennai Cyclones','Bengaluru Blaze','Delhi Dragons','Kolkata Comets','Punjab Phoenix','Jaipur Jaguars','Hyderabad Hawks','Lucknow Lancers','Ahmedabad Aviators'];
+/** Franchise order is stable: index 0 is t1 (host) and index 1 is t2 (guest). */
+export const teamNames = ['Mumbai Indians','Chennai Super Kings','Royal Challengers Bengaluru','Kolkata Knight Riders','Sunrisers Hyderabad','Rajasthan Royals','Delhi Capitals','Punjab Kings','Gujarat Titans','Lucknow Super Giants'];
+/** Runtime logo per franchise. Rajasthan Royals has no supplied file and falls back to initials. */
+export const teamLogos: Record<string,string> = {
+  'Chennai Super Kings':'/assets/teams/csk.svg',
+  'Mumbai Indians':'/assets/teams/mi.svg',
+  'Royal Challengers Bengaluru':'/assets/teams/rcb.svg',
+  'Kolkata Knight Riders':'/assets/teams/kkr.svg',
+  'Sunrisers Hyderabad':'/assets/teams/srh.svg',
+  'Delhi Capitals':'/assets/teams/dc.svg',
+  'Punjab Kings':'/assets/teams/pbks.svg',
+  'Gujarat Titans':'/assets/teams/gt.svg',
+  'Lucknow Super Giants':'/assets/teams/lsg.svg',
+};
 export const teamColors = ['#45b7ff','#f5c451','#b594ff','#fb7185','#6ed8bc','#ff9257','#e5a0dc','#a3d35e','#f2a65a','#7dd3fc'];
 export function samplePlayers():Player[] { const names=['Arjun Rathore','Kabir Mehta','Liam Fletcher','Dev Malhotra','Ishaan Sethi','Noah Brooks','Rohan Desai','Vihaan Kapoor','Ethan Walsh','Aditya Nair','Zayn Siddiqui','Oliver Hayes','Aarav Menon','Dhruv Shah','Theo Bennett','Reyansh Rao','Samar Khanna','Finn Clarke','Yash Bhatia','Neel Joshi','Oscar Reed','Kunal Verma','Rishi Anand','Leo Morgan']; return names.map((name,i)=>({id:`p${i+1}`,name,country:i%3===2?'Australia':'India',role:(['Batter','Bowler','All-rounder','Wicketkeeper'] as const)[i%4]!,basePrice:[100,50,75,25][i%4]!,overseas:i%3===2,isSample:true,battingStyle:i%2?'Left-hand bat':'Right-hand bat',bowlingStyle:i%2?'Right-arm pace':'Off spin',stats:{matches:30+i*3,runs:240+i*93,wickets:8+i*2,strikeRate:125+i},status:'upcoming'})); }

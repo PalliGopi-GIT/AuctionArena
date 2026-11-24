@@ -121,14 +121,14 @@ test('Quick opening set follows approved order and host-ended results survive re
   test.setTimeout(200_000);
   const { code, invite } = await create(page, { mode: 'standard' });
   // Claims happen in the room.
-  await page.getByRole('button', { name: /Mumbai Meteors/ }).click();
+  await page.getByRole('button', { name: /Mumbai Indians/ }).click();
   const guestContext = await browser.newContext({ baseURL: 'http://127.0.0.1:5273', viewport: testInfo.project.use.viewport, isMobile: !!testInfo.project.use.isMobile, hasTouch: !!testInfo.project.use.hasTouch });
   try {
     const guest = await guestContext.newPage();
     await join(guest, code, invite);
-    await expect(guest.getByRole('button', { name: /Mumbai Meteors/ })).toContainText('E2E Host');
-    await guest.getByRole('button', { name: /Chennai/ }).click();
-    await expect(page.getByRole('button', { name: /Chennai/ })).toContainText('E2E Guest');
+    await expect(guest.getByRole('button', { name: /Mumbai Indians/ })).toContainText('E2E Host');
+    await guest.getByRole('button', { name: /Chennai Super Kings/ }).click();
+    await expect(page.getByRole('button', { name: /Chennai Super Kings/ })).toContainText('E2E Guest');
     // The plan is reviewed and approved on Overview.
     await page.getByRole('button', { name: 'Overview', exact: true }).click();
     await expect(page.getByRole('heading', { name: 'Auction plan' })).toBeVisible();
@@ -174,14 +174,14 @@ test('host previews, regenerates and approves a seeded plan while participants s
   test.setTimeout(240_000);
   const { code, invite } = await create(page, { mode: 'standard' });
   // Claim a team in the room first; the plan is reviewed on Overview.
-  await page.getByRole('button', { name: /Mumbai Meteors/ }).click();
+  await page.getByRole('button', { name: /Mumbai Indians/ }).click();
   const guestContext = await browser.newContext({ baseURL: 'http://127.0.0.1:5273', viewport: testInfo.project.use.viewport, isMobile: !!testInfo.project.use.isMobile, hasTouch: !!testInfo.project.use.hasTouch });
   const guest = await guestContext.newPage();
   const guestErrors: string[] = [];
   guest.on('pageerror', error => guestErrors.push(error.message));
   try {
     await join(guest, code, invite);
-    await guest.getByRole('button', { name: /Chennai/ }).click();
+    await guest.getByRole('button', { name: /Chennai Super Kings/ }).click();
     await page.getByRole('button', { name: 'Overview', exact: true }).click();
     await expect(page.getByRole('heading', { name: 'Auction plan' })).toBeVisible();
     // The mode is fixed at creation, so the plan shows it locked with the Standard pool.
@@ -334,16 +334,16 @@ test('host previews, regenerates and approves a seeded plan while participants s
 test('Mega mode previews all 250 players and runs its opening set in approved order', async ({ page, browser }, testInfo) => {
   test.setTimeout(240_000);
   const { code, invite } = await create(page, { mode: 'mega' });
-  await page.getByRole('button', { name: /Mumbai Meteors/ }).click();
+  await page.getByRole('button', { name: /Mumbai Indians/ }).click();
   const guestContext = await browser.newContext({ baseURL: 'http://127.0.0.1:5273', viewport: testInfo.project.use.viewport, isMobile: !!testInfo.project.use.isMobile, hasTouch: !!testInfo.project.use.hasTouch });
   const guest = await guestContext.newPage();
   const guestErrors: string[] = [];
   guest.on('pageerror', error => guestErrors.push(error.message));
   try {
     await join(guest, code, invite);
-    await expect(guest.getByRole('button', { name: /Mumbai Meteors/ })).toContainText('E2E Host');
-    await guest.getByRole('button', { name: /Chennai/ }).click();
-    await expect(page.getByRole('button', { name: /Chennai/ })).toContainText('E2E Guest');
+    await expect(guest.getByRole('button', { name: /Mumbai Indians/ })).toContainText('E2E Host');
+    await guest.getByRole('button', { name: /Chennai Super Kings/ }).click();
+    await expect(page.getByRole('button', { name: /Chennai Super Kings/ })).toContainText('E2E Guest');
     await page.getByRole('button', { name: 'Overview', exact: true }).click();
     await expect(page.getByRole('heading', { name: 'Auction plan' })).toBeVisible();
     await expect(page.locator('.plan-mode-fixed')).toContainText('Mega');

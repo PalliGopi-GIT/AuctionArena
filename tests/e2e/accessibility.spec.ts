@@ -42,12 +42,12 @@ test('accessibility scans cover auction screens and dialogs', async ({ page, bro
   await page.getByRole('button', { name: 'Edit room rules', exact: true }).click();
   await scan('edit-rules'); await page.keyboard.press('Escape');
   await page.getByRole('button', { name: 'Lobby', exact: true }).click();
-  await page.getByRole('button', { name: /Mumbai Meteors/ }).click();
+  await page.getByRole('button', { name: /Mumbai Indians/ }).click();
   const guestContext = await browser.newContext({ baseURL: 'http://127.0.0.1:5273', viewport: testInfo.project.use.viewport, isMobile: !!testInfo.project.use.isMobile, hasTouch: !!testInfo.project.use.hasTouch });
   const guest = await guestContext.newPage();
   try {
     await join(guest, code, invite!);
-    await guest.getByRole('button', { name: /Chennai/ }).click();
+    await guest.getByRole('button', { name: /Chennai Super Kings/ }).click();
     await page.getByRole('button', { name: 'Start auction', exact: true }).click();
     await guest.getByRole('button', { name: /^Bid / }).click();
     await expect(page.getByRole('status', { name: 'Auction updates' })).toContainText('Leading: Chennai');

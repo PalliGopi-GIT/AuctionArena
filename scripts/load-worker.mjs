@@ -38,6 +38,10 @@ if (!['default', 'small-plain', 'plain'].includes(compression)) throw new Error(
 const connectConcurrency = Number(arg('connectConcurrency', '20'));
 const setupConcurrency = Number(arg('setupConcurrency', '20'));
 const bidRounds = Number(arg('bids', '8'));
+const ownersPerRoom = Number(arg('owners', '2'));
+if (!Number.isSafeInteger(ownersPerRoom) || ownersPerRoom < 2 || ownersPerRoom > 8) {
+  throw new Error('--owners must be an integer from 2 to 8.');
+}
 const keyPath = arg('key', '');
 const issuer = arg('issuer', 'https://local.auctionarena.test');
 const output = arg('output', '');
@@ -185,6 +189,7 @@ function tokenFor(user) {
 
 const httpStats = { requests: 0, errors: 0, statuses: {}, errorSamples: [] };
 const serverTiming = new Map();
+const snapshotIsolation = { checked: 0, mismatches: 0 };
 async function api(path, { method = 'GET', token, body, timeout = 30000 } = {}) {
   httpStats.requests++;
   const started = Date.now();
@@ -258,6 +263,8 @@ class Client {
     if (message?.type === 'snapshot' && message.room && Number.isSafeInteger(message.room.version)) {
       const at = Date.now();
       this.version = message.room.version;
+      snapshotIsolation.checked++;
+      if (message.room.code !== this.member.roomCode) snapshotIsolation.mismatches++;
       if (depth) {
         this.depthState = message.room;
         this.depthPeakBytes = Math.max(this.depthPeakBytes ?? 0, raw.length);
@@ -469,38 +476,92 @@ async function setupRooms() {
   return { rooms, setupMs: Date.now() - started, roomCount, membersPerRoom: rooms.map(room => room.members.length) };
 }
 
+async function openClient(member) {
+  const begin = traceEnabled ? clockNow() : 0;
+  const ticket = await api(`/api/rooms/${member.roomCode}/ws-ticket`, { method: 'POST', token: member.token });
+  if (ticket.status !== 200) throw new Error(`ticket failed ${ticket.status}: ${JSON.stringify(ticket.data)}`);
+  const socket = new WebSocket(`${base.replace(/^http/, 'ws')}/ws?room=${member.roomCode}`, [`ticket.${ticket.data.ticket}`],
+    { perMessageDeflate: compression !== 'plain' });
+  const upgrade = traceEnabled ? clockNow() : 0;
+  const client = new Client(socket, member);
+  await new Promise((resolveClient, reject) => {
+    const timer = setTimeout(() => {
+      try { socket.terminate(); } catch { /* already closed */ }
+      reject(new Error(`connect timeout for ${member.id}`));
+    }, 30000);
+    socket.once('open', () => {
+      const poll = setInterval(() => {
+        if (client.version >= 0) { clearInterval(poll); clearTimeout(timer); resolveClient(); }
+      }, 5);
+      socket.once('close', code => {
+        if (client.version < 0) { clearInterval(poll); clearTimeout(timer); reject(new Error(`closed before snapshot (${code})`)); }
+      });
+    });
+    socket.once('error', error => { clearTimeout(timer); reject(error); });
+  });
+  member.client = client;
+  if (traceEnabled) recordTrace('ramp', { begin, upgrade, ready: clockNow() });
+  return client;
+}
+
 async function connectAll(rooms, activeClients) {
   const members = rooms.flatMap(room => room.members);
   const started = Date.now();
   const clients = await mapLimit(members, connectConcurrency, async member => {
-    const begin = traceEnabled ? clockNow() : 0;
-    const ticket = await api(`/api/rooms/${member.roomCode}/ws-ticket`, { method: 'POST', token: member.token });
-    if (ticket.status !== 200) throw new Error(`ticket failed ${ticket.status}: ${JSON.stringify(ticket.data)}`);
-    const socket = new WebSocket(`${base.replace(/^http/, 'ws')}/ws?room=${member.roomCode}`, [`ticket.${ticket.data.ticket}`],
-      { perMessageDeflate: compression !== 'plain' });
-    const upgrade = traceEnabled ? clockNow() : 0;
-    const client = new Client(socket, member);
+    const client = await openClient(member);
     activeClients.push(client);
-    await new Promise((resolveClient, reject) => {
-      const timer = setTimeout(() => {
-        try { socket.terminate(); } catch { /* already closed */ }
-        reject(new Error(`connect timeout for ${member.id}`));
-      }, 30000);
-      socket.once('open', () => {
-        const poll = setInterval(() => {
-          if (client.version >= 0) { clearInterval(poll); clearTimeout(timer); resolveClient(); }
-        }, 5);
-        socket.once('close', code => {
-          if (client.version < 0) { clearInterval(poll); clearTimeout(timer); reject(new Error(`closed before snapshot (${code})`)); }
-        });
-      });
-      socket.once('error', error => { clearTimeout(timer); reject(error); });
-    });
-    member.client = client;
-    if (traceEnabled) recordTrace('ramp', { begin, upgrade, ready: clockNow() });
     return client;
   });
   return { clients, connectMs: Date.now() - started };
+}
+
+// Reconnect roughly one in ten clients, with at least one per room. The rest
+// of the room stays connected, so this measures recovery under concurrent load.
+async function reconnectSample(rooms, clients) {
+  const stride = Math.max(1, Math.floor(users / 10));
+  const selected = [];
+  for (let index = 0; index < clients.length; index += stride) selected.push(index);
+  for (const room of rooms) {
+    const index = clients.findIndex(client => client.member.roomCode === room.code);
+    if (index >= 0 && !selected.includes(index)) selected.push(index);
+  }
+  selected.sort((left, right) => left - right);
+  const results = await mapLimit(selected, 5, async index => {
+    const previous = clients[index];
+    const member = previous.member;
+    const previousVersion = previous.version;
+    await previous.close();
+    const started = performance.now();
+    try {
+      const replacement = await openClient(member);
+      clients[index] = replacement;
+      return { room: member.roomCode, user: member.id, ok: true, ms: round(performance.now() - started), previousVersion, version: replacement.version };
+    } catch (error) {
+      return { room: member.roomCode, user: member.id, ok: false, ms: round(performance.now() - started), previousVersion, error: String(error) };
+    }
+  });
+  return {
+    attempted: results.length,
+    succeeded: results.filter(result => result.ok).length,
+    failed: results.filter(result => !result.ok).length,
+    versionChanges: results.filter(result => result.ok && result.version !== result.previousVersion).length,
+    latency: summarize(results.filter(result => result.ok).map(result => result.ms)),
+    samples: results.slice(0, 10),
+  };
+}
+
+async function checkRoomIsolation(rooms) {
+  const failures = [];
+  let checks = 0, denied = 0;
+  if (rooms.length < 2) return { applicable: false, checks, denied, failures };
+  for (const [index, room] of rooms.entries()) {
+    const foreign = rooms[(index + 1) % rooms.length].members[0];
+    const response = await api(`/api/rooms/${room.code}`, { token: foreign.token });
+    checks++;
+    if (response.status === 404 && response.data?.code === 'ROOM_NOT_FOUND') denied++;
+    else failures.push({ room: room.code, as: foreign.id, status: response.status, code: response.data?.code });
+  }
+  return { applicable: true, checks, denied, failures };
 }
 
 function compactError(data) {
@@ -595,10 +656,12 @@ function nextBidAmount(room) {
 
 async function bidWorkload(rooms, onAction, onDelivery) {
   const actionLatencies = [];
+  const conflictLatencies = [];
   const deliveryLatencies = [];
   const missing = [];
   const errors = [];
   const expectedConflicts = [];
+  const duplicates = { checks: 0, deduplicated: 0, stale: 0, versionChanges: 0, errors: [] };
   let accepted = 0;
   const launch = clockNow();
   async function delivered(member, version, since, traceId) {
@@ -617,15 +680,70 @@ async function bidWorkload(rooms, onAction, onDelivery) {
       const amount = nextBidAmount(room.latest);
       const playerId = room.latest.players[room.latest.currentPlayerIndex]?.id;
       if (!playerId) break;
+      if (ownersPerRoom > 2) {
+        // Every team owner bids on the same lot at once. The Durable Object
+        // serializes them, so exactly one expected version can win; the rest
+        // are legitimate version or auction-rule rejections.
+        const owners = room.members.slice(0, ownersPerRoom);
+        const attempts = await Promise.all(owners.map(async (owner, ownerIndex) => {
+          const action = { id: `bid-${room.code}-${round}-${ownerIndex}`, expectedVersion: room.latest.version, type: 'bid', playerId, amount };
+          const began = performance.now();
+          try {
+            const response = await api(`/api/rooms/${room.code}/actions`, { method: 'POST', token: owner.token, body: action });
+            return { owner, action, response, began, ms: performance.now() - began };
+          } catch (error) {
+            return { owner, action, error: String(error), began, ms: performance.now() - began };
+          }
+        }));
+        const winners = attempts.filter(attempt => attempt.response?.status === 200);
+        for (const attempt of attempts) {
+          if (attempt.error) { errors.push({ room: room.code, round, message: attempt.error }); continue; }
+          if (attempt.response.status === 200) actionLatencies.push(attempt.ms);
+          else conflictLatencies.push(attempt.ms);
+        }
+        if (winners.length !== 1) {
+          errors.push({ room: room.code, round, message: `${winners.length} bids accepted in one owner race`, statuses: attempts.map(attempt => attempt.response?.status ?? 'network') });
+          continue;
+        }
+        const winner = winners[0];
+        for (const attempt of attempts) {
+          if (attempt === winner || attempt.error) continue;
+          const code = attempt.response.data?.code;
+          if (code === 'STALE_VERSION' || code === 'ALREADY_LEADING' || code === 'BID_CHANGED') expectedConflicts.push({ room: room.code, code });
+          else errors.push({ room: room.code, round, status: attempt.response.status, ...compactError(attempt.response.data) });
+        }
+        accepted++;
+        room.latest = winner.response.data.room;
+        const acceptedVersion = room.latest.version;
+        duplicates.checks++;
+        try {
+          const retry = await api(`/api/rooms/${room.code}/actions`, { method: 'POST', token: winner.owner.token, body: winner.action });
+          if (retry.status === 200) {
+            if (retry.data?.room?.version === acceptedVersion) duplicates.deduplicated++;
+            else duplicates.versionChanges++;
+          } else if (retry.status === 400 && retry.data?.code === 'STALE_VERSION') duplicates.stale++;
+          else duplicates.errors.push({ room: room.code, round, status: retry.status, ...compactError(retry.data) });
+        } catch (error) {
+          duplicates.errors.push({ room: room.code, round, message: String(error) });
+        }
+        onAction?.(room.latest);
+        await Promise.all(room.members.map(async member => {
+          if (!member.client) return;
+          try { await delivered(member, acceptedVersion, winner.began, `bid-${room.code}-${round}`); }
+          catch (error) { missing.push({ room: room.code, user: member.id, version: acceptedVersion, message: String(error) }); }
+        }));
+        onDelivery?.(room.latest, deliveryLatencies);
+        continue;
+      }
       const bidders = room.members.slice(0, 2);
       const bidder = room.latest.leadingTeamId === 't1' ? bidders[1] : bidders[0];
       if (!bidder) break;
+      const action = { id: `bid-${room.code}-${round}`, expectedVersion: room.latest.version, type: 'bid', playerId, amount };
       const started = performance.now();
       let response;
       try {
         response = await api(`/api/rooms/${room.code}/actions`, {
-          method: 'POST', token: bidder.token,
-          body: { id: `bid-${room.code}-${round}`, expectedVersion: room.latest.version, type: 'bid', playerId, amount },
+          method: 'POST', token: bidder.token, body: action,
         });
       } catch (error) {
         errors.push({ room: room.code, round, message: String(error) });
@@ -639,8 +757,20 @@ async function bidWorkload(rooms, onAction, onDelivery) {
       }
       accepted++;
       room.latest = response.data.room;
+      const acceptedVersion = response.data.room.version;
+      duplicates.checks++;
+      try {
+        const retry = await api(`/api/rooms/${room.code}/actions`, { method: 'POST', token: bidder.token, body: action });
+        if (retry.status === 200) {
+          if (retry.data?.room?.version === acceptedVersion) duplicates.deduplicated++;
+          else duplicates.versionChanges++;
+        } else if (retry.status === 400 && retry.data?.code === 'STALE_VERSION') duplicates.stale++;
+        else duplicates.errors.push({ room: room.code, round, status: retry.status, ...compactError(retry.data) });
+      } catch (error) {
+        duplicates.errors.push({ room: room.code, round, message: String(error) });
+      }
       onAction?.(response.data.room);
-      const version = response.data.room.version;
+      const version = acceptedVersion;
       await Promise.all(room.members.map(async member => {
         if (!member.client) return;
         try { await delivered(member, version, started, `bid-${room.code}-${round}`); }
@@ -675,9 +805,10 @@ async function bidWorkload(rooms, onAction, onDelivery) {
     }
   }));
   return {
-    accepted, actionSummary: summarize(actionLatencies), deliverySummary: summarize(deliveryLatencies),
-    ...(strict ? { actionLatencies, deliveryLatencies } : {}),
-    missing, errors, expectedConflicts,
+    accepted, actionSummary: summarize(actionLatencies), conflictSummary: summarize(conflictLatencies),
+    deliverySummary: summarize(deliveryLatencies),
+    ...(strict ? { actionLatencies, deliveryLatencies, conflictLatencies } : {}),
+    missing, errors, expectedConflicts, duplicates,
   };
 }
 
@@ -856,6 +987,7 @@ const report = {
   workload: { durationMs, roomSize, connectConcurrency, setupConcurrency, bidRounds, timerSeconds, mode, separateStart, bidSpreadMs, cacheSnapshots, compression },
   setup: null, connections: null, claims: null, ping: null, actions: null, broadcast: null,
   settlement: null, http: null, sockets: null, memory: null, loopLag: null,
+  roles: null, reconnections: null, isolation: null,
 };
 let clients = [];
 let stopHeartbeats = () => {};
@@ -864,6 +996,8 @@ try {
   if (traceEnabled) await checkClock('before');
   const setup = await setupRooms();
   report.setup = { rooms: setup.roomCount, membersPerRoom: setup.membersPerRoom, setupMs: setup.setupMs };
+  const bidders = setup.membersPerRoom.reduce((sum, size) => sum + Math.min(8, size), 0);
+  report.roles = { bidders, spectators: users - bidders, exercisedBidders: setup.roomCount * Math.min(ownersPerRoom, Math.min(...setup.membersPerRoom)) };
   stopHeartbeats = startHeartbeats(clients);
   const connected = await connectAll(setup.rooms, clients);
   report.connections = {
@@ -871,6 +1005,10 @@ try {
     connectMs: connected.connectMs,
     ...(strict ? { extensions: [...new Set(clients.map(c => c.socket.extensions || 'none'))] } : {}),
   };
+  report.reconnections = await reconnectSample(setup.rooms, clients);
+  if (report.reconnections.failed) throw new Error(`Reconnect failed for ${report.reconnections.failed} clients`);
+  report.isolation = { http: await checkRoomIsolation(setup.rooms), snapshots: { ...snapshotIsolation } };
+  if (report.isolation.http.failures.length) throw new Error('Room isolation failed');
   if (isolateTraffic) {
     stopHeartbeats();
     report.controls = await trafficControls(setup.rooms, clients);
@@ -911,15 +1049,21 @@ try {
   }
   loopLag = null;
   report.ping = { summary: summarize(pings.latencies), errors: pings.errors.length, errorSamples: pings.errors.slice(0, 5), messages: pings.pingSequence, heartbeats: pings.heartbeats, windowMs: pings.windowMs, windowHeartbeats: pings.windowHeartbeats };
-  report.actions = { accepted: bids.accepted, latencySummary: bids.actionSummary, errors: bids.errors.length, errorSamples: bids.errors.slice(0, 5), expectedConflicts: bids.expectedConflicts.length, conflictCodes: bids.expectedConflicts.map(item => item.code) };
+  report.actions = { accepted: bids.accepted, latencySummary: bids.actionSummary, conflictLatencySummary: bids.conflictSummary, conflictCount: bids.conflictSummary?.count ?? 0, unexpectedRejections: bids.errors.length, errors: bids.errors.length, errorSamples: bids.errors.slice(0, 5), expectedConflicts: bids.expectedConflicts.length, conflictCodes: [...new Set(bids.expectedConflicts.map(item => item.code))], duplicates: bids.duplicates };
   report.broadcast = { deliverySummary: bids.deliverySummary, missing: bids.missing.length, missingSamples: bids.missing.slice(0, 5) };
   if (strict) {
     report.samples = { bid: bids.actionLatencies, broadcast: bids.deliveryLatencies, ping: pings.latencies };
     report.maxPendingHttp = maxPendingHttp;
     report.httpPool = { ...pool };
   }
+  if (bids.duplicates.checks !== bids.accepted || bids.duplicates.deduplicated !== bids.accepted
+    || bids.duplicates.stale || bids.duplicates.versionChanges || bids.duplicates.errors.length) {
+    throw new Error(`Duplicate bid handling failed: ${JSON.stringify(bids.duplicates)}`);
+  }
   report.settlement = await settlement(setup.rooms);
   }
+  report.isolation.snapshots = { ...snapshotIsolation };
+  if (snapshotIsolation.mismatches) throw new Error('Snapshot room isolation failed');
   // Quick and Standard have different wall-clock lengths. Each depth diagnostic
   // verifies all members before finishing. Capacity peers still share the barrier.
   if (!depth) await synchronize('settled');

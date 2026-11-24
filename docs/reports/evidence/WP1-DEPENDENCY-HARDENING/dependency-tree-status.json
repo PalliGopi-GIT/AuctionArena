@@ -1,9 +1,0 @@
-{
-  "at": "2026-11-11T16:18:21.519Z",
-  "command": "npm.cmd ls --all --json",
-  "exitCode": 0,
-  "problems": [],
-  "clerkBackendUnchanged": "3.27.0",
-  "clerkReactUnchanged": "6.18.6",
-  "tinypoolCopies": 0
-}

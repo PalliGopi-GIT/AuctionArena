@@ -2,6 +2,7 @@ param(
   [int[]]$Levels = @(100, 250, 500, 1000),
   [int]$DurationMs = 40000,
   [int]$Bids = 8,
+  [ValidateRange(2,8)][int]$OwnersPerRoom = 2,
   [ValidateRange(3,20)][int]$RoomSize = 20,
   [ValidateRange(10,120)][int]$TimerSeconds = 30,
   [ValidateSet('sample','quick','standard','mega')][string]$Mode = 'sample',
@@ -33,6 +34,7 @@ $manifest = [ordered]@{
   wrangler = $wranglerVersion
   durationMs = $DurationMs
   bids = $Bids
+  ownersPerRoom = $OwnersPerRoom
   roomSize = $RoomSize
   timerSeconds = $TimerSeconds
   mode = $Mode
@@ -64,6 +66,8 @@ foreach ($users in $Levels) {
   [System.IO.File]::WriteAllText((Join-Path $levelDir '.dev.vars'), $levelVars,
     (New-Object System.Text.UTF8Encoding($false)))
   $state = Join-Path $levelDir 'state'
+  node scripts/check-do-state-path.mjs --state $state --config wrangler.jsonc
+  if ($LASTEXITCODE -ne 0) { throw "Durable Object state path preflight failed for $state" }
   $stdout = Join-Path $levelDir 'wrangler.out.log'
   $stderr = Join-Path $levelDir 'wrangler.err.log'
   if (Get-NetTCPConnection -LocalPort $port -State Listen -ErrorAction SilentlyContinue) {
@@ -107,7 +111,7 @@ foreach ($users in $Levels) {
   try {
     $load = Start-Process -FilePath (Get-Command node.exe).Source -ArgumentList @(
       'scripts/load-worker.mjs', "--base=http://127.0.0.1:$port", "--users=$users", "--roomSize=$RoomSize",
-      "--duration=$DurationMs", "--timerSeconds=$TimerSeconds", "--mode=$Mode", "--separateStart=$($SeparateStart.IsPresent.ToString().ToLowerInvariant())", "--trace=$($Trace.IsPresent.ToString().ToLowerInvariant())", "--cacheSnapshots=$($CacheSnapshots.IsPresent.ToString().ToLowerInvariant())", "--bidSpreadMs=$BidSpreadMs", "--bids=$Bids", "--label=auctionarena-$users",
+      "--duration=$DurationMs", "--timerSeconds=$TimerSeconds", "--mode=$Mode", "--separateStart=$($SeparateStart.IsPresent.ToString().ToLowerInvariant())", "--trace=$($Trace.IsPresent.ToString().ToLowerInvariant())", "--cacheSnapshots=$($CacheSnapshots.IsPresent.ToString().ToLowerInvariant())", "--bidSpreadMs=$BidSpreadMs", "--bids=$Bids", "--owners=$OwnersPerRoom", "--label=auctionarena-$users",
       ('--key="' + $keyPath + '"'), ('--output="' + $output + '"')
     ) -WorkingDirectory $repo -RedirectStandardOutput (Join-Path $levelDir 'harness.out.log') -RedirectStandardError (Join-Path $levelDir 'harness.err.log') -PassThru -WindowStyle Hidden
     # Retain the process handle so Windows PowerShell can retrieve ExitCode
@@ -141,6 +145,11 @@ foreach ($users in $Levels) {
     if ($report.failed) { $failures += "harness error: $($report.error)" }
     if ($report.connections.connected -ne $report.connections.attempted) { $failures += "connected $($report.connections.connected)/$($report.connections.attempted)" }
     if ($report.connections.attempted -ne $users) { $failures += "attempted $($report.connections.attempted) of $users users" }
+    if ($report.reconnections.failed -ne 0) { $failures += "reconnect failures $($report.reconnections.failed)/$($report.reconnections.attempted)" }
+    if ($report.reconnections.succeeded -ne $report.reconnections.attempted) { $failures += "reconnected $($report.reconnections.succeeded)/$($report.reconnections.attempted)" }
+    if ($report.isolation.http.checks -ne $report.isolation.http.denied) { $failures += "room isolation denied $($report.isolation.http.denied)/$($report.isolation.http.checks)" }
+    if (@($report.isolation.http.failures).Count -ne 0) { $failures += "room isolation failures $(@($report.isolation.http.failures).Count)" }
+    if ($report.isolation.snapshots.mismatches -ne 0) { $failures += "snapshot isolation mismatches $($report.isolation.snapshots.mismatches)" }
     if ($report.setup.rooms -ne $expectedRooms) { $failures += "rooms $($report.setup.rooms), expected $expectedRooms" }
     if ($users % $RoomSize -eq 0 -and @($report.setup.membersPerRoom | Where-Object { $_ -ne $RoomSize }).Count -gt 0) { $failures += 'room membership did not match the requested uniform room size' }
     if ($report.claims.errors -ne 0) { $failures += "claim/start errors $($report.claims.errors)" }
@@ -152,11 +161,16 @@ foreach ($users in $Levels) {
     if ($report.sockets.closedEarly -ne 0) { $failures += "closed early $($report.sockets.closedEarly)" }
     $expectedActions = $report.setup.rooms * $Bids
     if ($report.actions.accepted -ne $expectedActions) { $failures += "accepted $($report.actions.accepted)/$expectedActions actions" }
-    if ($report.actions.expectedConflicts -ne $report.setup.rooms) { $failures += "race conflicts $($report.actions.expectedConflicts)/$($report.setup.rooms)" }
+    if ($report.actions.duplicates.checks -ne $expectedActions) { $failures += "duplicate checks $($report.actions.duplicates.checks)/$expectedActions" }
+    if ($report.actions.duplicates.deduplicated -ne $expectedActions) { $failures += "deduplicated $($report.actions.duplicates.deduplicated)/$expectedActions" }
+    if ($report.actions.duplicates.stale -ne 0 -or $report.actions.duplicates.versionChanges -ne 0 -or @($report.actions.duplicates.errors).Count -ne 0) { $failures += 'duplicate bid handling failed' }
+    if ($report.actions.unexpectedRejections -ne 0) { $failures += "unexpected bid rejections $($report.actions.unexpectedRejections)" }
+    if ($report.actions.expectedConflicts -lt $report.setup.rooms) { $failures += "expected race conflicts $($report.actions.expectedConflicts), expected at least $($report.setup.rooms)" }
     $settled = @($report.settlement | Where-Object { $_.status -eq 'RESULT' -and -not $_.timeout -and $_.clients -eq $_.expectedClients -and -not $_.diverged }).Count
     if ($settled -ne $report.setup.rooms) { $failures += "settled $settled/$($report.setup.rooms) rooms" }
     if ($null -eq $report.ping.summary.p95 -or $report.ping.summary.p95 -gt 1000) { $failures += "ping p95 $($report.ping.summary.p95) ms" }
-    if ($null -eq $report.broadcast.deliverySummary.p95 -or $report.broadcast.deliverySummary.p95 -gt 2000) { $failures += "broadcast p95 $($report.broadcast.deliverySummary.p95) ms" }
+    if ($null -eq $report.actions.latencySummary.p95 -or $report.actions.latencySummary.p95 -gt 300) { $failures += "bid p95 $($report.actions.latencySummary.p95) ms" }
+    if ($null -eq $report.broadcast.deliverySummary.p95 -or $report.broadcast.deliverySummary.p95 -gt 250) { $failures += "broadcast p95 $($report.broadcast.deliverySummary.p95) ms" }
     if (-not $report.memory.workerd) { $failures += 'missing workerd memory sample' }
   }
 

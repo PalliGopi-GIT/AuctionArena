@@ -121,3 +121,4 @@
 .room-delete:hover{color:#ffd7cc}
 .room-open:focus-visible{outline:3px solid var(--lime);outline-offset:5px;border-radius:4px}
 @media(max-width:760px){.mode-options{grid-template-columns:1fr}.mode-rules>div{grid-template-columns:1fr}.room-invite-bar{padding:14px}.room-invite-bar strong{font-size:22px}.invite-actions{width:100%}.invite-actions .button{flex:1}.current-set-banner>span:last-child{margin-left:0;width:100%}.lot-result{grid-template-columns:1fr}.lot-result .player-art{height:190px}.upcoming-set li{flex-wrap:wrap}.upcoming-price{margin-left:auto}.upcoming-set .tag{width:100%;margin-left:40px}}
+.team-crest-logo{width:100%;height:100%;object-fit:contain;display:block}

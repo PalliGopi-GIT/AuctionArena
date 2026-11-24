@@ -6,13 +6,13 @@ test('two browsers complete a sale, recover, remove/block and reopen results', a
   page.on('pageerror', error => errors.push(error.message));
   // Legacy room: this test pins an exact purse (₹2,000) and result timing.
   const { code, invite } = await create(page, { budget: 2000 });
-  await page.getByRole('button', { name: /Mumbai Meteors/ }).click();
+  await page.getByRole('button', { name: /Mumbai Indians/ }).click();
   const guestContext = await browser.newContext({ baseURL: 'http://127.0.0.1:5273', viewport: testInfo.project.use.viewport, isMobile: !!testInfo.project.use.isMobile, hasTouch: !!testInfo.project.use.hasTouch });
   const guest = await guestContext.newPage();
   guest.on('pageerror', error => errors.push(error.message));
   try {
     await join(guest, code, invite);
-    await guest.getByRole('button', { name: /Chennai/ }).click();
+    await guest.getByRole('button', { name: /Chennai Super Kings/ }).click();
     await guest.getByRole('button', { name: 'I’m ready' }).click();
     await page.getByRole('button', { name: 'I’m ready' }).click();
     await page.getByRole('button', { name: 'Start auction', exact: true }).click();
@@ -79,11 +79,11 @@ test('invitation renewal, invalid invite, leave and close before start', async (
     await guest.getByLabel('Room code or invitation link').fill(`http://127.0.0.1:5273/?room=${code}&invite=${renewed}`);
     await guest.getByRole('button', { name: 'Join private auction' }).click();
     await expect(guest.getByRole('heading', { name: 'Browser auction' })).toBeVisible();
-    await guest.getByRole('button', { name: /Chennai/ }).click();
+    await guest.getByRole('button', { name: /Chennai Super Kings/ }).click();
     await guest.getByRole('button', { name: 'Leave lobby', exact: true }).click();
     await guest.getByRole('dialog').getByRole('button', { name: 'Leave lobby', exact: true }).click();
     await expect(guest.getByRole('heading', { name: /Build a squad/ })).toBeVisible();
-    await expect(page.getByRole('button', { name: /Chennai/ })).toContainText('Available to claim');
+    await expect(page.getByRole('button', { name: /Chennai Super Kings/ })).toContainText('Available to claim');
     await page.getByRole('button', { name: 'Close room', exact: true }).click();
     await page.getByRole('dialog').getByRole('button', { name: 'Close room', exact: true }).click();
     await expect(page.locator('.room-status')).toContainText('CLOSED');
@@ -103,7 +103,7 @@ test('invitation renewal, invalid invite, leave and close before start', async (
 
 test('switching local profiles clears the prior private room and invitation', async ({ page }) => {
   const { code } = await create(page);
-  await page.getByRole('button', { name: /Mumbai Meteors/ }).click();
+  await page.getByRole('button', { name: /Mumbai Indians/ }).click();
   await page.locator('.user-pill').click();
   await page.getByRole('button', { name: 'Sign out of local profile' }).click();
   await expect(page.getByRole('heading', { name: /Build a squad/ })).toBeVisible();
@@ -218,12 +218,12 @@ test('clipboard denial provides selectable links with keyboard focus and clears 
 test('host heartbeat expiry pauses an accepted bid until the host reconnects and resumes', async ({ page, browser }, testInfo) => {
   test.setTimeout(100000);
   const { code, invite } = await create(page, { timer: 30, budget: 2000 });
-  await page.getByRole('button', { name: /Mumbai Meteors/ }).click();
+  await page.getByRole('button', { name: /Mumbai Indians/ }).click();
   const guestContext = await browser.newContext({ baseURL: 'http://127.0.0.1:5273', viewport: testInfo.project.use.viewport, isMobile: !!testInfo.project.use.isMobile, hasTouch: !!testInfo.project.use.hasTouch });
   const guest = await guestContext.newPage();
   try {
     await join(guest, code, invite);
-    await guest.getByRole('button', { name: /Chennai/ }).click();
+    await guest.getByRole('button', { name: /Chennai Super Kings/ }).click();
     await page.getByRole('button', { name: 'Start auction', exact: true }).click();
     await expect(guest.locator('.room-status')).toContainText('LIVE');
     const { lot } = await currentLot(page, code);
@@ -262,7 +262,7 @@ test('host heartbeat expiry pauses an accepted bid until the host reconnects and
 
 for (const allowed of [true, false]) test(`late invited spectator is ${allowed ? 'read-only and receives results' : 'denied when spectators are disabled'}`, async ({ page, browser }, testInfo) => {
   const { code, invite } = await create(page, { timer: 60, spectators: allowed, budget: 2000 });
-  await page.getByRole('button', { name: /Mumbai Meteors/ }).click();
+  await page.getByRole('button', { name: /Mumbai Indians/ }).click();
   const participantContext = await browser.newContext({ baseURL: 'http://127.0.0.1:5273' });
   const spectatorContext = await browser.newContext({ baseURL: 'http://127.0.0.1:5273', viewport: testInfo.project.use.viewport, isMobile: !!testInfo.project.use.isMobile, hasTouch: !!testInfo.project.use.hasTouch });
   const participant = await participantContext.newPage(), spectator = await spectatorContext.newPage();
@@ -271,7 +271,7 @@ for (const allowed of [true, false]) test(`late invited spectator is ${allowed ?
     try { const data = JSON.parse(frame.payload.toString()); if (data.room?.code === code) socketStates.add(data.room.status); } catch { /* Snapshot frames only. */ }
   }));
   try {
-    await join(participant, code, invite); await participant.getByRole('button', { name: /Chennai/ }).click();
+    await join(participant, code, invite); await participant.getByRole('button', { name: /Chennai Super Kings/ }).click();
     await page.getByRole('button', { name: 'Start auction', exact: true }).click();
     await expect(participant.locator('.room-status')).toContainText('LIVE');
     const { lot } = await currentLot(page, code);
@@ -311,12 +311,12 @@ for (const allowed of [true, false]) test(`late invited spectator is ${allowed ?
 test('depleted purses disable bids and finish with an affordability reason', async ({ page, browser }, testInfo) => {
   test.setTimeout(120_000);
   const { code, invite } = await create(page, { budget: 200, maxSquad: 8 });
-  await page.getByRole('button', { name: /Mumbai Meteors/ }).click();
+  await page.getByRole('button', { name: /Mumbai Indians/ }).click();
   const guestContext = await browser.newContext({ baseURL: 'http://127.0.0.1:5273', viewport: testInfo.project.use.viewport, isMobile: !!testInfo.project.use.isMobile, hasTouch: !!testInfo.project.use.hasTouch });
   const guest = await guestContext.newPage();
   try {
     await join(guest, code, invite);
-    await guest.getByRole('button', { name: /Chennai/ }).click();
+    await guest.getByRole('button', { name: /Chennai Super Kings/ }).click();
     await page.getByRole('button', { name: 'Start auction', exact: true }).click();
     await expect(guest.locator('.room-status')).toContainText('LIVE');
     const { lot } = await currentLot(page, code);

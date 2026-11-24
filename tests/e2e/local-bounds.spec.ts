@@ -3,7 +3,7 @@ import { create, readRoom } from './helpers';
 
 test('recent snapshots stay bounded while history pages older activity',async({page})=>{
   const {code}=await create(page);
-  await page.getByRole('button',{name:/Mumbai Meteors/}).click();
+  await page.getByRole('button',{name:/Mumbai Indians/}).click();
   await page.evaluate(async code=>{
     for(let i=0;i<110;i++){
       const response=await fetch(`/api/rooms/${code}/actions`,{method:'POST',headers:{Authorization:'Bearer '+localStorage.getItem('aa-token'),'Content-Type':'application/json'},body:JSON.stringify({id:crypto.randomUUID(),type:'ready'})});

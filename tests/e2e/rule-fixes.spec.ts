@@ -8,11 +8,11 @@ test('new-room tiered bids agree between both browsers and the server', async ({
   }));
   const { code, invite } = await create(page, { timer: 60 });
   await expect(page.locator('.rules')).toContainText('+10 / +20 / +25');
-  await page.getByRole('button', { name: /Mumbai Meteors/ }).click();
+  await page.getByRole('button', { name: /Mumbai Indians/ }).click();
   const context = await browser.newContext({ baseURL: 'http://127.0.0.1:5273', viewport: testInfo.project.use.viewport, isMobile: !!testInfo.project.use.isMobile, hasTouch: !!testInfo.project.use.hasTouch });
   try {
     const guest = await context.newPage(); await join(guest, code, invite);
-    await guest.getByRole('button', { name: /Chennai/ }).click();
+    await guest.getByRole('button', { name: /Chennai Super Kings/ }).click();
     await page.getByRole('button', { name: 'Start auction', exact: true }).click();
     await expect(guest.locator('.room-status')).toContainText('LIVE');
     const { lot } = await currentLot(page, code);

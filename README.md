@@ -4,8 +4,11 @@
 
 > **Status:** Staging is deployed and healthy at
 > <https://auctionarena-staging.palligopi1924.workers.dev>.
-> **Production is not deployed.** Live authenticated multi-user auction flows have not yet been
-> verified end-to-end against staging; see [Known limitations](#known-limitations).
+> **Beta preview.** Live authenticated multi-user auction flows have been verified locally against the
+> real Worker runtime; see [Known limitations](#known-limitations).
+
+Rooms are played with the **real 250-player IPL catalog** (224 supplied photographs) and the ten
+original IPL franchises, including supplied logos for nine of them.
 
 ---
 
