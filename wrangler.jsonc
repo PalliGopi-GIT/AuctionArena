@@ -56,6 +56,33 @@
           }
         ]
       }
+    },
+    // Production. NOT DEPLOYED. This Worker name has its own Durable Object
+    // namespaces, so production storage can never collide with staging.
+    "production": {
+      "name": "auctionarena",
+      "vars": {
+        // Must be replaced with the production Clerk issuer origin
+        // (https://<your-production-app>.clerk.accounts.dev) before deploying.
+        // Left empty on purpose so the preflight fails instead of running with
+        // the development instance. Empty config fails closed with 503.
+        "CLERK_ISSUER": "",
+        "ALLOWED_ORIGINS": "https://auctionarena.palligopi1924.workers.dev"
+      },
+      // Same classes and inherited v1/v2 migrations, but a separate script name
+      // means a separate SQLite Durable Object namespace from staging.
+      "durable_objects": {
+        "bindings": [
+          {
+            "name": "ROOM",
+            "class_name": "RoomDurableObject"
+          },
+          {
+            "name": "DIRECTORY",
+            "class_name": "DirectoryDurableObject"
+          }
+        ]
+      }
     }
   }
 }
