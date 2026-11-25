@@ -40,7 +40,7 @@
       // Public values only. Secrets are set with `wrangler secret put`.
       "vars": {
         "CLERK_ISSUER": "https://quality-labrador-8216.clerk.accounts.dev",
-        "ALLOWED_ORIGINS": "https://auctionarena-staging.palligopi1924.workers.dev"
+        "ALLOWED_ORIGINS": "https://auctionarena-staging.palligopi1924.workers.dev,https://auctionarena.pages.dev"
       },
       // Wrangler does not inherit Durable Object bindings into environments,
       // so staging declares the same classes. Migrations are inherited.
